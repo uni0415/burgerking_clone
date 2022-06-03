@@ -1,0 +1,26 @@
+.content-wrap {
+    margin: 0 auto;
+    min-height: 450px;
+}
+
+.location-wrap {
+    margin: 10px auto;
+    padding: 0 20px;
+    height: 58px;
+    color: #fff;
+    line-height: 38px;
+    background: #000;
+}
+
+.page-nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.page-nav>span::before {
+    margin: 0 12px;
+    content: "";
+    width: 4px;
+    height: 38px;
+    background: url(/static/images/page_nav_arrow.gif) no-repeat 50%;
+}
