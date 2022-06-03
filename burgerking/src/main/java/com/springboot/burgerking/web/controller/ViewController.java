@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ViewController {
 	@GetMapping("/index")
 	public String index() {
-		return "burgerking/index";
+		return "burgerking/index2";
 	}
 }

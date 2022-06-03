@@ -1,0 +1,136 @@
+.wrap{
+    max-width: 1920px;
+    min-height: 450px;
+    margin: 0 auto;
+}
+
+.contentsBox01{
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0 auto;
+    width: 1440px;
+    height: 480px;
+    background: url(/static/images/slider-first.png);
+    text-align: center;
+}
+
+.contentsBox01 .web-container{
+    position: relative;
+    padding: 0;
+}
+
+.btn_left{
+    float: left;
+}
+
+.btn_right{
+    float: right;
+}
+
+.contentsBox02{
+    margin: 0 auto;
+    width: 1440px;
+    height: 605px;
+}
+
+.sns-Box{
+    margin: 0 auto;
+    width: 1440px;
+    height: 160px;
+}
+
+.sns-Box .web-container{
+    height: 100%;
+    background-color: #683a2f;
+    max-width: 1440px;
+    padding-left: 148px;
+    padding-right: 148px;
+}
+
+.sns-Box .list li{
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sns-Box .list .youtube{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 33%;
+    height: 100%;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.sns-Box .list .youtube .content{
+    background: url(/static/images/youtube-logo.png) no-repeat 0;
+}
+
+.btn-detail{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-indent: -99999em;
+    background: transparent;
+
+}
+
+.sns-Box .list .facebook{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 33%;
+    height: 100%;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.sns-Box .list .instagram{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 33%;
+    height: 100%;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.burgerking-guide{
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0 auto;
+    max-height: 480px;  
+}
+
+.burgerking-guide .web-container{
+    width: 100%;
+    height: 0;
+    padding-top: 33%;
+    position: relative;
+    text-align: center;
+}
+
+.burgerking-guide .web-container>div{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 0;
+    padding-top: 33.3333%;
+    float: left;
+    background-size: cover;
+}
+
+.burgerking-guide .app-box{
+    background: #c7a186 url(../images/burgerking-app.png);
+}
+
+.burgerking-guide .delivery-box{
+    background: #c7a186 url(../images/burgerking-delivery.png);
+}
