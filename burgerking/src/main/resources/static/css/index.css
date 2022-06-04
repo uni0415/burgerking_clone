@@ -1,136 +1,247 @@
-.wrap{
+.content-wrap {
+    margin: 0 auto;
     max-width: 1920px;
-    min-height: 450px;
-    margin: 0 auto;
+    width: 1440px;
 }
 
-.contentsBox01{
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0 auto;
-    width: 1440px;
+.btn-top{
+    position: fixed;
+    right: 200px;
+    bottom: 316px;
+    width: 52px;
+    height: 52px;
+    text-indent: -9999em;
+    z-index: 1;
+    background: url(/static/images/top-logo.png);
+}
+
+.main-slide {
+    width: 100%;
     height: 480px;
-    background: url(/static/images/slider-first.png);
-    text-align: center;
 }
 
-.contentsBox01 .web-container{
-    position: relative;
-    padding: 0;
+.slider-first{
+    background-image: url(/static/images/slider-first.png);
 }
 
-.btn_left{
-    float: left;
+.slider-second{
+    background-image: url(/static/images/slider-second.png);
 }
 
-.btn_right{
-    float: right;
+.slider-third{
+    background-image: url(/static/images/slider-third.png);
 }
 
-.contentsBox02{
-    margin: 0 auto;
+.movie-box {
     width: 1440px;
-    height: 605px;
+    height: 610px;
 }
 
-.sns-Box{
-    margin: 0 auto;
-    width: 1440px;
+.sns-box {
+    padding: 0 148px;
+    width: 100%;
+    height: 160px;
+    background: #683a2f;
+}
+
+.sns-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1144px;
     height: 160px;
 }
 
-.sns-Box .web-container{
-    height: 100%;
-    background-color: #683a2f;
+.sns-buttons-box {
+    padding: 10px 10px 10px 105px;
+}
+
+.sns-buttons>li {
+    display: inline-block;
+}
+
+.cont {
+    display: flex;
+}
+
+.cont>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-size: 22px;
+    color: #fff;
+}
+
+.status-youtube {
+    display: inline-block;
+    height: 26px;
+    margin-top: 5px;
+    padding: 0 9px 0 33px;
+    line-height: 26px;
+    font-size: .75rem;
+    color: #2e2e2e;
+    background-image: url(/static/images/youtube_subscribe.png);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 10px;
+    border-radius: 4px;
+}
+
+.status-facebook {
+    display: inline-block;
+    height: 26px;
+    margin-top: 5px;
+    padding: 0 9px 0 33px;
+    line-height: 26px;
+    font-size: .75rem;
+    color: #2e2e2e;
+    background-image: url(/static/images/facebook-like.png);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 10px;
+    border-radius: 4px;
+}
+
+.status-instagram {
+    display: inline-block;
+    height: 26px;
+    margin-top: 5px;
+    padding: 0 9px 0 33px;
+    line-height: 26px;
+    font-size: .75rem;
+    color: #2e2e2e;
+    background-image: url(/static/images/instagram-follower.png);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 10px;
+    border-radius: 4px;
+}
+
+.guide-box {
+    display: flex;
+    width: 100%;
+    height: 480px;
+}
+
+.app-box {
+    width: 720px;
+    background: #c7a186;
+}
+
+.delivery-box {
+    width: 720px;
+    background: #b08972;
+}
+
+.find-store{
+    width: 100%;
+    height: 600px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.title-store{
+    padding-top: 100px;
+    padding-bottom: 88px;
     max-width: 1440px;
     padding-left: 148px;
     padding-right: 148px;
 }
 
-.sns-Box .list li{
-    margin: 0 auto;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
+.tit{
+    margin-bottom: 16px;
+    font-size: 3rem;
+    line-height: 100%;
 }
 
-.sns-Box .list .youtube{
-    position: relative;
-    margin: 0;
-    padding: 0;
+p{
+    font-size: 20px;
+}
+
+.find{
+    margin: 35px 0 55px 0;
+    width: 168px;
+    height: 50px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 55px;
+    border: none;
+    border-radius: 25px;
+    background: #d72300;
+    cursor: pointer;
+}
+
+.category-list li{
     float: left;
-    width: 33%;
-    height: 100%;
-    box-sizing: border-box;
-    list-style: none;
+    width: 16.666%;
+    padding: 100px 0 8px;
+    font-size: 15px;
+    line-height: 134%;
+    
 }
 
-.sns-Box .list .youtube .content{
-    background: url(/static/images/youtube-logo.png) no-repeat 0;
+em{
+    color: #e22219;
 }
 
-.btn-detail{
-    position: absolute;
-    left: 0;
-    top: 0;
+.category-delivery{
+    background: url(/static/images/category-delivery.gif)  no-repeat top;
+}
+
+.category-king{
+    border-left: 2px solid #ededed;
+    background: url(/static/images/category-king.gif)  no-repeat top;
+}
+
+.category-drive{
+    border-left: 2px solid #ededed;
+    background: url(/static/images/category-drive.gif)  no-repeat top;
+}
+
+.category-24{
+    border-left: 2px solid #ededed;
+    background: url(/static/images/category-24.gif)  no-repeat top;
+}
+
+.category-morning{
+    border-left: 2px solid #ededed;
+    background: url(/static/images/category-morning.gif)  no-repeat top;
+}
+
+.category-parking{
+    border-left: 2px solid #ededed;
+    background: url(/static/images/category-parking.gif)  no-repeat top;
+}
+
+.order-box{
+    padding: 0 148px;
     width: 100%;
-    height: 100%;
-    text-indent: -99999em;
-    background: transparent;
-
+    height: 200px;
+    color: #fff;
+    background-image: url(/static/images/fire-box.png);
 }
 
-.sns-Box .list .facebook{
+.fire-box{
     position: relative;
-    margin: 0;
-    padding: 0;
-    float: left;
-    width: 33%;
+    padding: 60px 330px 0 0;
     height: 100%;
-    box-sizing: border-box;
-    list-style: none;
 }
 
-.sns-Box .list .instagram{
-    position: relative;
-    margin: 0;
-    padding: 0;
-    float: left;
-    width: 33%;
-    height: 100%;
-    box-sizing: border-box;
-    list-style: none;
+.tit{
+    margin-bottom: 20px;
 }
 
-.burgerking-guide{
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0 auto;
-    max-height: 480px;  
-}
-
-.burgerking-guide .web-container{
-    width: 100%;
-    height: 0;
-    padding-top: 33%;
-    position: relative;
-    text-align: center;
-}
-
-.burgerking-guide .web-container>div{
+.call-number{
     position: absolute;
-    top: 0;
-    width: 50%;
-    height: 0;
-    padding-top: 33.3333%;
-    float: left;
-    background-size: cover;
-}
-
-.burgerking-guide .app-box{
-    background: #c7a186 url(../images/burgerking-app.png);
-}
-
-.burgerking-guide .delivery-box{
-    background: #c7a186 url(../images/burgerking-delivery.png);
+    right: 0;
+    top: 50%;
+    height: 1em;
+    margin-top: -0.5em;
+    padding-left: 66px;
+    font-size: 2.5rem;
+    text-decoration: none;
+    background: url(/static/images/cellphone-logo.png) no-repeat 0;
 }

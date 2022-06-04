@@ -100,7 +100,7 @@ header::after {
     position: absolute;
     top: 100%;
     overflow: hidden;
-    height: 322px;
+    height: 0;
     z-index: 10;
     opacity: 0;
     transition: 500ms;
@@ -116,4 +116,5 @@ header::after {
 
 .submenu.active {
     opacity: 1;
+    height: 322px;
 }
