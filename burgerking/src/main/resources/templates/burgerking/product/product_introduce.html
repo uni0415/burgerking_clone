@@ -22,11 +22,59 @@
                         <span>메뉴소개</span>
                     </div>
                 </div>
+                <div class="content-box">
+                    <div class="product-wrap">
+                        <h2 class="menu-title">메뉴소개</h2>
+                        <ul class="menu-category">
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button on">
+                                    <span class="on">스페셜&할인팩</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span>프리미엄</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span>와퍼</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span>주니어&버거</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span>올데이킹&치킨버거</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span>사이드</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span>음료&디저트</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span>독퍼</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <th:block th:replace="fragments/footer :: footer"></th:block>
+            <th:block th:replace="fragments/config :: configFragment"></th:block>
         </div>
-        <th:block th:replace="fragments/footer :: footer"></th:block>
-        <th:block th:replace="fragments/config :: configFragment"></th:block>
     </div>
+    <script src="/static/js/product/product_introduce.js"></script>
 </body>
 
 </html>
