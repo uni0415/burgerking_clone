@@ -1,0 +1,91 @@
+#container {
+    background-color: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+}
+
+.header-main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 168px;
+    background: #e22219;
+}
+
+.header-main-menu {
+    position: relative;
+    width: 1144px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1144px;
+    height: 168px;
+    padding: 48px 20px 0;
+}
+
+.burgerking-logo {
+    padding: 0 10px 0 80px;
+    line-height: 120px;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    background: url("/static/images/logo_delivery.png") no-repeat 0;
+}
+
+.header-util-wrap {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    height: 48px;
+}
+
+.header-option {
+    padding: 0 14px;
+    font-size: 0.875rem;
+    color: #fff;
+    line-height: 48px;
+}
+
+.header-util-wrap>a {
+    position: relative;
+}
+
+.header-util-wrap>a:last-child .header-option {
+    padding-right: 0;
+}
+
+.header-util-wrap>a:not(:last-child)>span::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -6.5px;
+    width: 1px;
+    height: 13px;
+    background: #e84e47;
+}
+
+.header-join {
+    text-align: center;
+    top: auto;
+    right: 20px;
+    bottom: 35px;
+    width: 168px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 25px;
+    line-height: 50px;
+    background: #512314;
+}

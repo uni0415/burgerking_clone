@@ -1,49 +1,7 @@
-#footer-wrap {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 680px;
-    background: #2b0200;
-}
-
-.footer-menu {
-    display: flex;
-    justify-content: center;
-    padding: 0 20px;
-    width: 100%;
-    height: 388px;
-}
-
-.menu {
-    display: flex;
-    width: 1144px;
-    padding-top: 50px;
-    border-bottom: 1px solid #bba391;
-}
-
-.footer-submenu>li {
-    width: 228.8px;
-    height: 32px;
-}
-
-.footer-submenu>li>a {
-    font-size: 18px;
-    color: #bba391;
-}
-
-.subtitle {
-    margin-bottom: 25px;
-    display: inline-block;
-    height: 29px;
-    font-size: 27px;
-    line-height: 25px;
-    color: #f5ebdc;
-}
-
 .footer-under {
     width: 100%;
     height: 272px;
+    background-color: #512314;
 }
 
 .footer-detail {

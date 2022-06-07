@@ -2,7 +2,7 @@ const nav_open = document.querySelector(".nav-open");
 const nav_menu = document.querySelector(".nav-menu");
 const submenu = document.querySelectorAll(".submenu");
 
-nav_menu.onmouseover = () => {
+nav_menu.onmouseenter = () => {
     nav_open.classList.add("active");
     for (let i = 0; i < submenu.length; i++) {
         submenu[i].classList.add("active");
@@ -20,5 +20,5 @@ nav_menu.onmouseleave = () => {
         for (let i = 0; i < submenu.length; i++) {
             submenu[i].style = "";
         }
-    }, 500);
+    }, 300);
 }
