@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ProductRepository {
 
-	public List<MenuMst> getProductListAll();
+	public List<MenuMst> getProductListAll(int category_id);
 }

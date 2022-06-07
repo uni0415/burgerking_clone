@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductRepository productRepository;
 	
 	@Override
-	public List<MenuMst> getProductListAll() {
-		return productRepository.getProductListAll();
+	public List<MenuMst> getProductListAll(int category_id) {
+		return productRepository.getProductListAll(category_id);
 	}
 }

@@ -6,5 +6,5 @@ import com.springboot.burgerking.domain.MenuMst;
 
 public interface ProductService {
 	
-	public List<MenuMst> getProductListAll();
+	public List<MenuMst> getProductListAll(int category_id);
 }
