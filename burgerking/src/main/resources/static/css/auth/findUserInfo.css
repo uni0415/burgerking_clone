@@ -1,0 +1,385 @@
+#container {
+    background: none;
+}
+
+.wrap {
+    margin-top: 168px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrap-contents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 58px;
+    background-color: black;
+}
+
+.location-wrap {
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 1144px;
+    height: 58px;
+}
+
+.wrap-container {
+    padding: 0px 20px;
+    width: 100%;
+    height: 38px;
+}
+
+.container-nav {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    gap: 12px;
+}
+
+.container-nav>a {
+    font-size: .875rem;
+    color: white;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.container-nav>img {
+    position: relative;
+    top: -2px;
+}
+
+.main-container {
+    padding: 50px 0 45px;
+    width: 100%;
+    height: 940px;
+    background-color: #f2ebe6;
+}
+
+.main-container-wrap {
+    margin: 0 373px;
+    padding: 0 8px;
+    width: 776px;
+    height: 765px;
+}
+
+.find-userinfo-text {
+    margin-bottom: 26px;
+    width: 760px;
+    height: 40px;
+}
+
+.find-userinfo-text>h2 {
+    margin-bottom: 15px;
+    width: 100%;
+    height: 100%;
+    font-size: 45px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 2px;
+}
+
+.table-userinfo {
+    margin-bottom: 20px;
+}
+
+
+
+.members-item {
+    display: flex;
+    justify-content: flex-start;
+    width: 319px;
+    height: 54px;
+}
+
+.order-item {
+    padding-right: 14px;
+    width: 130px;
+    height: 54px;
+}
+
+.order-list {
+    width: 188px;
+    height: 54px;
+    padding: 0 14px;
+}
+
+.order-button-left {
+    width: 116px;
+    height: 54px;
+    border: none;
+    color: #b8b8b8;
+    background: inherit;
+    cursor: pointer;
+}
+
+.order-button-left:hover {
+    color: black;
+}
+
+.order-button-left.on {
+    color: #e22219;
+    border-bottom: 4px solid #e22219;
+}
+
+.order-button-left>span {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.order-button-right {
+    width: 130px;
+    height: 48px;
+    border: none;
+    color: #b8b8b8;
+    background: inherit;
+    cursor: pointer;
+}
+
+.order-button-right:hover {
+    color: black;
+}
+
+.order-button-right.on {
+    color: #e22219;
+    border-bottom: 4px solid #e22219;
+}
+
+.order-button-right>span {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.userinfo-wrap {
+    width: 760px;
+    height: 625px;
+}
+
+.userinfo-wrap-container {
+    margin: 15px 0;
+    padding: 0 50px 20px;
+    width: 100%;
+    height: 509px;
+    background-color: white;
+}
+
+.userinfo-title-box {
+    margin: 0 -50px 20px;
+    padding: 37px 50px;
+    height: 97px;
+    background-color: #f8f8f8;
+}
+
+.userinfo-title-box>p {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 28px;
+}
+
+.userinfo-detail-box {
+    display: flex;
+    flex-direction: column;
+    width: 660px;
+    height: 210px;
+}
+
+.find-username-form {
+    display: none;
+}
+
+.find-username-form.on {
+    display: block;
+}
+
+.find-password-form {
+    display: none;
+}
+
+.find-password-form.on {
+    display: block;
+}
+
+.username-detail-box>span,
+.password-detail-box>span,
+.email-detail-box>span {
+    display: block;
+    padding: 26px 10px 5px 0;
+    width: 184px;
+    height: 105px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+.username-input-box,
+.password-input-box,
+.email-input-box {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 105px;
+}
+
+
+.username-detail-box,
+.password-detail-box,
+.email-detail-box {
+    display: flex;
+}
+
+.username-input,
+.password-input,
+.email-input {
+    width: 475px;
+    height: 66px;
+    font-size: 24px;
+    line-height: 66px;
+    border: none;
+    outline: none;
+    background: url(/static/images/login_input_underline.png) no-repeat bottom;
+}
+
+.cancellation-button {
+    display: none;
+    position: absolute;
+    top: -3px;
+    right: 40px;
+    width: 30px;
+    height: 63px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+
+.cancellation-button.active {
+    display: block;
+}
+
+.cancellation-button>img {
+    width: 13px;
+    height: auto;
+}
+
+.username-input-box>p,
+.password-input-box>p,
+.email-input-box>p {
+    margin-top: 12px;
+    width: 475px;
+    height: 17px;
+    font-size: 17px;
+    color: #e22219;
+}
+
+
+/* .password-detail-box {
+    display: flex;
+    width: 100%;
+    height: 105px;
+}
+
+.password-input {
+    width: 475px;
+    height: 66px;
+    font-size: 24px;
+    line-height: 66px;
+    border: none;
+    background: url(/static/images/login_input_underline.png) no-repeat bottom;
+}
+
+.password-input-box>button {
+    position: absolute;
+    top: -3px;
+    right: 40px;
+    width: 30px;
+    height: 63px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+
+.password-input-box>button>img {
+    width: 13px;
+    height: auto;
+}
+
+.password-input-box>p {
+    margin-top: 12px;
+    width: 475px;
+    height: 17px;
+    font-size: 17px;
+    color: #e22219;
+} */
+
+
+
+.find-username-container {
+    margin: 40px 0 80px;
+    width: 100%;
+    height: 76px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.find-username-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.find-username-button {
+    padding: 20px 10px 22px;
+    width: 272px;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 34px;
+    background-color: #512314;
+    color: white;
+}
+
+.userinfo-textbox {
+    margin: 62px 0 20px;
+    width: 100%;
+    height: 80px;
+}
+
+.userinfo-textbox-top {
+    padding-left: 12px;
+    width: 660px;
+    height: 26px;
+    font-size: 17px;
+}
+
+.userinfo-textbox-top::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 1.67em;
+    background: url(/static/images/login_findUserInfo_dot.png);
+}
+
+
+.userinfo-textbox-bottom {
+    padding-left: 12px;
+    width: 660px;
+    height: 53px;
+    font-size: 17px;
+}
+
+.userinfo-textbox-bottom::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 1.67em;
+    background: url(/static/images/login_findUserInfo_dot.png);
+}
