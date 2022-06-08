@@ -1,0 +1,345 @@
+.wrapper{
+    padding-top: 168px;
+    padding-bottom: 272px;
+}
+
+.header-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 168px;
+    background: rgb(226, 34, 25);
+    z-index: 2;
+}
+
+.header {
+    position: relative;
+    padding: 48px 20px 0 20px;
+    margin: 0 auto;
+    max-width: 1184px;
+}
+
+.header-menu{
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
+}
+
+.top-menu{
+    position: relative;
+    display: block;
+    float: left;
+    height: 48px;
+    font-size: 14px;
+    line-height: 48px;
+    padding: 0px 14px;
+    color: #fff;
+}
+
+.top-menu:not(:nth-child(1))::before{
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    width: 1px;
+    height: 13px;
+    margin-top: -6.5px;
+    background: hsla(0, 0%, 100%, .3);
+}
+
+.logo{
+    display: inline-block;
+    width: auto;
+    height: 120px;
+    padding-left: 80px;
+    padding-right: 10px;
+    font-weight: 700;
+    font-size: 2.25rem;
+    color: rgb(255, 255, 255);
+    text-indent: 0px;
+    line-height: 120px;
+    cursor: pointer;
+    background: url(/burgerking/src/main/resources/static/images/burgerking-logo.png) 0px center no-repeat;
+}
+
+.signup{
+    float: right;
+    margin-top: 35px;
+    width: 168px;
+    height: 50px;
+    font-size: 25px;
+    color: #fff;
+    line-height: 50px;
+    border: none;
+    border-radius: 25px;
+    background: rgb(81, 35, 20);
+    cursor: pointer;
+}
+
+.location{
+    height: 58px;
+    color: rgb(255, 255, 255);
+    line-height: 38px;
+    padding: 10px 0px;
+    background: rgb(0, 0, 0);
+}
+
+.main-location{
+    max-width: 1184px;
+    margin: 0px auto;
+    padding: 0px 20px;
+}
+
+.page-nav{
+    display: flex;
+    font-size: 14px;
+}
+
+.location-menu {
+    color: white;
+}
+
+.location-menu:not(:first-child)::before{
+    content: "";
+    float: left;
+    width: 4px;
+    height: 38px;
+    margin: 0px 12px;
+    background: url(/burgerking/src/main/resources/static/images/next.gif) 50% center no-repeat;
+    color: rgb(255, 255, 255);
+}
+
+.contentsBox01{
+    padding: 50px 0 45px;
+    background-color: #f2ebe6;
+}
+
+.container-two{
+    max-width: 776px;
+    height: 1410px;
+    padding: 20px 0;
+    margin: 0 auto;
+    
+}
+
+.title{
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: rgb(0, 0, 0);
+    margin: 0 0 40px;
+}
+
+.tit{
+    background: url(/burgerking/src/main/resources/static/images/member.png) no-repeat;
+    padding: 0 0 0 50px;
+    margin: 45px 0 17px 0;
+    left: 20px;
+}
+
+.service{
+    font-size: 1.375rem;
+    height: 118px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+    background: rgb(255, 255, 255);
+}
+
+.use-list{
+    position: relative;
+    margin: 15px 0;
+    padding: 40px 50px;
+}
+
+.use-title{
+    padding: 7px 30px 7px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.use-tit{
+    display: flex;
+    align-items: center;
+}
+input[type=checkbox]+:before {
+    background: url(/burgerking/src/main/resources/static/images/checkbox.png) no-repeat 0;
+}
+
+input[type=checkbox]+:before{
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 13px;
+    vertical-align: middle;
+}
+
+.checkbox{
+    margin: 0;
+    vertical-align: middle;
+    font-size: 1em;
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked+:before{
+    width: 32px;
+    height: 32px;
+    background-image: url(/burgerking/src/main/resources/static/images/checkbox-1.png);
+}
+
+
+.btn-use{
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #fff;
+}
+
+.btn-use::after{
+    content: "";
+    position: absolute;
+    left: 87.2%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    background: url(/burgerking/src/main/resources/static/images/updown.png) no-repeat 50%;
+    background-size: 15px auto;
+    transform: rotate(180deg);
+}
+
+.active-content-box {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 776px;
+    height: 332.5px;
+    background-color: #fff;
+}
+
+.active-content-box.open {
+    display: block;
+}
+
+.use-contents{
+    position: absolute;
+    top: 0;
+    right: 50px;
+    padding: 20px;
+    width: 676px;
+    font-size: 1rem;
+    line-height: 140%;
+    background: #f8f8f8;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+.footer-contents{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 272px;
+}
+
+.footer-under {
+    background: #2b0200;
+    height: 100%;
+}
+
+.footer-detail {
+    margin: 0 auto;
+    position: relative;
+    max-width: 1144px;
+    height: 255.39px;
+    padding: 47px 0;
+}
+
+.footer-service {
+    position: absolute;
+    top: 42px;
+    right: 0;
+}
+
+.footer-service>ul {
+    width: 280px;
+    height: 24px;
+}
+
+.footer-service>ul>li {
+    display: inline-block;
+}
+
+.footer-service>ul>li>a {
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #bba391;
+}
+
+
+.footer-service ul li a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 1px;
+    height: 12px;
+    background: hsla(0, 0%, 100%, .1);
+}
+
+.footer-service>li>li>a>span {
+    font-size: 14px;
+}
+
+.footer-btn {}
+
+.footer-btn>a {
+    display: inline-block;
+    margin: 12px 0 0 3px;
+    padding: 0 32px;
+    color: #f5ebdc;
+    border: 1px solid rgba(187, 163, 143, .6);
+    border-radius: 16px;
+    line-height: 30px;
+}
+
+.footer-logo {
+    margin-bottom: 14px;
+    width: 168px;
+    height: 20px;
+}
+
+.footer-detail>p {
+    padding: 2px 0;
+    color: #bba391;
+}
+
+.footer-detail>:nth-last-child(3) {
+    margin-bottom: 20px;
+}
+
+.footer-line {
+    display: inline-block;
+    margin: 0 6px;
+    width: 1px;
+    height: 12px;
+    line-height: 12px;
+    background: #bba391;
+    vertical-align: middle;
+}
