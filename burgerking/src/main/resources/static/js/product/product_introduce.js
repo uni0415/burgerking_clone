@@ -19,7 +19,7 @@ function loadMenuList() {
 
 			$.ajax({
 				type: "get",
-				url: `/menulist/${index}`,
+				url: `/api/v1/menulist/${index}`,
 				dataType: "text",
 				success: function (data) {
 					let menu_data = JSON.parse(data);
@@ -29,6 +29,8 @@ function loadMenuList() {
 		}
 	}
 }
+
+
 
 
 
@@ -49,8 +51,8 @@ function addOnClassName(index) {
 
 function appendProductList(menu_data) {
 	let menu_list = ``;
-	console.log(menu_data)
 	for (let i = 0; i < menu_data.length; i++) {
+		console.log(menu_data[i]);
 		menu_list += `
 			<li>
                 <div class="product-img">
@@ -64,4 +66,14 @@ function appendProductList(menu_data) {
 		`;
 	}
 	product_menu_list.innerHTML = menu_list;
+	const product_menu_detail = document.querySelectorAll(".product-menu-list > li");
+	loadProductDetail(product_menu_detail, menu_data);
+}
+
+function loadProductDetail(product_menu_detail, menu_data) {
+	for (let i = 0; i < product_menu_detail.length; i++) {
+		product_menu_detail[i].onclick = () => {
+			location.href = "/menu/detail/" + menu_data[i].id;
+		}
+	}
 }

@@ -8,4 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ProductRepository {
 
 	public List<MenuMst> getProductListAll(int category_id);
+	
+	public List<MenuDetailMst> getProductDetailList(int menu_id);
+	
 }
