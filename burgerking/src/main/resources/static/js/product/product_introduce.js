@@ -4,14 +4,14 @@ const menu_category_tag = document.querySelectorAll(".menu-category-tag");
 const menu_category_text = document.querySelectorAll(".menu-category-text");
 let category_id = 1;
 
-load(category_id);
+load();
 menu_category_tag[0].click();
 
-function load(id) {
-	loadMenuList(id);
+function load() {
+	loadMenuList();
 }
 
-function loadMenuList(index) {
+function loadMenuList() {
 	for (let i = 0; i < menu_category_tag.length; i++) {
 		menu_category_tag[i].onclick = () => {
 			addOnClassName(i);
@@ -49,7 +49,7 @@ function addOnClassName(index) {
 
 function appendProductList(menu_data) {
 	let menu_list = ``;
-	console.log(menu_data);
+	console.log(menu_data)
 	for (let i = 0; i < menu_data.length; i++) {
 		menu_list += `
 			<li>

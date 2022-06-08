@@ -103,6 +103,7 @@
     width: 280px;
     height: 300px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .product-img {
