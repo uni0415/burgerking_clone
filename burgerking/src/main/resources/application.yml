@@ -15,7 +15,7 @@ spring:
     
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/aws-gyeongun?useUnicode=true&serverTimezone=Asia/Seoul&allowMultiQueries=true
+    url: jdbc:mariadb://burgerking.cl6j84vpzotz.ap-northeast-2.rds.amazonaws.com/burgerking?useUnicode=true&serverTimezone=Asia/Seoul&allowMultiQueries=true
     username: gyeongun
     password: qwer1234
     

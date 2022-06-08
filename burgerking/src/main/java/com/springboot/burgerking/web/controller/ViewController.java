@@ -9,4 +9,10 @@ public class ViewController {
 	public String index() {
 		return "burgerking/index";
 	}
+
+	@GetMapping("/menu")
+	public String menu() {
+		return "burgerking/product/product_introduce";
+	}
+
 }

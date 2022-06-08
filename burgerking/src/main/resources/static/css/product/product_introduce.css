@@ -35,6 +35,7 @@
 
 .content-box {
     padding: 50px 0 45px;
+    background-color: #fff;
 }
 
 .product-wrap {
@@ -61,8 +62,7 @@
     padding: 0 14px;
 }
 
-
-.menu-category-tag button {
+<<<<<<< HEAD .menu-category-tag button {
     border: 0 solid transparent;
     background: transparent;
     height: 35px;
@@ -73,14 +73,84 @@
 }
 
 .menu-category-tag span {
-    font-size: 18px;
-    color: #b8b8b8;
-}
+    =======.menu-category-tag.on {}
 
-.menu-category-tag span.on {
-    color: #e22219;
-}
 
-.menu-category-tag span:hover {
-    color: #000;
-}
+    .menu-category-button {
+        border: 0 solid transparent;
+        background: transparent;
+        cursor: pointer;
+        height: 35px;
+    }
+
+
+    .menu-category-button.on {
+        border-bottom: 2px solid #e22219;
+    }
+
+    .menu-category-text {
+        >>>>>>>gyeongun font-size: 18px;
+        color: #b8b8b8;
+    }
+
+    <<<<<<< HEAD .menu-category-tag span.on {
+        color: #e22219;
+    }
+
+    .menu-category-tag span:hover {
+        color: #000;
+
+        =======.menu-category-text:hover {
+            color: black;
+        }
+
+        .menu-category-text.on {
+            color: #e22219;
+        }
+
+        .product-menu-list {
+            margin: 0 auto;
+            margin-top: 60px;
+            padding-bottom: 46px;
+            width: 1144px;
+        }
+
+        .product-menu-list>li {
+            position: relative;
+            margin-bottom: 8px;
+            width: 280px;
+            height: 300px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .product-img {
+            margin: 0 auto;
+            max-width: 220px;
+            height: 144px;
+            overflow: hidden;
+        }
+
+        .product-img>img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .menu-content {
+            min-height: 115px;
+            padding: 30px 5px 0;
+            text-align: center;
+        }
+
+        .detail-title {
+            font-size: 21px;
+        }
+
+        .btn-detail {
+            position: absolute;
+            max-width: 100%;
+            max-height: 100%;
+            left: 0;
+            top: 0;
+            >>>>>>>gyeongun
+        }
