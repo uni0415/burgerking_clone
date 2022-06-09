@@ -18,6 +18,8 @@
   	
   	<select id="getProductDetailList" parameterType="Integer" resultType="com.springboot.burgerking.domain.MenuDetailMst">
   		SELECT
+  			mc.`name` as category_name,
+  			mm.category_id,
 			mm.`name` AS main_menu_name,
 			mm.menu_image AS main_menu_image,
 			mm.summary AS main_menu_summary,
@@ -32,6 +34,7 @@
 		FROM 
 			menu_mst mm
 			LEFT OUTER JOIN menu_dtl md ON(md.menu_id = mm.id)
+			left outer join menu_category_mst mc on(mm.category_id = mc.id)
 		WHERE
 			mm.id = #{menu_id};
   	</select>

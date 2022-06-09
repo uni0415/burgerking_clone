@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class MenuDetailMst {
 	private int id;
 	private int menu_id;
+	private int category_id;
+	private String category_name;
 	private String main_menu_name;
 	private String main_menu_summary;
 	private String main_menu_image;
