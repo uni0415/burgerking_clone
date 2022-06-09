@@ -11,8 +11,8 @@ public class ViewController {
 		return "burgerking/index";
 	}
 
-	@GetMapping("/menu")
-	public String menu() {
+	@GetMapping("/menu/{category_id}")
+	public String menu(@PathVariable Integer category_id) {
 		return "burgerking/product/product_introduce";
 	}
 	

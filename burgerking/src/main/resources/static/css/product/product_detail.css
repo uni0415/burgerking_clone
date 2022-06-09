@@ -126,12 +126,16 @@
 }
 
 .detail-product-content {
+    display: flex;
+    justify-content: center;
     padding: 50px 0 45px;
     background: #fff;
 }
 
 .detail-product-list {
     display: flex;
+    justify-content: center;
+    min-width: 1184px;
     max-width: 1184px;
     margin: 60px auto 0;
     padding: 0 20px 46px;
@@ -168,12 +172,14 @@
 
 .detail-product-title {
     font-size: 2rem;
+    width: 340px;
     word-break: keep-all;
 }
 
 .detail-product-summary {
     margin-top: 20px;
-    font-size: 1.5rem;
+    width: 330px;
+    font-size: 1.3rem;
 }
 
 .detail-product-summary>span {
@@ -227,6 +233,6 @@
 
 .othermenu-name-box {
     padding: 20px 15px;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
 }

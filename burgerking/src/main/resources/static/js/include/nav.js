@@ -1,6 +1,7 @@
 const nav_open = document.querySelector(".nav-open");
 const nav_menu = document.querySelector(".nav-menu");
 const submenu = document.querySelectorAll(".submenu");
+const menulist = submenu[0].querySelectorAll("li");
 
 nav_menu.onmouseenter = () => {
     nav_open.classList.add("active");
@@ -21,4 +22,11 @@ nav_menu.onmouseleave = () => {
             submenu[i].style = "";
         }
     }, 300);
+}
+
+for (let i = 1; i < menulist.length + 1; i++) {
+    menulist[i].onclick = () => {
+        console.log("/menu/" + i);
+        location.href = "/menu/" + i;
+    }
 }

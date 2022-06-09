@@ -4,8 +4,13 @@ const main_summary = document.querySelector(".product-summary");
 const main_image = document.querySelector(".product-image > img");
 const detail_product_list = document.querySelector(".detail-product-list");
 const title_box = document.querySelector(".title-box>h3");
+const othermenu_list = document.querySelector(".othermenu-list");
+const back_button = document.querySelector(".back-button");
 
 loadMenuDetailData();
+
+
+
 
 function loadMenuDetailData() {
 	$.ajax({
@@ -14,7 +19,6 @@ function loadMenuDetailData() {
 		dataType: "text",
 		success: function (data) {
 			data = JSON.parse(data);
-			console.log(data);
 			setData(data);
 			loadDetailMenuList(data);
 			loadOtherMenuList(data);
@@ -29,7 +33,6 @@ function setData(detail_list) {
 }
 
 function loadDetailMenuList(detail_list) {
-	console.log(detail_list.length);
 	let str = ``;
 	for (let i = 0; i < detail_list.length; i++) {
 		str += `
@@ -56,10 +59,34 @@ function loadDetailMenuList(detail_list) {
 function loadOtherMenuList(detail_list) {
 	title_box.innerText = detail_list[0].category_name + "의 다른 메뉴";
 
+	$.ajax({
+		type: "get",
+		url: "/api/v1/menu/" + detail_list[0].category_id,
+		dataType: "text",
+		success: function (data) {
+			data = JSON.parse(data);
+			setOtherMenuList(data);
+			back_button.onclick = () => {
+				location.href = `/menu/${data.category_id}`;
+			}
+		}
+	})
 
+}
 
+function setOtherMenuList(category_menu_list) {
 	let str = ``;
-	for (let i = 0; i < detail_list.length; i++) {
-
+	for (let i = 0; i < category_menu_list.length; i++) {
+		str += `
+		<li>
+			<div class="othermenu-img">
+				<img src="${category_menu_list[i].menu_image}" alt="">
+			</div>
+			<p class="othermenu-name-box">
+				<span>${category_menu_list[i].name}</span>
+			</p>
+		</li>
+		`
 	}
+	othermenu_list.innerHTML = str;
 }

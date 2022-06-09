@@ -1,8 +1,8 @@
+const category_id = Number(location.pathname.replace("/menu/", ""));
 const menu_category_buttons = document.querySelectorAll(".menu-category-button");
 const product_menu_list = document.querySelector(".product-menu-list");
 const menu_category_tag = document.querySelectorAll(".menu-category-tag");
 const menu_category_text = document.querySelectorAll(".menu-category-text");
-let category_id = 1;
 
 load();
 menu_category_tag[0].click();
@@ -19,7 +19,7 @@ function loadMenuList() {
 
 			$.ajax({
 				type: "get",
-				url: `/api/v1/menulist/${index}`,
+				url: `/api/v1/menu/${index}`,
 				dataType: "text",
 				success: function (data) {
 					let menu_data = JSON.parse(data);

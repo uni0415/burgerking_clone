@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {
 	private final ProductService productService;
 	
-	@GetMapping("/menulist/{category_id}")
+	@GetMapping("/menu/{category_id}")
 	public ResponseEntity<?> getProductListAll(@PathVariable int category_id) {
 		List<MenuMst> menuList =  productService.getProductListAll(category_id);
 		return new ResponseEntity<>(menuList, HttpStatus.OK);
