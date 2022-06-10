@@ -11,6 +11,7 @@ nav_menu.onmouseenter = () => {
     }
 }
 
+
 nav_menu.onmouseleave = () => {
     nav_open.classList.remove("active");
     for (let i = 0; i < submenu.length; i++) {
@@ -25,8 +26,8 @@ nav_menu.onmouseleave = () => {
 }
 
 for (let i = 1; i < menulist.length + 1; i++) {
-    menulist[i].onclick = () => {
-        console.log("/menu/" + i);
+    menulist[i - 1].onclick = (event) => {
+		event.preventDefault();
         location.href = "/menu/" + i;
     }
 }

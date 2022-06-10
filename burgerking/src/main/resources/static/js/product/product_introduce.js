@@ -5,7 +5,7 @@ const menu_category_tag = document.querySelectorAll(".menu-category-tag");
 const menu_category_text = document.querySelectorAll(".menu-category-text");
 
 load();
-menu_category_tag[0].click();
+menu_category_tag[category_id-1].click();
 
 function load() {
 	loadMenuList();
@@ -52,7 +52,6 @@ function addOnClassName(index) {
 function appendProductList(menu_data) {
 	let menu_list = ``;
 	for (let i = 0; i < menu_data.length; i++) {
-		console.log(menu_data[i]);
 		menu_list += `
 			<li>
                 <div class="product-img">

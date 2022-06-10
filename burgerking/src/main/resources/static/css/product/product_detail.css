@@ -216,6 +216,7 @@
 .othermenu-list>li {
     min-width: 261px;
     height: 200px;
+    cursor: pointer;
 }
 
 .othermenu-img {
