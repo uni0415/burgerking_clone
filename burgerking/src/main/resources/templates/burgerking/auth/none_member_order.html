@@ -13,8 +13,7 @@
 <body>
     <div id="container">
         <div class="wrapper">
-
-
+            <a href="#container" class="btn-top"></a>
             <div class="header-wrap">
                 <div class="container-one">
                     <div class="header">
@@ -60,7 +59,7 @@
                     </h2>
                     <div class="content-wrap">
                         <div class="service">
-                            <div class="use-list open">
+                            <div class="use-list">
                                 <div class="use-title">
                                     <label class="use-tit">
                                         <input type="checkbox" class="checkbox">
@@ -70,92 +69,96 @@
                                     </label>
                                     <button type="button" class="btn-use"></button>
                                 </div>
-                                <div class="active-content-box">
-                                    <div class="use-contents">
-                                        <p>
-                                            <strong>수집하는 개인정보 항목</strong>
-                                            <br>
-                                            - 전화번호, 성명, 주소
-                                        </p>
+                                <div class="use-contents">
+                                    <p>
+                                        <strong>수집하는 개인정보 항목</strong>
                                         <br>
-                                        <p>
-                                            <strong>수집 목적</strong>
-                                            <br>
-                                            ① 성명, 주소: 제품의 전달, 청구서, 정확한 제품 배송지의 확보.
-                                        </p>
+                                        - 전화번호, 성명, 주소
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <strong>수집 목적</strong>
                                         <br>
-                                        <p>
-                                            <strong>개인정보 보유기간</strong>
-                                            <br>
-                                            ① 계약 또는 청약철회 등에 관한 기록 : 6개월<br>
-                                            ② 대금결제 및 재화 등의 공급에 관한 기록 : 1년<br>
-                                            ③ 소비자의 불만 또는 분쟁처리에 관한 기록 : 1년<br>
-                                        </p>
+                                        ① 성명, 주소: 제품의 전달, 청구서, 정확한 제품 배송지의 확보.
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <strong>개인정보 보유기간</strong>
                                         <br>
-                                        <p>
-                                            <strong>
-                                                비회원 주문 시 제공하신 모든 정보는 상기 목적에 필요한 용도 이외로는 사용되지 않습니다.
-                                                기타 자세한 사항은 '개인정보처리방침'을 참고하여주시기 바랍니다.
-                                            </strong>
-                                        </p>
+                                        ① 계약 또는 청약철회 등에 관한 기록 : 6개월<br>
+                                        ② 대금결제 및 재화 등의 공급에 관한 기록 : 1년<br>
+                                        ③ 소비자의 불만 또는 분쟁처리에 관한 기록 : 1년<br>
+                                    </p>
+                                    <br>
+                                    <p>
+                                        <strong>
+                                            비회원 주문 시 제공하신 모든 정보는 상기 목적에 필요한 용도 이외로는 사용되지 않습니다.
+                                            기타 자세한 사항은 '개인정보처리방침'을 참고하여주시기 바랍니다.
+                                        </strong>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="non-member">
+                            <h2 class="tit2">
+                                <span>비회원 설정</span>
+                            </h2>
+                            <div class="info-list">
+                                <div class="list-box1">
+                                    <span>이름</span>
+                                    <div class="inputbox1">
+                                        <input type="text" placeholder="받는 분의 이름을 입력해 주세요." class="first">
+                                        <button type="button" class="btn-delete"></button>
+                                    </div>
+                                </div>
+                                <div class="list-box2">
+                                    <span>휴대폰번호</span>
+                                    <div class="inputbox2">
+                                        <input type="text" placeholder="핸드폰 번호를 입력해 주세요." class="second">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="content-position-box">
-                            <div class="non-member">
-                                <h2 class="tit2">
-                                    <span>비회원 설정</span>
-                                </h2>
-                                <div class="info-list">
-                                    <div class="list-box1">
-                                        <span>이름</span>
-                                        <div class="inputbox1">
-                                            <input type="text" placeholder="받는 분의 이름을 입력해 주세요." class="first">
-                                            <button type="button" class="btn-delete"></button>
-                                        </div>
+                        <div class="btn-checknumber">
+                            <div>
+                                <button type="button" class="btn-send">
+                                    <span>인증번호 발송</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="order-password">
+                            <h2 class="password-title">
+                                <span>주문서 비밀번호</span>
+                            </h2>
+                            <div class="order-history">
+                                <div class="tit-box">
+                                    <p>주문 내역 확인을 위한 비밀번호를 입력하세요.</p>
+                                </div>
+                                <div class="check-password">
+                                    <div class="password-box">
+                                        <span>비밀번호</span>
                                     </div>
-                                    <div class="list-box2">
-                                        <span>휴대폰번호</span>
-                                        <div class="inputbox2">
-                                            <input type="text" placeholder="핸드폰 번호를 입력해 주세요." class="second">
+                                    <div class="inpbox-list">
+                                        <div class="inpbox">
+                                            <input placeholder="4~6자리 이내의 숫자로만 입력하세요." maxlength="6" type="password"
+                                                class="password-input">
+                                            <button type="button" tabindex="-1" class="btn-view"></button>
+                                        </div>
+                                        <div class="inpbox">
+                                            <input placeholder="비밀번호를 다시 입력하세요." maxlength="6" type="password"
+                                                class="password-input">
+                                            <button type="button" tabindex="-1" class="btn-view"></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="btn-checknumber">
-                                <div>
-                                    <button type="button" class="btn-send 1">
-                                        <span>인증번호 발송</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="order-password">
-                                <h2 class="password-title">
-                                    <span>주문서 비밀번호</span>
-                                </h2>
-                                <div class="order-history">
-                                    <div class="tit-box">
-                                        <p>주문 내역 확인을 위한 비밀번호를 입력하세요.</p>
-                                    </div>
-                                    <div class="check-password">
-                                        <div class="password-box">
-                                            <span>비밀번호</span>
-                                        </div>
-                                        <div class="inpbox-list">
-                                            <div class="inpbox">
-                                                <input placeholder="4~6자리 이내의 숫자로만 입력하세요." maxlength="6" type="password"
-                                                    class="third">
-                                                <button type="button" tabindex="-1" class="btn-view"></button>
-                                            </div>
-                                            <div class="inpbox">
-                                                <input placeholder="비밀번호를 다시 입력하세요." maxlength="6" type="password"
-                                                    class="third">
-                                                <button type="button" tabindex="-1" class="btn-view"></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="nonmember-order">
+                            <div>
+                                <button type="button" class="btn-nonmember-order">
+                                    <span>비회원 주문</span>
+                                </button>
                             </div>
                         </div>
                     </div>

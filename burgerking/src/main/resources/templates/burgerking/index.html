@@ -15,25 +15,35 @@
         <div class="wrap">
             <div class="content-wrap">
                 <a href="#container" class="btn-top"></a>
-                <div class="main-slide">
-                    <ul class="slide-list">
-                        <li class="slider-first"><img src="/static/images/slider-first.png"></li>
-                        <li class="slider-second"></li>
-                        <li class="slider-third"></li>
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <img src="/static/images/slider-first.png" alt="">
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="/static/images/slider-second.png" alt="">
+                        </li>
+                        <li class="swiper-slide">
+                            <img src="/static/images/slider-third.png" alt="">
+                        </li>
                     </ul>
-                    <div class="slide-navigation">
-                        <div class="slide-button-prev"></div>
-                        <div class="slide-button-next"></div>
-                    </div>
-                    <div class="slide-pagination"></div>
+                    <div class="swiper-pagination"></div>
+
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
                 </div>
                 <div class="movie-box">
-                    <iframe width="1440" height="610" src="https://www.youtube.com/embed/KUmrD90Q8I8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="1440" height="610" src="https://www.youtube.com/embed/KUmrD90Q8I8"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
                 <div class="sns-box">
                     <ul class="sns-buttons">
                         <li>
-                            <a href="https://www.youtube.com/channel/UCEKRI0fipK4LEgV98nI2CQA/featured" class="sns-buttons-box">
+                            <a href="https://www.youtube.com/channel/UCEKRI0fipK4LEgV98nI2CQA/featured"
+                                class="sns-buttons-box">
                                 <div class="cont">
                                     <img src="/static/images/youtube-logo.png" alt="">
                                     <div>
@@ -55,7 +65,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/accounts/login/?next=/burgerkingkorea/" class="sns-buttons-box">
+                            <a href="https://www.instagram.com/accounts/login/?next=/burgerkingkorea/"
+                                class="sns-buttons-box">
                                 <div class="cont">
                                     <img src="/static/images/instagram-logo.png" alt="">
                                     <div>
@@ -141,6 +152,7 @@
             <th:block th:replace="fragments/config :: configFragment"></th:block>
         </div>
     </div>
+    <script src="/static/js/include/slider.js"></script>
 </body>
 
 </html>
