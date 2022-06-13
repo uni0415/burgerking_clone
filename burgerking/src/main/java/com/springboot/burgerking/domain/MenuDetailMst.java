@@ -11,6 +11,7 @@ public class MenuDetailMst {
 	private int id;
 	private int menu_id;
 	private int category_id;
+	private int delivery;
 	private String category_name;
 	private String main_menu_name;
 	private String main_menu_summary;
@@ -18,5 +19,5 @@ public class MenuDetailMst {
 	private String name;
 	private String summary;
 	private String menu_images;
-	private int price;
+	private String price;
 }

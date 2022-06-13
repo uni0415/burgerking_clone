@@ -20,5 +20,10 @@ public class ViewController {
 	public String detail(@PathVariable Integer menu_id) {
 		return "burgerking/product/product_detail";
 	}
+	
+	@GetMapping("/delivery/menu/{category_id}")
+	public String delivery(@PathVariable Integer category_id) {
+		return "burgerking/delivery/delivery_menu";
+	}
 
 }

@@ -30,7 +30,6 @@ function setData(detail_list) {
 	main_name.innerText = detail_list[0].main_menu_name;
 	main_summary.innerText = detail_list[0].main_menu_summary == null ? "" : detail_list[0].main_menu_summary;
 	main_image.src = detail_list[0].main_menu_image;
-	console.log(detail_list);
 }
 
 function loadDetailMenuList(detail_list) {
