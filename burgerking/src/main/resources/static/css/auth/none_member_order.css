@@ -74,7 +74,7 @@
     text-indent: 0px;
     line-height: 120px;
     cursor: pointer;
-    background: url(/burgerking/src/main/resources/static/images/burgerking-logo.png) 0px center no-repeat;
+    background: url(/static/images/burgerking-logo.png) 0px center no-repeat;
 }
 
 .signup {
@@ -120,7 +120,7 @@
     width: 4px;
     height: 38px;
     margin: 0px 12px;
-    background: url(/burgerking/src/main/resources/static/images/next.gif) 50% center no-repeat;
+    background: url(/static/images/next.gif) 50% center no-repeat;
     color: rgb(255, 255, 255);
 }
 
@@ -144,7 +144,7 @@
 }
 
 .tit {
-    background: url(/burgerking/src/main/resources/static/images/member.png) no-repeat;
+    background: url(/static/images/member.png) no-repeat;
     padding: 0 0 0 50px;
     margin: 45px 0 17px 0;
     left: 20px;
@@ -179,7 +179,7 @@
 }
 
 input[type=checkbox]+:before {
-    background: url(/burgerking/src/main/resources/static/images/checkbox.png) no-repeat 0;
+    background: url(/static/images/checkbox.png) no-repeat 0;
 }
 
 input[type=checkbox]+:before {
@@ -204,7 +204,7 @@ input[type=checkbox]+:before {
 input[type=checkbox]:checked+:before {
     width: 32px;
     height: 32px;
-    background-image: url(/burgerking/src/main/resources/static/images/checkbox-1.png);
+    background-image: url(/static/images/checkbox-1.png);
 }
 
 
@@ -226,7 +226,7 @@ input[type=checkbox]:checked+:before {
     width: 20px;
     height: 20px;
     margin-top: -5px;
-    background: url(/burgerking/src/main/resources/static/images/updown.png) no-repeat 50%;
+    background: url(/static/images/updown.png) no-repeat 50%;
     background-size: 15px auto;
 }
 
@@ -247,7 +247,7 @@ input[type=checkbox]:checked+:before {
 
 .tit2 {
     margin: 45px 0 17px;
-    background: url(/burgerking/src/main/resources/static/images/setting.png) no-repeat;
+    background: url(/static/images/setting.png) no-repeat;
     padding: 0 0 0 50px;
     left: 20px;
     line-height: 40px;
@@ -300,7 +300,7 @@ input[type=checkbox]:checked+:before {
     line-height: 66px;
     border: none;
     outline: none;
-    background: url(/burgerking/src/main/resources/static/images/login_input_underline.png) no-repeat bottom;
+    background: url(/static/images/login_input_underline.png) no-repeat bottom;
 }
 
 .btn-delete {
@@ -314,7 +314,7 @@ input[type=checkbox]:checked+:before {
     border: none;
     text-indent: -9999em;
     background-color: white;
-    background: url(/burgerking/src/main/resources/static/images/alldelete.png) no-repeat 50%;
+    background: url(/static/images/alldelete.png) no-repeat 50%;
     background-size: 18px auto;
 }
 
@@ -361,7 +361,7 @@ input[type=checkbox]:checked+:before {
 
 .password-title {
     margin: 45px 0 17px;
-    background: url(/burgerking/src/main/resources/static/images/passwordkey.png) no-repeat;
+    background: url(/static/images/passwordkey.png) no-repeat;
     padding: 0 0 0 50px;
     left: 20px;
     line-height: 40px;
@@ -429,7 +429,7 @@ input[type=checkbox]:checked+:before {
     line-height: 66px;
     border: none;
     outline: none;
-    background: url(/burgerking/src/main/resources/static/images/login_input_underline.png) no-repeat bottom;
+    background: url(/static/images/login_input_underline.png) no-repeat bottom;
 }
 
 .btn-view {
@@ -441,7 +441,7 @@ input[type=checkbox]:checked+:before {
     border: none;
     text-indent: -9999em;
     background-color: white;
-    background: url(/burgerking/src/main/resources/static/images/non-view.png) no-repeat 50%;
+    background: url(/static/images/non-view.png) no-repeat 50%;
     background-size: 25px auto;
 }
 
@@ -454,7 +454,7 @@ input[type=checkbox]:checked+:before {
     border: none;
     text-indent: -9999em;
     background-color: white;
-    background: url(/burgerking/src/main/resources/static/images/view.png) no-repeat 50%;
+    background: url(/static/images/view.png) no-repeat 50%;
     background-size: 25px auto;
 }
 

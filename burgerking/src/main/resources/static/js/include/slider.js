@@ -8,7 +8,7 @@ let currentPosition = 0;
 
 window.onload = () => {
     imageCount = swiper_wrapper.children.length - 1;
-    setInterval(autoSlide, 5000);
+    setInterval(autoSlide, 4000);
 }
 
 function showSlide(event, swiper_slide) {
@@ -51,3 +51,4 @@ function autoSlide() {
     calcImagePosition();
     moveSlide();
 }
+
