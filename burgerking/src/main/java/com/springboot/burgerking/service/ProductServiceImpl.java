@@ -26,13 +26,5 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.getProductDetailList(menu_id);
 	}
 	
-	@Override
-	public List<MenuDetailMst> loadDeliveryList(int category_id) {
-		return productRepository.getDeliveryList(category_id);
-	}
 	
-	@Override
-	public List<MenuDetailMst> loadSubmenuDetail(int menu_id) {
-		return productRepository.getSubmenuDetail(menu_id);
-	}
 }

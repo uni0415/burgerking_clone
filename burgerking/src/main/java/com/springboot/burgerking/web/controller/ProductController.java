@@ -33,16 +33,6 @@ public class ProductController {
 		return new ResponseEntity<>(detailList, HttpStatus.OK);
 	}
 	
-	@GetMapping("/delivery/menu/{category_id}")
-	public ResponseEntity<?> loadDeliveryList(@PathVariable int category_id) {
-		List<MenuDetailMst> detailList = productService.loadDeliveryList(category_id);
-		return new ResponseEntity<>(detailList, HttpStatus.OK);
-	}
 	
-	@GetMapping("/delivery/menu/detail{menu_id}")
-	public ResponseEntity<?> loadSubmenuDetail(@PathVariable int menu_id) {
-		List<MenuDetailMst> detailList = productService.loadSubmenuDetail(menu_id);
-		return new ResponseEntity<>(detailList, HttpStatus.OK);
-	}
 	
 }

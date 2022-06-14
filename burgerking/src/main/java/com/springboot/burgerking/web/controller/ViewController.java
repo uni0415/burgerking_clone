@@ -25,5 +25,21 @@ public class ViewController {
 	public String delivery(@PathVariable Integer category_id) {
 		return "burgerking/delivery/delivery_menu";
 	}
+	
+	
+	@GetMapping("/auth/login")
+	public String signin() {
+		return "burgerking/auth/login";
+	}
 
+	@GetMapping("/auth/signup")
+	public String signup() {
+		return "burgerking/auth/join";
+	}
+	
+	@GetMapping("/auth/none-member-signup")
+	public String nonMemberSignup() {
+		return "burgerking/auth/none_member_order";
+	}
+	
 }

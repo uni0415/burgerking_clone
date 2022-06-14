@@ -4,6 +4,7 @@ const product_menu_list = document.querySelector(".product-menu-list");
 const menu_category_tag = document.querySelectorAll(".menu-category-tag");
 const menu_category_text = document.querySelectorAll(".menu-category-text");
 
+
 load();
 menu_category_tag[category_id - 1].click();
 function load() {
@@ -90,13 +91,5 @@ function appendProductList(menu_data) {
     }
     product_menu_list.innerHTML = menu_list;
     const product_menu_detail = document.querySelectorAll(".product-menu-list > li");
-    //loadProductDetail(product_menu_detail, menu_data);
-}
-
-function loadProductDetail(product_menu_detail, menu_data) {
-    for (let i = 0; i < product_menu_detail.length; i++) {
-        product_menu_detail[i].onclick = () => {
-            location.href = "/menu/detail/" + menu_data[i].id;
-        }
-    }
+    loadProductDetail(product_menu_detail, menu_data);
 }

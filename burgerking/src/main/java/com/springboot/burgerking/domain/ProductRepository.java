@@ -10,6 +10,5 @@ public interface ProductRepository {
 	public List<MenuMst> getProductListAll(int category_id);
 	
 	public List<MenuDetailMst> getProductDetailList(int menu_id);
-	public List<MenuDetailMst> getDeliveryList(int category_id);
-	public List<MenuDetailMst> getSubmenuDetail(int menu_id);
+	
 }
