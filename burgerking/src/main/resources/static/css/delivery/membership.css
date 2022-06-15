@@ -521,4 +521,124 @@
     font-weight: 400;
     cursor: pointer;
     background: inherit;
+    color: #b8b8b8;
+}
+    
+.nav-membership li button:hover {
+    color: black;
+}
+
+.nav-membership li.on button:hover {
+    color: #e22219;
+}
+
+.level-class{
+    position: relative;
+    padding: 10px 20px 55px;
+    margin: 15px 0;
+    font-size: 1.375rem;
+    background: #fff;
+    text-align: center;
+}
+
+
+.benefits{
+    display: none;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.benefits.on {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-welcome-coupon{
+    flex: 1 0 196px;
+    width: 400px;
+    position: relative;
+    padding: 110px 10px 0;
+    margin-top: 50px;
+    background: url(/static/images/crown.png) no-repeat;
+    background-position: center 10px;
+}
+
+.item-birthday{
+    flex: 1 0 196px;
+    width: 400px;
+    position: relative;
+    padding: 110px 10px 0;
+    margin-top: 50px;
+    background: url(/static/images/birthday.png) no-repeat;
+    background-position: center 10px;
+}
+
+.item-coupon-ticket{
+    flex: 1 0 196px;
+    width: 270px;
+    position: relative;
+    padding: 110px 10px 0;
+    margin-top: 50px;
+    background: url(/static/images/ticket.png) no-repeat;
+    background-position: center 10px;
+}
+
+.item-levelup{
+    flex: 1 0 196px;
+    width: 270px;
+    position: relative;
+    padding: 110px 10px 0;
+    margin-top: 50px;
+    background: url(/static/images/levelup.png) no-repeat;
+    background-position: center 10px;
+}
+
+.item-level{
+    flex: 1 0 196px;
+    width: 270px;
+    position: relative;
+    padding: 110px 10px 0;
+    margin-top: 50px;
+    background: url(/static/images/crown.png) no-repeat;
+    background-position: center 10px;
+}
+
+.item-americano{
+    flex: 1 0 196px;
+    width: 270px;
+    position: relative;
+    padding: 110px 10px 0;
+    margin-top: 50px;
+    background: url(/static/images/amerino.png) no-repeat;
+    background-position: center 10px;
+}
+
+.guide-title{
+    position: relative;
+    margin: 25px 0;
+    padding: 12px 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #000;
+    font-weight: 400;
+}
+
+.list01{
+    margin: 7px 0 7px 5px;
+    line-height: 167%;
+}
+
+.list01 li{
+    position: relative;
+    padding-left: 12px;
+}
+
+.list01 li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 1.67em;
+    background: url(/static/images/dot.png) no-repeat 0;
 }
