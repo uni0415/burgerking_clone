@@ -112,7 +112,11 @@ header::after {
     width: 192px;
     height: 25px;
     line-height: 25px;
+	cursor: pointer;
+}
 
+.submenu>li * {
+	pointer-events: none;
 }
 
 .submenu.active {

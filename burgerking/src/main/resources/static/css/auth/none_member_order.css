@@ -225,7 +225,7 @@ input[type=checkbox]:checked+:before {
     right: 0%;
     width: 20px;
     height: 20px;
-    margin-top: -5px;
+    margin-top: -10px;
     background: url(/static/images/updown.png) no-repeat 50%;
     background-size: 15px auto;
 }

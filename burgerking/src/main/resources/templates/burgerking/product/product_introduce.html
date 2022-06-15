@@ -12,17 +12,10 @@
 
 <body>
     <div id="container">
-        <th:block th:replace="fragments/header :: header-nav"></th:block>
+        <th:block th:replace="fragments/main-header :: header-nav"></th:block>
         <div class="wrap">
             <div class="content-wrap">
-                <div class="location-wrap">
-                    <div class="page-nav">
-                        <a href="/index">
-                            <span>HOME</span>
-                        </a>
-                        <span>메뉴소개</span>
-                    </div>
-                </div>
+                <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
                 <div class="content-box">
                     <div class="product-wrap">
                         <h2 class="menu-title">메뉴소개</h2>
@@ -74,7 +67,7 @@
                     </ul>
                 </div>
             </div>
-            <th:block th:replace="fragments/footer :: footer"></th:block>
+            <th:block th:replace="fragments/main-footer :: main-footer"></th:block>
             <th:block th:replace="fragments/config :: configFragment"></th:block>
         </div>
     </div>
