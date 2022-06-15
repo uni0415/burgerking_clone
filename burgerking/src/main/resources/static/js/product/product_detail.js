@@ -35,6 +35,7 @@ function setData(detail_list) {
 function loadDetailMenuList(detail_list) {
 	let str = ``;
 	for (let i = 0; i < detail_list.length; i++) {
+		detail_list[i].summary = detail_list[i].summary == null ? "" : detail_list[i].summary;
 		str += `
 		<li>
 			<div class="detail-product-img">

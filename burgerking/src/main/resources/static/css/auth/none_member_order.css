@@ -5,13 +5,12 @@
 
 .btn-top {
     position: fixed;
-    right: 200px;
+    right: 20px;
     bottom: 316px;
     width: 52px;
     height: 52px;
-    text-indent: -9999em;
     z-index: 1;
-    background: url(/burgerking/src/main/resources/static/images/top-logo.png);
+    background: url(/static/images/top-logo.png);
 }
 
 .header-wrap {
@@ -265,8 +264,23 @@ input[type=checkbox]:checked+:before {
     background: #fff;
 }
 
-.list-box1>span,
-.list-box2>span {
+.name-content-box {
+    display: flex;
+}
+
+.phone-content-box,
+.certificate-content-box,
+.certificate-success-content-box {
+    display: none;
+}
+
+.phone-content-box.on,
+.certificate-content-box.on,
+.certificate-success-content-box.on {
+    display: flex;
+}
+
+.info-list>div>span {
     display: flex;
     padding: 26px 10px 5px 0;
     width: 184px;
@@ -276,8 +290,7 @@ input[type=checkbox]:checked+:before {
 }
 
 
-.inputbox1,
-.inputbox2 {
+.info-list>div>div {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -286,14 +299,40 @@ input[type=checkbox]:checked+:before {
     margin-left: 80px;
 }
 
-
-.list-box1,
-.list-box2 {
-    display: flex;
+.cert-success-text {
+    position: absolute;
+    padding: 0 5px;
+    display: inline-block;
+    margin-top: -17.5px;
+    right: 0;
+    top: 50%;
+    line-height: 21px;
+    background: url(/static/images/cert-success.png) no-repeat 0,
+        url(/static/images/cert-success2.png) no-repeat 100%;
+    background-size: auto 100%, auto 100%;
 }
 
-.first,
-.second {
+.cert-success-text>span {
+    padding: 4px 5px;
+    line-height: 24px;
+    background: #e22219;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.info-list>div>div>p {
+    margin-top: 12px;
+    width: 475px;
+    height: 17px;
+    font-size: 17px;
+    color: #e22219;
+}
+
+
+
+.info-list>div>div>input {
+    position: relative;
     width: 475px;
     height: 66px;
     font-size: 24px;
@@ -301,6 +340,15 @@ input[type=checkbox]:checked+:before {
     border: none;
     outline: none;
     background: url(/static/images/login_input_underline.png) no-repeat bottom;
+}
+
+.set-timer {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 70px;
+    text-align: center;
+    color: red;
 }
 
 .btn-delete {
@@ -327,14 +375,7 @@ input[type=checkbox]:checked+:before {
     height: auto;
 }
 
-.inputbox1>p,
-.inputbox2>p {
-    margin-top: 12px;
-    width: 475px;
-    height: 17px;
-    font-size: 17px;
-    color: #e22219;
-}
+
 
 .btn-checknumber {
     margin: 40px 0 80px;
@@ -342,7 +383,21 @@ input[type=checkbox]:checked+:before {
     overflow: hidden;
 }
 
-.btn-send {
+.send-button-box,
+.check-button-box,
+.resend-button-box {
+    display: none;
+}
+
+.send-button-box.on,
+.check-button-box.on,
+.resend-button-box.on {
+    display: block;
+}
+
+.send-code-button,
+.code-check-button,
+.resend-button {
     width: 272px;
     height: 76px;
     padding: 20px 10px 22px;
@@ -356,6 +411,7 @@ input[type=checkbox]:checked+:before {
     border: 1px solid #512314;
     border-radius: 10px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 

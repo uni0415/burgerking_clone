@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/include/container.css">
     <link rel="stylesheet" href="/static/css/auth/none_member_order.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Document</title>
 </head>
 
@@ -105,25 +107,51 @@
                                 <span>비회원 설정</span>
                             </h2>
                             <div class="info-list">
-                                <div class="list-box1">
+                                <div class="name-content-box">
                                     <span>이름</span>
-                                    <div class="inputbox1">
-                                        <input type="text" placeholder="받는 분의 이름을 입력해 주세요." class="first">
+                                    <div class="name-input-box">
+                                        <input type="text" placeholder="받는 분의 이름을 입력해 주세요." class="name-input-item">
                                         <button type="button" class="btn-delete"></button>
                                     </div>
                                 </div>
-                                <div class="list-box2">
+                                <div class="phone-content-box on">
                                     <span>휴대폰번호</span>
-                                    <div class="inputbox2">
-                                        <input type="text" placeholder="핸드폰 번호를 입력해 주세요." class="second">
+                                    <div class="phone-input-box">
+                                        <input type="text" placeholder="핸드폰 번호를 입력해 주세요." class="phone-input-item">
+                                    </div>
+                                </div>
+                                <div class="certificate-content-box">
+                                    <span>인증번호</span>
+                                    <div class="certificate-input-box">
+                                        <input type="text" placeholder="인증번호를 입력하세요." class="certificate-input-item">
+                                        <span class="set-timer">03:00</span>
+                                    </div>
+                                </div>
+                                <div class="certificate-success-content-box">
+                                    <span>인증번호</span>
+                                    <div class="certificate-success-input-box">
+                                        <input type="text" readonly="" class="certificate-success-input-item">
+                                        <div class="cert-success-text">
+                                            <span>인증완료</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="btn-checknumber">
-                            <div>
-                                <button type="button" class="btn-send">
+                            <div class="send-button-box on">
+                                <button type="button" class="send-code-button">
                                     <span>인증번호 발송</span>
+                                </button>
+                            </div>
+                            <div class="check-button-box">
+                                <button type="button" class="code-check-button">
+                                    <span>인증번호 확인</span>
+                                </button>
+                            </div>
+                            <div class="resend-button-box">
+                                <button type="button" class="resend-button">
+                                    <span>재설정</span>
                                 </button>
                             </div>
                         </div>
@@ -216,64 +244,9 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
     </div>
-=======
-
-
-
-
-        <div class="footer-contents">
-            <div class="footer-under">
-                <div class="footer-detail">
-                    <div class="footer-service">
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <span>이용약관</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span>개인정보취급방침</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span>법적고지</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="footer-btn">
-                            <a href="">
-                                <span>인재채용</span>
-                            </a>
-                            <a href="">
-                                <span>가맹점모집</span>
-                            </a>
-                        </div>
-                    </div>
-                    <img src="/static/images/logo.png" class="footer-logo" alt="">
-                    <p>
-                        서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
-                        <span class="footer-line"></span>
-                        전화주문 1599-0505
-                    </p>
-                    <p>
-                        사업자 등록번호 101-86-76277
-                        <span class="footer-line"></span>
-                        (주)BKR 대표이사 문영주
-                    </p>
-                    <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
-                    <img src="/static/images/footer-facebook.png" alt="">
-                    <img src="/static/images/footer-insta.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
->>>>>>> gyeongun
-    <script src="/static/js/include/use-list.js"></script>
+    <script src="/static/js/auth/none-member-order.js"></script>
+    <script src="/static/js/auth/cool_sms.js"></script>
 </body>
 
 </html>
