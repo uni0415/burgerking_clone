@@ -13,4 +13,5 @@ public class DeliverySideMenu {
 	private String name;
 	private String menu_images;
 	private int set_add_price;
+	private int large_add_price;
 }

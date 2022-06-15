@@ -42,4 +42,9 @@ public class ViewController {
 		return "burgerking/auth/none_member_order";
 	}
 	
+	
+	@GetMapping("/auth/email-signup")
+	public String emailSignup() {
+		return "burgerking/auth/joinAuth";
+	}
 }

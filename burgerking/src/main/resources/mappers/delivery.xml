@@ -56,12 +56,27 @@
 		md.id,
 		md.`name`,
 		md.menu_images,
-		md.set_add_price
+		md.set_add_price,
+		md.large_add_price
 	FROM
 		menu_mst mm
 		LEFT OUTER JOIN menu_dtl md ON(md.menu_id = mm.id)
 	WHERE
 		md.side_menu_change = 1 AND md.set_size = #{set_size} AND mm.category_id = 6
+  </select>
+  
+  <select id="getDrinkMenuList" parameterType="Integer" resultType="com.springboot.burgerking.domain.DeliverySideMenu">
+  	SELECT
+		md.id,
+		md.`name`,
+		md.menu_images,
+		md.set_add_price,
+		md.large_add_price
+	FROM
+		menu_mst mm
+		LEFT OUTER JOIN menu_dtl md ON(md.menu_id = mm.id)
+	WHERE
+		md.side_menu_change = 1 AND md.set_size = #{set_size} AND mm.category_id = 7
   </select>
   	
   </mapper>

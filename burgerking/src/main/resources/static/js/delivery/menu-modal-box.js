@@ -2,7 +2,10 @@ const modal_full_pop_wrap = document.querySelector(".modal-full-pop-wrap");
 const modal_close_button = document.querySelectorAll(".modal-close-button");
 const menu_modal_box = document.querySelector(".menu-modal-box");
 const side_modal_box = document.querySelector(".side-modal-box");
+const choice_button = document.querySelectorAll(".choice");
 const body = document.querySelector("body");
+const btn_top = document.querySelector(".btn-top");
+
 
 function loadProductDetail(product_menu_detail, menu_data) {
     for (let i = 0; i < product_menu_detail.length; i++) {
@@ -16,7 +19,6 @@ function loadProductDetail(product_menu_detail, menu_data) {
                 url: `/api/v1/delivery/menu/detail/${menu_data[i].menu_id}`,
                 success: function (data) {
                     data = JSON.parse(data);
-                    console.log(data)
                     setDeliveryModalMenu(data);
                 }
             })
@@ -45,6 +47,9 @@ function setDeliveryModalMenu(submenu_data) {
         product_subtext.innerText = submenu_data[0].main_menu_summary;
     }
     for (let i = 0; i < submenu_data.length; i++) {
+        let price_before = submenu_data[i].price.slice(submenu_data[i].price.length - 3, submenu_data[i].price.length);
+        let price_after = submenu_data[i].price.slice(0, submenu_data[i].price.length - 3);
+        let price = price_after + "," + price_before;
         str += `
         <li class="sub-menu-list">
             <div class="menu-sub-image-box">
@@ -58,7 +63,7 @@ function setDeliveryModalMenu(submenu_data) {
                     <span>${submenu_data[i].summary}</span>
                 </p>
                 <p class="submenu-price">
-                    <strong><span>₩${submenu_data[i].price}</span></strong>
+                    <strong><span>₩${price}</span></strong>
                 </p>
             </div>
         </li>
@@ -66,7 +71,6 @@ function setDeliveryModalMenu(submenu_data) {
     }
     menu_sub_list.innerHTML = str;
     const sub_menu_list = document.querySelectorAll(".sub-menu-list");
-    console.log(sub_menu_list.length);
     popSideMenuModal(sub_menu_list);
 }
 
@@ -83,8 +87,7 @@ function popSideMenuModal(sub_menu_list) {
                 url: `/api/v1/delivery/side/${set_size}`,
                 success: function (data) {
                     data = JSON.parse(data);
-                    console.log(data);
-                    loadChangeSideMenu(data);
+                    loadChangeSideMenu(data, set_size);
                 }
             })
         }
@@ -97,9 +100,11 @@ function popSideMenuModal(sub_menu_list) {
     }
 }
 
-function loadChangeSideMenu(side_menu_data) {
+function loadChangeSideMenu(side_menu_data, set_size) {
     let str = ``;
+    let add_price = 0;
     for (let i = 0; i < side_menu_data.length; i++) {
+        set_size == 1 ? add_price = side_menu_data[i].set_add_price : add_price = side_menu_data[i].large_add_price;
         str += `
         <li>
             <div class="menu-change-image-box">
@@ -110,11 +115,11 @@ function loadChangeSideMenu(side_menu_data) {
                     <span>${side_menu_data[i].name} 교환</span>
                 </p>
                 <p class="menu-change-price">
-                    <span>+${side_menu_data[i].set_add_price}원</span>
+                    <span>+${add_price}원</span>
                 </p>
             </div>
             <label class="list-check">
-                <input type="radio" name="option" value="0">
+                <input type="radio" name="side-option" value="0">
                 <span></span>
             </label>
         </li>
@@ -122,11 +127,56 @@ function loadChangeSideMenu(side_menu_data) {
     }
     const menu_change = document.querySelector(".menu-change");
     menu_change.innerHTML = str;
+    sideMenuChoice(set_size);
 }
 
-function sideMenuChoice() {
-    const choice_button = document.querySelector(".choice");
-    choice_button.onclick = () => {
-
+function sideMenuChoice(set_size) {
+    const drink_modal_box = document.querySelector(".drink-modal-box");
+    choice_button[0].onclick = () => {
+        side_modal_box.classList.remove("on");
+        drink_modal_box.classList.add("on");
+        $.ajax({
+            type: "get",
+            dateType: "text",
+            url: `/api/v1/delivery/drink/${set_size}`,
+            success: function (data) {
+                console.log(data);
+                loadChangeDrinkMenu(data, set_size);
+            }
+        })
     }
+
+    modal_close_button[2].onclick = () => {
+        drink_modal_box.classList.remove("on");
+        body.style = "";
+        modal_full_pop_wrap.classList.remove("on");
+    }
+}
+
+function loadChangeDrinkMenu(drink_menu_data, set_size) {
+    let str = ``;
+    for (let i = 0; i < drink_menu_data.length; i++) {
+        set_size == 1 ? add_price = drink_menu_data[i].set_add_price : add_price = drink_menu_data[i].large_add_price;
+        str += `
+        <li>
+            <div class="drink-change-image-box">
+                <img src="${drink_menu_data[i].menu_images}" alt="">
+            </div>
+            <div class="drink-change-content-box">
+                <p class="drink-change-title">
+                    <span>${drink_menu_data[i].name} 교환</span>
+                </p>
+                <p class="drink-change-price">
+                    <span>+${add_price}원</span>
+                </p>
+            </div>
+            <label class="list-check">
+                <input type="radio" name="drink-option" value="0">
+                <span></span>
+            </label>
+        </li>
+        `
+    }
+    const drink_change = document.querySelector(".drink-change");
+    drink_change.innerHTML = str;
 }

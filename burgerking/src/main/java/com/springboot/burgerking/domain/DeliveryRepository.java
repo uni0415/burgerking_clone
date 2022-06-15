@@ -9,4 +9,5 @@ public interface DeliveryRepository {
 	public List<MenuDetailMst> getDeliveryList(int category_id);
 	public List<MenuDetailMst> getSubmenuDetail(int menu_id);
 	public List<DeliverySideMenu> getSideMenuList(int set_size);
+	public List<DeliverySideMenu> getDrinkMenuList(int set_size);
 }

@@ -41,4 +41,10 @@ public class DeliveryController {
 		return new ResponseEntity<>(sideMenuList, HttpStatus.OK);
 	}
 	
+	@GetMapping("/delivery/drink/{set_size}")
+	public ResponseEntity<?> getDrinkMenuList(@PathVariable int set_size) {
+		List<DeliverySideMenu> drinkMenuList = deliveryService.getDrinkMenuList(set_size);
+		return new ResponseEntity<>(drinkMenuList, HttpStatus.OK);
+	}
+	
 }

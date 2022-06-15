@@ -163,7 +163,8 @@
     color: #e22219;
 }
 
-.side-modal-box {
+.side-modal-box,
+.drink-modal-box {
     display: none;
     position: absolute;
     left: 50%;
@@ -175,18 +176,21 @@
     transform: translateY(-50%);
 }
 
-.side-modal-box.on {
+.side-modal-box.on,
+.drink-modal-box.on {
     display: block;
 }
 
-.modal-sidemenu-content-box {
+.modal-sidemenu-content-box,
+.modal-drink-content-box {
     max-height: 580px;
     padding: 24px 40px;
     overflow: auto;
     background: #f7f2ef;
 }
 
-.menu-change {
+.menu-change,
+.drink-change {
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -195,13 +199,14 @@
     overflow: hidden;
 }
 
-.menu-change>li {
+.menu-change>li,
+.drink-change>li {
     position: relative;
     width: 33.3%;
-    height: 185px;
+    height: 190px;
 }
 
-.menu-change-image-box {
+.menu-change-image-box .drink-change-image-box {
     max-width: 152px;
     height: 100px;
     margin: 0 auto;
@@ -211,19 +216,22 @@
     display: inline;
     opacity: 1;
     max-width: 100%;
-    max-height: 100%;
     vertical-align: top;
 }
 
-.menu-change-content-box {
+.drink-change-image-box>img {
+    display: inline;
+    opacity: 1;
+    max-width: 90%;
+    vertical-align: top;
+}
+
+.menu-change-content-box,
+.drink-change-content-box {
     min-height: 4em;
-    margin-top: 15px;
     padding: 0 5px;
     word-break: keep-all;
 }
-
-.menu-change-title {}
-
 
 
 .list-check {
@@ -277,4 +285,16 @@ input[type=radio] {
     border: none;
     background: #d72300;
     cursor: pointer;
+}
+
+.btn-top {
+    position: fixed;
+    bottom: 316px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    background: url(/static/images/btn-top.png) no-repeat 0 0;
+    z-index: 50;
+    opacity: 1;
+    display: inline;
 }

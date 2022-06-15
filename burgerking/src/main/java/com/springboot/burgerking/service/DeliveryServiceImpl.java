@@ -28,4 +28,9 @@ public class DeliveryServiceImpl implements DeliveryService {
 	public List<DeliverySideMenu> getSideMenuList(int set_size) {
 		return deliveryRepository.getSideMenuList(set_size);
 	}
+	
+	@Override
+	public List<DeliverySideMenu> getDrinkMenuList(int set_size) {
+		return deliveryRepository.getDrinkMenuList(set_size);
+	}
 }
