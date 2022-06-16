@@ -96,6 +96,7 @@
     font-weight: 700;
     color: #fff;
     background: url(/static/images/myking-direct.png) no-repeat 100%;
+    cursor: pointer;
 }
 
 .head-list{
@@ -132,6 +133,7 @@
     padding-left: 110px;
     color: #fff;
     background: url(/static/images/delivery.png) no-repeat 0;
+    cursor: pointer;
 }
 
 .delivery-order p a{
@@ -148,6 +150,7 @@
     padding-left: 95px;
     color: #fff;
     background: url(/static/images/cart.png) no-repeat 0;
+    cursor: pointer;
 }
 
 .cart p a{
@@ -304,6 +307,7 @@
     display: flex;
     width: 66%;
     font-size: 1.875rem;
+    cursor: pointer;
 }
 
 .coupon-info>:before {
@@ -514,7 +518,7 @@
 
 .nav-membership li button{
     height: 54px;
-    padding: 5px 0;
+    padding: 10px 0;
     display: inline-block;
     font-size: 1.375rem;
     border: 0 solid transparent;
@@ -525,13 +529,10 @@
     color: #b8b8b8;
 }
     
-.nav-membership li button:hover {
+.nav-membership button:hover {
     color: black;
 }
 
-.nav-membership li.on button:hover {
-    color: #e22219;
-}
 
 .level-class{
     position: relative;

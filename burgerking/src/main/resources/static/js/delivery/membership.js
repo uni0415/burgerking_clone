@@ -1,6 +1,5 @@
 const nav_membership = document.querySelectorAll(".nav-membership>ul>li");
 const benefits_box = document.querySelectorAll(".benefits");
-const membership_button = document.querySelectorAll(".membership-button");
 
 
 for (let i = 0; i < nav_membership.length; i++) {
