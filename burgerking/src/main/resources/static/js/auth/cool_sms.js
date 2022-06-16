@@ -2,9 +2,11 @@ const phone_content_box = document.querySelector(".phone-content-box");
 const certificate_content_box = document.querySelector(".certificate-content-box");
 const certificate_success_content_box = document.querySelector(".certificate-success-content-box");
 
+const name_input_item = document.querySelector(".name-input-item");
 const phone_input_item = document.querySelector(".phone-input-item");
 const certificate_input_item = document.querySelector(".certificate-input-item");
 const certificate_success_input_item = document.querySelector(".certificate-success-input-item");
+
 
 const send_button_box = document.querySelector(".send-button-box");
 const check_button_box = document.querySelector(".check-button-box");
@@ -13,69 +15,148 @@ const resend_button_box = document.querySelector(".resend-button-box");
 const send_code_button = document.querySelector(".send-code-button");
 const code_check_button = document.querySelector(".code-check-button");
 const resend_button = document.querySelector(".resend-button");
+const checkbox = document.querySelector(".checkbox");
 
 let stop_flag = false;
 
 const Toast = Swal.mixin({
     toast: true,
-    position: 'center-center',
+    position: 'center',
     showConfirmButton: false,
     timer: 1500,
     timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
 })
 
+noneUserSignup();
+
+
+let regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 send_code_button.onclick = () => {
-    phone_content_box.classList.remove("on");
-    send_button_box.classList.remove("on");
-    certificate_content_box.classList.add("on");
-    check_button_box.classList.add("on");
+    if (!checkbox.checked) {
+        Toast.fire({
+            icon: 'error',
+            title: '개인정보 수집에 동의해주세요'
+        })
+    } else if (!name_input_item.value) {
+        Toast.fire({
+            icon: 'error',
+            title: '받는 분의 이름을 입력해주세요'
+        })
+    } else if (!phone_input_item.value || !regPhone.test(phone_input_item.value) === true) {
+        Toast.fire({
+            icon: 'error',
+            title: '핸드폰 번호를 입력해 주세요'
+        })
+    } else {
 
-    let phoneNumber = phone_input_item.value;
-    Toast.fire({
-        icon: 'success',
-        title: '인증번호 발송 완료!'
-    })
+        phone_content_box.classList.remove("on");
+        send_button_box.classList.remove("on");
+        certificate_content_box.classList.add("on");
+        check_button_box.classList.add("on");
 
-    let minutes = 3;
-    let fiveMinutes = (60 * minutes) - 1,
-        display = document.querySelector(".set-timer");
-    console.log(fiveMinutes);
-    startTimer(fiveMinutes, display);
+        let phoneNumber = phone_input_item.value;
+        Toast.fire({
+            icon: 'success',
+            title: '인증번호 발송 완료!'
+        })
 
-    $.ajax({
-        type: "get",
-        url: "/api/v1/auth/sendSMS",
-        data: {
-            "phoneNumber": phoneNumber
-        },
-        success: function (data) {
-            code_check_button.onclick = () => {
-                if (data.trim() == certificate_input_item.value) {
-                    Toast.fire({
-                        icon: 'success',
-                        title: '휴대폰 인증이 정상적으로 완료되었습니다.'
-                    })
-					stop_flag = true;
-                    certificate_content_box.classList.remove("on");
-                    check_button_box.classList.remove("on");
-                    certificate_success_input_item.readonly = phoneNumber;
-                    certificate_success_content_box.classList.add("on");
-                    resend_button.classList.add("on");
-                } else {
-                    Toast.fire({
-                        icon: 'error',
-                        title: '인증번호가 올바르지 않습니다!'
-                    })
+        let minutes = 3;
+        let fiveMinutes = (60 * minutes) - 1,
+            display = document.querySelector(".set-timer");
+        startTimer(fiveMinutes, display);
+
+        $.ajax({
+            type: "get",
+            url: "/api/v1/auth/sendSMS",
+            data: {
+                "phoneNumber": phoneNumber
+            },
+            success: function (data) {
+                console.log(data);
+                code_check_button.onclick = () => {
+                    if (!certificate_input_item.value) {
+                        Toast.fire({
+                            icon: 'error',
+                            title: '인증번호를 입력해주세요'
+                        })
+                    } else if (data.trim() == certificate_input_item.value) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: '휴대폰 인증이 정상적으로 완료되었습니다.'
+                        })
+                        stop_flag = true;
+                        certificate_success_input_item.value = phoneNumber;
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: '인증번호가 올바르지 않습니다!'
+                        })
+                    }
+
                 }
-
-
             }
+        })
+    }
+}
+
+
+
+function noneUserSignup() {
+    const password_input = document.querySelectorAll(".password-input");
+    const none_member_order_button = document.querySelector(".btn-nonmember-order");
+    none_member_order_button.onclick = () => {
+        if (!checkbox.checked) {
+            Toast.fire({
+                icon: 'error',
+                title: '개인정보 수집에 동의해주세요'
+            })
+        } else if (!name_input_item.value) {
+            Toast.fire({
+                icon: 'error',
+                title: '받는 분의 이름을 입력해주세요'
+            })
+        } else if (!phone_input_item.value || !regPhone.test(phone_input_item.value) === true) {
+            Toast.fire({
+                icon: 'error',
+                title: '핸드폰 번호를 입력해 주세요'
+            })
+        } else if (stop_flag == false) {
+            Toast.fire({
+                icon: 'error',
+                title: '핸드폰번호 인증을 진행해 주세요'
+            })
+        } else if (!password_input[0].value || !password_input[1].value) {
+            Toast.fire({
+                icon: 'error',
+                title: '주문서 비밀번호를 입력하세요'
+            })
+        } else if (!password_input[0].value && !password_input[1]) {
+            Toast.fire({
+                icon: 'error',
+                title: '비밀번호를 입력해주세요'
+            })
+        } else if (password_input[0].value != password_input[1].value) {
+            Toast.fire({
+                icon: 'error',
+                title: '두 비밀번호가 다릅니다'
+            })
+        } else {
+            $.ajax({
+                type: "post",
+                dataType: "text",
+                data: ({
+                    name: name_input_item.value,
+                    phone: phone_input_item.value,
+                    order_password: password_input[0].value
+                }),
+                url: "/api/v1/auth/none-member-signin",
+                success: function (data) {
+                    data = JSON.parse(data);
+                    console.log(data);
+                }
+            })
         }
-    })
+    }
 }
 
 function startTimer(duration, display) {
@@ -92,11 +173,18 @@ function startTimer(duration, display) {
         if (--timer < 0) {
             timer = duration;
         }
-        if (timer === 0 || stop_flag) {
+        if (timer === 0) {
             clearInterval(interval);
 
             phone_content_box.classList.add("on");
             send_button_box.classList.add("on");
+            certificate_content_box.classList.remove("on");
+            check_button_box.classList.remove("on");
+        } else if (stop_flag) {
+            clearInterval(interval);
+
+            certificate_success_content_box.classList.add("on");
+            resend_button_box.classList.add("on");
             certificate_content_box.classList.remove("on");
             check_button_box.classList.remove("on");
         }

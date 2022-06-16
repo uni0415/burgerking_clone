@@ -644,4 +644,5 @@ input[type=checkbox]:checked+:before {
     border: 1px solid #512314;
     border-radius: 10px;
     box-sizing: border-box;
+    cursor: pointer;
 }

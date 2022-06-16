@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.springboot.burgerking.domain.auth.AuthRepository">
+  
+  	<insert id="noneMemberSignup" parameterType="com.springboot.burgerking.domain.auth.NoneMemberMst">
+  		insert into
+  			none_member_mst
+  		values(
+  			0,
+  			#{name},
+  			#{phone},
+  			#{order_password}
+  		)
+  	</insert>
+  	
+  	<select id="noneMemberSignin" resultType="com.springboot.burgerking.domain.auth.NoneMemberMst">
+  		select
+  			id,
+  			name,
+  			phone,
+  			order_password
+  		from
+  			none_member_mst
+  		where
+  			phone = #{phone}
+  		
+  	</select>
+  </mapper>
