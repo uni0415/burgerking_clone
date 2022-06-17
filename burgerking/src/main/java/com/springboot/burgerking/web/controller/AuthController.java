@@ -1,5 +1,7 @@
 package com.springboot.burgerking.web.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -24,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 	private final CertificationService certificationService;
 	private final AuthService authService;
+	Map<String, String> certCode = new HashMap<String, String>();
 	
 	@GetMapping("/auth/sendSMS")
 	public ResponseEntity<?> sendSMS(String phoneNumber) {
@@ -33,11 +36,23 @@ public class AuthController {
 			String ran = Integer.toString(rand.nextInt(10));
 			numStr+=ran;
 		}
-		
-//		System.out.println("수신자 번호: "+ phoneNumber);
-//		System.out.println("인증번호: " + numStr);
-//		certificationService.certifiedPhoneNumber(phoneNumber, numStr);
+		certCode.put(phoneNumber, numStr);
+		System.out.println("수신자 번호: "+ phoneNumber);
+		System.out.println("인증번호: " + numStr);
+		certificationService.certifiedPhoneNumber(phoneNumber, numStr);
 		return new ResponseEntity<>(numStr, HttpStatus.OK);
+	}
+	
+	@PostMapping("/auth/check-certNum")
+	public ResponseEntity<?> checkCertNum(String phoneNumber, String certNum) {
+		boolean result = false;
+		if(certNum.equals(certCode.get(phoneNumber))) {
+			result = true;
+		}
+		else {
+			result = false;
+		}
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
 	@PostMapping("/auth/none-member-signin")

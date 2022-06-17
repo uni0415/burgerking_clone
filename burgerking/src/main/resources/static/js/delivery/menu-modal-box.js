@@ -7,6 +7,14 @@ const body = document.querySelector("body");
 const btn_top = document.querySelector(".btn-top");
 
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'center',
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+})
+
 function loadProductDetail(product_menu_detail, menu_data) {
     for (let i = 0; i < product_menu_detail.length; i++) {
         product_menu_detail[i].onclick = () => {
@@ -127,23 +135,35 @@ function loadChangeSideMenu(side_menu_data, set_size) {
     }
     const menu_change = document.querySelector(".menu-change");
     menu_change.innerHTML = str;
+
     sideMenuChoice(set_size);
 }
 
 function sideMenuChoice(set_size) {
     const drink_modal_box = document.querySelector(".drink-modal-box");
     choice_button[0].onclick = () => {
+        const side_check = document.querySelectorAll("input[name=side-option]");
+        for (let i = 0; i < side_check.length; i++) {
+            if (!side_check[i].checked) {
+                Toast.fire({
+                    icon: "error",
+                    title: "사이드를 선택해주세요"
+                })
+
+            }
+        }
         side_modal_box.classList.remove("on");
         drink_modal_box.classList.add("on");
         $.ajax({
             type: "get",
             dateType: "text",
+            async: false,
             url: `/api/v1/delivery/drink/${set_size}`,
             success: function (data) {
-                console.log(data);
                 loadChangeDrinkMenu(data, set_size);
             }
         })
+
     }
 
     modal_close_button[2].onclick = () => {
@@ -179,4 +199,19 @@ function loadChangeDrinkMenu(drink_menu_data, set_size) {
     }
     const drink_change = document.querySelector(".drink-change");
     drink_change.innerHTML = str;
+
+}
+
+function drinkMenuChoice() {
+    choice_button[1].onclick = () => {
+        const check_drink = document.querySelectorAll("input[name=drink-option");
+        for (let i = 0; i < check_drink.length; i++) {
+            if (!check_drink[i].checked) {
+                Toast.fire({
+                    icon: "error",
+                    title: "음료를 선택해주세요"
+                })
+            }
+        }
+    }
 }

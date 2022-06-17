@@ -71,29 +71,45 @@ send_code_button.onclick = () => {
             data: {
                 "phoneNumber": phoneNumber
             },
-            success: function (data) {
-                console.log(data);
+            success: function () {
                 code_check_button.onclick = () => {
                     if (!certificate_input_item.value) {
                         Toast.fire({
                             icon: 'error',
                             title: '인증번호를 입력해주세요'
                         })
-                    } else if (data.trim() == certificate_input_item.value) {
-                        Toast.fire({
-                            icon: 'success',
-                            title: '휴대폰 인증이 정상적으로 완료되었습니다.'
-                        })
-                        stop_flag = true;
-                        certificate_success_input_item.value = phoneNumber;
-                    } else {
-                        Toast.fire({
-                            icon: 'error',
-                            title: '인증번호가 올바르지 않습니다!'
-                        })
                     }
+                    $.ajax({
+                        type: "post",
+                        dataType: "text",
+                        data: {
+                            "phoneNumber": phoneNumber,
+                            "certNum": certificate_input_item.value
+                        },
+                        url: "/api/v1/auth/check-certNum",
+                        success: function (data) {
+                            data = JSON.parse(data);
+
+                            if (data == true) {
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: '휴대폰 인증이 정상적으로 완료되었습니다.'
+                                })
+                                stop_flag = true;
+                                certificate_success_input_item.value = phoneNumber;
+                            } else if (data == false) {
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: '인증번호가 올바르지 않습니다!'
+                                })
+                            }
+                        }
+                    })
 
                 }
+            },
+            error: function () {
+                console.log("인증번호 전송 실패");
             }
         })
     }
@@ -152,7 +168,7 @@ function noneUserSignup() {
                 url: "/api/v1/auth/none-member-signin",
                 success: function (data) {
                     data = JSON.parse(data);
-                    console.log(data);
+                    location.replace("/delivery/menu/1");
                 }
             })
         }
