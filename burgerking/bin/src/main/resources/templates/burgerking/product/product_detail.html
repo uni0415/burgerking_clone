@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/product/product_detail.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>메뉴정보 상세</title>
+</head>
+
+<body>
+    <div id="container">
+        <th:block th:replace="fragments/main-header :: header-nav"></th:block>
+        <div class="wrap">
+            <div class="content-wrap">
+                <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
+                <div class="main-product-box">
+                    <div class="product-container">
+                        <div class="product-summary-box">
+                            <strong>
+                                <span class="product-name"></span>
+                            </strong>
+                            <p>
+                                <span class="product-summary"></span>
+                            </p>
+                        </div>
+                        <div class="product-image">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-subinfo-wrap">
+                    <div class="nutrition-box">
+                        <a href="" class="back-button">
+                            <span>메뉴 목록으로 돌아가기</span>
+                        </a>
+                        <button class="nutrition-button">
+                            <strong>
+                                <span>원산지, 영양성분, 알레르기 유발성분</span>
+                            </strong>
+                        </button>
+                    </div>
+                </div>
+                <div class="detail-product-content">
+                    <ul class="detail-product-list">
+
+                    </ul>
+                </div>
+                <div class="othermenu-container">
+                    <div class="title-box">
+                        <h3></h3>
+                    </div>
+                    <div class="othermenu-list-box">
+                        <ul class="othermenu-list">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <th:block th:replace="fragments/main-footer :: main-footer"></th:block>
+        <th:block th:replace="fragments/config :: configFragment"></th:block>
+    </div>
+    <script src="/static/js/include/location-wrap.js"></script>
+    <script src="/static/js/product/product_detail.js"></script>
+</body>
+
+</html>

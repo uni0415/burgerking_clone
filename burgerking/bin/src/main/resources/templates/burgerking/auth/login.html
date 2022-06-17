@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/static/css/include/container.css">
+    <link rel="stylesheet" href="/static/css/auth/login/header.css">
+    <link rel="stylesheet" href="/static/css/auth/login/footer.css">
+    <link rel="stylesheet" href="/static/css/auth/login/login.css">
+</head>
+
+<body>
+    <div id="container">
+        <!-- <th:block th:replace="fragments/header :: header-nav"></th:block> -->
+
+        <header>
+            <div class="header-main">
+                <div class="header-main-menu">
+                    <div class="header-container">
+                        <h1 class="burgerking-logo">
+                            버거킹
+                        </h1>
+                        <a href="#" class="header-join">회원가입</a>
+                        <div class="header-util-wrap">
+                            <a href="#"><span class="header-option">브랜드홈</span></a>
+                            <a href="#"><span class="header-option">로그인</span></a>
+                            <a href="#"><span class="header-option">고객센터</span></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="wrap">
+            <!-- main -->
+            <div class="wrap-contents">
+                <div class="location-wrap">
+                    <div class="wrap-container">
+                        <div class="container-nav">
+                            <a href="#">HOME</a>
+                            <img src="/static/images/page_nav_arrow.gif" alt="">
+                            <a href="#">로그인</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap-login">
+                <div class="welcome-message">
+                    <span>YOUR WAY</span>
+                    <span>어서오세요! 버거킹입니다.</span>
+                </div>
+                <div class="login-ui">
+                    <form class="login-form">
+                        <div class="login-header">
+                            <div class="login-header-logo"><img src="/static/images/login_header.png" alt=""></div>
+                            <span>일반 로그인</span>
+                        </div>
+                        <div class="wrap-input">
+                            <div class="input-box">
+                                <input type="text" name="email" placeholder="아이디(이메일)">
+                            </div>
+                            <div class="input-box">
+                                <input type="password" class="" name="password" placeholder="비밀번호">
+                                <img src="/static/images/login_password_hidden.png" alt="" class="password-visible on">
+                                <img src="/static/images/login_password_show.png" alt="" class="password-invisible">
+                            </div>
+                            <div class="login-option">
+                                <label for="save-email">
+                                    <input type="checkbox" id="save-email">
+                                    <span>아이디 저장</span>
+                                </label>
+                                <label for="auto-login">
+                                    <input type="checkbox" id="auto-login">
+                                    <span>자동 로그인</span>
+                                </label>
+                            </div>
+                            <div class="buttons">
+                                <a href="#" class="login-button">로그인</a>
+                                <a href="/auth/signup" class="signup-button">회원가입</a>
+                            </div>
+                            <div class="find-info">
+                                <a href="#">아이디 찾기</a>
+                                <a href="#">비밀번호 찾기</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="social-logins">
+                        <div class="login-header">
+                            <div class="login-header-logo"><img src="/static/images/social_login_header.png" alt="">
+                            </div>
+                            <span>간편 로그인</span>
+                        </div>
+                        <div class="social-list">
+                            <a href="#" class="naver">
+                                <div class="social_logo">
+                                    <img src="/static/images/login_naver_logo.gif">
+                                </div>
+                                <span>네이버 로그인</span>
+                            </a>
+                            <a href="#" class="kakao">
+                                <div class="social_logo">
+                                    <img src="/static/images/login_kakao_logo.gif">
+                                </div>
+                                <span>카카오 로그인</span>
+                            </a>
+                            <a href="#" class="apple">
+                                <div class="social_logo">
+                                    <img src="/static/images/login_apple_logo.gif">
+                                </div>
+                                <span>애플 로그인</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="non-members-wrap">
+                    <div class="members-container">
+                        <div class="members-table-top">
+                            <ul class="members-item">
+                                <li class="order-item">
+                                    <button type="button" class="order-button-left on"><span>비회원
+                                            주문</span></button>
+                                </li>
+                                <li class="order-list">
+                                    <button type="button" class="order-button-right"><span>비회원 주문내역</span></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="members-table-bottom">
+                            <div class="non-members-order-list on">
+                                <div class="non-members-order">
+                                    <p>회원가입 없이 비회원으로 주문이 가능합니다.</p>
+                                </div>
+                                <div class="non-members-button">
+                                    <a href="/auth/none-member-signup" class="non-members-order-button"><span>비회원 주문</span></a>
+                                </div>
+
+                            </div>
+
+                            <div class="non-members-order-history">
+                                <div class="order-list-wrap">
+                                    <dl class="order-form">
+                                        <div>
+                                            <dt class="order-numbers">주문번호</dt>
+                                            <dd class="order-numbers-input">
+                                                <div class="order-list-inputbox">
+                                                    <input type="telecom" placeholder="주문번호 입력">
+                                                </div>
+                                            </dd>
+                                        </div>
+                                        <div>
+                                            <dt class="order-numbers">비밀번호</dt>
+                                            <dd class="order-numbers-input">
+                                                <div class="order-list-inputbox">
+                                                    <input type="password" placeholder="비밀번호">
+                                                    <img src="/static/images/login_password_hidden.png" alt=""
+                                                        class="password-visible on">
+                                                    <img src="/static/images/login_password_show.png" alt=""
+                                                        class="password-invisible">
+                                                </div>
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                                <div class="non-members-button">
+                                    <a href="#" class="non-members-order-button"><span>조회하기</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-under">
+            <div class="footer-detail">
+                <div class="footer-service">
+                    <ul>
+                        <li>
+                            <a href="">
+                                <span>이용약관</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>개인정보취급방침</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>법적고지</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="footer-btn">
+                        <a href="">
+                            <span>인재채용</span>
+                        </a>
+                        <a href="">
+                            <span>가맹점모집</span>
+                        </a>
+                    </div>
+                </div>
+                <img src="/static/images/logo.png" class="footer-logo" alt="">
+                <p>
+                    서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
+                    <span class="footer-line"></span>
+                    전화주문 1599-0505
+                </p>
+                <p>
+                    사업자 등록번호 101-86-76277
+                    <span class="footer-line"></span>
+                    (주)BKR 대표이사 문영주
+                </p>
+                <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
+                <img src="/static/images/footer-facebook.png" alt="">
+                <img src="/static/images/footer-insta.png" alt="">
+            </div>
+        </div>
+        </footer>
+        <!-- <th:block th:replace="fragments/footer :: footer"></th:block>
+        <th:block th:replace="fragments/config :: configFragment"></th:block> -->
+    </div>
+    <script src="/static/js/auth/login/login.js"></script>
+</body>
+
+</html>

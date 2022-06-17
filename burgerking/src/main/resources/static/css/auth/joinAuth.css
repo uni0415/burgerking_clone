@@ -138,6 +138,7 @@
     width: 256px;
     height: 100%;
     border-radius: 10px;
+    border: none;
     text-align: center;
     line-height: 46px;
     font-size: 27px;
@@ -145,6 +146,7 @@
     letter-spacing: 2px;
     color: white;
     background-color: #512314;
+    cursor: pointer;
 }
 
 .title-box {

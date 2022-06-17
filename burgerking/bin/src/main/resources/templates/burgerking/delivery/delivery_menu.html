@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_container.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_menu.css">
+    <link rel="stylesheet" href="/static/css/delivery/delivery-content.css">
+    <link rel="stylesheet" href="/static/css/delivery/menu-modal-box.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="wrap">
+            <header>
+                <div class="header-main">
+                    <div class="header-main-menu">
+                        <div class="header-container">
+                            <h1 class="burgerking-logo">
+                                딜리버리
+                            </h1>
+                            <div class="mypage">
+                                <p class="name">
+                                    <span>김경운</span>
+                                    님 안녕하세요
+                                </p>
+                                <a href="">
+                                    <strong>MY킹 바로가기</strong>
+                                </a>
+                            </div>
+                            <div class="header-util-wrap">
+                                <a href="/index"><span class="header-option">브랜드홈</span></a>
+                                <a href="#"><span class="header-option">로그아웃</span></a>
+                                <a href="#"><span class="header-option">MY킹</span></a>
+                                <a href="#"><span class="header-option">고객센터</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="delivery-personal-wrap">
+                <div class="delivery-container">
+                    <div class="order-history">
+                        <div class="order-history-box">
+                            <strong>딜리버리 주문내역</strong>
+                            <span>주문내역이 없습니다.</span>
+                        </div>
+                    </div>
+                    <div class="order-cart">
+                        <div class="order-cart-box">
+                            <div class="cart-count">
+                                <strong>카트</strong>
+                                <!-- <div class="count">
+                                    <span>1</span>
+                                </div> -->
+                            </div>
+                            <span>카트에 담은 상품이 없습니다</span>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+            <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
+            <div class="delivery-menu-container">
+                <div class="content-box">
+                    <div class="product-wrap">
+                        <h2 class="menu-title">메뉴</h2>
+                        <ul class="menu-category">
+                            <li class="menu-category-tag on">
+                                <button type="button" class="menu-category-button on">
+                                    <span class="menu-category-text on">스페셜&할인팩</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span class="menu-category-text">프리미엄</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span class="menu-category-text">와퍼</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span class="menu-category-text">주니어&버거</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span class="menu-category-text">치킨버거</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span class="menu-category-text">사이드</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span class="menu-category-text">음료&디저트</span>
+                                </button>
+                            </li>
+                            <li class="menu-category-tag">
+                                <button type="button" class="menu-category-button">
+                                    <span class="menu-category-text">독퍼</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="product-menu-list">
+
+                    </ul>
+                    <div class="modal-full-pop-wrap">
+                        <div class="menu-modal-box">
+                            <div class="modal-header-wrap">
+                                <h2 class="modal-header-title">
+                                    메뉴 선택
+                                </h2>
+                                <button class="modal-close-button"></button>
+                            </div>
+                            <div class="modal-content-box">
+                                <div class="product-introduce">
+                                    <div class="introduce-text-box">
+                                        <h3 class="product-title">
+
+                                        </h3>
+                                        <p class="product-subtext">
+                                            <span></span>
+                                        </p>
+                                    </div>
+                                    <div class="product-image-box">
+                                        <img src="" alt="">
+                                    </div>
+                                </div>
+                                <ul class="menu-sub-list">
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="side-modal-box">
+                            <div class="modal-header-wrap">
+                                <h2 class="modal-header-title">
+                                    사이드 변경
+                                </h2>
+                                <button class="modal-close-button"></button>
+                            </div>
+                            <div class="modal-sidemenu-content-box">
+                                <ul class="menu-change">
+
+                                </ul>
+                            </div>
+                            <button type="button" class="choice">
+                                <span>선 택</span>
+                            </button>
+                        </div>
+
+                        <div class="drink-modal-box">
+                            <div class="modal-header-wrap">
+                                <h2 class="modal-header-title">
+                                    음료 변경
+                                </h2>
+                                <button class="modal-close-button"></button>
+                            </div>
+                            <div class="modal-drink-content-box">
+                                <ul class="drink-change">
+
+                                </ul>
+                            </div>
+                            <button type="button" class="choice">
+                                <span>선 택</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-under">
+                    <div class="footer-detail">
+                        <div class="footer-service">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <span>이용약관</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>개인정보취급방침</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>법적고지</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="footer-btn">
+                                <a href="">
+                                    <span>인재채용</span>
+                                </a>
+                                <a href="">
+                                    <span>가맹점모집</span>
+                                </a>
+                            </div>
+                        </div>
+                        <img src="/static/images/logo.png" class="footer-logo" alt="">
+                        <p>
+                            서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
+                            <span class="footer-line"></span>
+                            전화주문 1599-0505
+                        </p>
+                        <p>
+                            사업자 등록번호 101-86-76277
+                            <span class="footer-line"></span>
+                            (주)BKR 대표이사 문영주
+                        </p>
+                        <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
+                        <img src="/static/images/footer-facebook.png" alt="">
+                        <img src="/static/images/footer-insta.png" alt="">
+                    </div>
+                </div>
+            </footer>
+            <a href="#container" class="btn-top"></a>
+        </div>
+    </div>
+    <script src="/static/js/include/location-wrap.js"></script>
+    <script src="/static/js/delivery/delivery-content.js"></script>
+    <script src="/static/js/delivery/menu-modal-box.js"></script>
+</body>
+
+</html>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.burgerking.service.CertificationService;
 import com.springboot.burgerking.service.auth.AuthService;
+import com.springboot.burgerking.web.controller.dto.AgreementDto;
 import com.springboot.burgerking.web.controller.dto.NoneMemberDto;
 
 import lombok.RequiredArgsConstructor;
@@ -62,6 +63,17 @@ public class AuthController {
 			return new ResponseEntity<>(noneMemberDto, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(noneMemberDto, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PostMapping("/auth/agreement")
+	public ResponseEntity<?> agreement(AgreementDto agreementDto) {
+		System.out.println(agreementDto);
+		int result = authService.userAgreement(agreementDto.toAgreementEntity());
+		if(result>0) {
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

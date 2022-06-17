@@ -27,4 +27,16 @@
   			phone = #{phone}
   		
   	</select>
+  	
+  	<insert id="userAgreement" parameterType="com.springboot.burgerking.domain.auth.AgreementEntity">
+  		insert into
+  			agreement_check
+  		values(
+  			#{terms},
+  			#{privacy_policy},
+  			#{email_agreement},
+  			#{sms_agreement}
+  		)
+  	
+  	</insert>
   </mapper>

@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AuthRepository {
 	public int noneMemberSignup(NoneMemberMst noneMemberMst);
 	public NoneMemberMst noneMemberSignin(String phone); 
+	public int userAgreement(AgreementEntity agreementEntity);
 }

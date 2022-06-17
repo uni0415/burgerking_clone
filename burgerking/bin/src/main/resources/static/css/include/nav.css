@@ -5,6 +5,7 @@
     width: 100%;
     height: 120px;
     background-color: #fff;
+    z-index:1;
 }
 
 #nav-container {
@@ -100,10 +101,10 @@ header::after {
     position: absolute;
     top: 100%;
     overflow: hidden;
-    height: 322px;
+    height: 0;
     z-index: 10;
     opacity: 0;
-    transition: 500ms;
+    transition: 300ms;
 }
 
 .submenu>li {
@@ -111,9 +112,14 @@ header::after {
     width: 192px;
     height: 25px;
     line-height: 25px;
+	cursor: pointer;
+}
 
+.submenu>li * {
+	pointer-events: none;
 }
 
 .submenu.active {
     opacity: 1;
+    height: 322px;
 }

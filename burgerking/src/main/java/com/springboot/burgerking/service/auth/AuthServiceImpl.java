@@ -2,6 +2,7 @@ package com.springboot.burgerking.service.auth;
 
 import org.springframework.stereotype.Service;
 
+import com.springboot.burgerking.domain.auth.AgreementEntity;
 import com.springboot.burgerking.domain.auth.AuthRepository;
 import com.springboot.burgerking.domain.auth.NoneMemberMst;
 import com.springboot.burgerking.web.controller.dto.NoneMemberDto;
@@ -21,5 +22,10 @@ public class AuthServiceImpl implements AuthService {
 		}else {
 			return null;
 		}
+	}
+	
+	@Override
+	public int userAgreement(AgreementEntity agreementEntity) {
+		return authRepository.userAgreement(agreementEntity);
 	}
 }
