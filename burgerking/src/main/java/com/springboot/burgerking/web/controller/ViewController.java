@@ -51,5 +51,9 @@ public class ViewController {
 	@GetMapping("/auth/agreement")
 	public String agreement() {
 		return "burgerking/auth/joinAuth";
+		
+	@GetMapping("/auth/join-info")
+	public String joinInfo() {
+		return "burgerking/auth/joinInfo";
 	}
 }
