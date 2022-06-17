@@ -518,6 +518,10 @@
     height: 68px;
 }
 
+.order-list-inputbox>input {
+    outline: none;
+}
+
 .order-list-inputbox>img {
     position: absolute;
     display: none;
