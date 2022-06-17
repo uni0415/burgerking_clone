@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/static/css/auth/login/header.css">
     <link rel="stylesheet" href="/static/css/auth/login/footer.css">
     <link rel="stylesheet" href="/static/css/auth/joinAuth.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -62,14 +64,14 @@
                     </div>
                     <div id="check-consent" class="join-consent">
                         <label for="check-consent">
-                            <input type="checkbox" class="check">
+                            <input type="checkbox" class="must-check">
                             <span>버거킹 이용약관(필수)</span>
                         </label>
                         <span class="view-details">상세보기</span>
                     </div>
                     <div id="check-consent" class="join-consent">
                         <label for="check-consent">
-                            <input type="checkbox" class="check">
+                            <input type="checkbox" class="must-check">
                             <span>개인정보처리방침(필수)</span>
                         </label>
                         <span class="view-details">상세보기</span>
@@ -102,10 +104,56 @@
                         <li>반드시 회원님의 본인명의로 된 휴대폰으로 인증을 진행해 주세요.</li>
                         <li>타인의 개인정보를 도용하여 가입 후 적발 시 서비스 이용에 제한을 받으며, 법적 제재를 받을 수 있습니다.</li>
                     </ul>
+                    <div class="info-list">
+                        <div class="name-content-box">
+                            <span>이름</span>
+                            <div class="name-input-box">
+                                <input type="text" placeholder="받는 분의 이름을 입력해 주세요." class="name-input-item">
+                                <button type="button" class="btn-delete"></button>
+                            </div>
+                        </div>
+                        <div class="phone-content-box on">
+                            <span>휴대폰번호</span>
+                            <div class="phone-input-box">
+                                <input type="text" placeholder="핸드폰 번호를 입력해 주세요." class="phone-input-item">
+                            </div>
+                        </div>
+                        <div class="certificate-content-box">
+                            <span>인증번호</span>
+                            <div class="certificate-input-box">
+                                <input type="text" placeholder="인증번호를 입력하세요." class="certificate-input-item">
+                                <span class="set-timer">03:00</span>
+                            </div>
+                        </div>
+                        <div class="certificate-success-content-box">
+                            <span>인증번호</span>
+                            <div class="certificate-success-input-box">
+                                <input type="text" readonly class="certificate-success-input-item">
+                                <div class="cert-success-text">
+                                    <span>인증완료</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-checknumber">
+                        <div class="send-button-box on">
+                            <button type="button" class="send-code-button">
+                                <span>휴대폰 인증하기</span>
+                            </button>
+                        </div>
+                        <div class="check-button-box">
+                            <button type="button" class="code-check-button">
+                                <span>인증번호 확인</span>
+                            </button>
+                        </div>
+                        <div class="signup-button-box">
+                            <button type="button" class="signup-button">
+                                <span>회원가입</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="container-button">
-                    <a href="#" class="authenticate-button"><span>휴대폰 인증하기</span></a>
-                </div>
+
             </div>
         </div>
     </div>
@@ -173,6 +221,7 @@
     </footer>
 
     <script src="/static/js/auth/joinAuth.js"></script>
+    <script src="/static/js/auth/user_phone_cerfiticate.js"></script>
 </body>
 
 </html>

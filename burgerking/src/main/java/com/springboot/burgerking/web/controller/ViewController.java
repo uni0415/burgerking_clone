@@ -47,4 +47,9 @@ public class ViewController {
 	public String emailSignup() {
 		return "burgerking/auth/joinAuth";
 	}
+	
+	@GetMapping("/auth/join-info")
+	public String joinInfo() {
+		return "burgerking/auth/joinInfo";
+	}
 }

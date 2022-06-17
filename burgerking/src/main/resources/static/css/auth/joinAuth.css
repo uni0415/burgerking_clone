@@ -53,7 +53,6 @@
 .main-container {
     padding: 50px 0 45px;
     width: 100%;
-    height: 1078px;
     background-color: #f2ebe6;
 }
 
@@ -61,7 +60,6 @@
     margin: 0 auto;
     padding: 0 20px;
     width: 1184px;
-    height: 983px;
 }
 
 .title-wrap {
@@ -81,7 +79,6 @@
 .container-wrap {
     padding: 20px 0;
     width: 1144px;
-    height: 917px;
 }
 
 .terms-conditions {
@@ -118,10 +115,11 @@
 }
 
 .container-auth-text {
+    display: flex;
+    flex-direction: column;
     margin: 8px 0 15px;
     padding: 40px 50px;
     width: 100%;
-    height: 244px;
     background: white;
 }
 
@@ -383,3 +381,166 @@ input[type=checkbox]:checked+:before {
     height: 580px;
     overflow-y: auto;
 } */
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 210px;
+    position: relative;
+    margin: 45px 0 15px;
+    padding: 20px 50px;
+    font-size: 1.375rem;
+    background: #fff;
+}
+
+.name-content-box {
+    display: flex;
+}
+
+.phone-content-box,
+.certificate-content-box,
+.certificate-success-content-box {
+    display: none;
+}
+
+.phone-content-box.on,
+.certificate-content-box.on,
+.certificate-success-content-box.on {
+    display: flex;
+}
+
+.info-list>div>span {
+    display: flex;
+    padding: 26px 10px 5px 0;
+    width: 184px;
+    height: 90px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+.info-list>div>div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90px;
+    margin-left: 80px;
+}
+
+.cert-success-text {
+    position: absolute;
+    padding: 0 5px;
+    display: inline-block;
+    margin-top: -17.5px;
+    right: 0;
+    top: 50%;
+    line-height: 21px;
+    background: url(/static/images/cert-success.png) no-repeat 0,
+        url(/static/images/cert-success2.png) no-repeat 100%;
+    background-size: auto 100%, auto 100%;
+}
+
+.cert-success-text>span {
+    padding: 4px 5px;
+    line-height: 24px;
+    background: #e22219;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.info-list>div>div>p {
+    margin-top: 12px;
+    width: 475px;
+    height: 17px;
+    font-size: 17px;
+    color: #e22219;
+}
+
+
+
+.info-list>div>div>input {
+    position: relative;
+    width: 475px;
+    height: 66px;
+    font-size: 24px;
+    line-height: 66px;
+    border: none;
+    outline: none;
+    background: url(/static/images/login_input_underline.png) no-repeat bottom;
+}
+
+.set-timer {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 70px;
+    text-align: center;
+    color: red;
+}
+
+.btn-delete {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 30px;
+    height: 63px;
+    cursor: pointer;
+    border: none;
+    text-indent: -9999em;
+    background-color: white;
+    background: url(/static/images/alldelete.png) no-repeat 50%;
+    background-size: 18px auto;
+}
+
+.btn-delete.active {
+    display: block;
+}
+
+.btn-delete>img {
+    width: 13px;
+    height: auto;
+}
+
+
+
+.btn-checknumber {
+    margin-top: 40px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.send-button-box,
+.check-button-box,
+.signup-button-box {
+    display: none;
+}
+
+.send-button-box.on,
+.check-button-box.on,
+.signup-button-box.on {
+    display: block;
+}
+
+.send-code-button,
+.code-check-button,
+.signup-button {
+    width: 272px;
+    height: 76px;
+    padding: 20px 10px 22px;
+    font-size: 1.625rem;
+    line-height: 34px;
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    background: #512314;
+    border: 1px solid #512314;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}

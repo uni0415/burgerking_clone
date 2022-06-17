@@ -15,7 +15,7 @@ const signup_button_box = document.querySelector(".signup-button-box");
 const send_code_button = document.querySelector(".send-code-button");
 const code_check_button = document.querySelector(".code-check-button");
 const signup_button = document.querySelector(".signup-button");
-const checkbox = document.querySelector(".checkbox");
+const checkbox = document.querySelectorAll(".must-check");
 
 let stop_flag = false;
 
@@ -27,15 +27,16 @@ const Toast = Swal.mixin({
     timerProgressBar: true,
 })
 
-noneUserSignup();
+certificateCheck();
+signup();
 
 
 let regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 send_code_button.onclick = () => {
-    if (!checkbox.checked) {
+    if (!(checkbox[0].checked && checkbox[1].checked)) {
         Toast.fire({
             icon: 'error',
-            title: '개인정보 수집에 동의해주세요'
+            title: '약관에 동의해주세요'
         })
     } else if (!name_input_item.value) {
         Toast.fire({
@@ -117,14 +118,12 @@ send_code_button.onclick = () => {
 
 
 
-function noneUserSignup() {
-    const password_input = document.querySelectorAll(".password-input");
-    const none_member_order_button = document.querySelector(".btn-nonmember-order");
-    none_member_order_button.onclick = () => {
-        if (!checkbox.checked) {
+function certificateCheck() {
+    send_code_button.onclick = () => {
+        if (!checkbox[0].checked && !checkbox[1].checked) {
             Toast.fire({
                 icon: 'error',
-                title: '개인정보 수집에 동의해주세요'
+                title: '약관에 동의해주세요'
             })
         } else if (!name_input_item.value) {
             Toast.fire({
@@ -141,38 +140,27 @@ function noneUserSignup() {
                 icon: 'error',
                 title: '핸드폰번호 인증을 진행해 주세요'
             })
-        } else if (!password_input[0].value || !password_input[1].value) {
-            Toast.fire({
-                icon: 'error',
-                title: '주문서 비밀번호를 입력하세요'
-            })
-        } else if (!password_input[0].value && !password_input[1]) {
-            Toast.fire({
-                icon: 'error',
-                title: '비밀번호를 입력해주세요'
-            })
-        } else if (password_input[0].value != password_input[1].value) {
-            Toast.fire({
-                icon: 'error',
-                title: '두 비밀번호가 다릅니다'
-            })
-        } else {
-            $.ajax({
-                type: "post",
-                dataType: "text",
-                data: ({
-                    name: name_input_item.value,
-                    phone: phone_input_item.value,
-                    order_password: password_input[0].value
-                }),
-                url: "/api/v1/auth/none-member-signin",
-                success: function (data) {
-                    data = JSON.parse(data);
-                    location.replace("/delivery/menu/1");
-                }
-            })
         }
     }
+}
+function signup() {
+    signup_button.onclick = () => {
+        location.replace("/auth/join-info");
+
+        // $.ajax({
+        //     type: "post",
+        //     dataType: "text",
+        //     data: ({
+        //         name: name_input_item.value,
+        //         phone: phone_input_item.value
+        //     }),
+        //     url: "/api/v1/auth/",
+        //     success: function (data) {
+        //         data = JSON.parse(data);
+        //     }
+        // })
+    }
+
 }
 
 function startTimer(duration, display) {
