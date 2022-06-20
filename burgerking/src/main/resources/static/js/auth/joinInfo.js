@@ -8,6 +8,17 @@ const select_month = document.querySelector("#select-mm");
 const select_date = document.querySelector("#select-dd");
 const submit_button = document.querySelector(".submit-button");
 
+const username_detail_box = document.querySelector(".username-detail-box");
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'center',
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+})
+
+
 
 
 name_input_box.placeholder = sessionStorage.getItem("name");
@@ -69,6 +80,30 @@ submit_button.onclick = () => {
     const birth_month = document.querySelector("select[name=birth_month]");
     const birth_date = document.querySelector("select[name=birth_date]");
     const password = document.querySelectorAll(".password-input");
+    let regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+    let regPassword = /^[a-zA-Z\\d`~!@#$%^&*()-_=+]{10,20}$/;
+
+
+    if (!username_input.value || !regEmail.test(username_input.value) === true) {
+        Toast.fire({
+            icon: 'error',
+            title: '이메일을 다시 확인해주세요'
+        })
+    }
+
+    if (regPassword.test(password_input[0].value) === true) {
+        if (password_input[0].value != password_input[1].value) {
+            Toast.fire({
+                icon: 'error',
+                title: '비밀번호를 다시 확인해주세요'
+            })
+        }
+    } else {
+        Toast.fire({
+            icon: 'error',
+            title: '조건에 맞는 비밀번호를 입력해주세요'
+        })
+    }
 
     $.ajax({
         type: "post",
