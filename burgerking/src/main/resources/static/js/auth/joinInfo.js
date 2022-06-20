@@ -84,15 +84,15 @@ submit_button.onclick = () => {
     let regPassword = /^[a-zA-Z\\d`~!@#$%^&*()-_=+]{10,20}$/;
 
 
-    if (!username_input.value || !regEmail.test(username_input.value) === true) {
+    if (!email.value || !regEmail.test(email.value) === true) {
         Toast.fire({
             icon: 'error',
             title: '이메일을 다시 확인해주세요'
         })
     }
 
-    if (regPassword.test(password_input[0].value) === true) {
-        if (password_input[0].value != password_input[1].value) {
+    if (regPassword.test(password[0].value) === true) {
+        if (password[0].value != password[1].value) {
             Toast.fire({
                 icon: 'error',
                 title: '비밀번호를 다시 확인해주세요'
