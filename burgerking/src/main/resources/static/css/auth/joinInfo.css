@@ -210,7 +210,8 @@
     display: flex;
 }
 
-.username-input {
+.username-input,
+.password-input {
     position: relative;
     width: 751px;
     height: 66px;
@@ -495,10 +496,10 @@ input[type=radio]:checked+:before {
     cursor: pointer;
 }
 
-.passowrd-unshown.on {
+.password-unshown.on {
     display: block;
 }
 
-.passowrd-shown.on {
+.password-shown.on {
     display: block;
 }

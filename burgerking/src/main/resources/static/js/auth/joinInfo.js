@@ -1,15 +1,22 @@
-const passwordTyped = document.querySelectorAll("input[type = 'password']");
+const passwordInput = document.querySelectorAll(".password-input");
 const password_unshown = document.querySelectorAll(".password-unshown");
 const password_shown = document.querySelectorAll(".password-shown");
+const name_input_box = document.querySelector(".name-input-box");
+const tel_input_box = document.querySelector(".tel-input-box");
 
-for (let i = 0; i < passwordType.length; i++) {
-    password_unshownEvent(i);
-    password_shownEvent(i);
+
+name_input_box.placeholder = sessionStorage.getItem("name");
+tel_input_box.placeholder = sessionStorage.getItem("phone");
+
+for (let i = 0; i < passwordInput.length; i++) {
+    passwordVisibleEvent(i);
+    passwordInvisibleEvent(i);
 }
+
 
 function passwordVisibleEvent(index) {
     password_unshown[index].onclick = () => {
-        passwordType[index].type = 'text';
+        passwordInput[index].type = 'text';
         password_unshown[index].classList.remove("on");
         password_shown[index].classList.add("on");
     }
@@ -17,7 +24,7 @@ function passwordVisibleEvent(index) {
 
 function passwordInvisibleEvent(index) {
     password_shown[index].onclick = () => {
-        passwordType[index].type = 'password';
+        passwordInput[index].type = 'password';
         password_unshown[index].classList.add("on");
         password_shown[index].classList.remove("on");
     }

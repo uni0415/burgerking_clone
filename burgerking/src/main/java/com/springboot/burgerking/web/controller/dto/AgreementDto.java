@@ -15,6 +15,8 @@ public class AgreementDto {
 	private boolean privacy_policy;
 	private boolean email_agreement;
 	private boolean sms_agreement;
+	private String name;
+	private String phone;
 	
 	public AgreementEntity toAgreementEntity() {
 		return AgreementEntity.builder()

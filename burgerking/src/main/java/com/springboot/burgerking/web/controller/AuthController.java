@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.http.protocol.HTTP;
 import org.springframework.http.HttpStatus;
@@ -67,8 +70,10 @@ public class AuthController {
 	}
 	
 	@PostMapping("/auth/agreement")
-	public ResponseEntity<?> agreement(AgreementDto agreementDto) {
+	public ResponseEntity<?> agreement(AgreementDto agreementDto, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println(agreementDto);
+//		session.setAttribute("name", agreementDto.getName());
+//		session.setAttribute("phone", agreementDto.getPhone());
 		int result = authService.userAgreement(agreementDto.toAgreementEntity());
 		if(result>0) {
 			return new ResponseEntity<>(result, HttpStatus.OK);
@@ -76,6 +81,8 @@ public class AuthController {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+
 	
 	
 }

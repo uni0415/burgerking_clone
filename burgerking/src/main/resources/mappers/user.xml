@@ -32,6 +32,7 @@
   		insert into
   			agreement_check
   		values(
+  			0,
   			#{terms},
   			#{privacy_policy},
   			#{email_agreement},
