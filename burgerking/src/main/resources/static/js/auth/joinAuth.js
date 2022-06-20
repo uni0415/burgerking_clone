@@ -15,7 +15,6 @@ const signup_button_box = document.querySelector(".signup-button-box");
 const send_code_button = document.querySelector(".send-code-button");
 const code_check_button = document.querySelector(".code-check-button");
 const signup_button = document.querySelector(".signup-button");
-const checkbox = document.querySelectorAll(".must-check");
 
 const agreement_check = document.querySelectorAll(".check");
 let check_flag = [false, false, false, false];
@@ -36,7 +35,7 @@ signup();
 
 let regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 send_code_button.onclick = () => {
-    if (!(checkbox[0].checked && checkbox[1].checked)) {
+    if (!(agreement_check[0].checked && agreement_check[1].checked)) {
         Toast.fire({
             icon: 'error',
             title: '약관에 동의해주세요'
@@ -154,32 +153,15 @@ function signup() {
                 check_flag[i] = true;
             }
         }
+        sessionStorage.setItem("terms", check_flag[0]);
+        sessionStorage.setItem("privacy_policy", check_flag[1]);
+        sessionStorage.setItem("email_agreement", check_flag[2]);
+        sessionStorage.setItem("sms_agreement", check_flag[3]);
+        sessionStorage.setItem("name", name_input_item.value);
+        sessionStorage.setItem("phone", phone_input_item.value);
+        location.replace("/auth/join-info");
 
-
-        $.ajax({
-            type: "post",
-            dataType: "text",
-            data: {
-                "terms": check_flag[0],
-                "privacy_policy": check_flag[1],
-                "email_agreement": check_flag[2],
-                "sms_agreement": check_flag[3],
-
-            },
-            url: "/api/v1/auth/agreement",
-            success: function (data) {
-                data = JSON.parse(data);
-                console.log(data);
-                sessionStorage.setItem("name", name_input_item.value);
-                sessionStorage.setItem("phone", phone_input_item.value);
-                location.replace("/auth/join-info");
-
-            }
-
-        })
     }
-
-
 }
 
 function startTimer(duration, display) {

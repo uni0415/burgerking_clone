@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class AgreementDto {
 
+	private int user_id;
 	private boolean terms;
 	private boolean privacy_policy;
 	private boolean email_agreement;
@@ -20,6 +21,7 @@ public class AgreementDto {
 	
 	public AgreementEntity toAgreementEntity() {
 		return AgreementEntity.builder()
+				.user_id(user_id)
 				.terms(terms)
 				.privacy_policy(privacy_policy)
 				.email_agreement(email_agreement)

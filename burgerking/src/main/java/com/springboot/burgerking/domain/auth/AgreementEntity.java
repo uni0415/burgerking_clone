@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class AgreementEntity {
-
+	private int user_id;
 	private boolean terms;
 	private boolean privacy_policy;
 	private boolean email_agreement;

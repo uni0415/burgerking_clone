@@ -4,23 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.http.protocol.HTTP;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.burgerking.domain.auth.User;
 import com.springboot.burgerking.service.CertificationService;
 import com.springboot.burgerking.service.auth.AuthService;
 import com.springboot.burgerking.web.controller.dto.AgreementDto;
 import com.springboot.burgerking.web.controller.dto.NoneMemberDto;
+import com.springboot.burgerking.web.controller.dto.UserDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthController {
 	private final CertificationService certificationService;
 	private final AuthService authService;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	Map<String, String> certCode = new HashMap<String, String>();
 	
 	@GetMapping("/auth/sendSMS")
@@ -70,10 +70,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/auth/agreement")
-	public ResponseEntity<?> agreement(AgreementDto agreementDto, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(agreementDto);
-//		session.setAttribute("name", agreementDto.getName());
-//		session.setAttribute("phone", agreementDto.getPhone());
+	public ResponseEntity<?> agreement(AgreementDto agreementDto) {
 		int result = authService.userAgreement(agreementDto.toAgreementEntity());
 		if(result>0) {
 			return new ResponseEntity<>(result, HttpStatus.OK);
@@ -82,7 +79,21 @@ public class AuthController {
 		}
 	}
 	
+	@PostMapping("/auth/signup")
+	public ResponseEntity<?> signup(UserDto userDto) {
+		System.out.println(userDto);
+		userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+		System.out.println(userDto.getPassword());
+		int result = authService.signup(userDto.toUserEntity());
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+	
 
+	@PostMapping("/auth/signin")
+	public ResponseEntity<?> signin(@ModelAttribute UserDto userDto) {
+		User user = authService.signin(userDto.toUserEntity());
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
 	
 	
 }

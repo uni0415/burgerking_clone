@@ -33,11 +33,71 @@
   			agreement_check
   		values(
   			0,
+  			#{user_id},
   			#{terms},
   			#{privacy_policy},
   			#{email_agreement},
   			#{sms_agreement}
   		)
+  	</insert>
   	
+  	<select id="checkUsername" parameterType="String" resultType="Integer">
+  		select
+  			count(email)
+  		from
+  			user_mst
+  		where
+  			email = #{email}
+  	</select>
+  	
+  	<select id="selectPassword" parameterType="String" resultType="String">
+  		select
+  			password
+  		from
+  			user_mst
+  		where
+  			email = #{email}
+  	</select>
+  	
+  	<select id="loadUserByEmail" parameterType="String" resultType="com.springboot.burgerking.domain.auth.User">
+  		select
+  			id,
+			email,
+			name,
+			phone,
+			gender,
+			birth_year,
+			birth_month,
+			birth_day,
+			password,
+			create_date,
+			update_date
+  		from
+  			user_mst
+  		where
+  			email = #{email}
+  	</select>
+  	
+  	<select id="getUserId" resultType="Integer">
+  		select id from user_mst order by id desc limit 1
+  	</select>
+  	
+  	<insert id="signup" parameterType="com.springboot.burgerking.domain.auth.User">
+  		insert into
+  			user_mst
+  		values(
+  			0,
+			#{email},
+			#{name},
+			#{phone},
+			#{gender},
+			#{birth_year},
+			#{birth_month},
+			#{birth_date},
+			#{password},
+			now(),
+			now()
+  		)
+  		
   	</insert>
   </mapper>
