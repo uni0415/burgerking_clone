@@ -90,9 +90,13 @@ public class AuthController {
 	
 
 	@PostMapping("/auth/signin")
-	public ResponseEntity<?> signin(@ModelAttribute UserDto userDto) {
-		User user = authService.signin(userDto.toUserEntity());
-		return new ResponseEntity<>(user, HttpStatus.OK);
+	public ResponseEntity<?> signin(UserDto userDto) {
+		User user = authService.signin(userDto.toSigninEntity());
+		if(user!=null) {
+			return new ResponseEntity<>(user, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	

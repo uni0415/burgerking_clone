@@ -68,7 +68,7 @@
 			gender,
 			birth_year,
 			birth_month,
-			birth_day,
+			birth_date,
 			password,
 			create_date,
 			update_date

@@ -5,6 +5,17 @@ const non_members_order_history = document.querySelector(".non-members-order-his
 const passwordType = document.querySelectorAll("input[type = 'password']");
 const passwordVisible = document.querySelectorAll(".password-visible");
 const passwordInvisible = document.querySelectorAll(".password-invisible");
+const login_button = document.querySelector(".login-button");
+const login_form = document.querySelector("form");
+
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'center',
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+})
 
 order_history_button.onclick = () => {
     order_history_button.classList.add("on");
@@ -39,6 +50,11 @@ function passwordInvisibleEvent(index) {
         passwordVisible[index].classList.add("on");
         passwordInvisible[index].classList.remove("on");
     }
+}
+
+
+login_button.onclick = () => {
+    login_form.submit();
 }
 
 

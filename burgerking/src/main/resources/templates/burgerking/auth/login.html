@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/static/css/auth/login/header.css">
     <link rel="stylesheet" href="/static/css/auth/login/footer.css">
     <link rel="stylesheet" href="/static/css/auth/login/login.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -54,17 +56,17 @@
                     <span>어서오세요! 버거킹입니다.</span>
                 </div>
                 <div class="login-ui">
-                    <form class="login-form">
+                    <form class="login-form" action="/auth/signin" method="post">
                         <div class="login-header">
                             <div class="login-header-logo"><img src="/static/images/login_header.png" alt=""></div>
                             <span>일반 로그인</span>
                         </div>
                         <div class="wrap-input">
                             <div class="input-box">
-                                <input type="text" name="email" placeholder="아이디(이메일)">
+                                <input type="text" name="email" placeholder="아이디(이메일)" class="username">
                             </div>
                             <div class="input-box">
-                                <input type="password" class="" name="password" placeholder="비밀번호">
+                                <input type="password" name="password" placeholder="비밀번호" class="password">
                                 <img src="/static/images/login_password_hidden.png" alt="" class="password-visible on">
                                 <img src="/static/images/login_password_show.png" alt="" class="password-invisible">
                             </div>
@@ -136,7 +138,8 @@
                                     <p>회원가입 없이 비회원으로 주문이 가능합니다.</p>
                                 </div>
                                 <div class="non-members-button">
-                                    <a href="/auth/none-member-signup" class="non-members-order-button"><span>비회원 주문</span></a>
+                                    <a href="/auth/none-member-signup" class="non-members-order-button"><span>비회원
+                                            주문</span></a>
                                 </div>
 
                             </div>
