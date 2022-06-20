@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/static/css/auth/login/header.css">
     <link rel="stylesheet" href="/static/css/auth/login/footer.css">
     <link rel="stylesheet" href="/static/css/auth/joinInfo.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -96,7 +98,7 @@
                             <span>성별</span>
                             <div id="choose-gender" class="choose-gender-box">
                                 <label for="choose-gender" class="choose-gender">
-                                    <input type="radio" name="choose-gender">
+                                    <input type="radio" name="choose-gender" checked>
                                     <span>선택안함</span>
                                 </label>
                                 <label for="choose-gender" class="choose-gender">
@@ -164,7 +166,7 @@
                     </div>
                 </div>
                 <div class="join-click-box">
-                    <button type="button">회원가입</button>
+                    <button type="button" class="signup-button">회원가입</button>
                 </div>
             </div>
         </div>

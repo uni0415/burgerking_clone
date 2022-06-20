@@ -52,7 +52,6 @@ send_code_button.onclick = () => {
             title: '핸드폰 번호를 입력해 주세요'
         })
     } else {
-
         phone_content_box.classList.remove("on");
         send_button_box.classList.remove("on");
         certificate_content_box.classList.add("on");
