@@ -9,6 +9,7 @@ import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ import com.springboot.burgerking.domain.auth.User;
 import com.springboot.burgerking.service.DeliveryService;
 import com.springboot.burgerking.service.ProductService;
 import com.springboot.burgerking.service.auth.PrincipalDetails;
+import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -49,6 +51,13 @@ public class DeliveryController {
 	public ResponseEntity<?> getDrinkMenuList(@PathVariable int set_size) {
 		List<DeliverySideMenu> drinkMenuList = deliveryService.getDrinkMenuList(set_size);
 		return new ResponseEntity<>(drinkMenuList, HttpStatus.OK);
+	}
+	
+	@PostMapping("/delivery/cart/{id}")
+	public ResponseEntity<?> getMenuInfo(@PathVariable String menu_id) {
+		System.out.println(menu_id);
+		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(menu_id);
+		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.springboot.burgerking.web.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +26,11 @@ public class ViewController {
 	@GetMapping("/delivery/menu/{category_id}")
 	public String delivery(@PathVariable Integer category_id) {
 		return "burgerking/delivery/delivery_menu";
+	}
+	
+	@GetMapping("/delivery/cart")
+	public String deliveryCart() {
+		return "burgerking/delivery/delivery_cart";
 	}
 	
 	

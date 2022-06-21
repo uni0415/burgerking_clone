@@ -7,19 +7,6 @@ const menu_category_text = document.querySelectorAll(".menu-category-text");
 
 load();
 
-$.ajax({
-    type: "post",
-    dataType: "text",
-    url: "/api/v1/delivery/user",
-    success: function (data) {
-        data = JSON.parse(data);
-        console.log(data);
-    }
-})
-
-
-
-
 
 menu_category_tag[category_id - 1].click();
 function load() {
@@ -44,8 +31,6 @@ function loadMenuList() {
         }
     }
 }
-
-
 
 
 
@@ -106,5 +91,6 @@ function appendProductList(menu_data) {
     }
     product_menu_list.innerHTML = menu_list;
     const product_menu_detail = document.querySelectorAll(".product-menu-list > li");
+    console.log(menu_data);
     loadProductDetail(product_menu_detail, menu_data);
 }

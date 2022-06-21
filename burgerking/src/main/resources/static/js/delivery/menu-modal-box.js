@@ -5,7 +5,10 @@ const side_modal_box = document.querySelector(".side-modal-box");
 const choice_button = document.querySelectorAll(".choice");
 const body = document.querySelector("body");
 const btn_top = document.querySelector(".btn-top");
-
+let menu_id = '';
+let size = '';
+let side_menu_id = '';
+let drink_menu_id = '';
 
 const Toast = Swal.mixin({
     toast: true,
@@ -79,16 +82,19 @@ function setDeliveryModalMenu(submenu_data) {
     }
     menu_sub_list.innerHTML = str;
     const sub_menu_list = document.querySelectorAll(".sub-menu-list");
-    popSideMenuModal(sub_menu_list);
+    popSideMenuModal(sub_menu_list, submenu_data);
 }
 
-function popSideMenuModal(sub_menu_list) {
+function popSideMenuModal(sub_menu_list, submenu_data) {
     for (let i = 0; i < sub_menu_list.length; i++) {
         sub_menu_list[i].onclick = () => {
+            menu_id = submenu_data[i].id;
+
             menu_modal_box.classList.remove("on");
             side_modal_box.classList.add("on");
             let set_size = 0;
             i == 0 ? set_size = 2 : i == 1 ? set_size = 1 : set_size = 0;
+            size = set_size;
             $.ajax({
                 type: "get",
                 dataType: "text",
@@ -109,6 +115,7 @@ function popSideMenuModal(sub_menu_list) {
 }
 
 function loadChangeSideMenu(side_menu_data, set_size) {
+
     let str = ``;
     let add_price = 0;
     for (let i = 0; i < side_menu_data.length; i++) {
@@ -127,7 +134,7 @@ function loadChangeSideMenu(side_menu_data, set_size) {
                 </p>
             </div>
             <label class="list-check">
-                <input type="radio" name="side-option" value="0">
+                <input type="radio" name="side-option" value="${i}">
                 <span></span>
             </label>
         </li>
@@ -135,18 +142,22 @@ function loadChangeSideMenu(side_menu_data, set_size) {
     }
     const menu_change = document.querySelector(".menu-change");
     menu_change.innerHTML = str;
+    console.log("set_size: " + size);
 
-    sideMenuChoice(set_size);
+    sideMenuChoice(side_menu_data, set_size);
 }
 
-function sideMenuChoice(set_size) {
+function sideMenuChoice(side_menu_data, set_size) {
     const drink_modal_box = document.querySelector(".drink-modal-box");
     const side_check = document.querySelectorAll("input[name=side-option]");
+
     choice_button[0].onclick = () => {
         let checkFlag = null;
         for (let i = 0; i < side_check.length; i++) {
             if (side_check[i].checked == true) {
                 checkFlag = side_check[i].value;
+                side_menu_id = side_menu_data[i].id;
+                console.log(side_menu_id);
             }
         }
         if (checkFlag == null) {
@@ -164,6 +175,7 @@ function sideMenuChoice(set_size) {
                 async: false,
                 url: `/api/v1/delivery/drink/${set_size}`,
                 success: function (data) {
+                    console.log(data);
                     loadChangeDrinkMenu(data, set_size);
                 }
             })
@@ -196,7 +208,7 @@ function loadChangeDrinkMenu(drink_menu_data, set_size) {
                 </p>
             </div>
             <label class="list-check">
-                <input type="radio" name="drink-option" value="0">
+                <input type="radio" name="drink-option" value="${i}">
                 <span></span>
             </label>
         </li>
@@ -204,16 +216,18 @@ function loadChangeDrinkMenu(drink_menu_data, set_size) {
     }
     const drink_change = document.querySelector(".drink-change");
     drink_change.innerHTML = str;
-    drinkMenuChoice();
+    drinkMenuChoice(drink_menu_data);
 }
 
-function drinkMenuChoice() {
+function drinkMenuChoice(drink_menu_data) {
     const check_drink = document.querySelectorAll("input[name=drink-option");
     choice_button[1].onclick = () => {
         let checkFlag = null;
         for (let i = 0; i < check_drink.length; i++) {
             if (check_drink[i].checked == true) {
                 checkFlag = check_drink[i].value;
+                drink_menu_id = drink_menu_data[i].id;
+                console.log(drink_menu_id);
             }
         }
         if (checkFlag == null) {
@@ -223,6 +237,10 @@ function drinkMenuChoice() {
             })
             return false;
         }
-
+        sessionStorage.setItem("menu_id", menu_id);
+        sessionStorage.setItem("size", size);
+        sessionStorage.setItem("side_menu_id", side_menu_id);
+        sessionStorage.setItem("drink_menu_id", drink_menu_id);
+        location.href = "/delivery/cart";
     }
 }

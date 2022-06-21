@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.springboot.burgerking.domain.DeliveryRepository;
 import com.springboot.burgerking.domain.DeliverySideMenu;
 import com.springboot.burgerking.domain.MenuDetailMst;
+import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
 
 import lombok.RequiredArgsConstructor;
 @Service
@@ -32,5 +33,10 @@ public class DeliveryServiceImpl implements DeliveryService {
 	@Override
 	public List<DeliverySideMenu> getDrinkMenuList(int set_size) {
 		return deliveryRepository.getDrinkMenuList(set_size);
+	}
+	
+	@Override
+	public MenuDetailDto getMenuInfo(int id) {
+		return deliveryRepository.getMenuInfo(id).toMenuInfoDto();
 	}
 }

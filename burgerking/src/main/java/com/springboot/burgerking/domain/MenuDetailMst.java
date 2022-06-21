@@ -1,5 +1,7 @@
 package com.springboot.burgerking.domain;
 
+import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,4 +22,17 @@ public class MenuDetailMst {
 	private String summary;
 	private String menu_images;
 	private String price;
+	private int set_add_price;
+	private int large_add_price;
+	
+	public MenuDetailDto toMenuInfoDto() {
+		return MenuDetailDto.builder()
+				.id(id)
+				.name(name)
+				.menu_images(menu_images)
+				.price(price)
+				.set_add_price(set_add_price)
+				.large_add_price(large_add_price)
+				.build();
+	}
 }
