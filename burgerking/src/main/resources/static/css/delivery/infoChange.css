@@ -1,0 +1,954 @@
+.container {
+    position: relative;
+    min-width: 960px;
+    max-height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    background: #fff;
+    margin: 0 auto;
+    padding: 168px 0 272px;
+}
+
+/* .btn-top {
+    position: fixed;
+    right: 200px;
+    bottom: 316px;
+    width: 52px;
+    height: 52px;
+    text-indent: -9999em;
+    z-index: 1;
+    background: url(/static/images/top-logo.png);
+} */
+
+.header-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 168px;
+    background: rgb(226, 34, 25);
+    z-index: 2;
+}
+
+.header {
+    position: relative;
+    padding: 48px 20px 0 20px;
+    margin: 0 auto;
+    max-width: 1184px;
+}
+
+.header-menu {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+}
+
+.top-menu {
+    position: relative;
+    display: block;
+    float: left;
+    height: 48px;
+    font-size: 14px;
+    line-height: 48px;
+    padding: 0px 14px;
+    color: #fff;
+}
+
+.top-menu:not(:nth-child(1))::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    width: 1px;
+    height: 13px;
+    margin-top: -6.5px;
+    background: hsla(0, 0%, 100%, .3);
+}
+
+.logo {
+    display: inline-block;
+    position: static;
+    width: auto;
+    height: 120px;
+    padding-left: 80px;
+    padding-right: 10px;
+    font-weight: 700;
+    font-size: 2.25rem;
+    color: rgb(255, 255, 255);
+    text-indent: 0px;
+    line-height: 120px;
+    cursor: pointer;
+    background: url(/static/images/burgerking-logo.png) 0px center no-repeat;
+}
+
+.user {
+    position: absolute;
+    right: 20px;
+    bottom: 36px;
+    min-height: 46px;
+    padding: 3px 0 3px 57px;
+    color: #fff;
+    background: url(/static/images/user.png) no-repeat 0;
+}
+
+.user a {
+    margin-top: 3px;
+    padding-right: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: url(/static/images/myking-direct.png) no-repeat 100%;
+    cursor: pointer;
+}
+
+.head-list {
+    width: 100%;
+    height: 124px;
+    font-size: 1.375rem;
+    background: url(/static/images/blackboard.gif) repeat-x top;
+}
+
+.blackboard-list {
+    position: relative;
+    height: 100%;
+    max-width: 1184px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.blackboard-list::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    margin-left: -1.5px;
+    background: url(/static/images/chalk.png)no-repeat 50%;
+}
+
+.delivery-order {
+    position: absolute;
+    top: 30%;
+    min-height: 56px;
+    padding-left: 110px;
+    color: #fff;
+    background: url(/static/images/delivery.png) no-repeat 0;
+    cursor: pointer;
+}
+
+.delivery-order p a {
+    margin-top: 10px;
+    font-size: 1.125rem;
+    color: #fff;
+}
+
+.cart {
+    position: absolute;
+    right: 0;
+    top: 30%;
+    width: 41%;
+    padding-left: 95px;
+    color: #fff;
+    background: url(/static/images/cart.png) no-repeat 0;
+    cursor: pointer;
+}
+
+.cart p a {
+    margin-top: 10px;
+    font-size: 1.125rem;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+.location {
+    height: 58px;
+    color: rgb(255, 255, 255);
+    line-height: 38px;
+    padding: 10px 0px;
+    background: rgb(0, 0, 0);
+}
+
+.main-location {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1184px;
+    margin: 0px auto;
+    padding: 0px 20px;
+}
+
+.page-nav {
+    font-size: 14px;
+}
+
+
+.menu-list {
+    display: flex;
+}
+
+.location-menu {
+    color: white;
+}
+
+.location-menu:not(:first-child)::before {
+    content: "";
+    float: left;
+    width: 4px;
+    height: 38px;
+    margin: 0px 12px;
+    background: url(/static/images/next.gif) 50% center no-repeat;
+    color: rgb(255, 255, 255);
+}
+
+.destination {
+    display: flex;
+    float: right;
+    font-size: .875rem;
+}
+
+.address {
+    display: flex;
+    max-width: 200px;
+    margin: 0;
+    padding: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.address img {
+    line-height: 10px;
+}
+
+.destination span {
+    display: flex;
+}
+
+.btn {
+    display: flex;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.btn a {
+    width: 56px;
+    height: 34px;
+    padding: 0;
+    font-size: 1rem;
+    color: #000;
+    text-align: center;
+    line-height: 34px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.btn a span {
+    margin: 2px 0 0 13px;
+}
+
+.membership {
+    margin: 0 auto;
+    padding: 50px 20px 45px 20px;
+    max-width: 1184px;
+    background-color: #fff;
+
+}
+
+.membership-title {
+    position: relative;
+    margin-bottom: 26px;
+}
+
+.membership-tit {
+    padding: 20px 0 23px;
+    border-bottom: 3px solid #000;
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+    line-height: 100%;
+    font-weight: 700;
+}
+
+.membership-tit span {
+    font-family: SDGothic, HGG, "Malgun Gothic", "맑은 고딕", dotum, 돋움, sans-serif;
+}
+
+.myhistory {
+    display: flex;
+    padding: 16px 0 30px;
+    overflow: hidden;
+}
+
+.membership-info {
+    width: 34%;
+}
+
+.user-info {
+    font-size: 1.875rem;
+}
+
+.user strong {
+    margin-right: 0.5em;
+    font-weight: bold;
+}
+
+.links a {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 5px 35px 5px 0;
+    font-weight: 700;
+    font-size: 1.375rem;
+    background: url(/static/images/next1.png) no-repeat 90%;
+}
+
+.coupon-info {
+    display: flex;
+    width: 66%;
+    font-size: 1.875rem;
+    cursor: pointer;
+}
+
+.coupon-info>:before {
+    content: "";
+    position: absolute;
+    margin-top: 10px;
+    left: 20px;
+    top: 0;
+    width: 60px;
+    height: 60px;
+}
+
+.info-membership-welcome {
+    position: relative;
+    padding-left: 100px;
+    width: 33%;
+    border-left: 2px solid #f2f2f2;
+}
+
+.info-membership-welcome::before {
+    background: url(/static/images/welcome.png) no-repeat 50%;
+}
+
+.info-membership-welcome span {
+    font-size: 1.375rem;
+    opacity: .7;
+}
+
+.welcome {
+    margin-top: 7px;
+    line-height: 100%;
+    font-size: 1.375rem;
+}
+
+.info-membership-coupon {
+    position: relative;
+    padding-left: 100px;
+    width: 40%;
+    border-left: 2px solid #f2f2f2;
+}
+
+.info-membership-coupon::before {
+    background: url(/static/images/coupon.png) no-repeat 50%;
+}
+
+.info-membership-coupon span {
+    font-size: 1.375rem;
+    opacity: .7;
+}
+
+.coupon {
+    margin-top: 7px;
+    line-height: 100%;
+    font-size: 1.4rem;
+}
+
+.info-membership-order {
+    position: relative;
+    padding-left: 100px;
+    width: 33%;
+    border-left: 2px solid #f2f2f2;
+}
+
+.info-membership-order::before {
+    background: url(/static/images/order.png) no-repeat 50%;
+}
+
+.info-membership-order span {
+    font-size: 1.375rem;
+    opacity: .7;
+}
+
+.order {
+    margin-top: 27px;
+    line-height: 100%;
+    font-size: 1.375rem;
+}
+
+.all-contentsBox {
+    padding: 50px 0 45px;
+    background-color: #f2ebe6;
+    height: 100%;
+}
+
+.contentsBox01 {
+    max-width: 776px;
+    margin: 0 auto;
+    padding: 0 8px;
+}
+
+.subtit-wrap {
+    position: relative;
+    margin-bottom: 26px;
+}
+
+.page-tit {
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+    line-height: 100%;
+    font-weight: 400;
+}
+
+.contents01{
+    padding: 20px 0;
+}
+
+.common-info{
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 17px;
+    line-height: 40px;
+    font-size: 1.25rem;
+    color: #2e2e2e;
+}
+
+.common-info::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: url(/static/images/member.png);
+    background-repeat: no-repeat;
+}
+
+.container01{
+    position: relative;
+    padding: 20px 50px;
+    margin: 8px 0 15px 0;
+    font-size: 1.375rem;
+    background: #fff;
+
+}
+
+.info-list{
+    display: table;
+    width: 100%;
+}
+
+.info-list dl{
+    display: table-row;
+}
+
+.info-list dt{
+    display: table-cell;
+    width: 25%;
+    padding: 5px 10px 5px 0;
+    font-size: 400;
+}
+
+.info-list dd{
+    display: table-cell;
+    height: 70px;
+    padding: 5px 0;
+}
+
+.info-list .cellphone{
+    height: 1em;
+    padding-top: 26px;
+}
+
+.cell-num{
+    height: 70px;
+    padding: 5px 0;
+    line-height: 60px;
+}
+
+.cell-num button:not(:first-child){
+    display: inline-block;
+    margin-left: 5px;
+    padding: 5px 10px;
+    min-width: 72px;
+    height: 44px;
+    font-size: 1.25rem;
+    color: #fff;
+    background: #2e2e2e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel{
+    display: none;
+    margin-left: 5px;
+    padding: 5px 10px;
+    min-width: 72px;
+    height: 44px;
+    font-size: 1.25rem;
+    color: #fff;
+    background: #2e2e2e;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-num>div{
+    position: relative;
+    padding-right: 165px;
+}
+
+.auth-num input{
+    display: inline-block;
+    width: 100%;
+    height: 66px;
+    padding: 3px 10px 3px 4px;
+    font-size: 1.375rem;
+    border: none;
+    outline: none;
+    background: url(/static/images/login_input_underline.png) repeat-x 0 100%;
+}
+
+.btn-send{
+    position: absolute;
+    margin-left: 5px;
+    padding: 5px 10px;
+    min-width: 72px;
+    top: 15px;
+    right: 0;
+    height: 44px;
+    font-size: 1.25rem;
+    color: #fff;
+    background: silver;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.select-info{
+    position: relative;
+    padding-left: 50px;
+    margin: 45px 0 17px;
+    line-height: 40px;
+    font-size: 1.25rem;
+    color: #2e2e2e;
+}
+
+.select-info::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    background-position: 0;
+    background: url(/static/images/check.png) no-repeat;
+}
+
+.main-info-box-middle {
+    display: flex;
+    margin: 8px 0 15px;
+    padding: 20px 50px;
+    background-color: white;
+}
+
+.password-text {
+    padding: 20px 10px 5px 0;
+    min-width: 292px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.selection-detail-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.selection-detail-box>:last-child {
+    margin-bottom: 30px;
+}
+
+.selection-gender-box {
+    display: flex;
+    width: 1044px;
+    height: 80px;
+}
+
+.selection-gender-box>span{
+    padding: 26px 10px 5px 0;
+    min-width: 158px;
+    height: 80px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.choose-gender-box {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    height: 70px;
+    font-size: 22px;
+}
+
+.choose-gender {
+    position: relative;
+    margin-right: 60px;
+    height: 25px;
+}
+
+input[type=radio] {
+    position: absolute;
+    margin: 0;
+    top: 6px;
+    left: 6px;
+    font-size: 1em;
+    border: none;
+    border-radius: 0;
+    opacity: 0;
+}
+
+input[type=radio]+span {
+    display: flex;
+}
+
+input[type=radio]+:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 13px;
+}
+
+input[type=radio]+:before {
+    background: url(/static/images/radio_checkbox.png) no-repeat 0;
+}
+
+input[type=radio]:checked+:before {
+    background: url(/static/images/radio_checked_box.png) no-repeat 0;
+}
+
+.selection-birth-box {
+    width: 1044px;
+    height: 137px;
+}
+
+
+.choose-birth-box {
+    padding: 25px 0 5px;
+    width: 751px;
+    height: 137px;
+}
+
+.select-birth {
+    position: relative;
+}
+
+
+
+
+
+.selection-birth-box {
+    display: flex;
+    padding: 0 10px 5px 0;
+    width: 100%;
+    height: 137px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.selection-birth-box>span {
+    padding: 26px 10px 5px 0;
+    min-width: 158px;
+    height: 80px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.no-choose {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.birth-list-box {
+    width: 751px;
+    height: 50px;
+}
+
+#select-yyyy,
+#select-mm {
+    margin-right: 15px;
+}
+
+#select-yyyy,
+#select-mm,
+#select-dd {
+    padding: 0 20px 10px 0;
+    width: 150px;
+    height: 50px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background: url(/static/images/login_input_underline.png) repeat-x bottom,
+        url(/static/images/select_button.png) no-repeat 100%;
+}
+
+
+.select-text {
+    margin: 25px 0 12px;
+    height: 17px;
+    font-size: 18px;
+    font-weight: 100;
+    color: #e22219;
+}
+
+.marketing-info {
+    position: relative;
+    padding-left: 50px;
+    margin: 45px 0 17px;
+    line-height: 40px;
+    font-size: 1.25rem;
+    color: #2e2e2e;
+}
+
+.marketing-info::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-position: 0;
+    background: url(/static/images/marketing.png) no-repeat;
+}
+
+.marketing-list>*{
+    position: relative;
+    margin-bottom: 13px;
+    padding: 7px 0;
+}
+
+.marketing-list label{
+    position: relative;
+}
+
+.marketing-lis>span::before{
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 32px;
+    height: 32px;
+    background-image: url(/static/images/checkbox.png);
+}
+
+input[type=checkbox]+:before {
+    background: url(/static/images/checkbox.png) no-repeat 0;
+}
+
+input[type=checkbox]+:before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 13px;
+    vertical-align: middle;
+}
+
+.checkbox {
+    margin: 0;
+    vertical-align: middle;
+    font-size: 1em;
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked+:before {
+    width: 32px;
+    height: 32px;
+    background-image: url(/static/images/checkbox-1.png);
+}
+
+.btn-item{
+    margin: 40px 0 45px;
+    text-align: center;
+}
+
+.btn01{
+    width: 216px;
+    height: 68px;
+    font-size: 1.5rem;
+    line-height: 46px;
+    background: transparent;
+    border: 1px solid #512314;
+    color: #512314;
+}
+
+.btn02{
+    width: 216px;
+    height: 68px;
+    font-size: 1.5rem;
+    line-height: 46px;
+    margin-left: 6px;
+    padding: 12px 10px 10px;
+    color: #fff;
+    background: #512314;
+    border: 1px solid #512314;
+}
+
+.secession{
+    text-align: right;
+}
+
+.btn-secession{
+    padding: 5px 6px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2e2e2e;
+}
+
+.btn-secession>*{
+    position: relative;
+    padding-right: 35px;
+}
+
+.btn-secession>::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    background: url(/static/images/secession.png) no-repeat 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-contents {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 272px;
+}
+
+.footer-under {
+    background: #2b0200;
+    height: 100%;
+}
+
+.footer-detail {
+    margin: 0 auto;
+    position: relative;
+    max-width: 1144px;
+    height: 255.39px;
+    padding: 47px 0;
+}
+
+.footer-service {
+    position: absolute;
+    top: 42px;
+    right: 0;
+}
+
+.footer-service>ul {
+    width: 280px;
+    height: 24px;
+}
+
+.footer-service>ul>li {
+    display: inline-block;
+}
+
+.footer-service>ul>li>a {
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #bba391;
+}
+
+
+.footer-service ul li a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 1px;
+    height: 12px;
+    background: hsla(0, 0%, 100%, .1);
+}
+
+.footer-service>li>li>a>span {
+    font-size: 14px;
+}
+
+.footer-btn>a {
+    display: inline-block;
+    margin: 12px 0 0 3px;
+    padding: 0 32px;
+    color: #f5ebdc;
+    border: 1px solid rgba(187, 163, 143, .6);
+    border-radius: 16px;
+    line-height: 30px;
+}
+
+.footer-logo {
+    margin-bottom: 14px;
+    width: 168px;
+    height: 20px;
+}
+
+.footer-detail>p {
+    padding: 2px 0;
+    color: #bba391;
+}
+
+.footer-detail>:nth-last-child(3) {
+    margin-bottom: 20px;
+}
+
+.footer-line {
+    display: inline-block;
+    margin: 0 6px;
+    width: 1px;
+    height: 12px;
+    line-height: 12px;
+    background: #bba391;
+    vertical-align: middle;
+}
