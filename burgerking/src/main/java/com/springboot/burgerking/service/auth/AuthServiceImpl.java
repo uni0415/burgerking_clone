@@ -1,5 +1,6 @@
 package com.springboot.burgerking.service.auth;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.springboot.burgerking.domain.auth.AgreementEntity;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 	private final AuthRepository authRepository;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
 	public NoneMemberDto noneMemberSignup(NoneMemberMst noneMemberMst) {
@@ -30,27 +32,33 @@ public class AuthServiceImpl implements AuthService {
 		agreementEntity.setUser_id(authRepository.getUserId());
 		return authRepository.userAgreement(agreementEntity);
 	}
-	
+
 	@Override
 	public int signup(User user) {
-		if(authRepository.checkUsername(user.getEmail())==0) {
+		if (authRepository.checkUsername(user.getEmail()) == 0) {
 			return authRepository.signup(user);
-		}else {
+		} else {
 			return 0;
 		}
 	}
 
 	@Override
 	public User signin(User user) {
-//		if (authRepository.checkUsername(user.getEmail()) > 0) {
-//			String password = authRepository.selectPassword(user.getEmail());
-//			if (bCryptPasswordEncoder.matches(user.getPassword(), password)) {
-//				return authRepository.loadUserByEmail(user.getEmail());
-//			} else {
-//				return null;
-//			}
-//		} else {
+		if (authRepository.checkUsername(user.getEmail()) > 0) {
+			String password = authRepository.selectPassword(user.getEmail());
+			if (bCryptPasswordEncoder.matches(user.getPassword(), password)) {
+				return authRepository.loadUserByEmail(user.getEmail());
+			} else {
+				return null;
+			}
+		} else {
 			return null;
-		//}
+		}
 	}
+	
+	@Override
+	public User getUserById(int id) {
+		return authRepository.getUserById(id);
+	}
+
 }

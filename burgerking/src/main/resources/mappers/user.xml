@@ -68,7 +68,7 @@
 			gender,
 			birth_year,
 			birth_month,
-			birth_day,
+			birth_date,
 			password,
 			create_date,
 			update_date
@@ -76,6 +76,25 @@
   			user_mst
   		where
   			email = #{email}
+  	</select>
+  	
+  	<select id="getUserById" parameterType="Integer" resultType="com.springboot.burgerking.domain.auth.User">
+  		select
+  			id,
+			email,
+			name,
+			phone,
+			gender,
+			birth_year,
+			birth_month,
+			birth_date,
+			password,
+			create_date,
+			update_date
+  		from
+  			user_mst
+  		where
+  			id = #{id}
   	</select>
   	
   	<select id="getUserId" resultType="Integer">

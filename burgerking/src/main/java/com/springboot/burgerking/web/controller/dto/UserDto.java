@@ -33,4 +33,11 @@ public class UserDto {
 				.password(password)
 				.build();
 	}
+	
+	public User toSigninEntity() {
+		return User.builder()
+				.email(email)
+				.password(password)
+				.build();
+	}
 }

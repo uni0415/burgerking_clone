@@ -119,8 +119,7 @@ submit_button.onclick = () => {
             "password": password[0].value
         },
         url: "/api/v1/auth/signup",
-        success: function (data) {
-            data = JSON.parse(data);
+        success: function () {
             $.ajax({
                 type: "post",
                 dataType: "text",
@@ -131,8 +130,8 @@ submit_button.onclick = () => {
                     "sms_agreement": sessionStorage.getItem("sms_agreement"),
                 },
                 url: "/api/v1/auth/agreement",
-                success: function (data) {
-                    data = JSON.parse(data);
+                success: function () {
+                    location.replace("/index");
                 }
             })
         }

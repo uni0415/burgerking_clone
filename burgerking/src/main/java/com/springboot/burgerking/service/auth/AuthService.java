@@ -10,4 +10,5 @@ public interface AuthService {
 	public int userAgreement(AgreementEntity agreementEntity);
 	public int signup(User user);
 	public User signin(User user);
+	public User getUserById(int id);
 }

@@ -6,6 +6,8 @@ import java.util.Random;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.burgerking.domain.auth.User;
 import com.springboot.burgerking.service.CertificationService;
 import com.springboot.burgerking.service.auth.AuthService;
+import com.springboot.burgerking.service.auth.PrincipalDetails;
+import com.springboot.burgerking.service.auth.PrincipalDetailsService;
 import com.springboot.burgerking.web.controller.dto.AgreementDto;
 import com.springboot.burgerking.web.controller.dto.NoneMemberDto;
 import com.springboot.burgerking.web.controller.dto.UserDto;
@@ -30,55 +34,55 @@ public class AuthController {
 	private final CertificationService certificationService;
 	private final AuthService authService;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final PrincipalDetailsService principalDetailsService;
 	Map<String, String> certCode = new HashMap<String, String>();
-	
+
 	@GetMapping("/auth/sendSMS")
 	public ResponseEntity<?> sendSMS(String phoneNumber) {
 		Random rand = new Random();
 		String numStr = "";
-		for(int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) {
 			String ran = Integer.toString(rand.nextInt(10));
-			numStr+=ran;
+			numStr += ran;
 		}
 		certCode.put(phoneNumber, numStr);
-		System.out.println("수신자 번호: "+ phoneNumber);
+		System.out.println("수신자 번호: " + phoneNumber);
 		System.out.println("인증번호: " + numStr);
 		certificationService.certifiedPhoneNumber(phoneNumber, numStr);
 		return new ResponseEntity<>(numStr, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/auth/check-certNum")
 	public ResponseEntity<?> checkCertNum(String phoneNumber, String certNum) {
 		boolean result = false;
-		if(certNum.equals(certCode.get(phoneNumber))) {
+		if (certNum.equals(certCode.get(phoneNumber))) {
 			result = true;
-		}
-		else {
+		} else {
 			result = false;
 		}
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/auth/none-member-signin")
 	public ResponseEntity<?> noneMemberSignup(NoneMemberDto noneMemberDto) {
 		noneMemberDto = authService.noneMemberSignup(noneMemberDto.toNoneMemberEntity());
-		if(noneMemberDto!=null) {
+		if (noneMemberDto != null) {
 			return new ResponseEntity<>(noneMemberDto, HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<>(noneMemberDto, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
 	@PostMapping("/auth/agreement")
 	public ResponseEntity<?> agreement(AgreementDto agreementDto) {
 		int result = authService.userAgreement(agreementDto.toAgreementEntity());
-		if(result>0) {
+		if (result > 0) {
 			return new ResponseEntity<>(result, HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
 	@PostMapping("/auth/signup")
 	public ResponseEntity<?> signup(UserDto userDto) {
 		System.out.println(userDto);
@@ -87,13 +91,17 @@ public class AuthController {
 		int result = authService.signup(userDto.toUserEntity());
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
-	
 
 	@PostMapping("/auth/signin")
-	public ResponseEntity<?> signin(@ModelAttribute UserDto userDto) {
-		User user = authService.signin(userDto.toUserEntity());
+	public ResponseEntity<?> signin(UserDto userDto) {
+		User user = authService.signin(userDto.toSigninEntity());
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
-	
-	
+
+	@PostMapping("/delivery/user")
+	public ResponseEntity<?> getUser(UserDto userDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		int id = principalDetails.getId();
+		User user = authService.getUserById(id);
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
 }

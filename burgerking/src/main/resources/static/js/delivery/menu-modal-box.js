@@ -141,28 +141,33 @@ function loadChangeSideMenu(side_menu_data, set_size) {
 
 function sideMenuChoice(set_size) {
     const drink_modal_box = document.querySelector(".drink-modal-box");
+    const side_check = document.querySelectorAll("input[name=side-option]");
     choice_button[0].onclick = () => {
-        const side_check = document.querySelectorAll("input[name=side-option]");
+        let checkFlag = null;
         for (let i = 0; i < side_check.length; i++) {
-            if (!side_check[i].checked) {
-                Toast.fire({
-                    icon: "error",
-                    title: "사이드를 선택해주세요"
-                })
-
+            if (side_check[i].checked == true) {
+                checkFlag = side_check[i].value;
             }
         }
-        side_modal_box.classList.remove("on");
-        drink_modal_box.classList.add("on");
-        $.ajax({
-            type: "get",
-            dateType: "text",
-            async: false,
-            url: `/api/v1/delivery/drink/${set_size}`,
-            success: function (data) {
-                loadChangeDrinkMenu(data, set_size);
-            }
-        })
+        if (checkFlag == null) {
+            Toast.fire({
+                icon: "error",
+                title: "사이드를 선택해주세요"
+            })
+            return false;
+        } else {
+            side_modal_box.classList.remove("on");
+            drink_modal_box.classList.add("on");
+            $.ajax({
+                type: "get",
+                dateType: "text",
+                async: false,
+                url: `/api/v1/delivery/drink/${set_size}`,
+                success: function (data) {
+                    loadChangeDrinkMenu(data, set_size);
+                }
+            })
+        }
 
     }
 
@@ -199,19 +204,25 @@ function loadChangeDrinkMenu(drink_menu_data, set_size) {
     }
     const drink_change = document.querySelector(".drink-change");
     drink_change.innerHTML = str;
-
+    drinkMenuChoice();
 }
 
 function drinkMenuChoice() {
+    const check_drink = document.querySelectorAll("input[name=drink-option");
     choice_button[1].onclick = () => {
-        const check_drink = document.querySelectorAll("input[name=drink-option");
+        let checkFlag = null;
         for (let i = 0; i < check_drink.length; i++) {
-            if (!check_drink[i].checked) {
-                Toast.fire({
-                    icon: "error",
-                    title: "음료를 선택해주세요"
-                })
+            if (check_drink[i].checked == true) {
+                checkFlag = check_drink[i].value;
             }
         }
+        if (checkFlag == null) {
+            Toast.fire({
+                icon: "error",
+                title: "음료를 선택해주세요"
+            })
+            return false;
+        }
+
     }
 }
