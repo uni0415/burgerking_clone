@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_container.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_menu.css">
+    <link rel="stylesheet" href="/static/css/delivery/delivery-content.css">
+    <link rel="stylesheet" href="/static/css/delivery/menu-modal-box.css">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_cart.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <div class="wrap">
+            <header>
+                <div class="header-main">
+                    <div class="header-main-menu">
+                        <div class="header-container">
+                            <h1 class="burgerking-logo">
+                                딜리버리
+                            </h1>
+                            <div class="mypage">
+                                <p class="name">
+                                    <span>김경운</span>
+                                    님 안녕하세요
+                                </p>
+                                <a href="">
+                                    <strong>MY킹 바로가기</strong>
+                                </a>
+                            </div>
+                            <div class="header-util-wrap">
+                                <a href="/index"><span class="header-option">브랜드홈</span></a>
+                                <a href="#"><span class="header-option">로그아웃</span></a>
+                                <a href="#"><span class="header-option">MY킹</span></a>
+                                <a href="#"><span class="header-option">고객센터</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="delivery-personal-wrap">
+                <div class="delivery-container">
+                    <div class="order-history">
+                        <div class="order-history-box">
+                            <strong>딜리버리 주문내역</strong>
+                            <span>주문내역이 없습니다.</span>
+                        </div>
+                    </div>
+                    <div class="order-cart">
+                        <div class="order-cart-box">
+                            <div class="cart-count">
+                                <strong>카트</strong>
+                                <!-- <div class="count">
+                                        <span>1</span>
+                                    </div> -->
+                            </div>
+                            <span>카트에 담은 상품이 없습니다</span>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+            <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
+
+            <div class="cart-main-container">
+                <div class="nav-wrap">
+                    <div class="nav-container">
+                        <div class="page-nav">
+                            <a href="#"><span>딜리버리</span></a>
+                            <a href="#"><span>카트</span></a>
+                        </div>
+                        <div class="location-nav">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-box">
+                    <div class="web-container">
+                        <div class="subject-wrap">
+                            <h2>딜리버리 카트</h2>
+                        </div>
+                        <div class="benefit-guide-bar">
+                            <strong>17,000원 이상 결제 시 5,000원 할인</strong>
+                        </div>
+                        <div class="container-cart-wrap">
+                            <div id="all-checkbox" class="all-check-wrap">
+                                <label for="all-checkbox" class="all-check">
+                                    <input type="checkbox">
+                                    <span>전체선택</span>
+                                </label>
+                                <div class="delete-button-box">
+                                    <button type="button">
+                                        <span>삭제</span>
+                                        <span class="menu-count">1</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="cart-list-box">
+                                <li>
+                                    <div class="menu-content-box">
+                                        <div id="menu-title" class="menu-title-wrap">
+                                            <label for="menu-title" class="menu-name">
+                                                <input type="checkbox" name="menu" title="선택" class="menu-checkbox">
+                                                <span class="menu-title">
+                                                    <strong>
+                                                        <span>바비큐킹치킨버거 라지세트</span>
+                                                    </strong>
+                                                </span>
+                                                <span class="price">
+                                                    <strong>
+                                                        <span>6,300</span>
+                                                        <span>원</span>
+                                                    </strong>
+                                                </span>
+                                            </label>
+                                            <div class="menu-img-box">
+                                                <img src="/static/images/alldayking/barbecue_king_chicken_large.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="set-menu-detail">
+                                            <ul>
+                                                <li class="additional">
+                                                    <span>재료추가</span>
+                                                    <div class="additional-box">
+                                                        <ul class="additional-list">
+                                                            <li>없음</li>
+                                                        </ul>
+                                                        <button type="button"
+                                                            class="additional-list-button"><span>변경</span></button>
+                                                    </div>
+                                                </li>
+                                                <li class="additional">
+                                                    <span>재료추가</span>
+                                                    <div class="additional-box">
+                                                        <div class="side-menu-list">
+                                                            <span>프렌치프라이L</span>
+                                                            <strong>
+                                                                +
+                                                                <span class="add-price">0</span>
+                                                                <span>원</span>
+                                                            </strong>
+                                                        </div>
+                                                        <button type="button"
+                                                            class="additional-list-button"><span>변경</span></button>
+                                                    </div>
+                                                </li>
+                                                <li class="additional">
+                                                    <span>재료추가</span>
+                                                    <div class="additional-box">
+                                                        <div class="side-menu-list">
+                                                            <span>콜라 L</span>
+                                                            <strong>
+                                                                +
+                                                                <span class="add-price">0</span>
+                                                                <span>원</span>
+                                                            </strong>
+                                                        </div>
+                                                        <button type="button"
+                                                            class="additional-list-button"><span>변경</span></button>
+                                                    </div>
+                                                </li>
+                                                <li class="additional">
+                                                    <span>재료추가</span>
+                                                    <div class="additional-box">
+                                                        <div class="side-menu-list">
+                                                            <span>콜라 (L)</span>
+                                                            <strong>
+                                                                +
+                                                                <span class="add-price">0</span>
+                                                                <span>원</span>
+                                                            </strong>
+                                                        </div>
+                                                        <button type="button"
+                                                            class="additional-list-button"><span>변경</span></button>
+                                                    </div>
+                                                </li>
+                                                <li class="additional">
+                                                    <span>재료추가</span>
+                                                    <div class="additional-box">
+                                                        <div class="side-menu-list">
+                                                            <span>콜라 (L)</span>
+                                                            <strong>
+                                                                +
+                                                                <span class="add-price">0</span>
+                                                                <span>원</span>
+                                                            </strong>
+                                                        </div>
+                                                        <button type="button"
+                                                            class="additional-list-button"><span>변경</span></button>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="quantity">
+                                            <strong>수량</strong>
+                                            <div class="num-set">
+                                                <button type="button" class="btn-minus"></button>
+                                                <input type="number" readonly="readonly">
+                                                <button type="button" class="btn-plus"></button>
+                                            </div>
+                                        </div>
+
+                                        <div>
+
+                                        </div>
+                                        <button type="button" class="delete-button"></button>
+                                    </div>
+                                    <div class="sum-wrap">
+                                        <div>
+                                            <span>합계금액</span>
+                                            <div>
+                                                <strong>
+                                                    <span>7,800원</span>
+                                                </strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="all-sum-wrap">
+                                <span class="total-order-amount">총 주문금액</span>
+                                <span class="total-order-amount-sum">
+                                    <strong>
+                                        <span>6,300</span>
+                                        <span>원</span>
+                                    </strong>
+                                </span>
+                            </div>
+                            <div class="cart-info">
+                                <ul class="cart-info-text">
+                                    <li>주문서를 작성하기 전에 선택하신 상품명, 수량 및 가격이 정확한지 확인해주세요.</li>
+                                    <li>해당매장의 주문배달 최소금액은 13,000원 입니다.</li>
+                                </ul>
+                                <div class="order-buttons">
+                                    <button type="button" class="menu-add-button">메뉴 추가</button>
+                                    <button type="button" class="menu-order-button">주문하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-under">
+                    <div class="footer-detail">
+                        <div class="footer-service">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <span>이용약관</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>개인정보취급방침</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>법적고지</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="footer-btn">
+                                <a href="">
+                                    <span>인재채용</span>
+                                </a>
+                                <a href="">
+                                    <span>가맹점모집</span>
+                                </a>
+                            </div>
+                        </div>
+                        <img src="/static/images/logo.png" class="footer-logo" alt="">
+                        <p>
+                            서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
+                            <span class="footer-line"></span>
+                            전화주문 1599-0505
+                        </p>
+                        <p>
+                            사업자 등록번호 101-86-76277
+                            <span class="footer-line"></span>
+                            (주)BKR 대표이사 문영주
+                        </p>
+                        <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
+                        <img src="/static/images/footer-facebook.png" alt="">
+                        <img src="/static/images/footer-insta.png" alt="">
+                    </div>
+                </div>
+            </footer>
+            <a href="#container" class="btn-top"></a>
+        </div>
+    </div>
+    <script src="/static/js/include/location-wrap.js"></script>
+    <script src="/static/js/delivery/delivery-content.js"></script>
+    <script src="/static/js/delivery/menu-modal-box.js"></script>
+    <script src="/static/js/delivery/delivery_cart.js"></script>
+</body>
+
+</html>
