@@ -32,12 +32,12 @@ public class AuthServiceImpl implements AuthService {
 		agreementEntity.setUser_id(authRepository.getUserId());
 		return authRepository.userAgreement(agreementEntity);
 	}
-	
+
 	@Override
 	public int signup(User user) {
-		if(authRepository.checkUsername(user.getEmail())==0) {
+		if (authRepository.checkUsername(user.getEmail()) == 0) {
 			return authRepository.signup(user);
-		}else {
+		} else {
 			return 0;
 		}
 	}
@@ -55,4 +55,10 @@ public class AuthServiceImpl implements AuthService {
 			return null;
 		}
 	}
+	
+	@Override
+	public User getUserById(int id) {
+		return authRepository.getUserById(id);
+	}
+
 }

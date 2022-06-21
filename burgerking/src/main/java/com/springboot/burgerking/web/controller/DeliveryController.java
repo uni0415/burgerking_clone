@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.http.protocol.HTTP;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.burgerking.domain.DeliverySideMenu;
 import com.springboot.burgerking.domain.MenuDetailMst;
+import com.springboot.burgerking.domain.auth.User;
 import com.springboot.burgerking.service.DeliveryService;
 import com.springboot.burgerking.service.ProductService;
+import com.springboot.burgerking.service.auth.PrincipalDetails;
 
 import lombok.RequiredArgsConstructor;
 

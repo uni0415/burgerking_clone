@@ -6,6 +6,21 @@ const menu_category_text = document.querySelectorAll(".menu-category-text");
 
 
 load();
+
+$.ajax({
+    type: "post",
+    dataType: "text",
+    url: "/api/v1/delivery/user",
+    success: function (data) {
+        data = JSON.parse(data);
+        console.log(data);
+    }
+})
+
+
+
+
+
 menu_category_tag[category_id - 1].click();
 function load() {
     loadMenuList();

@@ -12,4 +12,5 @@ public interface AuthRepository {
 	public User loadUserByEmail(String email);
 	public int getUserId();
 	public int signup(User user);
+	public User getUserById(int id);
 }
