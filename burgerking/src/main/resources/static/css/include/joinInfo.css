@@ -1,0 +1,505 @@
+#container {
+    background: none;
+}
+
+.wrap {
+    margin-top: 168px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrap-contents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60px;
+    background-color: black;
+}
+
+.location-wrap {
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 1217px;
+    height: 58px;
+}
+
+.wrap-container {
+    padding: 0px 20px;
+    width: 1184px;
+    height: 38px;
+}
+
+.container-nav {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 12px;
+}
+
+.container-nav>a {
+    font-size: .875rem;
+    color: white;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.container-nav>img {
+    position: relative;
+    top: -2px;
+}
+
+.main-container-box {
+    padding: 50px 0 45px;
+    width: 100%;
+    height: 1509px;
+    background-color: #f2ebe6;
+}
+
+.main-web-container {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1184px;
+    height: 1414px;
+}
+
+.main-wrap-title {
+    margin-bottom: 26px;
+    width: 1144px;
+    height: 40px;
+}
+
+.main-wrap-title>h2 {
+    margin-bottom: 15px;
+    width: 100%;
+    height: 100%;
+    font-size: 43px;
+    line-height: 100%;
+    font-weight: 600;
+}
+
+.main-info-box {
+    padding: 20px 0;
+    width: 1144px;
+    height: 1348px;
+}
+
+.main-info-box {
+    margin-bottom: 17px;
+    width: 1144px;
+    height: 40px;
+}
+
+.basic-information,
+.selection-information,
+.password-information {
+    position: relative;
+    padding-left: 50px;
+    line-height: 40px;
+    font-size: 22px;
+    color: #2e2e2e;
+}
+
+.basic-information::before {
+    background: url(/static/images/member.png);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: 0;
+}
+
+.selection-information ::before {
+    background-image: url(/static/images/joinInfo-selection-information.png);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: 0;
+}
+
+.password-information::before {
+    background-image: url(/static/images/key.png);
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: 0;
+}
+
+.userinfo-wrap-container {
+    margin: 15px 0;
+    padding: 0 50px 20px;
+    width: 100%;
+    height: 402px;
+    background-color: white;
+}
+
+.userinfo-title-box {
+    margin: 0 -50px 20px;
+    padding: 37px 50px;
+    height: 97px;
+    background-color: #f8f8f8;
+}
+
+.userinfo-title-box>p {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 28px;
+}
+
+.userinfo-detail-box {
+    display: flex;
+    flex-direction: column;
+    height: 210px;
+}
+
+.find-username-form {
+    display: none;
+}
+
+.find-username-form.on {
+    display: block;
+}
+
+.find-password-form {
+    display: none;
+}
+
+.find-password-form.on {
+    display: block;
+}
+
+.username-detail-box>span,
+.password-detail-box>span,
+.email-detail-box>span {
+    padding: 26px 10px 5px 0;
+    min-width: 292px;
+    height: 105px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.name-input-box,
+.password-input-box,
+.email-input-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 105px;
+}
+
+
+
+
+.username-detail-box,
+.password-detail-box,
+.email-detail-box {
+    display: flex;
+}
+
+.username-input,
+.password-input {
+    position: relative;
+    width: 751px;
+    height: 66px;
+    font-size: 24px;
+    line-height: 66px;
+    border: none;
+    outline: none;
+    background: url(/static/images/login_input_underline.png) repeat-x bottom;
+}
+
+.username-input::placeholder {
+    color: rgb(207, 207, 207);
+}
+
+.name-input-box,
+.tel-input-box {
+    width: 751px;
+    height: 66px;
+    font-size: 24px;
+    line-height: 66px;
+    border: none;
+    outline: none;
+}
+
+.cancellation-button {
+    display: none;
+    position: absolute;
+    top: -3px;
+    right: 40px;
+    width: 30px;
+    height: 63px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+
+.cancellation-button.active {
+    display: block;
+}
+
+.cancellation-button>img {
+    width: 13px;
+    height: auto;
+}
+
+.username-input-box>p,
+.password-input-box>p,
+.email-input-box>p {
+    margin-top: 5px;
+    width: 475px;
+    font-size: 17px;
+    color: #e22219;
+}
+
+.name-detail-box,
+.tel-detail-box,
+.selection-gender-box,
+.password-input-box {
+    display: flex;
+    height: 110px;
+}
+
+.name-detail-box>span,
+.tel-detail-box>span,
+.selection-gender-box>span,
+.password-input-box>span {
+    padding: 26px 10px 5px 0;
+    min-width: 292px;
+    height: 80px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.userinfo-name-box,
+.userinfo-tel-box {
+    display: table-cell;
+    padding: 5px 0;
+    width: 100%;
+    height: 70px;
+    vertical-align: middle;
+}
+
+.name-input-box,
+.tel-input-box {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    color: #434343;
+    border: none;
+}
+
+.main-info-box-middle {
+    display: flex;
+    margin: 8px 0 15px;
+    padding: 20px 50px;
+    width: 1144px;
+    background-color: white;
+}
+
+.password-text {
+    padding: 20px 10px 5px 0;
+    min-width: 292px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.selection-detail-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.selection-detail-box>:last-child {
+    margin-bottom: 30px;
+}
+
+.selection-gender-box {
+    display: flex;
+    width: 1044px;
+    height: 80px;
+}
+
+
+
+.choose-gender-box {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    height: 70px;
+    font-size: 22px;
+}
+
+.choose-gender {
+    position: relative;
+    margin-right: 60px;
+    height: 25px;
+}
+
+input[type=radio] {
+    position: absolute;
+    margin: 0;
+    top: 6px;
+    left: 6px;
+    font-size: 1em;
+    border: none;
+    border-radius: 0;
+    opacity: 0;
+}
+
+input[type=radio]+span {
+    display: flex;
+}
+
+input[type=radio]+:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 13px;
+}
+
+input[type=radio]+:before {
+    background: url(/static/images/radio_checkbox.png) no-repeat 0;
+}
+
+input[type=radio]:checked+:before {
+    background: url(/static/images/radio_checked_box.png) no-repeat 0;
+}
+
+.selection-birth-box {
+    width: 1044px;
+    height: 137px;
+}
+
+
+.choose-birth-box {
+    padding: 25px 0 5px;
+    width: 751px;
+    height: 137px;
+}
+
+.select-birth {
+    position: relative;
+}
+
+
+
+
+
+.selection-birth-box {
+    display: flex;
+    padding: 10px 10px 5px 0;
+    width: 100%;
+    height: 137px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.selection-birth-box>span {
+    padding: 26px 10px 5px 0;
+    min-width: 292px;
+    height: 80px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.no-choose {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.birth-list-box {
+    width: 751px;
+    height: 50px;
+}
+
+#select-yyyy,
+#select-mm {
+    margin-right: 15px;
+}
+
+#select-yyyy,
+#select-mm,
+#select-dd {
+    padding: 0 20px 10px 0;
+    width: 230px;
+    height: 50px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background: url(/static/images/login_input_underline.png) repeat-x bottom,
+        url(/static/images/select_button.png) no-repeat 100%;
+}
+
+
+.select-text {
+    margin: 25px 0 12px;
+    width: 743px;
+    height: 17px;
+    font-size: 18px;
+    font-weight: 100;
+    color: #e22219;
+}
+
+
+.password-input-box {
+    display: flex;
+}
+
+.join-click-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    width: 1144px;
+    height: 68px;
+}
+
+.join-click-box>button {
+    padding: 12px 10px 10px;
+    width: 256px;
+    height: 68px;
+    background-color: #512314;
+    text-align: center;
+    line-height: 46px;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.username-input-box>img {
+    position: absolute;
+    display: none;
+    top: 20px;
+    right: 10px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.password-unshown.on {
+    display: block;
+}
+
+.password-shown.on {
+    display: block;
+}
