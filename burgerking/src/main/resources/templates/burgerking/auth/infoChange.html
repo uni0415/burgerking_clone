@@ -8,6 +8,8 @@
     <title>정보변경</title>
     <link rel="stylesheet" href="/static/css/include/container.css">
     <link rel="stylesheet" href="/static/css/delivery/infoChange.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -178,20 +180,22 @@
                                             <button type="button" class="btn-change">
                                                 <span>변경</span>
                                             </button>
-                                            <button type="button" class="btn-cancel" style="display: none;">
+                                            <button type="button" class="btn-cancel">
                                                 <span>취소</span>
                                             </button>
                                         </div>
-                                        <div class="auth-num" >
-                                            <div>
-                                                <input type="text" placeholder="휴대폰 번호를 입력해 주세요">
+                                        <div class="auth-num">
+                                            <div class="send-num">
+                                                <input type="text" placeholder="휴대폰 번호를 입력해 주세요" W
+                                                    class="phone-input-item">
                                                 <button type="button" class="btn-send" disabled="disabled">
                                                     <span>인증번호 발송</span>
                                                 </button>
                                             </div>
-                                            <div style="display: none;">
-                                                <input type="text" placeholder="인증번호 입력">
-                                                <button type="button" class="btn-auth" disabled="disabled" style="display: none;">
+                                            <div class="input-num">
+                                                <input type="text" placeholder="인증번호 입력" class="certificate-input-item">
+                                                <span class="set-timer">03:00</span>
+                                                <button type="button" class="btn-auth" disabled="disabled">
                                                     <span>인증</span>
                                                 </button>
                                                 <button type="button" class="btn-resetting">
@@ -212,7 +216,7 @@
                                     <span>성별</span>
                                     <div id="choose-gender" class="choose-gender-box">
                                         <label for="choose-gender" class="choose-gender">
-                                            <input type="radio" value="선택안함" name="gender">
+                                            <input type="radio" value="선택안함" name="gender" checked>
                                             <span>선택안함</span>
                                         </label>
                                         <label for="choose-gender" class="choose-gender">
@@ -229,7 +233,7 @@
                                     <span>생년월일</span>
                                     <div class="choose-birth-box">
                                         <label for="choose-gender" class="select-birth">
-                                            <input type="radio" name="choose-birth">
+                                            <input type="radio" name="choose-birth" checked>
                                             <span class="no-choose">선택안함</span>
                                         </label>
                                         <div class="birth-list-box">
@@ -271,74 +275,74 @@
                         </div>
                         <div class="btn-area">
                             <div class="btn-item">
-                                <a href="#" class="btn01">
+                                <button href="#" class="btn01">
                                     <span>취소</span>
-                                </a>
-                                <a class="btn02">
+                                </button>
+                                <button class="btn02">
                                     <span>변경</span>
-                                </a>
+                                </button>
                             </div>
                             <div class="secession">
-                                <a class="btn-secession">
+                                <button class="btn-secession">
                                     <span>
                                         회원탈퇴
                                     </span>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
 
 
-            <div class="footer-contents">
-                <div class="footer-under">
-                    <div class="footer-detail">
-                        <div class="footer-service">
-                            <ul>
-                                <li>
-                                    <a href="">
-                                        <span>이용약관</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <span>개인정보취급방침</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <span>법적고지</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="footer-btn">
-                                <a href="">
-                                    <span>인재채용</span>
-                                </a>
-                                <a href="">
-                                    <span>가맹점모집</span>
-                                </a>
+                    <div class="footer-contents">
+                        <div class="footer-under">
+                            <div class="footer-detail">
+                                <div class="footer-service">
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <span>이용약관</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>개인정보취급방침</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>법적고지</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="footer-btn">
+                                        <a href="">
+                                            <span>인재채용</span>
+                                        </a>
+                                        <a href="">
+                                            <span>가맹점모집</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <img src="/static/images/logo.png" class="footer-logo" alt="">
+                                <p>
+                                    서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
+                                    <span class="footer-line"></span>
+                                    전화주문 1599-0505
+                                </p>
+                                <p>
+                                    사업자 등록번호 101-86-76277
+                                    <span class="footer-line"></span>
+                                    (주)BKR 대표이사 문영주
+                                </p>
+                                <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
+                                <img src="/static/images/footer-facebook.png" alt="">
+                                <img src="/static/images/footer-insta.png" alt="">
                             </div>
                         </div>
-                        <img src="/static/images/logo.png" class="footer-logo" alt="">
-                        <p>
-                            서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
-                            <span class="footer-line"></span>
-                            전화주문 1599-0505
-                        </p>
-                        <p>
-                            사업자 등록번호 101-86-76277
-                            <span class="footer-line"></span>
-                            (주)BKR 대표이사 문영주
-                        </p>
-                        <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
-                        <img src="/static/images/footer-facebook.png" alt="">
-                        <img src="/static/images/footer-insta.png" alt="">
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <script src="/static/js/auth/infoChange.js"></script>
+            <script src="/static/js/auth/infoChange.js"></script>
 </body>
 
 </html>

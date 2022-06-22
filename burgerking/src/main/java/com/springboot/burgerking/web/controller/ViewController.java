@@ -57,4 +57,9 @@ public class ViewController {
 	public String joinInfo() {
 		return "burgerking/auth/joinInfo";
 	}
+	
+	@GetMapping("/auth/info-change")
+	public String infochange() {
+		return "burgerking/auth/infochange";
+	}
 }
