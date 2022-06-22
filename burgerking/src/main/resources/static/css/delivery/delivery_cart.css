@@ -237,7 +237,7 @@ input[type=checkbox]:checked+:before {
     letter-spacing: 1px;
 }
 
-.price {
+.price-box {
     margin-top: 13px;
     width: 646px;
     height: 35px;

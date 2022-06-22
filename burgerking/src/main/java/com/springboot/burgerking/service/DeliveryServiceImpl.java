@@ -36,7 +36,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 	}
 	
 	@Override
-	public MenuDetailDto getMenuInfo(int id) {
+	public MenuDetailDto getMenuInfo(String id) {
 		return deliveryRepository.getMenuInfo(id).toMenuInfoDto();
 	}
 }

@@ -53,11 +53,11 @@ public class DeliveryController {
 		return new ResponseEntity<>(drinkMenuList, HttpStatus.OK);
 	}
 	
-	@PostMapping("/delivery/cart/{id}")
+	@PostMapping("/delivery/cart/{menu_id}")
 	public ResponseEntity<?> getMenuInfo(@PathVariable String menu_id) {
-		System.out.println(menu_id);
 		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(menu_id);
 		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
 	}
+	
 	
 }
