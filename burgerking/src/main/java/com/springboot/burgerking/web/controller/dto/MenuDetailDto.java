@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MenuDetailDto {
 	private int id;
+	private int menu_id;
 	private String name;
 	private String menu_images;
 	private String price;

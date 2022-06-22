@@ -266,8 +266,13 @@ input[type=checkbox]:checked+:before {
 }
 
 .additional {
+    display: none;
     position: relative;
     padding: 14px 20% 14px 0;
+}
+
+.additional.on {
+    display: block;
 }
 
 .set-menu-detail>ul>:first-child {
