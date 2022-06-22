@@ -7,6 +7,9 @@ console.log(menu_id, size, side_menu_id, drink_menu_id);
 const menu_title = document.querySelector(".menu-title>strong>span");
 const menu_price = document.querySelector(".price");
 const menu_image = document.querySelector(".menu-img-box>img");
+const side_menu_list = document.querySelectorAll(".side-menu-list>span");
+const add_price = document.querySelectorAll(".add-price");
+const total_sum = document.querySelectorAll(".total-order-amount-sum");
 
 // $.ajax({
 //     type: "post",
@@ -40,12 +43,36 @@ function loadOrderList() {
         data: {
             "side_menu_id": side_menu_id
         },
-        url: `/api/v1/delivery/cart/${side_menu_id}`,
+        url: `/api/v1/delivery/cart/side/${side_menu_id}`,
         success: function (data) {
             data = JSON.parse(data);
             console.log(data);
+            setSideMenuList(data);
         }
     })
+    
+    $.ajax({
+		type: "post",
+		dataType: "text",
+		data: {
+			"drink_menu_id" : drink_menu_id
+		},
+		url: `/api/v1/delivery/cart/drink/${drink_menu_id}`,
+		success: function (data){
+			data = JSON.parse(data);
+			console.log(data);
+			setSideDrinkList(data);
+		}
+})
+
+	$.ajax({
+		type: "post",
+		dataType: "text",
+		data: {
+			""
+		}
+	})
+    
 }
 
 function setMenuList(menu_data) {
@@ -57,6 +84,14 @@ function setMenuList(menu_data) {
     menu_image.src = menu_data.menu_images;
 }
 
-function setSideMenuList() {
+function setSideMenuList(side_data) {
+	let add = size == 1? side_data.set_add_price:side_data.large_add_price;
+	side_menu_list[0].innerText = side_data.name;
+	add_price[0].innerText = add;
+}
 
+function setSideDrinkList(drink_data){
+	let add = size == 1? drink_data.set_add_price:drink_data.large_add_price;
+	side_menu_list[1].innerText = drink_data.name;
+	add_price[1].innerText = add;
 }

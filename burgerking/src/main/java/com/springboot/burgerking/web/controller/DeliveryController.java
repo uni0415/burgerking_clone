@@ -59,5 +59,24 @@ public class DeliveryController {
 		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
 	}
 	
+	@PostMapping("/delivery/cart/side/{side_menu_id}")
+	
+	public ResponseEntity<?> getSideMenuInfo(@PathVariable String side_menu_id){
+		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(side_menu_id);
+		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
+	}
+	
+	@PostMapping("/delivery/cart/drink/{drink_menu_id}")
+	public ResponseEntity<?> getSideDrinkInfo(@PathVariable String drink_menu_id){
+		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(drink_menu_id);
+		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
+	}
+	
+	@PostMapping("/delivery/cart/total/{total_menu_id}")
+	public ResponseEntity<?> getSideTotalInfo(@PathVariable String total_menu_id){
+		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(total_menu_id);
+		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
+		
+	}
 	
 }
