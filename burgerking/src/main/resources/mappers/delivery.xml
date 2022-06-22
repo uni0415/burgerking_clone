@@ -82,6 +82,7 @@
   <select id="getMenuInfo" parameterType="String" resultType="com.springboot.burgerking.domain.MenuDetailMst">
   	select
   		id,
+  		menu_id,
   		name,
   		menu_images,
   		price,

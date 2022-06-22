@@ -21,6 +21,13 @@ const Toast = Swal.mixin({
 function loadProductDetail(product_menu_detail, menu_data) {
     for (let i = 0; i < product_menu_detail.length; i++) {
         product_menu_detail[i].onclick = () => {
+            if (menu_data[i].id < 4) {
+                sessionStorage.setItem("menu_id", menu_data[i].id);
+                sessionStorage.setItem("size", null);
+                sessionStorage.setItem("side_menu_id", null);
+                sessionStorage.setItem("drink_menu_id", 165);
+                location.href = "/delivery/cart";
+            }
             modal_full_pop_wrap.classList.add("on");
             body.style = "overflow: hidden";
             menu_modal_box.classList.add("on");
@@ -95,6 +102,12 @@ function popSideMenuModal(sub_menu_list, submenu_data) {
             let set_size = 0;
             i == 0 ? set_size = 2 : i == 1 ? set_size = 1 : set_size = 0;
             size = set_size;
+            if (size == 0) {
+                sessionStorage.setItem("menu_id", submenu_data[i].id);
+                sessionStorage.setItem("size", size);
+                location.href = "/delivery/cart";
+            }
+
             $.ajax({
                 type: "get",
                 dataType: "text",

@@ -28,6 +28,7 @@ public class MenuDetailMst {
 	public MenuDetailDto toMenuInfoDto() {
 		return MenuDetailDto.builder()
 				.id(id)
+				.menu_id(menu_id)
 				.name(name)
 				.menu_images(menu_images)
 				.price(price)

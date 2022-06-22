@@ -91,6 +91,5 @@ function appendProductList(menu_data) {
     }
     product_menu_list.innerHTML = menu_list;
     const product_menu_detail = document.querySelectorAll(".product-menu-list > li");
-    console.log(menu_data);
     loadProductDetail(product_menu_detail, menu_data);
 }
