@@ -1,5 +1,5 @@
 <div class="membership" th:fragment="auth-membership">
-    <script src="/static/js/include/delivery/auth-membership.js"></script>
+
     <div class="membership-title">
         <h2 class="membership-tit">멤버십</h2>
     </div>
@@ -7,16 +7,16 @@
         <div class="membership-info">
             <p class="user-info">
                 <strong>
-                    <span class="name"></span>
+                    <span class="member-name"></span>
                     <span> 님!</span>
                 </strong>
                 <span>반갑습니다</span>
             </p>
             <div class="links">
-                <a href="#">
+                <a href="/auth/info-change">
                     <span>정보변경</span>
                 </a>
-                <a href="#">
+                <a href="/delivery/mydelivery">
                     <span>MY배달지</span>
                 </a>
             </div>
@@ -47,4 +47,5 @@
             </div>
         </div>
     </div>
+    <script src="/static/js/include/delivery/auth-membership.js"></script>
 </div>

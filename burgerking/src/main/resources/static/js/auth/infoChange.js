@@ -14,6 +14,8 @@ const select_year = document.querySelector("#select-yyyy");
 const select_month = document.querySelector("#select-mm");
 const select_date = document.querySelector("#select-dd");
 
+const email = document.querySelector(".email");
+
 const Toast = Swal.mixin({
     toast: true,
     position: 'center',
@@ -24,7 +26,21 @@ const Toast = Swal.mixin({
 
 let stop_flag = false;
 
+$.ajax({
+    type: "post",
+    dataType: "text",
+    url: "/api/v1/delivery/user-auth",
+    success: function (data) {
+        data = JSON.parse(data);
+        console.log(data);
+        setUserInfo(data);
+    }
+})
 
+function setUserInfo(data) {
+    email.innerText = data.email;
+
+}
 
 btn_change.onclick = () => {
     btn_change.classList.toggle("active");
@@ -110,6 +126,7 @@ btn_send.onclick = () => {
                                     title: '휴대폰 인증이 정상적으로 완료되었습니다.'
                                 })
                                 stop_flag = true;
+
                             } else if (data == false) {
                                 Toast.fire({
                                     icon: 'error',

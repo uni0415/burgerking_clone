@@ -104,4 +104,6 @@ public class AuthController {
 		User user = authService.getUserById(id);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
+	
+	
 }

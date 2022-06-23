@@ -75,7 +75,7 @@ public class DeliveryController {
 		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
 	}
 	
-	@PostMapping("/delivery/auth-membership")
+	@PostMapping("/delivery/user-auth")
 	public ResponseEntity<?> getMembership(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		User user = principalDetails.getUser();
 		return new ResponseEntity<>(user, HttpStatus.OK);

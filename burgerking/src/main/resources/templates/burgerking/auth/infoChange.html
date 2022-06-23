@@ -98,55 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="membership">
-                <div class="membership-title">
-                    <h2 class="membership-tit">
-                        MY킹
-                        <span>>정보변경</span>
-                    </h2>
-                </div>
-                <div class="myhistory">
-                    <div class="membership-info">
-                        <p class="user-info">
-                            <strong>김지훈 님!</strong>
-                            <span>반갑습니다</span>
-                        </p>
-                        <div class="links">
-                            <a href="/auth/info-change">
-                                <span>정보변경</span>
-                            </a>
-                            <a href="#">
-                                <span>MY배달지</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="coupon-info">
-                        <div class="info-membership-welcome">
-                            <a href="/delivery/membership">
-                                <span>멤버십</span>
-                                <div class="welcome">
-                                    <strong>WELCOME</strong>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="info-membership-coupon">
-                            <a href="/delivery/mycoupon">
-                                <span>나의 쿠폰</span>
-                                <div class="coupon">
-                                    <strong>멤버십0 딜리버리0</strong>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="info-membership-order">
-                            <a href="/delivery/orderlist">
-                                <div class="order">
-                                    <strong>주문이력</strong>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/delivery/auth-membership :: auth-membership"></th:block>
             <div class="all-contentsBox">
                 <div class="contentsBox01">
                     <div class="subtit-wrap">
@@ -161,7 +113,7 @@
                                 <dl>
                                     <dt>이메일</dt>
                                     <dd>
-                                        <span>2001lion@naver.com</span>
+                                        <span class="email">2001lion@naver.com</span>
                                     </dd>
                                 </dl>
                                 <dl>
@@ -176,7 +128,7 @@
                                     <dt class="cellphone">핸드폰</dt>
                                     <dd>
                                         <div class="cell-num">
-                                            <span>01024349616</span>
+                                            <span class="phone">01024349616</span>
                                             <button type="button" class="btn-change">
                                                 <span>변경</span>
                                             </button>

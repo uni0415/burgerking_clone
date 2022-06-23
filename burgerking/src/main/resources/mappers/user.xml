@@ -117,6 +117,6 @@
 			now(),
 			now()
   		)
-  		
   	</insert>
+  	
   </mapper>
