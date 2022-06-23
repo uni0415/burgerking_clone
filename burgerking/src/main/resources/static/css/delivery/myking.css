@@ -1,8 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Titan+One&display=swap');
-
+.container {
+    position: relative;
+    min-width: 960px;
+    max-height: 100%;
+}
 
 .wrapper {
+    position: relative;
     background: #fff;
+    margin: 0 auto;
+    padding: 168px 0 272px;
 }
 
 .btn-top {
@@ -100,7 +106,6 @@
 }
 
 .head-list {
-    margin-top: 168px;
     width: 100%;
     height: 124px;
     font-size: 1.375rem;
@@ -271,7 +276,10 @@
     font-size: 2.5rem;
     line-height: 100%;
     font-weight: 700;
+}
 
+.membership-tit span {
+    font-family: SDGothic, HGG, "Malgun Gothic", "맑은 고딕", dotum, 돋움, sans-serif;
 }
 
 .myhistory {
@@ -387,404 +395,37 @@
 }
 
 .all-contentsBox {
+    padding: 50px 0 45px;
     background-color: #f2ebe6;
+    height: 100%;
 }
 
 .contentsBox01 {
-    padding: 70px 16px 320px 16px;
-    max-width: 1184px;
-    height: 100%;
-    margin: 0 auto;
-}
-
-.contents01 {
-    display: flex;
     max-width: 1184px;
     margin: 0 auto;
+    padding: 20px 20px;
 }
 
-
-.grade {
-    flex: 1 0 300px;
-    max-width: 300px;
-    font-size: 40px;
-    text-align: center;
-    background: #f8f8f8;
-}
-
-.level {
-    margin-top: 90px;
-    font-family: 'Titan One', cursive;
-    font-weight: 400;
-    line-height: 1;
-}
-
-.level-wrap {
-    flex: 1 0;
-    padding: 30px 78px 30px 65px;
-    background: #f8f8f8;
-}
-
-.level-graph {
-    padding-top: 60px;
-    position: relative;
-    width: calc(100% - 60px);
-}
-
-.pointer {
-    position: absolute;
-    top: 0;
-    background: url(/static/images/pointer.png) no-repeat bottom;
-    width: 46px;
-    height: 60px;
-    background-size: 46px auto;
-    transform: translateX(-24px);
-    text-indent: -9999px;
-}
-
-.bar {
-    height: 20px;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    background-color: #f5ebdc;
-}
-
-.progress {
-    top: 60px;
-    height: 20px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    position: absolute;
-    left: 0;
-    background-color: #fa0;
-}
-
-.member-smallball {
-    display: block;
-    position: absolute;
-    right: -59px;
-    top: 40px;
-    width: 60px;
-    height: 60px;
-    background-size: 60px auto;
-    background-image: url(/static/images/new.png);
-}
-
-.level-info {
-    margin-top: 16px;
-    font-size: 22px;
-    text-align: center;
-}
-
-.level-add {
-    font-size: 26px;
-    margin-top: -2px;
-    font-family: 'Titan One', cursive;
-    font-weight: 400;
-}
-
-.level-next {
-    font-size: 26px;
-    margin-top: -2px;
-    font-family: 'Titan One', cursive;
-    font-weight: 400;
-}
-
-.contents02 {
-    margin: 0 auto;
-}
-
-.nav-membership {
-    margin-top: 50px;
-    margin-bottom: 20px;
-    overflow: auto;
-}
-
-.nav-membership ul {
-    display: table;
-}
-
-.nav-membership li {
-    position: relative;
-    display: table-cell;
-    padding: 0 14px;
-}
-
-.nav-membership li.on button {
-    color: #e22219;
-    border-bottom-color: #e22219;
-}
-
-.nav-membership li button {
-    height: 54px;
-    padding: 10px 0;
-    display: inline-block;
-    font-size: 1.375rem;
-    border: 0 solid transparent;
-    border-width: 4px 0;
-    font-weight: 700;
-    cursor: pointer;
-    background: inherit;
-    color: #b8b8b8;
-}
-
-.nav-membership button:hover {
-    color: black;
-}
-
-
-.level-class {
-    position: relative;
-    padding: 10px 20px 55px;
-    margin: 15px 0;
-    font-size: 1.375rem;
-    background: #fff;
-    text-align: center;
-}
-
-
-.benefits {
-    display: none;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 50px;
-}
-
-.benefits.on {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.item-welcome-coupon {
-    flex: 1 0 270px;
-    width: 400px;
-    position: relative;
-    padding: 110px 10px 0;
-    margin-top: 50px;
-    background: url(/static/images/crown.png) no-repeat;
-    background-position: center 10px;
-}
-
-.item-birthday {
-    flex: 1 0 270px;
-    width: 400px;
-    position: relative;
-    padding: 110px 10px 0;
-    margin-top: 50px;
-    background: url(/static/images/birthday.png) no-repeat;
-    background-position: center 10px;
-}
-
-.item-coupon-ticket {
-    flex: 1 0 270px;
-    width: 270px;
-    position: relative;
-    padding: 110px 10px 0;
-    margin-top: 50px;
-    background: url(/static/images/ticket.png) no-repeat;
-    background-position: center 10px;
-}
-
-.item-levelup {
-    flex: 1 0 270px;
-    width: 270px;
-    position: relative;
-    padding: 110px 10px 0;
-    margin-top: 50px;
-    background: url(/static/images/levelup.png) no-repeat;
-    background-position: center 10px;
-}
-
-.item-level {
-    flex: 1 0 270px;
-    width: 270px;
-    position: relative;
-    padding: 110px 10px 0;
-    margin-top: 50px;
-    background: url(/static/images/crown.png) no-repeat;
-    background-position: center 10px;
-}
-
-.item-americano {
-    flex: 1 0 270px;
-    width: 270px;
-    position: relative;
-    padding: 110px 10px 0;
-    margin-top: 50px;
-    background: url(/static/images/amerino.png) no-repeat;
-    background-position: center 10px;
-}
-
-.guide-title {
-    position: relative;
-    margin: 25px 0;
-    padding: 12px 0;
+.nodata {
     font-size: 1.5rem;
-    border-bottom: 2px solid #000;
-    font-weight: 400;
-}
-
-.list01 {
-    margin: 7px 0 7px 5px;
-    line-height: 167%;
-}
-
-.list01 li {
-    position: relative;
-    padding-left: 12px;
-}
-
-.list01>li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 12px;
-    height: 1.67em;
-    background: url(/static/images/dot.png) no-repeat 0;
-}
-
-.line {
-    padding: 0;
-    margin: 10px 0 0 0;
-    border-top: 1px solid #502314;
-}
-
-.line>:not(:last-child) {
-    padding: 10px 0;
-    border-bottom: 1px solid #d7c8b5;
-}
-
-.line>li strong::after {
-    content: " : ";
-}
-
-.line-subtitle {
-    margin-top: 10px;
-    font-size: .93em;
-    font-weight: 600;
-}
-
-.list02 {
-    margin: 7px 0 7px 5px;
-    line-height: 167%;
-}
-
-.list02>li {
-    position: relative;
-    padding-left: 8px;
-    font-size: .93em;
-}
-
-.list02>li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 4px;
-    height: 1px;
-    background: #6e3d2f;
-}
-
-.text {
-    font-size: .875rem;
-    margin: 15px 10px;
-    line-height: 129%;
-}
-
-.graph {
-    padding-left: 20px;
-}
-
-.table {
-    position: relative;
-    margin: 0 0 10px;
-    width: 100%;
-    font-size: .93rem;
-    text-align: center;
     line-height: 150%;
-    border-collapse: collapse;
+    padding: 370px 10px 10px;
+    color: #766e69;
+    text-align: center;
+    background: url(/static/images/burgerking-logo-white.png) no-repeat center 150px;
+    z-index: 10;
 }
 
-.table::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 1px;
-    background: #502314;
-}
 
-.table thead th {
-    padding: 11px 1px 7px;
-    font-weight: 600;
-    border-left: 1px solid #d7c8b5;
-    border-bottom: 1px solid #d7c8b5;
-}
 
-.table thead th:first-child {
-    border-left: none;
-}
 
-.table tbody td {
-    padding: 10px 0;
-    border-left: 1px solid #d7c8b5;
-    border-bottom: 1px solid #d7c8b5;
-}
 
-.table tbody td:first-child {
-    border-left: none;
-}
 
-.guide-coupon {
-    position: relative;
-    margin: 25px 0;
-    padding: 12px 0;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #000;
-    font-weight: 400;
-}
 
-.guide-coupon h5 {
-    font-weight: 900;
-    font-size: 1em;
-}
 
-.guide-coupon ul {
-    margin: 7px 0 7px 5px;
-    line-height: 167%;
-}
 
-.list03>li {
-    position: relative;
-    padding-left: 12px;
-}
 
-.list03>li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 12px;
-    height: 1.67em;
-    background: url(/static/images/dot.png) no-repeat 0;
-}
 
-.excluded-store {
-    position: relative;
-    margin: 25px 0;
-    padding: 12px 0;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #000;
-    font-weight: 400;
-}
-
-.excluded-store h5 {
-    font-weight: 900;
-    font-size: 1em;
-}
 
 
 .footer-contents {
@@ -845,7 +486,6 @@
 .footer-service>li>li>a>span {
     font-size: 14px;
 }
-
 
 .footer-btn>a {
     display: inline-block;

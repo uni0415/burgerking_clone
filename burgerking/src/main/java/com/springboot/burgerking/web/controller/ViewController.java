@@ -69,4 +69,29 @@ public class ViewController {
 	public String infochange() {
 		return "burgerking/auth/infochange";
 	}
+	
+	@GetMapping("/delivery/mydelivery")
+	public String mydelivery() {
+		return "burgerking/delivery/mydelivery";
+	}
+	
+	@GetMapping("/delivery/myking")
+	public String myking() {
+		return "burgerking/delivery/myking";
+	}
+	
+	@GetMapping("/delivery/orderlist")
+	public String orderlist() {
+		return "burgerking/delivery/orderlist";
+	}
+	
+	@GetMapping("/delivery/membership")
+	public String membership() {
+		return "burgerking/delivery/membership";
+	}
+	
+	@GetMapping("/delivery/mycoupon")
+	public String mycoupon() {
+		return "burgerking/delivery/mycoupon";
+	}
 }
