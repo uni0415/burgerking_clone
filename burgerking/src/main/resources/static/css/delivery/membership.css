@@ -567,7 +567,7 @@
 }
 
 .item-birthday {
-    flex: 1 0 270px;
+    flex: 1 0 196px;
     width: 400px;
     position: relative;
     padding: 110px 10px 0;
@@ -577,8 +577,8 @@
 }
 
 .item-coupon-ticket {
-    flex: 1 0 270px;
-    width: 270px;
+    flex: 1 0 196px;
+    min-width: 270px;
     position: relative;
     padding: 110px 10px 0;
     margin-top: 50px;
@@ -587,8 +587,8 @@
 }
 
 .item-levelup {
-    flex: 1 0 270px;
-    width: 270px;
+    flex: 1 0 196px;
+    min-width: 270px;
     position: relative;
     padding: 110px 10px 0;
     margin-top: 50px;
@@ -597,8 +597,8 @@
 }
 
 .item-level {
-    flex: 1 0 270px;
-    width: 270px;
+    flex: 1 0 196px;
+    min-width: 270px;
     position: relative;
     padding: 110px 10px 0;
     margin-top: 50px;
@@ -607,8 +607,8 @@
 }
 
 .item-americano {
-    flex: 1 0 270px;
-    width: 270px;
+    flex: 1 0 196px;
+    min-width: 270px;
     position: relative;
     padding: 110px 10px 0;
     margin-top: 50px;

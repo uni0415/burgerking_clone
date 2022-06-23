@@ -65,9 +65,8 @@ function setDeliveryModalMenu(submenu_data) {
         product_subtext.innerText = submenu_data[0].main_menu_summary;
     }
     for (let i = 0; i < submenu_data.length; i++) {
-        let price_before = submenu_data[i].price.slice(submenu_data[i].price.length - 3, submenu_data[i].price.length);
-        let price_after = submenu_data[i].price.slice(0, submenu_data[i].price.length - 3);
-        let price = price_after + "," + price_before;
+        let price = submenu_data[i].price;
+        price = price.toLocaleString('ko-KR');
         str += `
         <li class="sub-menu-list">
             <div class="menu-sub-image-box">

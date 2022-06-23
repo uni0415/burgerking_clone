@@ -47,7 +47,7 @@ function loadOrderList() {
 			"menu_id": menu_id
 		},
 		url: `/api/v1/delivery/cart/${menu_id}`,
-		success: function(data) {
+		success: function (data) {
 			data = JSON.parse(data);
 			additionalList();
 			setMenuList(data);
@@ -60,7 +60,7 @@ function loadOrderList() {
 			"side_menu_id": side_menu_id
 		},
 		url: `/api/v1/delivery/cart/side/${side_menu_id}`,
-		success: function(data) {
+		success: function (data) {
 			data = JSON.parse(data);
 			console.log(data);
 			setSideMenuList(data);
@@ -75,7 +75,7 @@ function loadOrderList() {
 			"drink_menu_id": drink_menu_id
 		},
 		url: `/api/v1/delivery/cart/drink/${drink_menu_id}`,
-		success: function(data) {
+		success: function (data) {
 			data = JSON.parse(data);
 			console.log(data);
 			setSideDrinkList(data);

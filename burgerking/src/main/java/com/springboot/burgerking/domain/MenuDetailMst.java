@@ -21,7 +21,7 @@ public class MenuDetailMst {
 	private String name;
 	private String summary;
 	private String menu_images;
-	private String price;
+	private int price;
 	private int set_add_price;
 	private int large_add_price;
 	
