@@ -198,6 +198,75 @@ header {
     background: #fff;
 }
 
+.title-caution {
+    position: relative;
+    margin: 25px 0;
+    padding: 12px 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #000;
+}
+
+.tit-caution {
+    margin-right: 10em;
+    font-size: 1em;
+}
+
+.info-ingredient {
+    position: absolute;
+    padding: 0 0 0 24px;
+    right: 0;
+    top: 50%;
+    height: 1.4em;
+    margin-top: -0.7em;
+    font-size: 1.125rem;
+    color: #2e2e2e;
+    border: none;
+    cursor: pointer;
+    background: url(/static/images/info.png) no-repeat 0;
+}
+
+.info-ingredient strong {
+    position: relative;
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.info-ingredient>::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background: url(/static/images/next1.png) no-repeat 100%;
+}
+
+.order-caution ul {
+    margin: 7px 0 7px 5px;
+    line-height: 167%;
+}
+
+.order-caution ul li {
+    position: relative;
+    padding-left: 12px;
+}
+
+.order-caution ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 1.67em;
+    background: url(/static/images/dot.png) no-repeat 0;
+}
+
+
+
+
+
+
+
 
 
 footer {
