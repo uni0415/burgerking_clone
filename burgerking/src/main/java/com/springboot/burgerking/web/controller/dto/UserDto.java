@@ -40,4 +40,11 @@ public class UserDto {
 				.password(password)
 				.build();
 	}
+	
+	public User toUpdatePhoneEntity() {
+		return User.builder()
+				.email(email)
+				.phone(phone)
+				.build();
+	}
 }

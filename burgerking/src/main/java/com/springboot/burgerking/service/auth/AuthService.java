@@ -11,4 +11,6 @@ public interface AuthService {
 	public int signup(User user);
 	public User signin(User user);
 	public User getUserById(int id);
+	public int updatePhone(User user);
+	public String getPhone(String email);
 }

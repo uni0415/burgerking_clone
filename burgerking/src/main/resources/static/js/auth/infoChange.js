@@ -15,6 +15,9 @@ const select_month = document.querySelector("#select-mm");
 const select_date = document.querySelector("#select-dd");
 
 const email = document.querySelector(".email");
+const member_info_name = document.querySelector(".member-info-name");
+const phone = document.querySelector(".phone");
+
 
 const Toast = Swal.mixin({
     toast: true,
@@ -24,22 +27,36 @@ const Toast = Swal.mixin({
     timerProgressBar: true,
 })
 
-let stop_flag = false;
-
-$.ajax({
-    type: "post",
-    dataType: "text",
-    url: "/api/v1/delivery/user-auth",
-    success: function (data) {
-        data = JSON.parse(data);
-        console.log(data);
-        setUserInfo(data);
-    }
+const Toast2 = Swal.mixin({
+    toast: true,
+    position: 'center',
+    showConfirmButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '확인',
 })
+
+let stop_flag = false;
+loadUserInfo();
+
+function loadUserInfo() {
+    $.ajax({
+        type: "post",
+        dataType: "text",
+        url: "/api/v1/delivery/user-auth",
+        success: function (data) {
+            data = JSON.parse(data);
+            console.log(data);
+            setUserInfo(data);
+        }
+    })
+}
+
 
 function setUserInfo(data) {
     email.innerText = data.email;
-
+    member_info_name.innerText = data.name;
+    phone.innerText = data.phone;
 }
 
 btn_change.onclick = () => {
@@ -121,21 +138,39 @@ btn_send.onclick = () => {
                             data = JSON.parse(data);
 
                             if (data == true) {
-                                Toast.fire({
+                                Toast2.fire({
                                     icon: 'success',
-                                    title: '휴대폰 인증이 정상적으로 완료되었습니다.'
-                                })
+                                    title: '휴대폰 변경이 정상적으로 완료되었습니다.'
+                                }).then(result => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
                                 stop_flag = true;
-
+                                $.ajax({
+                                    type: "post",
+                                    dataType: "text",
+                                    data: {
+                                        "email": email.textContent,
+                                        "phone": phone_input_item.value
+                                    },
+                                    url: "/api/v1/auth/updatePhone",
+                                    sucess: function (data) {
+                                        data = JSON.parse(data);
+                                        reload();
+                                    }
+                                })
                             } else if (data == false) {
                                 Toast.fire({
                                     icon: 'error',
                                     title: '인증번호가 올바르지 않습니다!'
                                 })
                             }
-                        }
-                    })
 
+
+                        }
+
+                    })
                 }
             },
             error: function () {
@@ -143,6 +178,10 @@ btn_send.onclick = () => {
             }
         })
     }
+}
+
+function reload() {
+    location.reload();
 }
 
 function startTimer(duration, display) {
