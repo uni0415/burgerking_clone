@@ -8,6 +8,7 @@
     <title>멤버십</title>
     <link rel="stylesheet" href="/static/css/include/container.css">
     <link rel="stylesheet" href="/static/css/delivery/membership.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -96,52 +97,7 @@
                     </div>
                 </div>
             </div>
-            <div class="membership">
-                <div class="membership-title">
-                    <h2 class="membership-tit">멤버십</h2>
-                </div>
-                <div class="myhistory">
-                    <div class="membership-info">
-                        <p class="user-info">
-                            <strong>김지훈 님!</strong>
-                            <span>반갑습니다</span>
-                        </p>
-                        <div class="links">
-                            <a href="#">
-                                <span>정보변경</span>
-                            </a>
-                            <a href="#">
-                                <span>MY배달지</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="coupon-info">
-                        <div class="info-membership-welcome">
-                            <a href="#">
-                                <span>멤버십</span>
-                                <div class="welcome">
-                                    <strong>WELCOME</strong>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="info-membership-coupon">
-                            <a href="#">
-                                <span>나의 쿠폰</span>
-                                <div class="coupon">
-                                    <strong>멤버십0 딜리버리0</strong>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="info-membership-order">
-                            <a href="#">
-                                <div class="order">
-                                    <strong>주문이력</strong>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/delivery/auth-membership :: auth-membership"></th:block>
 
             <div class="all-contentsBox">
                 <div class="contentsBox01">
@@ -183,20 +139,17 @@
                                     </button>
                                 </li>
                                 <li class="membership-junior">
-                                    <button type="button"
-                                    class="membership-button">
+                                    <button type="button" class="membership-button">
                                         <span>JUNIOR</span>
                                     </button>
                                 </li>
                                 <li class="membership-whopper">
-                                    <button type="button"
-                                    class="membership-button">
+                                    <button type="button" class="membership-button">
                                         <span>WHOPPER</span>
                                     </button>
                                 </li>
                                 <li class="membership-king">
-                                    <button type="button"
-                                    class="membership-button">
+                                    <button type="button" class="membership-button">
                                         <span>KING</span>
                                     </button>
                                 </li>
@@ -216,7 +169,7 @@
                             <div class="benefits">
                                 <div class="item-coupon-ticket">
                                     <strong>주니어등급 전용 특가</strong>
-                                </br>쿠폰 (매장용)
+                                    </br>쿠폰 (매장용)
                                 </div>
                                 <div class="item-levelup">
                                     <strong>
@@ -313,7 +266,8 @@
                                         </div>
                                         <ul class="list02">
                                             <li>
-                                                온라인의 경우 버거킹 앱으로 로그인 후 딜리버리 혹은 킹오더 주문을 한 경우에 한하여 인정되며, 오프라인의 경우 키오스크 혹은 POS 주문 시 버거킹 앱 내 ‘멤버십 바코드’ 인식 후 혹은 바코드를 인식하지 않더라도
+                                                온라인의 경우 버거킹 앱으로 로그인 후 딜리버리 혹은 킹오더 주문을 한 경우에 한하여 인정되며, 오프라인의 경우 키오스크 혹은
+                                                POS 주문 시 버거킹 앱 내 ‘멤버십 바코드’ 인식 후 혹은 바코드를 인식하지 않더라도
                                                 멤버십 쿠폰이 포함된 주문 완료된 건에 한하여 인정됩니다.
                                             </li>
                                             <li>
@@ -413,7 +367,10 @@
                             <h5>멤버십 적립 제외 매장</h5>
                         </div>
                         <div class="stores">
-                            경기양평점, 경남대점, 경남사천점, 경남삼천포점, 경북영주가흥점, 경주보문점, 광양LF스퀘어점, 광양중동점, 광주봉선점, 광주월계점, 광주첨단2지구점, 광주터미널점, 구미인의점, 군산나운FS점, 군산수송점, 김포현대아울렛, 김해아이스퀘어몰점, 나주빛가람점, 당진읍내점, 대명비발디점, 대전관평점, 대전시청점, 대전현대아울렛점, 목포하당점, 보령동대점, 삼성라이온즈파크점, 오산궐동점, 오션월드점, 원주기업도시점, 의정부HP점, 인천공항1점, 인천공항교통센터1점, 전남도청점, 전북대점, 전주중앙점, 제천CGV점, 지산리조트점, 진주경상대점, 진주혁신도시점, 천안쌍용대로DT점, 충남도청점, 호남대점
+                            경기양평점, 경남대점, 경남사천점, 경남삼천포점, 경북영주가흥점, 경주보문점, 광양LF스퀘어점, 광양중동점, 광주봉선점, 광주월계점, 광주첨단2지구점, 광주터미널점,
+                            구미인의점, 군산나운FS점, 군산수송점, 김포현대아울렛, 김해아이스퀘어몰점, 나주빛가람점, 당진읍내점, 대명비발디점, 대전관평점, 대전시청점, 대전현대아울렛점,
+                            목포하당점, 보령동대점, 삼성라이온즈파크점, 오산궐동점, 오션월드점, 원주기업도시점, 의정부HP점, 인천공항1점, 인천공항교통센터1점, 전남도청점, 전북대점,
+                            전주중앙점, 제천CGV점, 지산리조트점, 진주경상대점, 진주혁신도시점, 천안쌍용대로DT점, 충남도청점, 호남대점
                         </div>
                     </div>
                 </div>

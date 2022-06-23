@@ -80,13 +80,13 @@ function loadOrderList() {
         }
     })
 
-    $.ajax({
-        type: "post",
-        dataType: "text",
-        data: {
-            ""
-		}
-    })
+    // $.ajax({
+    //     type: "post",
+    //     dataType: "text",
+    //     data: {
+    //         ""
+    // 	}
+    // })
 
 }
 

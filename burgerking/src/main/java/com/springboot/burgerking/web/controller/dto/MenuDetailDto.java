@@ -14,7 +14,7 @@ public class MenuDetailDto {
 	private int menu_id;
 	private String name;
 	private String menu_images;
-	private String price;
+	private int price;
 	private int set_add_price;
 	private int large_add_price;
 }

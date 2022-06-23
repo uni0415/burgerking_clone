@@ -53,9 +53,8 @@ function appendProductList(menu_data) {
     let menu_list = ``;
     console.log(menu_data)
     for (let i = 0; i < menu_data.length; i++) {
-        let price_before = menu_data[i].price.slice(menu_data[i].price.length - 3, menu_data[i].price.length);
-        let price_after = menu_data[i].price.slice(0, menu_data[i].price.length - 3);
-        let price = price_after + "," + price_before;
+        let price = menu_data[i].price;
+        price = price.toLocaleString('ko-KR')
         if (menu_data[i].category_id == 1) {
             menu_list += `
                 <li>
