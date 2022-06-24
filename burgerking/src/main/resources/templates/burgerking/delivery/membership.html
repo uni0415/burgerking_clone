@@ -15,60 +15,8 @@
     <div id="container">
         <div class="wrapper">
             <a href="#container" class="btn-top"></a>
-            <div class="header-wrap">
-                <div class="container-one">
-                    <div class="header">
-                        <ul class="header-menu">
-                            <a href="" class="top-menu">
-                                <span>브랜드홈</span>
-                            </a>
-                            <a href="" class="top-menu">
-                                <span>로그아웃</span>
-                            </a>
-                            <a href="/delivery/myking" class="top-menu">
-                                <span>MY킹</span>
-                            </a>
-                            <a href="" class="top-menu">
-                                <span>고객센터</span>
-                            </a>
-                        </ul>
-                        <h1 class="logo">
-                            <span>딜리버리</span>
-                        </h1>
-                        <div class="user">
-                            <p>
-                                <span>김지훈</span>
-                                님 안녕하세요
-                            </p>
-                            <a href="/delivery/myking">
-                                <strong>MY킹 바로가기</strong>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="head-list">
-                <div class="blackboard-list">
-                    <div class="delivery-order">
-                        <a href="/delivery/orderlist">
-                            <p>
-                                <strong>딜리버리 주문내역</strong><br>
-                                <a>주문내역이 없습니다.</a>
-                            </p>
-                        </a>
-                    </div>
-                    <div class="cart">
-                        <a href="#">
-                            <p>
-                                <strong>카트</strong><br>
-                                <a>카트에 담은 상품이 없습니다</a>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
+            <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
+            <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
             <div class="location">
                 <div class="main-location">
                     <div class="page-nav">

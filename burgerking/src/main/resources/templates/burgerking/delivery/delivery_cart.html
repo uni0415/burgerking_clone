@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/css/include/location-wrap.css">
     <link rel="stylesheet" href="/static/css/delivery/delivery_menu.css">
     <link rel="stylesheet" href="/static/css/delivery/delivery_cart.css">
+    <link rel="stylesheet" href="/static/css/delivery/menu-modal-box.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Document</title>
@@ -18,69 +19,11 @@
 <body>
     <div id="container">
         <div class="wrap">
-            <header>
-                <div class="header-main">
-                    <div class="header-main-menu">
-                        <div class="header-container">
-                            <h1 class="burgerking-logo">
-                                딜리버리
-                            </h1>
-                            <div class="mypage">
-                                <p class="name">
-                                    <span>김경운</span>
-                                    님 안녕하세요
-                                </p>
-                                <a href="">
-                                    <strong>MY킹 바로가기</strong>
-                                </a>
-                            </div>
-                            <div class="header-util-wrap">
-                                <a href="/index"><span class="header-option">브랜드홈</span></a>
-                                <a href="#"><span class="header-option">로그아웃</span></a>
-                                <a href="#"><span class="header-option">MY킹</span></a>
-                                <a href="#"><span class="header-option">고객센터</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <div class="delivery-personal-wrap">
-                <div class="delivery-container">
-                    <div class="order-history">
-                        <div class="order-history-box">
-                            <strong>딜리버리 주문내역</strong>
-                            <span>주문내역이 없습니다.</span>
-                        </div>
-                    </div>
-                    <div class="order-cart">
-                        <div class="order-cart-box">
-                            <div class="cart-count">
-                                <strong>카트</strong>
-                                <!-- <div class="count">
-                                        <span>1</span>
-                                    </div> -->
-                            </div>
-                            <span>카트에 담은 상품이 없습니다</span>
-                        </div>
-                    </div>
-                    <div></div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
+            <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
             <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
 
             <div class="cart-main-container">
-                <!-- <div class="nav-wrap">
-                    <div class="nav-container">
-                        <div class="page-nav">
-                            <a href="#"><span>딜리버리</span></a>
-                            <a href="#"><span>카트</span></a>
-                        </div>
-                        <div class="location-nav">
-
-                        </div>
-                    </div>
-                </div> -->
                 <div class="contents-box">
                     <div class="web-container">
                         <div class="subject-wrap">
@@ -170,7 +113,7 @@
                                                     <span>음료1</span>
                                                     <div class="additional-box">
                                                         <div class="side-menu-list">
-                                                            <span>콜라 (L)</span>
+                                                            <span></span>
                                                             <strong>
                                                                 +
                                                                 <span class="add-price">0</span>
@@ -185,7 +128,7 @@
                                                     <span>음료2</span>
                                                     <div class="additional-box">
                                                         <div class="side-menu-list">
-                                                            <span>콜라 (L)</span>
+                                                            <span></span>
                                                             <strong>
                                                                 +
                                                                 <span class="add-price">0</span>
@@ -247,6 +190,41 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal-full-pop-wrap">
+                        <div class="side-modal-box">
+                            <div class="modal-header-wrap">
+                                <h2 class="modal-header-title">
+                                    사이드 변경
+                                </h2>
+                                <button class="modal-close-button"></button>
+                            </div>
+                            <div class="modal-sidemenu-content-box">
+                                <ul class="menu-change">
+
+                                </ul>
+                            </div>
+                            <button type="button" class="choice">
+                                <span>선 택</span>
+                            </button>
+                        </div>
+
+                        <div class="drink-modal-box">
+                            <div class="modal-header-wrap">
+                                <h2 class="modal-header-title">
+                                    음료 변경
+                                </h2>
+                                <button class="modal-close-button"></button>
+                            </div>
+                            <div class="modal-drink-content-box">
+                                <ul class="drink-change">
+
+                                </ul>
+                            </div>
+                            <button type="button" class="choice">
+                                <span>선 택</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -302,6 +280,7 @@
     </div>
     <script src="/static/js/include/location-wrap.js"></script>
     <script src="/static/js/delivery/delivery_cart.js"></script>
+    <script src="/static/js/delivery/menu-change-modal.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,9 @@
 package com.springboot.burgerking.domain.auth;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.springboot.burgerking.web.controller.dto.MenuListDto;
 import com.springboot.burgerking.web.controller.dto.UserDto;
 
 import lombok.AllArgsConstructor;
@@ -25,6 +27,7 @@ public class User {
 	private String birth_month;
 	private String birth_date;
 	private String password;
+	private List<MenuListDto> order_menu_list;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
 	

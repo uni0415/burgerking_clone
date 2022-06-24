@@ -309,6 +309,7 @@ input[type=checkbox]:checked+:before {
     background-color: #2e2e2e;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 }
 
 .additional-list-button>span {

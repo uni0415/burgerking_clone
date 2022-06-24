@@ -8,6 +8,7 @@ import com.springboot.burgerking.domain.DeliveryRepository;
 import com.springboot.burgerking.domain.DeliverySideMenu;
 import com.springboot.burgerking.domain.MenuDetailMst;
 import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
+import com.springboot.burgerking.web.controller.dto.MenuListDto;
 
 import lombok.RequiredArgsConstructor;
 @Service
@@ -36,7 +37,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 	}
 	
 	@Override
-	public MenuDetailDto getMenuInfo(String id) {
-		return deliveryRepository.getMenuInfo(id).toMenuInfoDto();
+	public List<MenuDetailDto> getMenuInfo(MenuListDto menuListDto) {
+		return deliveryRepository.getMenuInfo(menuListDto);
 	}
 }

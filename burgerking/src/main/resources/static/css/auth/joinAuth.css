@@ -437,7 +437,7 @@ input[type=checkbox]:checked+:before {
     padding: 0 5px;
     display: inline-block;
     margin-top: -17.5px;
-    right: 0;
+    right: 50px;
     top: 50%;
     line-height: 21px;
     background: url(/static/images/cert-success.png) no-repeat 0,

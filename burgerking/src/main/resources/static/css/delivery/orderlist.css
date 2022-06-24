@@ -22,88 +22,7 @@
     background: url(/static/images/top-logo.png);
 }
 
-.header-wrap {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 168px;
-    background: rgb(226, 34, 25);
-    z-index: 2;
-}
 
-.header {
-    position: relative;
-    padding: 48px 20px 0 20px;
-    margin: 0 auto;
-    max-width: 1184px;
-}
-
-.header-menu {
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-}
-
-.top-menu {
-    position: relative;
-    display: block;
-    float: left;
-    height: 48px;
-    font-size: 14px;
-    line-height: 48px;
-    padding: 0px 14px;
-    color: #fff;
-}
-
-.top-menu:not(:nth-child(1))::before {
-    content: "";
-    position: absolute;
-    left: 0px;
-    top: 50%;
-    width: 1px;
-    height: 13px;
-    margin-top: -6.5px;
-    background: hsla(0, 0%, 100%, .3);
-}
-
-.logo {
-    display: inline-block;
-    position: static;
-    width: auto;
-    height: 120px;
-    padding-left: 80px;
-    padding-right: 10px;
-    font-weight: 700;
-    font-size: 2.25rem;
-    color: rgb(255, 255, 255);
-    text-indent: 0px;
-    line-height: 120px;
-    cursor: pointer;
-    background: url(/static/images/burgerking-logo.png) 0px center no-repeat;
-}
-
-.user {
-    position: absolute;
-    right: 20px;
-    bottom: 36px;
-    min-height: 46px;
-    padding: 3px 0 3px 57px;
-    color: #fff;
-    background: url(/static/images/user.png) no-repeat 0;
-}
-
-.user a {
-    margin-top: 3px;
-    padding-right: 16px;
-    font-weight: 700;
-    color: #fff;
-    background: url(/static/images/myking-direct.png) no-repeat 100%;
-    cursor: pointer;
-}
 
 .head-list {
     width: 100%;
@@ -406,42 +325,42 @@
     padding: 20px 20px;
 }
 
-.subtit-wrap{
+.subtit-wrap {
     position: relative;
     margin-bottom: 26px;
 }
 
-.page-tit{
+.page-tit {
     margin-bottom: 15px;
     font-size: 2.5rem;
     line-height: 100%;
     font-weight: 400;
 }
 
-.page-tit-tab{
+.page-tit-tab {
     position: absolute;
     right: 0;
     top: 50%;
     margin: -17.5px 0 0;
 }
 
-.items{
+.items {
     display: flex;
     justify-content: center;
 }
 
-.page-tit-tab li{
+.page-tit-tab li {
     position: relative;
     display: table-cell;
     padding: 0 14px;
 }
 
-.page-tit-tab li.on button{
+.page-tit-tab li.on button {
     color: #e22219;
     border-bottom: 3px solid #e22219;
 }
 
-.page-tit-tab button{
+.page-tit-tab button {
     padding: 10px 0;
     height: 35px;
     font-size: 1rem;
@@ -452,7 +371,7 @@
     color: #b8b8b8;
 }
 
-.page-tit-tab button:hover{
+.page-tit-tab button:hover {
     color: black;
 }
 

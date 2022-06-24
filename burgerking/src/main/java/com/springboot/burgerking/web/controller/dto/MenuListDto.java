@@ -10,5 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class MenuListDto {
 
-	private int category_id;
+	private String menu_id;
+	private String side_menu_id;
+	private String drink_menu_id;
 }

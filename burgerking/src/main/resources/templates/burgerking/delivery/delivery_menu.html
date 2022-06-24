@@ -18,56 +18,8 @@
 <body>
     <div id="container">
         <div class="wrap">
-            <header>
-                <div class="header-main">
-                    <div class="header-main-menu">
-                        <div class="header-container">
-                            <h1 class="burgerking-logo">
-                                딜리버리
-                            </h1>
-                            <div class="mypage">
-                                <p class="name">
-                                    <span>김경운</span>
-                                    님 안녕하세요
-                                </p>
-                                <a href="/delivery/myking">
-                                    <strong>MY킹 바로가기</strong>
-                                </a>
-                            </div>
-                            <div class="header-util-wrap">
-                                <a href="/index"><span class="header-option">브랜드홈</span></a>
-                                <a href="/logout"><span class="header-option">로그아웃</span></a>
-                                <a href="/delivery/myking"><span class="header-option">MY킹</span></a>
-                                <a href="#"><span class="header-option">고객센터</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <div class="delivery-personal-wrap">
-                <div class="delivery-container">
-                    <div class="order-history">
-                        <div class="order-history-box">
-                            <a href="/delivery/orderlist"></a>
-                            <strong>딜리버리 주문내역</strong>
-                            <span>주문내역이 없습니다.</span>
-                        </div>
-                    </div>
-                    <div class="order-cart">
-                        <div class="order-cart-box">
-                            <div class="cart-count">
-                                <strong>카트</strong>
-                                <!-- <div class="count">
-                                    <span>1</span>
-                                </div> -->
-                            </div>
-                            <span>카트에 담은 상품이 없습니다</span>
-                        </div>
-                    </div>
-                    <div></div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
+            <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
             <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
             <div class="delivery-menu-container">
                 <div class="content-box">

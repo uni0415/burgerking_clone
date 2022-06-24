@@ -17,6 +17,7 @@ import com.springboot.burgerking.domain.auth.User;
 import com.springboot.burgerking.service.DeliveryService;
 import com.springboot.burgerking.service.auth.PrincipalDetails;
 import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
+import com.springboot.burgerking.web.controller.dto.MenuListDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,54 +32,36 @@ public class DeliveryController {
 		List<MenuDetailMst> detailList = deliveryService.loadDeliveryList(category_id);
 		return new ResponseEntity<>(detailList, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/delivery/menu/detail/{menu_id}")
 	public ResponseEntity<?> loadSubmenuDetail(@PathVariable int menu_id) {
 		List<MenuDetailMst> detailList = deliveryService.loadSubmenuDetail(menu_id);
 		return new ResponseEntity<>(detailList, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/delivery/side/{set_size}")
 	public ResponseEntity<?> getSideMenuList(@PathVariable int set_size) {
 		List<DeliverySideMenu> sideMenuList = deliveryService.getSideMenuList(set_size);
 		return new ResponseEntity<>(sideMenuList, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/delivery/drink/{set_size}")
 	public ResponseEntity<?> getDrinkMenuList(@PathVariable int set_size) {
 		List<DeliverySideMenu> drinkMenuList = deliveryService.getDrinkMenuList(set_size);
 		return new ResponseEntity<>(drinkMenuList, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/delivery/cart/{menu_id}")
-	public ResponseEntity<?> getMenuInfo(@PathVariable String menu_id) {
-		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(menu_id);
+	public ResponseEntity<?> getMenuInfo(@PathVariable String menu_id, MenuListDto menuListDto) {
+		List<MenuDetailDto> menuDetailDto = (deliveryService.getMenuInfo(menuListDto));
 		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
 	}
 	
-	@PostMapping("/delivery/cart/side/{side_menu_id}")
-	
-	public ResponseEntity<?> getSideMenuInfo(@PathVariable String side_menu_id){
-		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(side_menu_id);
-		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
-	}
-	
-	@PostMapping("/delivery/cart/drink/{drink_menu_id}")
-	public ResponseEntity<?> getSideDrinkInfo(@PathVariable String drink_menu_id){
-		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(drink_menu_id);
-		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
-	}
-	
-	@PostMapping("/delivery/cart/total/{total_menu_id}")
-	public ResponseEntity<?> getSideTotalInfo(@PathVariable String total_menu_id){
-		MenuDetailDto menuDetailDto = deliveryService.getMenuInfo(total_menu_id);
-		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
-	}
 	
 	@PostMapping("/delivery/user-auth")
 	public ResponseEntity<?> getMembership(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		User user = principalDetails.getUser();
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
-	
+
 }
