@@ -26,6 +26,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DeliveryController {
 	private final DeliveryService deliveryService;
+	
+	@GetMapping("/delivery/menu/details")
+	public ResponseEntity<?> loadCartListDetails(MenuListDto cartList) {
+		System.out.println(cartList);
+		return new ResponseEntity<>(deliveryService.getCartMenuDtl(cartList), HttpStatus.OK);
+	}
 
 	@GetMapping("/delivery/menu/{category_id}")
 	public ResponseEntity<?> loadDeliveryList(@PathVariable int category_id) {

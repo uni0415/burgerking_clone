@@ -1,4 +1,4 @@
-const delivery_header_name = document.querySelector(".delivery-header-name");
+/*const delivery_header_name = document.querySelector(".delivery-header-name");
 const header_logout = document.querySelector(".header-logout");
 $.ajax({
     type: "post",
@@ -17,4 +17,4 @@ function setDeliveryHeader(data) {
 
 header_logout.onclick = () => {
 	sessionStorage.clear();
-}
+}*/

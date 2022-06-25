@@ -14,4 +14,6 @@ public interface DeliveryRepository {
 	public List<DeliverySideMenu> getSideMenuList(int set_size);
 	public List<DeliverySideMenu> getDrinkMenuList(int set_size);
 	public List<MenuDetailDto> getMenuInfo(MenuListDto menuListDto);
+	
+	public List<MenuDtlWithIngredient> getCartMenuDetails(MenuListDto menuListDto);
 }

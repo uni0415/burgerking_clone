@@ -1,4 +1,4 @@
-const modal_pop_wrap = document.querySelector(".modal-full-pop-wrap");
+/*const modal_pop_wrap = document.querySelector(".modal-full-pop-wrap");
 const modal_close_button = document.querySelectorAll(".modal-close-button");
 const side_modal_box = document.querySelector(".side-modal-box");
 const choice_button = document.querySelectorAll(".choice");
@@ -156,4 +156,4 @@ function drinkMenuChoice(drink_menu_data) {
         }
 
     }
-}
+}*/

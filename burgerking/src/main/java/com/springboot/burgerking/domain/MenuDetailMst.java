@@ -1,5 +1,7 @@
 package com.springboot.burgerking.domain;
 
+import java.util.List;
+
 import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
 
 import lombok.AllArgsConstructor;
