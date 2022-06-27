@@ -18,10 +18,7 @@ const select_date = document.querySelector("#select-dd");
 const email = document.querySelector(".email");
 const member_info_name = document.querySelector(".member-info-name");
 const phone = document.querySelector(".phone");
-
-const choose_gender = document.querySelectorAll(".choose-gender");
-const birth_list_box = document.querySelectorAll(".birth-list-box>div")
-const checkbox = document.querySelectorAll(".checkbox");
+const gender = document.querySelectorAll("input[name=gender]");
 const btn02 = document.querySelector(".btn02");
 
 
@@ -29,7 +26,7 @@ const Toast = Swal.mixin({
     toast: true,
     position: 'center',
     showConfirmButton: false,
-    timer: 1500,
+    timer: 1000,
     timerProgressBar: true,
 })
 
@@ -41,6 +38,7 @@ const Toast2 = Swal.mixin({
     cancelButtonColor: '#d33',
     confirmButtonText: '확인',
 })
+
 
 // const Toast3 = Swal.mixin({
 //     toast: true,
@@ -58,11 +56,13 @@ function loadUserInfo() {
     $.ajax({
         type: "post",
         dataType: "text",
-        url: "/api/v1/delivery/user-auth",
+        url: "/api/v1/delivery/user",
         success: function (data) {
             data = JSON.parse(data);
             console.log(data);
             setUserInfo(data);
+            setUserBirth(data);
+            setGender(data);
         }
     })
 }
@@ -72,6 +72,20 @@ function setUserInfo(data) {
     email.innerText = data.email;
     member_info_name.innerText = data.name;
     phone.innerText = data.phone;
+}
+
+function setUserBirth(data) {
+    $(select_year).val(data.birth_year).prop("selected", true);
+    $(select_month).val(data.birth_month).prop("selected", true);
+    $(select_date).val(data.birth_date).prop("selected", true);
+}
+
+function setGender(data) {
+    for (let i = 0; i < gender.length; i++) {
+        if (gender[i].value == data.gender) {
+            gender[i].checked = true;
+        }
+    }
 }
 
 btn_change.onclick = () => {
@@ -175,7 +189,7 @@ btn_send.onclick = () => {
                                         "phone": phone_input_item.value
                                     },
                                     url: "/api/v1/auth/updatePhone",
-                                    sucess: function (data) {
+                                    success: function (data) {
                                         data = JSON.parse(data);
                                         reload();
                                     }
@@ -187,7 +201,6 @@ btn_send.onclick = () => {
                                 })
                             }
                         }
-
                     })
                 }
             },
@@ -199,13 +212,34 @@ btn_send.onclick = () => {
 }
 
 btn02.onclick = () => {
-    if (!birth_list_box.value || !checkbox.value === true) {
-        Toast.fire({
-            icon: 'sucess',
-            title: '회원 정보가 변경되었습니다.'
-        })
-    }
+
+    const checked_gender = document.querySelector("input[name=gender]:checked");
+    $.ajax({
+        type: "post",
+        dataType: "text",
+        data: {
+            "birth_year": select_year.value,
+            "birth_month": select_month.value,
+            "birth_date": select_date.value
+        },
+        url: "/api/v1/auth/updateBirth",
+        success: function (data) {
+            location.replace("/delivery/myking");
+        }
+    })
+    $.ajax({
+        type: "post",
+        dataType: "text",
+        data: {
+            "gender": checked_gender.value
+        },
+        url: "/api/v1/auth/updateGender",
+        success: function (data) {
+
+        }
+    })
 }
+
 
 function reload() {
     location.reload();

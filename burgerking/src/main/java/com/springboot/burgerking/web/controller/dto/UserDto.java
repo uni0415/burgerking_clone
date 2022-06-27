@@ -47,4 +47,20 @@ public class UserDto {
 				.phone(phone)
 				.build();
 	}
+	
+	public User toUpdateBirthEntity() {
+		return User.builder()
+				.email(email)
+				.birth_year(birth_year)
+				.birth_month(birth_month)
+				.birth_date(birth_date)
+				.build();
+	}
+	
+	public User toUpdateGenderEntity() {
+		return User.builder()
+				.email(email)
+				.gender(gender)
+				.build();
+	}
 }

@@ -15,4 +15,8 @@ public interface AuthRepository {
 	public User getUserById(int id);
 	public int updatePhone(User user);
 	public String getPhone(String email);
+	public int updateBirth(User user);
+	public String getBirth(String email);
+	public int updateGender(User user);
+	public String getGender(String email);
 }

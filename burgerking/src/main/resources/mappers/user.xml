@@ -136,6 +136,43 @@
   		where
   			email=#{email}
   	</select>
+  	
+  	<update id="updateBirth" parameterType="com.springboot.burgerking.domain.auth.User">
+  		update
+  			user_mst
+  		set
+  			birth_year = #{birth_year},
+			birth_month = #{birth_month},
+			birth_date = #{birth_date}
+  		where
+  			email = #{email}
+  	</update>
+  	
+  	<select id="getBirth" parameterType="String" resultType="String">
+  		select
+  			phone
+  		from
+  			user_mst
+  		where
+  			email=#{email}
+  	</select>
+  	  	<update id="updateGender" parameterType="com.springboot.burgerking.domain.auth.User">
+  		update
+  			user_mst
+  		set
+  			gender = #{gender}
+  		where
+  			email = #{email}
+  	</update>
+  	
+  	<select id="getGender" parameterType="String" resultType="String">
+  		select
+  			phone
+  		from
+  			user_mst
+  		where
+  			email=#{email}
+  	</select>
 
   	
   </mapper>

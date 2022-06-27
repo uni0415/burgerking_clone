@@ -117,4 +117,25 @@ public class AuthController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@PostMapping("/auth/updateBirth")
+	public ResponseEntity<?> updateBirth(UserDto userDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
+		userDto.setEmail(principalDetails.getEmail());
+		authService.updateBirth(userDto.toUpdateBirthEntity());
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@PostMapping("/auth/userInfo")
+	public ResponseEntity<?> getUserInfo(UserDto userDto, @AuthenticationPrincipal PrincipalDetails principalDetails){	
+		int id = principalDetails.getId();
+		User user = authService.getUserById(id);
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+	
+	@PostMapping("/auth/updateGender")
+	public ResponseEntity<?> updateGender(UserDto userDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
+		userDto.setEmail(principalDetails.getEmail());
+		System.out.println(userDto);
+		authService.updateGender(userDto.toUpdateGenderEntity());
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
