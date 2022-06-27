@@ -60,5 +60,15 @@ public class AuthServiceImpl implements AuthService {
 	public User getUserById(int id) {
 		return authRepository.getUserById(id);
 	}
+	
+	@Override
+	public int updatePhone(User user) {
+		return authRepository.updatePhone(user);
+	}
+	
+	@Override
+	public String getPhone(String email) {
+		return authRepository.getPhone(email);
+	}
 
 }

@@ -10,11 +10,20 @@ const btn_resetting = document.querySelector(".btn-resetting");
 const certificate_input_item = document.querySelector(".certificate-input-item");
 const certificate_success_input_item = document.querySelector(".certificate-success-input-item");
 
+const choose_birth = document.querySelector("input[name=choose-birth]");
 const select_year = document.querySelector("#select-yyyy");
 const select_month = document.querySelector("#select-mm");
 const select_date = document.querySelector("#select-dd");
 
 const email = document.querySelector(".email");
+const member_info_name = document.querySelector(".member-info-name");
+const phone = document.querySelector(".phone");
+
+const choose_gender = document.querySelectorAll(".choose-gender");
+const birth_list_box = document.querySelectorAll(".birth-list-box>div")
+const checkbox = document.querySelectorAll(".checkbox");
+const btn02 = document.querySelector(".btn02");
+
 
 const Toast = Swal.mixin({
     toast: true,
@@ -24,22 +33,45 @@ const Toast = Swal.mixin({
     timerProgressBar: true,
 })
 
-let stop_flag = false;
-
-$.ajax({
-    type: "post",
-    dataType: "text",
-    url: "/api/v1/delivery/user-auth",
-    success: function (data) {
-        data = JSON.parse(data);
-        console.log(data);
-        setUserInfo(data);
-    }
+const Toast2 = Swal.mixin({
+    toast: true,
+    position: 'center',
+    showConfirmButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '확인',
 })
+
+// const Toast3 = Swal.mixin({
+//     toast: true,
+//     position: 'center',
+//     showConfirmButton: true,
+//     showConfirmButton: false,
+//     timer: 1500,
+//     timerProgressBar: true,
+// })
+
+let stop_flag = false;
+loadUserInfo();
+
+function loadUserInfo() {
+    $.ajax({
+        type: "post",
+        dataType: "text",
+        url: "/api/v1/delivery/user-auth",
+        success: function (data) {
+            data = JSON.parse(data);
+            console.log(data);
+            setUserInfo(data);
+        }
+    })
+}
+
 
 function setUserInfo(data) {
     email.innerText = data.email;
-
+    member_info_name.innerText = data.name;
+    phone.innerText = data.phone;
 }
 
 btn_change.onclick = () => {
@@ -79,6 +111,11 @@ btn_send.onclick = () => {
         Toast.fire({
             icon: 'error',
             title: '핸드폰 번호를 입력해 주세요'
+        })
+    } else if (phone.textContent == phone_input_item.value) {
+        Toast.fire({
+            icon: 'error',
+            title: '기존 번호와 동일한 번호로는 변경할 수 없습니다.'
         })
     } else {
         send_num.classList.remove("on");
@@ -121,12 +158,28 @@ btn_send.onclick = () => {
                             data = JSON.parse(data);
 
                             if (data == true) {
-                                Toast.fire({
+                                Toast2.fire({
                                     icon: 'success',
-                                    title: '휴대폰 인증이 정상적으로 완료되었습니다.'
-                                })
+                                    title: '휴대폰 변경이 정상적으로 완료되었습니다.'
+                                }).then(result => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
                                 stop_flag = true;
-
+                                $.ajax({
+                                    type: "post",
+                                    dataType: "text",
+                                    data: {
+                                        "email": email.textContent,
+                                        "phone": phone_input_item.value
+                                    },
+                                    url: "/api/v1/auth/updatePhone",
+                                    sucess: function (data) {
+                                        data = JSON.parse(data);
+                                        reload();
+                                    }
+                                })
                             } else if (data == false) {
                                 Toast.fire({
                                     icon: 'error',
@@ -134,8 +187,8 @@ btn_send.onclick = () => {
                                 })
                             }
                         }
-                    })
 
+                    })
                 }
             },
             error: function () {
@@ -143,6 +196,19 @@ btn_send.onclick = () => {
             }
         })
     }
+}
+
+btn02.onclick = () => {
+    if (!birth_list_box.value || !checkbox.value === true) {
+        Toast.fire({
+            icon: 'sucess',
+            title: '회원 정보가 변경되었습니다.'
+        })
+    }
+}
+
+function reload() {
+    location.reload();
 }
 
 function startTimer(duration, display) {
@@ -176,7 +242,7 @@ function startTimer(duration, display) {
 
 
 setBirth();
-
+chooseBirth();
 function setBirth() {
     for (let i = 2022; i > 1900; i--) {
         let year = document.createElement("option");
@@ -198,6 +264,17 @@ function setBirth() {
         date.textContent = `${i + '일'}`;
         select_date.append(date);
     }
-
-
 }
+
+function chooseBirth() {
+    const birth_list = document.querySelectorAll("select");
+    const birth_year = document.querySelector("select[name=birth_year]");
+    for (let i = 0; i < birth_list.length; i++) {
+        birth_list[i].onchange = () => {
+            choose_birth.checked = false;
+        }
+        if (choose_birth.checked == true) {
+        }
+    }
+}
+

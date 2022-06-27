@@ -109,5 +109,12 @@ public class AuthController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
+	@PostMapping("/auth/updatePhone")
+	public ResponseEntity<?> updatePhone(UserDto userDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
+		if(authService.updatePhone(userDto.toUpdatePhoneEntity())>0) {
+			principalDetails.getUser().setPhone(authService.getPhone(userDto.getEmail()));
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 }

@@ -119,4 +119,23 @@
   		)
   	</insert>
   	
+  	<update id="updatePhone" parameterType="com.springboot.burgerking.domain.auth.User">
+  		update
+  			user_mst
+  		set
+  			phone = #{phone}
+  		where
+  			email = #{email}
+  	</update>
+  	
+  	<select id="getPhone" parameterType="String" resultType="String">
+  		select
+  			phone
+  		from
+  			user_mst
+  		where
+  			email=#{email}
+  	</select>
+
+  	
   </mapper>

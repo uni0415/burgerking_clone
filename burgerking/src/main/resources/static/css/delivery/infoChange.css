@@ -805,6 +805,9 @@ input[type=checkbox]:checked+:before {
     height: 68px;
     font-size: 1.5rem;
     line-height: 46px;
+    padding: 12px 10px 10px;
+    text-align: center;
+    font-weight: 700;
     border-radius: 10px;
     background: transparent;
     border: 1px solid #512314;
@@ -820,6 +823,8 @@ input[type=checkbox]:checked+:before {
     line-height: 46px;
     margin-left: 6px;
     padding: 12px 10px 10px;
+    text-align: center;
+    font-weight: 700;
     border-radius: 10px;
     color: #fff;
     background: #512314;

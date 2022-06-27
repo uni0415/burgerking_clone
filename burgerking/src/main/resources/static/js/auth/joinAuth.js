@@ -1,3 +1,7 @@
+// const checkAll = document.querySelector(".general-consent input");
+// const checkBoxs = document.querySelectorAll(".join-consent input");
+
+
 const phone_content_box = document.querySelector(".phone-content-box");
 const certificate_content_box = document.querySelector(".certificate-content-box");
 const certificate_success_content_box = document.querySelector(".certificate-success-content-box");
@@ -6,7 +10,6 @@ const name_input_item = document.querySelector(".name-input-item");
 const phone_input_item = document.querySelector(".phone-input-item");
 const certificate_input_item = document.querySelector(".certificate-input-item");
 const certificate_success_input_item = document.querySelector(".certificate-success-input-item");
-
 
 const send_button_box = document.querySelector(".send-button-box");
 const check_button_box = document.querySelector(".check-button-box");
@@ -28,6 +31,13 @@ const Toast = Swal.mixin({
     timer: 1500,
     timerProgressBar: true,
 })
+
+// const agreements = {
+//     termsOfService : false,
+//     privacyPolicy : false,
+//     allowEmail : false,
+//     allowSMS : false
+// };
 
 certificateCheck();
 signup();
