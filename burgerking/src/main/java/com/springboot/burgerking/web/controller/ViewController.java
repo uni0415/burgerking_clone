@@ -33,21 +33,6 @@ public class ViewController {
 		return "burgerking/delivery/delivery_cart";
 	}
 	
-	@GetMapping("/delivery/membership")
-	public String deliveryMembership() {
-		return "burgerking/delivery/membership";
-	}
-	
-	@GetMapping("/delivery/mycoupon")
-	public String deliveryMycoupon() {
-		return "burgerking/delivery/mycoupon";
-	}
-	
-	@GetMapping("/delivery/orderlist")
-	public String deliveryOrderlist() {
-		return "burgerking/delivery/orderlist";
-	}
-	
 	
 	@GetMapping("/auth/login")
 	public String signin() {
