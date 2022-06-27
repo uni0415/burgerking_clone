@@ -13,7 +13,7 @@ public interface DeliveryService {
 	public List<MenuDetailMst> loadSubmenuDetail(int menu_id);
 	public List<DeliverySideMenu> getSideMenuList(int set_size);
 	public List<DeliverySideMenu> getDrinkMenuList(int set_size);
-	public List<MenuDetailDto> getMenuInfo(MenuListDto menuListDto);
+	public List<MenuDetailDto> getMenuInfo(MenuDetailDto menuDetailDto);
 	
 	public List<MenuDtlResDto> getCartMenuDtl(MenuListDto menuListDto);
 }

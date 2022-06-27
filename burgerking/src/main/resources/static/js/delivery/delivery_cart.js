@@ -6,20 +6,7 @@ console.log(menu_id, size, side_menu_id, drink_menu_id);
 
 const cart_list_box = document.querySelector(".cart-list-box");
 
-const menu_title = document.querySelector(".menu-title>strong>span");
-const menu_price = document.querySelector(".price");
-const menu_image = document.querySelector(".menu-img-box>img");
-const side_menu_list = document.querySelectorAll(".side-menu-list>span");
-const side_menu_price = document.querySelectorAll(".side-menu-list .add-price");
-const add_price = document.querySelectorAll(".add-price");
-const total_sum = document.querySelector(".total-price");
-const calc_total_sum = document.querySelector(".calc-total-price");
 
-const menu_count_tag = document.querySelector(".num-set > input");
-const reduce_menu_count_button = document.querySelector(".num-set > .btn-minus");
-const add_menu_count_button = document.querySelector(".num-set > .btn-plus");
-
-const additional = document.querySelectorAll(".additional");
 const add_menu_to_card_button = document.querySelector(".menu-add-button");
 
 let total_price = 0;
@@ -28,23 +15,23 @@ let menu_count = 1;
 
 let cart_list_json;
 
-
 getCartListFromSession();
 // session cart_list = null 
 // cart_list != null -> JSON.parse(); -> 반복 돌면서 tag -> append -> event
 
 function getCartListFromSession() {
-	const string_json = sessionStorage.getItem("cart_list");
+	const cart_list = JSON.parse(sessionStorage.getItem("cart_list"));
+	console.log(cart_list);
 	/*if(string_json == null) location.replace("/delivery/menu/1");*/
-	
-/*	cart_list_json = JSON.parse(string_json);
-	cart_list_json[0]['ingredient_list'] = new Array();
-	cart_list_json[0]['ingredient_list'].push(1);
-	cart_list_json[0]['ingredient_list'].push(2);
-	cart_list_json[0]['ingredient_list'].push(3);
-	cart_list_json[0]['ingredient_list'].push(4);*/
-	
-	cart_list_json = new Array();
+
+	/*	cart_list_json = JSON.parse(string_json);
+		cart_list_json[0]['ingredient_list'] = new Array();
+		cart_list_json[0]['ingredient_list'].push(1);
+		cart_list_json[0]['ingredient_list'].push(2);
+		cart_list_json[0]['ingredient_list'].push(3);
+		cart_list_json[0]['ingredient_list'].push(4);*/
+
+	/*cart_list_json = new Array();
 	const data = {};
 	data['menu_id_list'] = new Array();
 	data['menu_id_list'].push(40);
@@ -55,32 +42,45 @@ function getCartListFromSession() {
 	data['ingredient_list'].push(2);
 	data['ingredient_list'].push(3);
 	cart_list_json.push(data);
-	console.log(JSON.stringify(data));
-	
-	/*$.ajax({
+	console.log(JSON.stringify(data));*/
+
+	cart_list_json = new Array();
+	for (let i = 0; i < cart_list.length; i++) {
+		const menu_id_list = new Array();
+		
+		menu_id_list.push(cart_list[i].menu_id);
+		menu_id_list.push(cart_list[i].side_menu_id);
+		menu_id_list.push(cart_list[i].drink_menu_id);
+		
+		cart_list_json.push(menu_id_list);
+	}
+	console.log("cart_list_json: ")
+	console.log(cart_list_json);
+	$.ajax({
 		type: "get",
 		url: "/api/v1/delivery/menu/details",
 		data: data,
 		dataType: "json",
-		success: function (menu_data_list) {
+		success: function(menu_data_list) {
+			console.log("menu_data_list: ");
 			console.log(menu_data_list);
-			
-			for(let i = 0; i < menu_data_list.length; i++) {
-				const cart_menu_tag = makeCartMenuTag(menu_data_list[i]);
+			for (let i = 0; i < cart_list.length; i++) {
+				const cart_menu_tag = makeCartMenuTag();
 				cart_list_box.appendChild(cart_menu_tag);
-				
-				
+
+				setOrderList(cart_list[i]);
 			}
 		},
-		error: function (xhr, stauts) {
+		error: function(xhr, status) {
 			console.log(xhr);
 			console.log(status);
 		}
-	});*/
+	});
 }
 
-function makeCartMenuTag(menu_data) {
+function makeCartMenuTag() {
 	const li = document.createElement("li");
+	li.classList.add("menu-list");
 	li.innerHTML = `
 		<div class="menu-content-box">
             <div id="menu-title" class="menu-title-wrap">
@@ -204,12 +204,29 @@ function makeCartMenuTag(menu_data) {
         </div>
 	`;
 	return li;
+	const menu_list = document.querySelector(".menu-list");
+	const menu_title = menu_list.querySelector(".menu-title>strong>span");
+	const menu_price = menu_list.querySelector(".price");
+	const menu_image = menu_list.querySelector(".menu-img-box>img");
+	const side_menu_list = menu_list.querySelectorAll(".side-menu-list>span");
+	const side_menu_price = menu_list.querySelectorAll(".side-menu-list .add-price");
+	const add_price = menu_list.querySelectorAll(".add-price");
+	const total_sum = menu_list.querySelector(".total-price");
+	const calc_total_sum = menu_list.querySelector(".calc-total-price");
+
+	const menu_count_tag = menu_list.querySelector(".num-set > input");
+	const reduce_menu_count_button = menu_list.querySelector(".num-set > .btn-minus");
+	const add_menu_count_button = menu_list.querySelector(".num-set > .btn-plus");
+
+	const additional = menu_list.querySelectorAll(".additional");
+	additionalList();
 }
+
 
 /*reduce_menu_count_button.onclick = reduceMenuCount;
 add_menu_count_button.onclick = addMenuCount;*/
 
-/*add_menu_to_card_button.onclick = () => {
+add_menu_to_card_button.onclick = () => {
 	const cart_list = sessionStorage.getItem("cart_list") != null ? JSON.parse(sessionStorage.getItem("cart_list")) : new Array();
 	const menu = {
 		"menu_id": sessionStorage.getItem("menu_id"),
@@ -222,44 +239,40 @@ add_menu_count_button.onclick = addMenuCount;*/
 	location.replace("/delivery/menu/1");
 }
 
-additionalList();
-function additionalList() {
-	if (menu_id < 4) {
+
+function additionalList(cart_list_data) {
+	console.log(cart_list_data);
+	if (cart_list_data.menu_id < 4) {
 		additional[3].classList.add("on");
 		additional[4].classList.add("on");
-	} else if (size == 0) {
+	} else if (cart_list_data.size == 0) {
 		additional[0].classList.add("on");
-	} else if (menu_id > 3) {
+	} else if (cart_list_data.menu_id > 3) {
 		additional[0].classList.add("on");
 		additional[1].classList.add("on");
 		additional[2].classList.add("on");
 	}
 }
 
-setOrderList();
-function setOrderList() {
-	for (let i = 0; i < cart_list.length; i++) {
-		$.ajax({
-			type: "post",
-			dataType: "json",
-			data: {
-				"menu_id": menu_id,
-				"side_menu_id": side_menu_id,
-				"drink_menu_id": drink_menu_id
-			},
-			url: `/api/v1/delivery/cart/${menu_id}`,
-			success: function(data) {
-				console.log(data);
-				setMenuList(data[0]);
-				setSideMenuList(data);
-				setSideDrinkList(data);
-				menu_count_tag.value = menu_count;
-				calcTotalPrice();
-			}
-		})
 
+function setOrderList(cart_list_data) {
+	$.ajax({
+		type: "post",
+		dataType: "json",
+		data: {
+			"menu_id": Number(menu_data_list.menu_id)
+		},
+		url: `/api/v1/delivery/cart/${menu_id}`,
+		success: function(data) {
+			console.log(data);
+			setMenuList(data[0]);
+			setSideMenuList(data);
+			setSideDrinkList(data);
+			menu_count_tag.value = menu_count;
+			calcTotalPrice();
+		}
+	})
 
-	}
 
 }
 
@@ -332,4 +345,3 @@ function calcLastPrice() {
 	}
 }
 
-*/

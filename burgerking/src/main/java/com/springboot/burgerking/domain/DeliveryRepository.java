@@ -13,7 +13,7 @@ public interface DeliveryRepository {
 	public List<MenuDetailMst> getSubmenuDetail(int menu_id);
 	public List<DeliverySideMenu> getSideMenuList(int set_size);
 	public List<DeliverySideMenu> getDrinkMenuList(int set_size);
-	public List<MenuDetailDto> getMenuInfo(MenuListDto menuListDto);
+	public List<MenuDetailDto> getMenuInfo(MenuDetailDto menuDetailDto);
 	
 	public List<MenuDtlWithIngredient> getCartMenuDetails(MenuListDto menuListDto);
 }

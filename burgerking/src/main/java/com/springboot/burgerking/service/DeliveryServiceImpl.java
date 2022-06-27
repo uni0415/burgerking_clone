@@ -41,29 +41,34 @@ public class DeliveryServiceImpl implements DeliveryService {
 	}
 	
 	@Override
-	public List<MenuDetailDto> getMenuInfo(MenuListDto menuListDto) {
-		return deliveryRepository.getMenuInfo(menuListDto);
+	public List<MenuDetailDto> getMenuInfo(MenuDetailDto menuDetailDto) {
+		return deliveryRepository.getMenuInfo(menuDetailDto);
 	}
+	
+	/*
+	 * @Override public List<MenuDtlResDto> getCartMenuDtl(MenuListDto menuListDto)
+	 * { List<MenuDtlWithIngredient> test =
+	 * deliveryRepository.getCartMenuDetails(menuListDto); System.out.println(test);
+	 * List<MenuDtlResDto> dtoList = new ArrayList<MenuDtlResDto>();
+	 * 
+	 * for(MenuDtlWithIngredient dtl : test) { int index =
+	 * dtoList.indexOf(MenuDtlResDto.builder().id(dtl.getId()).build());
+	 * 
+	 * if(index != -1) { List<Ingredient> ingredient_list =
+	 * dtoList.get(index).getIngredient_list();
+	 * ingredient_list.add(Ingredient.builder() .id(dtl.getIngredient_id())
+	 * .name(dtl.getIngredient_name()) .price(dtl.getIngredient_price()) .build());
+	 * } else { dtoList.add(dtl.toResDto()); } } System.out.println(dtoList); return
+	 * dtoList; }
+	 */
 	
 	@Override
 	public List<MenuDtlResDto> getCartMenuDtl(MenuListDto menuListDto) {
-		List<MenuDtlWithIngredient> test = deliveryRepository.getCartMenuDetails(menuListDto);
-		System.out.println(test);
+		List<MenuDtlWithIngredient> menuDtl = deliveryRepository.getCartMenuDetails(menuListDto);
 		List<MenuDtlResDto> dtoList = new ArrayList<MenuDtlResDto>();
-		
-		for(MenuDtlWithIngredient dtl : test) {
-			int index = dtoList.indexOf(MenuDtlResDto.builder().id(dtl.getId()).build());
+		for(MenuDtlWithIngredient dtl : menuDtl) {
+			dtoList.add(dtl.toResDto());
 			
-			if(index != -1) {
-				List<Ingredient> ingredient_list = dtoList.get(index).getIngredient_list();
-				ingredient_list.add(Ingredient.builder()
-											  .id(dtl.getIngredient_id())
-											  .name(dtl.getIngredient_name())
-											  .price(dtl.getIngredient_price())
-											  .build());
-			} else {
-				dtoList.add(dtl.toResDto());
-			}
 		}
 		System.out.println(dtoList);
 		return dtoList;

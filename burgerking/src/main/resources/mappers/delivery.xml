@@ -91,11 +91,30 @@
   	from
   		menu_dtl
   	where
-  		id = #{menu_id} or id = #{side_menu_id} or id = #{drink_menu_id}
+  		id = #{menu_id}
   		
   </select>
   
   <select id="getCartMenuDetails" parameterType="com.springboot.burgerking.web.controller.dto.MenuListDto" resultType="com.springboot.burgerking.domain.MenuDtlWithIngredient">
+  	select
+  		id,
+  		name,
+  		menu_images,
+  		price,
+  		set_size,
+  		set_add_price,
+  		large_add_price
+  	from
+  		menu_dtl
+  	where
+  		id in(
+  		<foreach collection="menu_id_list" index="index" item="item" separator=",">
+  			#{item}
+  			</foreach>
+  		)
+  </select>
+  
+  <!-- <select id="getCartMenuDetails" parameterType="com.springboot.burgerking.web.controller.dto.MenuListDto" resultType="com.springboot.burgerking.domain.MenuDtlWithIngredient">
   	select
   		dtl.id,
   		dtl.name,
@@ -127,6 +146,6 @@
   		)
   	order by
   		dtl.id asc;
-  </select>
+  </select> -->
   	
   </mapper>

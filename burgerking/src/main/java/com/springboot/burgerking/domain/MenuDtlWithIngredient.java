@@ -47,7 +47,7 @@ public class MenuDtlWithIngredient {
 							.set_size(set_size)
 							.set_add_price(set_add_price)
 							.large_add_price(large_add_price)
-							.ingredient_list(ingredient_list)
+							//.ingredient_list(ingredient_list)
 							.build();
 	}
 }

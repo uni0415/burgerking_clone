@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 public class MenuListDto {
 
 	private List<Integer> menu_id_list;
-	private List<Integer> ingredient_list;
+	//private List<Integer> ingredient_list;
 }

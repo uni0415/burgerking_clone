@@ -58,9 +58,9 @@ public class DeliveryController {
 	}
 
 	@PostMapping("/delivery/cart/{menu_id}")
-	public ResponseEntity<?> getMenuInfo(@PathVariable String menu_id, MenuListDto menuListDto) {
-		List<MenuDetailDto> menuDetailDto = (deliveryService.getMenuInfo(menuListDto));
-		return new ResponseEntity<>(menuDetailDto, HttpStatus.OK);
+	public ResponseEntity<?> getMenuInfo(@PathVariable String menu_id, MenuDetailDto menuDetailDto) {
+		List<MenuDetailDto> detailDto = (deliveryService.getMenuInfo(menuDetailDto));
+		return new ResponseEntity<>(detailDto, HttpStatus.OK);
 	}
 	
 	
