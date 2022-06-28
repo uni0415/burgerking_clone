@@ -1,20 +1,19 @@
-/*const modal_pop_wrap = document.querySelector(".modal-full-pop-wrap");
+const modal_pop_wrap = document.querySelector(".modal-full-pop-wrap");
 const modal_close_button = document.querySelectorAll(".modal-close-button");
 const side_modal_box = document.querySelector(".side-modal-box");
 const choice_button = document.querySelectorAll(".choice");
-const menu_change_button = document.querySelectorAll(".additional-list-button");
+
 const body = document.querySelector("body");
 const btn_top = document.querySelector(".btn-top");
 
 
-popSideMenuModal();
-popDrinkMenuModal();
+
 
 
 function popSideMenuModal() {
+	console.log(side_change_button);
 	let side_menu_data_list;
-	
-    menu_change_button[1].onclick = () => {
+    side_change_button.onclick = () => {
         modal_pop_wrap.classList.add("on");
         body.style = "overflow: hidden";
         side_modal_box.classList.add("on");
@@ -88,7 +87,7 @@ function makeTag(side_menu_data) {
 function popDrinkMenuModal() {
     const drink_modal_box = document.querySelector(".drink-modal-box");
 
-    menu_change_button[2].onclick = () => {
+    drink_change_button.onclick = () => {
         modal_pop_wrap.classList.add("on");
         body.style = "overflow: hidden";
         drink_modal_box.classList.add("on");
@@ -156,4 +155,4 @@ function drinkMenuChoice(drink_menu_data) {
         }
 
     }
-}*/
+}

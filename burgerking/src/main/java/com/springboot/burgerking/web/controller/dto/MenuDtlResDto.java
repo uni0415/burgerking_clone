@@ -27,16 +27,11 @@ public class MenuDtlResDto {
 	private int set_add_price;
 	private int large_add_price;
 
-	private List<Ingredient> ingredient_list;
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(obj instanceof MenuDtlResDto) {
-			MenuDtlResDto target = (MenuDtlResDto) obj;
-			if(target.id == this.id) {
-				return true;
-			}
-		}
-		return false;
-	}
+	/*
+	 * private List<Ingredient> ingredient_list;
+	 * 
+	 * @Override public boolean equals(Object obj) { if(obj instanceof
+	 * MenuDtlResDto) { MenuDtlResDto target = (MenuDtlResDto) obj; if(target.id ==
+	 * this.id) { return true; } } return false; }
+	 */
 }

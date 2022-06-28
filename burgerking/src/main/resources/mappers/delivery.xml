@@ -83,7 +83,7 @@
   	select
   		id,
   		menu_id,
-  		name,
+  		`name`,
   		menu_images,
   		price,
   		set_add_price,
@@ -98,7 +98,7 @@
   <select id="getCartMenuDetails" parameterType="com.springboot.burgerking.web.controller.dto.MenuListDto" resultType="com.springboot.burgerking.domain.MenuDtlWithIngredient">
   	select
   		id,
-  		name,
+  		`name`,
   		menu_images,
   		price,
   		set_size,
@@ -107,11 +107,12 @@
   	from
   		menu_dtl
   	where
-  		id in(
-  		<foreach collection="menu_id_list" index="index" item="item" separator=",">
+  		id in
+  		<foreach collection="menu_id_list" index="index" item="item" open="(" close=")" separator=",">
   			#{item}
   			</foreach>
-  		)
+  	order by
+  		id asc;
   </select>
   
   <!-- <select id="getCartMenuDetails" parameterType="com.springboot.burgerking.web.controller.dto.MenuListDto" resultType="com.springboot.burgerking.domain.MenuDtlWithIngredient">

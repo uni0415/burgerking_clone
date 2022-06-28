@@ -28,17 +28,17 @@ public class MenuDtlWithIngredient {
 	private int set_add_price;
 	private int large_add_price;
 	
-	private int ingredient_id;
-	private String ingredient_name;
-	private int ingredient_price;
+//	private int ingredient_id;
+//	private String ingredient_name;
+//	private int ingredient_price;
 	
 	public MenuDtlResDto toResDto() {
-		List<Ingredient> ingredient_list = new ArrayList<Ingredient>();
-		ingredient_list.add(Ingredient.builder()
-									  .id(ingredient_id)
-									  .name(ingredient_name)
-									  .price(ingredient_price)
-									  .build());
+//		List<Ingredient> ingredient_list = new ArrayList<Ingredient>();
+//		ingredient_list.add(Ingredient.builder()
+//									  .id(ingredient_id)
+//									  .name(ingredient_name)
+//									  .price(ingredient_price)
+//									  .build());
 		return MenuDtlResDto.builder()
 							.id(id)
 							.name(name)

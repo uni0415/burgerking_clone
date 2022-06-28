@@ -8,6 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,9 +28,9 @@ import lombok.RequiredArgsConstructor;
 public class DeliveryController {
 	private final DeliveryService deliveryService;
 	
-	@GetMapping("/delivery/menu/details")
+	@PostMapping("/delivery/menu/details")
 	public ResponseEntity<?> loadCartListDetails(MenuListDto cartList) {
-		System.out.println(cartList);
+		System.out.println("cart_list:" +cartList);
 		return new ResponseEntity<>(deliveryService.getCartMenuDtl(cartList), HttpStatus.OK);
 	}
 

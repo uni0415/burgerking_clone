@@ -5,7 +5,7 @@ let size = sessionStorage.getItem("size");
 console.log(menu_id, size, side_menu_id, drink_menu_id);
 
 const cart_list_box = document.querySelector(".cart-list-box");
-
+const calc_total_price_tag = document.querySelector(".calc-total-price");
 
 const add_menu_to_card_button = document.querySelector(".menu-add-button");
 
@@ -16,8 +16,6 @@ let menu_count = 1;
 let cart_list_json;
 
 getCartListFromSession();
-// session cart_list = null 
-// cart_list != null -> JSON.parse(); -> 반복 돌면서 tag -> append -> event
 
 function getCartListFromSession() {
 	const cart_list = JSON.parse(sessionStorage.getItem("cart_list"));
@@ -46,30 +44,39 @@ function getCartListFromSession() {
 
 	cart_list_json = new Array();
 	for (let i = 0; i < cart_list.length; i++) {
-		const menu_id_list = new Array();
-		
-		menu_id_list.push(cart_list[i].menu_id);
-		menu_id_list.push(cart_list[i].side_menu_id);
-		menu_id_list.push(cart_list[i].drink_menu_id);
-		
-		cart_list_json.push(menu_id_list);
+		if (!cart_list_json.includes(cart_list[i].menu_id)) cart_list_json.push(cart_list[i].menu_id);
+		if (!cart_list_json.includes(cart_list[i].side_menu_id)) cart_list_json.push(cart_list[i].side_menu_id);
+		if (!cart_list_json.includes(cart_list[i].drink_menu_id)) cart_list_json.push(cart_list[i].drink_menu_id);
 	}
 	console.log("cart_list_json: ")
 	console.log(cart_list_json);
 	$.ajax({
-		type: "get",
+		type: "post",
 		url: "/api/v1/delivery/menu/details",
-		data: data,
+		data: {
+			"menu_id_list": cart_list_json
+		},
 		dataType: "json",
 		success: function(menu_data_list) {
-			console.log("menu_data_list: ");
-			console.log(menu_data_list);
-			for (let i = 0; i < cart_list.length; i++) {
-				const cart_menu_tag = makeCartMenuTag();
+			menu_data_list = devideMenuData(cart_list, menu_data_list);
+			for (let i = 0; i < menu_data_list.length; i++) {
+				const cart_menu_tag = makeCartMenuTag(menu_data_list[i]);
 				cart_list_box.appendChild(cart_menu_tag);
 
-				setOrderList(cart_list[i]);
+				const total_price_tag = cart_menu_tag.querySelector(".total-price");
+
+				const menu_count_tag = cart_menu_tag.querySelector(".num-set > input");
+				const reduce_menu_count_button = cart_menu_tag.querySelector(".num-set > .btn-minus");
+				const add_menu_count_button = cart_menu_tag.querySelector(".num-set > .btn-plus");
+				additionalList(menu_data_list[i], cart_menu_tag);
+				
+				const ingredient_change_button = cart_menu_tag.querySelector("#ingredient-change-button");
+				const side_change_button = cart_menu_tag.querySelector("#side-change-button");
+				const drink_change_button = cart_menu_tag.querySelector("#drink-change-button");
+				//setOrderList(menu_data_list);
 			}
+				popSideMenuModal();
+				popDrinkMenuModal();
 		},
 		error: function(xhr, status) {
 			console.log(xhr);
@@ -78,7 +85,137 @@ function getCartListFromSession() {
 	});
 }
 
-function makeCartMenuTag() {
+function additionalList(menu_data, cart_menu_tag) {
+	const set_menu_detail = cart_menu_tag.querySelector(".set-menu-detail > ul");
+	console.log(menu_data);
+	if (menu_data.menu.id < 4) {
+		const ingredient_list_tag = makeIngredientTag(menu_data.menu);
+		const drink_menu_tag = makeDrinkMenuTag(menu_data.drink_menu, menu_data.drink_menu.set_size);
+
+		set_menu_detail.appendChild(ingredient_list_tag);
+		set_menu_detail.appendChild(drink_menu_tag);
+		
+
+	} else if (menu_data.menu.set_size == 0) {
+		const ingredient_list_tag = makeIngredientTag(menu_data.menu);
+		set_menu_detail.appendChild(ingredient_list_tag);
+
+	} else if (menu_data.menu.id > 3) {
+		const ingredient_list_tag = makeIngredientTag(menu_data.menu);
+		const side_menu_tag = makeSideMenuTag(menu_data.side_menu, menu_data.side_menu.set_size);
+		const drink_menu_tag = makeDrinkMenuTag(menu_data.drink_menu, menu_data.drink_menu.set_size);
+
+		set_menu_detail.appendChild(ingredient_list_tag);
+		set_menu_detail.appendChild(side_menu_tag);
+		set_menu_detail.appendChild(drink_menu_tag);
+	}
+}
+
+function devideMenuData(cart_list, menu_data_list) {
+	const list = new Array();
+	for (let i = 0; i < cart_list.length; i++) {
+		const menu_index = menu_data_list.findIndex(e => e.id == cart_list[i].menu_id);
+		const side_index = menu_data_list.findIndex(e => e.id == cart_list[i].side_menu_id);
+		const drink_index = menu_data_list.findIndex(e => e.id == cart_list[i].drink_menu_id);
+		const data = {
+			menu: menu_data_list[menu_index],
+			side_menu: menu_data_list[side_index],
+			drink_menu: menu_data_list[drink_index]
+		};
+		list.push(data);
+	}
+	console.log(list);
+	return list;
+}
+
+function makeIngredientTag(menu) {
+	const li = document.createElement("li");
+	li.className = "additional";
+	li.innerHTML = `
+	    <span>재료추가</span>
+	    <div class="additional-box">
+	    	<ul class="additional-list">
+	    	
+	    	</ul>
+	    	<button type="button" id="ingredient-change-button" class="additional-list-button">
+                	<span>변경</span>
+            </button>
+	    </div>
+	`;
+
+	const additional_list = li.querySelector(".additional-list");
+	if (menu.ingredient_list == null || menu.ingredient_list.length == 0) {
+		const blank = document.createElement("li");
+		blank.innerText = "없음";
+		additional_list.appendChild(blank);
+	}
+	else {
+		for (let i = 0; i < menu.ingredient_list.length; i++) {
+			const element = document.createElement("li");
+			element.innerHTML = `
+				<div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>${menu.ingredient_list[i].name}</span>
+                    <strong>
+                        +
+                        <span class="add-price">${menu.ingredient_list[i].price}</span>
+                        <span>원</span>
+                    </strong>
+                </div>
+                <button type="button" id="ingredient-change-button" class="additional-list-button">
+                	<span>변경</span>
+                </button>
+			`;
+			additional_list.appendChild(element);
+		}
+	}
+	return li;
+}
+
+function makeSideMenuTag(side_menu, set_size) {
+	const li = document.createElement("li");
+	li.className = "additional";
+	li.innerHTML = `
+	    <span>사이드</span>
+	    <div class="additional-box">
+	        <div class="side-menu-list">
+	            <span>${side_menu.name}</span>
+	            <strong>
+	                +
+	                <span class="add-price">${set_size == 1 ? side_menu.set_add_price : side_menu.large_add_price}</span>
+	                <span>원</span>
+	            </strong>
+	        </div>
+	        <button type="button" id="side-change-button" class="additional-list-button">
+	        	<span>변경</span>
+	        </button>
+	    </div>
+	`;
+	return li;
+}
+
+function makeDrinkMenuTag(drink_menu, set_size) {
+	const li = document.createElement("li");
+	li.className = "additional";
+	li.innerHTML = `
+        <span>음료</span>
+        <div class="additional-box">
+            <div class="side-menu-list">
+                <span>${drink_menu.name}</span>
+                <strong>
+                    +
+                    <span class="add-price">${set_size == 1 ? drink_menu.set_add_price : drink_menu.large_add_price}</span>
+                    <span>원</span>
+                </strong>
+            </div>
+            <button type="button" id="drink-change-button" class="additional-list-button">
+            	<span>변경</span>
+            </button>
+        </div>
+	`;
+	return li;
+}
+
+function makeCartMenuTag(menu_data) {
 	const li = document.createElement("li");
 	li.classList.add("menu-list");
 	li.innerHTML = `
@@ -88,100 +225,30 @@ function makeCartMenuTag() {
                     <input type="checkbox" name="menu" title="선택" class="menu-checkbox">
                     <span class="menu-title">
                         <strong>
-                            <span></span>
+                            <span>${menu_data.menu.name}</span>
                         </strong>
                     </span>
                     <span class="price-box">
                         <strong>
-                            <span class="price"></span>
+                            <span class="price">${menu_data.menu.price.toLocaleString('ko-KR')}</span>
                             <span>원</span>
                         </strong>
                     </span>
                 </label>
                 <div class="menu-img-box">
-                    <img src="" alt="">
+                    <img src="${menu_data.menu.menu_images}" alt="">
                 </div>
             </div>
             <div class="set-menu-detail">
                 <ul>
-                    <li class="additional">
-                        <span>재료추가</span>
-                        <div class="additional-box">
-                            <ul class="additional-list">
-                                <li>없음</li>
-                            </ul>
-                            <button type="button"
-                                class="additional-list-button"><span>변경</span></button>
-                        </div>
-                    </li>
-                    <li class="additional">
-                        <span>사이드</span>
-                        <div class="additional-box">
-                            <div class="side-menu-list">
-                                <span>프렌치프라이L</span>
-                                <strong>
-                                    +
-                                    <span class="add-price">0</span>
-                                    <span>원</span>
-                                </strong>
-                            </div>
-                            <button type="button"
-                                class="additional-list-button"><span>변경</span></button>
-                        </div>
-                    </li>
-                    <li class="additional">
-                        <span>음료</span>
-                        <div class="additional-box">
-                            <div class="side-menu-list">
-                                <span>콜라 L</span>
-                                <strong>
-                                    +
-                                    <span class="add-price">0</span>
-                                    <span>원</span>
-                                </strong>
-                            </div>
-                            <button type="button"
-                                class="additional-list-button"><span>변경</span></button>
-                        </div>
-                    </li>
-                    <li class="additional">
-                        <span>음료1</span>
-                        <div class="additional-box">
-                            <div class="side-menu-list">
-                                <span></span>
-                                <strong>
-                                    +
-                                    <span class="add-price">0</span>
-                                    <span>원</span>
-                                </strong>
-                            </div>
-                            <button type="button"
-                                class="additional-list-button"><span>변경</span></button>
-                        </div>
-                    </li>
-                    <li class="additional">
-                        <span>음료2</span>
-                        <div class="additional-box">
-                            <div class="side-menu-list">
-                                <span></span>
-                                <strong>
-                                    +
-                                    <span class="add-price">0</span>
-                                    <span>원</span>
-                                </strong>
-                            </div>
-                            <button type="button"
-                                class="additional-list-button"><span>변경</span></button>
-                        </div>
-                    </li>
-
+                    
                 </ul>
             </div>
             <div class="quantity">
                 <strong>수량</strong>
                 <div class="num-set">
                     <button type="button" class="btn-minus"></button>
-                    <input type="number" readonly="readonly">
+                    <input type="number" readonly="readonly" value="1">
                     <button type="button" class="btn-plus"></button>
                 </div>
             </div>
@@ -196,7 +263,7 @@ function makeCartMenuTag() {
                 <span>합계금액</span>
                 <div>
                     <strong>
-                        <span class="total-price">7,800원</span>
+                        <span class="total-price">${menu_data.menu.price.toLocaleString('ko-KR')}</span>
                         <span>원</span>
                     </strong>
                 </div>
@@ -204,22 +271,6 @@ function makeCartMenuTag() {
         </div>
 	`;
 	return li;
-	const menu_list = document.querySelector(".menu-list");
-	const menu_title = menu_list.querySelector(".menu-title>strong>span");
-	const menu_price = menu_list.querySelector(".price");
-	const menu_image = menu_list.querySelector(".menu-img-box>img");
-	const side_menu_list = menu_list.querySelectorAll(".side-menu-list>span");
-	const side_menu_price = menu_list.querySelectorAll(".side-menu-list .add-price");
-	const add_price = menu_list.querySelectorAll(".add-price");
-	const total_sum = menu_list.querySelector(".total-price");
-	const calc_total_sum = menu_list.querySelector(".calc-total-price");
-
-	const menu_count_tag = menu_list.querySelector(".num-set > input");
-	const reduce_menu_count_button = menu_list.querySelector(".num-set > .btn-minus");
-	const add_menu_count_button = menu_list.querySelector(".num-set > .btn-plus");
-
-	const additional = menu_list.querySelectorAll(".additional");
-	additionalList();
 }
 
 
@@ -240,50 +291,19 @@ add_menu_to_card_button.onclick = () => {
 }
 
 
-function additionalList(cart_list_data) {
-	console.log(cart_list_data);
-	if (cart_list_data.menu_id < 4) {
-		additional[3].classList.add("on");
-		additional[4].classList.add("on");
-	} else if (cart_list_data.size == 0) {
-		additional[0].classList.add("on");
-	} else if (cart_list_data.menu_id > 3) {
-		additional[0].classList.add("on");
-		additional[1].classList.add("on");
-		additional[2].classList.add("on");
+
+
+
+function setOrderList(menu_data_list) {
+	for (let i = 0; i < menu_data_list.length; i++) {
+
+		console.log("setOrderList: ");
+		console.log(menu_data_list);
+		setSideMenuList(menu_data_list[1]);
+		setSideDrinkList(menu_data_list[2]);
+		menu_count_tag.value = menu_count;
+		calcTotalPrice();
 	}
-}
-
-
-function setOrderList(cart_list_data) {
-	$.ajax({
-		type: "post",
-		dataType: "json",
-		data: {
-			"menu_id": Number(menu_data_list.menu_id)
-		},
-		url: `/api/v1/delivery/cart/${menu_id}`,
-		success: function(data) {
-			console.log(data);
-			setMenuList(data[0]);
-			setSideMenuList(data);
-			setSideDrinkList(data);
-			menu_count_tag.value = menu_count;
-			calcTotalPrice();
-		}
-	})
-
-
-}
-
-
-
-function setMenuList(data) {
-	let price = data.price;
-	menu_title.innerText = data.name;
-	menu_price.innerText = price.toLocaleString('ko-KR')
-	menu_image.src = data.menu_images;
-	total_price += price;
 }
 
 function addMenuCount() {
@@ -297,7 +317,7 @@ function reduceMenuCount() {
 	calcTotalPrice();
 }
 
-function setSideMenuList(data) {
+/*function setSideMenuList(data) {
 	if (data.length == 1) {
 		return;
 	} else if (data.length == 2) {
@@ -327,7 +347,7 @@ function setSideDrinkList(data) {
 		add_price[1].innerText = drink_add;
 		total_price += Number(drink_add);
 	}
-}
+}*/
 
 function calcTotalPrice() {
 	total_sum.innerText = Number(total_price * menu_count).toLocaleString('ko-KR');
