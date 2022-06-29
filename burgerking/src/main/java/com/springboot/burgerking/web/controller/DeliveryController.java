@@ -30,7 +30,6 @@ public class DeliveryController {
 	
 	@PostMapping("/delivery/menu/details")
 	public ResponseEntity<?> loadCartListDetails(MenuListDto cartList) {
-		System.out.println("cart_list:" +cartList);
 		return new ResponseEntity<>(deliveryService.getCartMenuDtl(cartList), HttpStatus.OK);
 	}
 

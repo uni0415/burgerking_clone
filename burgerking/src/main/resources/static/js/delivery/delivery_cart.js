@@ -73,10 +73,10 @@ function getCartListFromSession() {
 				const ingredient_change_button = cart_menu_tag.querySelector("#ingredient-change-button");
 				const side_change_button = cart_menu_tag.querySelector("#side-change-button");
 				const drink_change_button = cart_menu_tag.querySelector("#drink-change-button");
+				popSideMenuModal(side_change_button, menu_data_list[i].menu, cart_menu_tag, i);
+				popDrinkMenuModal(drink_change_button, menu_data_list[i].menu, cart_menu_tag, i);
 				//setOrderList(menu_data_list);
 			}
-				popSideMenuModal();
-				popDrinkMenuModal();
 		},
 		error: function(xhr, status) {
 			console.log(xhr);
@@ -178,7 +178,7 @@ function makeSideMenuTag(side_menu, set_size) {
 	    <span>사이드</span>
 	    <div class="additional-box">
 	        <div class="side-menu-list">
-	            <span>${side_menu.name}</span>
+	            <span class="side-menu-name">${side_menu.name}</span>
 	            <strong>
 	                +
 	                <span class="add-price">${set_size == 1 ? side_menu.set_add_price : side_menu.large_add_price}</span>

@@ -70,7 +70,6 @@ public class DeliveryServiceImpl implements DeliveryService {
 			dtoList.add(dtl.toResDto());
 			
 		}
-		System.out.println(dtoList);
 		return dtoList;
 	}
 }
