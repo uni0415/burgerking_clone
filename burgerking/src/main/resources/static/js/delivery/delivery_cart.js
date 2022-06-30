@@ -2,16 +2,13 @@ let menu_id = sessionStorage.getItem("menu_id");
 let side_menu_id = sessionStorage.getItem("side_menu_id");
 let drink_menu_id = sessionStorage.getItem("drink_menu_id");
 let size = sessionStorage.getItem("size");
-console.log(menu_id, size, side_menu_id, drink_menu_id);
 
 const cart_list_box = document.querySelector(".cart-list-box");
 const calc_total_price_tag = document.querySelector(".calc-total-price");
 
 const add_menu_to_card_button = document.querySelector(".menu-add-button");
 
-let total_price = 0;
-let calc_total_price = 0;
-let menu_count = 1;
+
 
 let cart_list_json;
 
@@ -58,10 +55,17 @@ function getCartListFromSession() {
 		},
 		dataType: "json",
 		success: function(menu_data_list) {
+		console.log("menu_data_list");
+		console.log(menu_data_list);
 			menu_data_list = devideMenuData(cart_list, menu_data_list);
 			for (let i = 0; i < menu_data_list.length; i++) {
-				const cart_menu_tag = makeCartMenuTag(menu_data_list[i]);
+				let total_price = 0;
+				let calc_total_price = 0;
+				let menu_count = 1;
+
+				const cart_menu_tag = makeCartMenuTag(menu_data_list[i], total_price);
 				cart_list_box.appendChild(cart_menu_tag);
+				const main_menu_price = cart_menu_tag.querySelector(".price");
 
 				const total_price_tag = cart_menu_tag.querySelector(".total-price");
 
@@ -69,13 +73,29 @@ function getCartListFromSession() {
 				const reduce_menu_count_button = cart_menu_tag.querySelector(".num-set > .btn-minus");
 				const add_menu_count_button = cart_menu_tag.querySelector(".num-set > .btn-plus");
 				additionalList(menu_data_list[i], cart_menu_tag);
-				
+
+				const ingredient_add_price = cart_menu_tag.querySelector(".ingredient-add-price");
+				const side_add_price = cart_menu_tag.querySelector(".side-add-price");
+				const drink_add_price = cart_menu_tag.querySelector(".drink-add-price");
+
 				const ingredient_change_button = cart_menu_tag.querySelector("#ingredient-change-button");
 				const side_change_button = cart_menu_tag.querySelector("#side-change-button");
 				const drink_change_button = cart_menu_tag.querySelector("#drink-change-button");
+				
+				menu_price = main_menu_price.textContent;
+				side_price = side_add_price.textContent;
+				drink_price = drink_add_price.textContent;
+								
 				popSideMenuModal(side_change_button, menu_data_list[i].menu, cart_menu_tag, i);
 				popDrinkMenuModal(drink_change_button, menu_data_list[i].menu, cart_menu_tag, i);
-				//setOrderList(menu_data_list);
+
+				reduce_menu_count_button.onclick = () => {
+					reduceMenuCount(total_price, calc_total_price, menu_count, menu_count_tag, total_price_tag);
+				}
+
+				add_menu_count_button.onclick = () => {
+					addMenuCount(total_price, calc_total_price, menu_count, menu_count_tag, total_price_tag);
+				}
 			}
 		},
 		error: function(xhr, status) {
@@ -91,10 +111,10 @@ function additionalList(menu_data, cart_menu_tag) {
 	if (menu_data.menu.id < 4) {
 		const ingredient_list_tag = makeIngredientTag(menu_data.menu);
 		const drink_menu_tag = makeDrinkMenuTag(menu_data.drink_menu, menu_data.drink_menu.set_size);
-
+		
 		set_menu_detail.appendChild(ingredient_list_tag);
 		set_menu_detail.appendChild(drink_menu_tag);
-		
+
 
 	} else if (menu_data.menu.set_size == 0) {
 		const ingredient_list_tag = makeIngredientTag(menu_data.menu);
@@ -108,6 +128,7 @@ function additionalList(menu_data, cart_menu_tag) {
 		set_menu_detail.appendChild(ingredient_list_tag);
 		set_menu_detail.appendChild(side_menu_tag);
 		set_menu_detail.appendChild(drink_menu_tag);
+
 	}
 }
 
@@ -157,7 +178,7 @@ function makeIngredientTag(menu) {
                     <span>${menu.ingredient_list[i].name}</span>
                     <strong>
                         +
-                        <span class="add-price">${menu.ingredient_list[i].price}</span>
+                        <span class="ingredient-add-price">${menu.ingredient_list[i].price}</span>
                         <span>원</span>
                     </strong>
                 </div>
@@ -181,7 +202,7 @@ function makeSideMenuTag(side_menu, set_size) {
 	            <span class="side-menu-name">${side_menu.name}</span>
 	            <strong>
 	                +
-	                <span class="add-price">${set_size == 1 ? side_menu.set_add_price : side_menu.large_add_price}</span>
+	                <span class="side-add-price">${set_size == 1 ? side_menu.set_add_price : side_menu.large_add_price}</span>
 	                <span>원</span>
 	            </strong>
 	        </div>
@@ -200,10 +221,10 @@ function makeDrinkMenuTag(drink_menu, set_size) {
         <span>음료</span>
         <div class="additional-box">
             <div class="side-menu-list">
-                <span>${drink_menu.name}</span>
+                <span class="drink-menu-name">${drink_menu.name}</span>
                 <strong>
                     +
-                    <span class="add-price">${set_size == 1 ? drink_menu.set_add_price : drink_menu.large_add_price}</span>
+                    <span class="drink-add-price">${set_size == 1 ? drink_menu.set_add_price : drink_menu.large_add_price}</span>
                     <span>원</span>
                 </strong>
             </div>
@@ -216,6 +237,7 @@ function makeDrinkMenuTag(drink_menu, set_size) {
 }
 
 function makeCartMenuTag(menu_data) {
+	console.log(menu_data);
 	const li = document.createElement("li");
 	li.classList.add("menu-list");
 	li.innerHTML = `
@@ -274,8 +296,6 @@ function makeCartMenuTag(menu_data) {
 }
 
 
-/*reduce_menu_count_button.onclick = reduceMenuCount;
-add_menu_count_button.onclick = addMenuCount;*/
 
 add_menu_to_card_button.onclick = () => {
 	const cart_list = sessionStorage.getItem("cart_list") != null ? JSON.parse(sessionStorage.getItem("cart_list")) : new Array();
@@ -292,76 +312,34 @@ add_menu_to_card_button.onclick = () => {
 
 
 
-
-
-function setOrderList(menu_data_list) {
-	for (let i = 0; i < menu_data_list.length; i++) {
-
-		console.log("setOrderList: ");
-		console.log(menu_data_list);
-		setSideMenuList(menu_data_list[1]);
-		setSideDrinkList(menu_data_list[2]);
-		menu_count_tag.value = menu_count;
-		calcTotalPrice();
-	}
-}
-
-function addMenuCount() {
+function addMenuCount(total_price, calc_total_price, menu_count, menu_count_tag, total_price_tag) {
 	menu_count_tag.value = ++menu_count;
-	calcTotalPrice();
+	calcTotalPrice(total_price, calc_total_price, menu_count, total_price_tag);
 }
 
-function reduceMenuCount() {
+function reduceMenuCount(total_price, calc_total_price, menu_count, menu_count_tag, total_price_tag) {
 	if (menu_count == 1) return;
 	menu_count_tag.value = --menu_count;
-	calcTotalPrice();
+	calcTotalPrice(total_price, calc_total_price, total_price_tag);
 }
 
-/*function setSideMenuList(data) {
-	if (data.length == 1) {
-		return;
-	} else if (data.length == 2) {
-		return;
-	} else if (data.length == 3) {
-		let side_add = size == 1 ? data[1].set_add_price : data[1].large_add_price;
-		side_menu_list[0].innerText = data[1].name;
-		add_price[0].innerText = side_add;
-		total_price += Number(side_add);
-	}
+
+
+function calcTotalPrice(total_price, calc_total_price, menu_count, total_price_tag) {
+	console.log(menu_count);
+	console.log(total_price);
+	total_price_tag.innerText = Number(total_price * menu_count).toLocaleString('ko-KR');
+	calcLastPrice(total_price_tag, calc_total_price);
 }
 
-function setSideDrinkList(data) {
-	if (data.length == 1) {
-		return;
-	} else if (data.length == 2) {
-		console.log(data);
-		let drink_add = size == 1 ? data[1].set_add_price : data[1].large_add_price;
-		side_menu_list[2].innerText = data[1].name;
-		add_price[2].innerText = drink_add;
-		side_menu_list[3].innerText = data[1].name;
-		add_price[3].innerText = drink_add;
-		total_price += Number(drink_add);
-	} else if (data.length == 3) {
-		let drink_add = size == 1 ? data[2].set_add_price : data[2].large_add_price;
-		side_menu_list[1].innerText = data[2].name;
-		add_price[1].innerText = drink_add;
-		total_price += Number(drink_add);
-	}
-}*/
-
-function calcTotalPrice() {
-	total_sum.innerText = Number(total_price * menu_count).toLocaleString('ko-KR');
-	calcLastPrice();
-}
-
-function calcLastPrice() {
-	total_sum.innerText = total_price.toLocaleString('ko-KR');
+function calcLastPrice(total_price, calc_total_price, total_price_tag) {
+	total_price_tag.innerText = total_price.toLocaleString('ko-KR');
 	if (total_price * menu_count > 17000) {
 		calc_total_price = total_price * menu_count - 5000;
-		calc_total_sum.innerText = calc_total_price.toLocaleString('ko-KR');
+		calc_total_price_tag.innerText = calc_total_price.toLocaleString('ko-KR');
 	} else {
 		calc_total_price = total_price * menu_count;
-		calc_total_sum.innerText = calc_total_price.toLocaleString('ko-KR');
+		calc_total_price_tag.innerText = calc_total_price.toLocaleString('ko-KR');
 	}
 }
 
