@@ -55,8 +55,6 @@ function getCartListFromSession() {
 		},
 		dataType: "json",
 		success: function(menu_data_list) {
-		console.log("menu_data_list");
-		console.log(menu_data_list);
 			menu_data_list = devideMenuData(cart_list, menu_data_list);
 			for (let i = 0; i < menu_data_list.length; i++) {
 				let total_price = 0;
@@ -82,10 +80,12 @@ function getCartListFromSession() {
 				const side_change_button = cart_menu_tag.querySelector("#side-change-button");
 				const drink_change_button = cart_menu_tag.querySelector("#drink-change-button");
 				
-				menu_price = main_menu_price.textContent;
-				side_price = side_add_price.textContent;
-				drink_price = drink_add_price.textContent;
-								
+				menu_price = Number(menu_data_list[i].menu.price);
+				side_price = Number(side_add_price.textContent);
+				drink_price = Number(drink_add_price.textContent);
+				total_price = menu_price + side_price + drink_price;
+				
+				calcTotalPrice(total_price, total_price_tag, calc_total_price, menu_count);
 				popSideMenuModal(side_change_button, menu_data_list[i].menu, cart_menu_tag, i);
 				popDrinkMenuModal(drink_change_button, menu_data_list[i].menu, cart_menu_tag, i);
 
@@ -107,7 +107,6 @@ function getCartListFromSession() {
 
 function additionalList(menu_data, cart_menu_tag) {
 	const set_menu_detail = cart_menu_tag.querySelector(".set-menu-detail > ul");
-	console.log(menu_data);
 	if (menu_data.menu.id < 4) {
 		const ingredient_list_tag = makeIngredientTag(menu_data.menu);
 		const drink_menu_tag = makeDrinkMenuTag(menu_data.drink_menu, menu_data.drink_menu.set_size);
@@ -145,7 +144,6 @@ function devideMenuData(cart_list, menu_data_list) {
 		};
 		list.push(data);
 	}
-	console.log(list);
 	return list;
 }
 
@@ -320,20 +318,19 @@ function addMenuCount(total_price, calc_total_price, menu_count, menu_count_tag,
 function reduceMenuCount(total_price, calc_total_price, menu_count, menu_count_tag, total_price_tag) {
 	if (menu_count == 1) return;
 	menu_count_tag.value = --menu_count;
-	calcTotalPrice(total_price, calc_total_price, total_price_tag);
+	calcTotalPrice(total_price, calc_total_price, total_price_tag, menu_count);
 }
 
 
 
 function calcTotalPrice(total_price, calc_total_price, menu_count, total_price_tag) {
-	console.log(menu_count);
 	console.log(total_price);
 	total_price_tag.innerText = Number(total_price * menu_count).toLocaleString('ko-KR');
-	calcLastPrice(total_price_tag, calc_total_price);
+	console.log(total_price.textContent)
+	calcLastPrice(total_price_tag, calc_total_price, menu_count);
 }
 
-function calcLastPrice(total_price, calc_total_price, total_price_tag) {
-	total_price_tag.innerText = total_price.toLocaleString('ko-KR');
+function calcLastPrice(total_price, calc_total_price, menu_count) {
 	if (total_price * menu_count > 17000) {
 		calc_total_price = total_price * menu_count - 5000;
 		calc_total_price_tag.innerText = calc_total_price.toLocaleString('ko-KR');
