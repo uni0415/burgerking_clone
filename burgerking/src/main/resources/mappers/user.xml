@@ -107,6 +107,7 @@
   		values(
   			0,
 			#{email},
+			null,
 			#{name},
 			#{phone},
 			#{gender},
@@ -114,6 +115,7 @@
 			#{birth_month},
 			#{birth_date},
 			#{password},
+			null,
 			now(),
 			now()
   		)

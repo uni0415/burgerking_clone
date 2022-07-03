@@ -8,6 +8,9 @@ const passwordInvisible = document.querySelectorAll(".password-invisible");
 const login_button = document.querySelector(".login-button");
 const login_form = document.querySelector("form");
 
+const username1 = document.querySelector(".username");
+const password1 = document.querySelector(".password");
+
 
 const Toast = Swal.mixin({
     toast: true,
@@ -54,7 +57,14 @@ function passwordInvisibleEvent(index) {
 
 
 login_button.onclick = () => {
-    login_form.submit();
+	if(username1.value == ""){
+		alert("아이디를 입력해주세요!");
+	}else if(password1.value == ""){
+		alert("비밀번호를 입력해주세요!");
+	}else{
+		 login_form.submit();
+	}
+   
 }
 
 

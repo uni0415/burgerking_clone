@@ -20,6 +20,9 @@ const code_check_button = document.querySelector(".code-check-button");
 const signup_button = document.querySelector(".signup-button");
 
 const agreement_check = document.querySelectorAll(".check");
+const allInputCheck = document.querySelector(".all-input-check");
+
+
 let check_flag = [false, false, false, false];
 
 let stop_flag = false;
@@ -204,3 +207,44 @@ function startTimer(duration, display) {
         }
     }, 1000);
 }
+
+
+
+allInputCheck.addEventListener('click', function() {
+	console.log("체크 클릭");
+	
+	for(let i = 0; i < agreement_check.length; i++) {
+		if(allInputCheck.checked == true) {
+			agreement_check[i].checked = true;			
+		}else {
+			agreement_check[i].checked = false;
+		}
+	}	
+})
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
