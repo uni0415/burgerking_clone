@@ -15,7 +15,7 @@ function removeAllChild(tag) {
 	}
 }
 
-function popSideMenuModal(side_change_button, menu_data_list, cart_menu_tag, index) {
+function popSideMenuModal(side_change_button, menu, cart_menu_tag, index, origin_side_menu_price, total_price, total_price_tag, menu_count) {
 	let side_menu_data_list;
 	side_change_button.onclick = () => {
 		modal_pop_wrap.classList.add("on");
@@ -24,15 +24,15 @@ function popSideMenuModal(side_change_button, menu_data_list, cart_menu_tag, ind
 
 		$.ajax({
 			type: "get",
-			dataType: "text",
-			url: `/api/v1/delivery/side/${menu_data_list.set_size}`,
+			dataType: "json",
+			url: `/api/v1/delivery/side/${menu.set_size}`,
 			async: false,
 			success: function(data) {
-				side_menu_data_list = JSON.parse(data);
-				loadChangeSideMenu(side_menu_data_list, menu_data_list, index);
-				sideMenuChoice(side_menu_data_list, menu_data_list, cart_menu_tag)
+				side_menu_data_list = data;
+				loadChangeSideMenu(side_menu_data_list, menu, index);
+				sideMenuChoice(side_menu_data_list, cart_menu_tag, origin_side_menu_price, total_price, total_price_tag, menu_count);
 			}
-		})
+		});
 	}
 
 	modal_close_button[0].onclick = () => {
@@ -42,14 +42,17 @@ function popSideMenuModal(side_change_button, menu_data_list, cart_menu_tag, ind
 	}
 }
 
-function sideMenuChoice(side_menu_data_list, menu_data_list, cart_menu_tag) {
+function sideMenuChoice(side_menu_data_list, cart_menu_tag, origin_side_price, total_price, total_price_tag, menu_count) {
 	const side_menu_name = cart_menu_tag.querySelector(".side-menu-name");
 	const side_add_price = cart_menu_tag.querySelector(".side-add-price");
 	choice_button[0].onclick = () => {
 		selected_side_menu = side_menu_data_list[side_menu_data_list.findIndex(e => e.id == side_menu_id)];
 		side_menu_name.innerText = selected_side_menu.name;
-		side_add_price.innerText = menu_data_list.set_size == 1 ? selected_side_menu.set_add_price : selected_side_menu.large_add_price;
+		side_add_price.innerText = selected_side_menu.set_size == 1 ? selected_side_menu.set_add_price : selected_side_menu.large_add_price;
 		modal_close_button[0].click();
+		let adjust_side_price = (selected_side_menu.set_size == 1 ? selected_side_menu.set_add_price : selected_side_menu.large_add_price) - origin_side_price;
+		adjust_side_price *= menu_count;
+		calcTotalPrice(total_price + adjust_side_price, total_price_tag, menu_count);
 	}
 }
 
