@@ -2,6 +2,8 @@ package com.springboot.burgerking.domain.auth;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.springboot.burgerking.domain.AddressEntity;
+
 @Mapper
 public interface AuthRepository {
 	public int noneMemberSignup(NoneMemberMst noneMemberMst);
@@ -24,4 +26,5 @@ public interface AuthRepository {
 	public int insertUser(User user);
 	public User findOAuth2UserByOAuth2Username(String oAuth2_username);
 	public User updateUserByOauth2(String email, String oauth2_username, String provider);
+	
 }

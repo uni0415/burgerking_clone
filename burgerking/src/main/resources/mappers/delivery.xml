@@ -164,6 +164,7 @@
   
   <select id="getAddressInfo" parameterType="Integer" resultType="com.springboot.burgerking.web.controller.dto.AddressDto">
   	select
+  		id,
   		address_nickname,
   		address,
   		detail_address
@@ -183,6 +184,24 @@
   	order by id desc limit 1
   	where
   		user_id = #{user_id}
+  </select>
+  
+  <update id="updateAddressNickname" parameterType="com.springboot.burgerking.domain.AddressEntity">
+  	update 
+  		user_address
+  	set
+  		address_nickname = #{address_nickname}
+  	where
+  		user_id = #{user_id} and id = #{id}
+  </update>
+  
+  <select id="getAddressNickname" parameterType="String" resultType="String">
+  	select
+  		address_nickname
+  	from
+  		user_address
+	where
+	  	user_id = #{user_id}
   </select>
   	
   </mapper>

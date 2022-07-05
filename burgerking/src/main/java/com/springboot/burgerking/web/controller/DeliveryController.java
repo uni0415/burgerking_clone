@@ -8,7 +8,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -88,5 +87,12 @@ public class DeliveryController {
 		AddressDto addressDto = deliveryService.getLastAddressInfo(user_id);
 		System.out.println(addressDto);
 		return new ResponseEntity<>(addressDto, HttpStatus.OK);
+	}
+	
+	@PostMapping("/delivery/updatenickname")
+	public ResponseEntity<?> updateNickname(AddressDto addressDto){
+		System.out.println(addressDto);
+		int result = deliveryService.updateAddressNickname(addressDto);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 }

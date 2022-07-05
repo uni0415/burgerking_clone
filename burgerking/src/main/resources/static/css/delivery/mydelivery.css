@@ -598,6 +598,7 @@ input[type=radio]:checked+:before {
 }
 
 .modal-registration-btn {
+    display: none;
     float: left;
     width: 284px;
     margin: 0;
@@ -605,7 +606,26 @@ input[type=radio]:checked+:before {
     cursor: pointer;
 }
 
-.modal-registration-btn span {
+.modal-registration-btn.on {
+    display: block;
+}
+
+.change-nickname-confirm-btn {
+    display: none;
+    float: left;
+    width: 284px;
+    height: 84px;
+    margin: 0;
+    background-color: #d72300;
+    cursor: pointer;
+}
+
+.change-nickname-confirm-btn.on {
+    display: block;
+}
+
+.modal-registration-btn span,
+.change-nickname-confirm-btn span {
     display: inline-block;
     height: 84px;
     padding: 20px 10px;

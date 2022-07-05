@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class AddressDto {
+	private int id;
 	private int user_id;
 	private String address_nickname;
 	private String address;
@@ -19,10 +20,18 @@ public class AddressDto {
 	
 	public AddressEntity toAddressEntity() {
 		return AddressEntity.builder()
+				.id(id)
 				.user_id(user_id)
 				.address_nickname(address_nickname)
 				.address(address)
 				.detail_address(detail_address)
+				.build();
+	}
+	
+	public AddressEntity toUpdateNicknameEntity() {
+		return AddressEntity.builder()
+				.user_id(user_id)
+				.address_nickname(address_nickname)
 				.build();
 	}
 }

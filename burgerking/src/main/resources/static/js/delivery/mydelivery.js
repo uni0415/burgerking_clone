@@ -20,7 +20,8 @@ const delivery_delete = document.querySelector(".delivery-delete");
 const delivery_address = document.querySelector(".delivery-list>ul>li");
 const nodata = document.querySelector(".nodata");
 let result = document.getElementById('result');
-
+const change_nickname_confirm_btn = document.querySelector(".change-nickname-confirm-btn");
+const delivery_count = document.querySelector(".delivery-count>strong>em");
 
 inputLength();
 inputWidth();
@@ -116,6 +117,7 @@ modal_close_btn.onclick = () => {
     pop_wrap.classList.remove("on");
 }
 
+
 input_detail.onkeydown = () => {
     if (input_detail.value.length > 0) {
         btn_set.classList.add("on");
@@ -125,26 +127,50 @@ input_detail.onkeydown = () => {
     }
 }
 
-
-
+function changeAddressNickname(id) {
+    change_nickname_confirm_btn.onclick = () => {
+        $.ajax({
+            type: "post",
+            dataType: "text",
+            data: {
+                "id": id,
+                "user_id": user_info.id,
+                "address_nickname": address_nickname.value
+            },
+            url: "/api/v1/delivery/updatenickname",
+            success: function (data) {
+                console.log(data);
+                my_modal.classList.remove("on");
+                pop_wrap.classList.remove("on");
+            }
+        })
+    }
+}
 
 modal_registration_btn.onclick = () => {
-    $.ajax({
-        type: "post",
-        dataType: "text",
-        data: {
-            "user_id": user_info.id,
-            "address_nickname": address_nickname.value,
-            "address": address.textContent,
-            "detail_address": detail_address.value
-        },
-        url: "/api/v1/delivery/order-address",
-        success: function () {
-            my_modal.classList.remove("on");
-            pop_wrap.classList.remove("on");
-            loadOrderAddress();
-        }
-    })
+    let order_address_amount = Number(delivery_count.textContent);
+    if (order_address_amount > 4) {
+        alert("5개까지");
+        my_modal.classList.remove("on");
+        pop_wrap.classList.remove("on");
+    } else {
+        $.ajax({
+            type: "post",
+            dataType: "text",
+            data: {
+                "user_id": user_info.id,
+                "address_nickname": address_nickname.value,
+                "address": address.textContent,
+                "detail_address": detail_address.value
+            },
+            url: "/api/v1/delivery/order-address",
+            success: function () {
+                my_modal.classList.remove("on");
+                pop_wrap.classList.remove("on");
+                loadOrderAddress();
+            }
+        })
+    }
 }
 
 function lastOrderAddress() {
@@ -172,15 +198,18 @@ function loadOrderAddress() {
             console.log(data);
             if (data.length > 0) {
                 nodata.style = "display:none";
+                delivery_count.innerText = data.length;
             }
-            console.log(123);
             delivery_list.innerHTML = '';
             for (let i = 0; i < data.length; i++) {
                 const address_tag = makeAddressTag(data[i]);
                 delivery_list.appendChild(address_tag);
                 const changeNicknameBtn = address_tag.querySelector(".btn-nickname");
                 changeNicknameBtn.onclick = () => {
-                    modal('my_modal');
+                    my_modal.classList.add("on");
+                    modal_registration_btn.classList.remove("on");
+                    change_nickname_confirm_btn.classList.add("on");
+                    changeAddressNickname(data[i].id);
                 }
             }
         }

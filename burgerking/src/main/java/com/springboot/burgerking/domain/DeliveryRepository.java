@@ -20,4 +20,6 @@ public interface DeliveryRepository {
 	public int insertOrderAddress(AddressEntity addressEntity);
 	public List<AddressDto> getAddressInfo(int user_id);
 	public AddressDto getLastAddressInfo(int user_id);
+	public int updateAddressNickname(AddressEntity addressEntity);
+	public String getAddressNickname(int user_id);
 }

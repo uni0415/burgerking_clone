@@ -20,4 +20,6 @@ public interface DeliveryService {
 	public int insertOrderAddress(AddressDto addressDto);
 	public List<AddressDto> getAddressInfo(int user_id);
 	public AddressDto getLastAddressInfo(int user_id);
+	public int updateAddressNickname(AddressDto addressDto);
+	public String getAddressNickname(int user_id);
 }
