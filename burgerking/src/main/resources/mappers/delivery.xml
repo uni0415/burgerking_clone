@@ -147,7 +147,7 @@
   		)
   	order by
   		dtl.id asc;
-  </select>
+  </select> -->
   
   <insert id="insertOrderAddress" parameterType="com.springboot.burgerking.domain.AddressEntity">
   	insert into

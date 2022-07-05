@@ -22,7 +22,6 @@ public interface AuthRepository {
 	public int updateGender(User user);
 	public String getGender(String email);
 	public int insertUser(User user);
-	public String getEmail(String email);
 	public User findOAuth2UserByOAuth2Username(String oAuth2_username);
 	public User updateUserByOauth2(String email, String oauth2_username, String provider);
 }

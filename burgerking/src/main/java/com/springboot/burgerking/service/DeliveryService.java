@@ -2,7 +2,6 @@ package com.springboot.burgerking.service;
 
 import java.util.List;
 
-import com.springboot.burgerking.domain.AddressEntity;
 import com.springboot.burgerking.domain.DeliverySideMenu;
 import com.springboot.burgerking.domain.MenuDetailMst;
 import com.springboot.burgerking.web.controller.dto.AddressDto;

@@ -79,6 +79,7 @@ public class AuthServiceImpl implements AuthService {
 		}
 		
 		return null;
+	}
 	public int updateBirth(User user) {
 		return authRepository.updateBirth(user);
 	}
