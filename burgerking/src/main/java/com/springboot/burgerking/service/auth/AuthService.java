@@ -15,4 +15,8 @@ public interface AuthService {
 	public int updatePhone(User user);
 	public String getPhone(String email);
 	public String findUserId(FindUserEntity findUserEntity);
+	public int updateBirth(User user);
+	public String getBirth(String email);
+	public int updateGender(User user);
+	public String getGender(String email);
 }

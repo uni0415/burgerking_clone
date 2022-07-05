@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.springboot.burgerking.config.oauth2.PrincipalOauth2UserService;
 import com.springboot.burgerking.service.auth.PrincipalDetailsService;
 
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final PrincipalDetailsService principalDetailsService;
+	private final PrincipalOauth2UserService principalOauth2UserService;
 	
 	
 	@Override
@@ -35,7 +37,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginProcessingUrl("/api/v1/auth/signin")
 			.usernameParameter("email")
 			.defaultSuccessUrl("/delivery/menu/1", true)
-			.permitAll();
+			.permitAll()
+			.and()
+			.oauth2Login()
+			.loginPage("/auth/login")
+			.userInfoEndpoint()
+			.userService(principalOauth2UserService)
+			.and()
+			.defaultSuccessUrl("/delivery/menu/1");
 	}
 	
 	@Override

@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.springboot.burgerking.domain.AddressEntity;
 import com.springboot.burgerking.domain.DeliveryRepository;
 import com.springboot.burgerking.domain.DeliverySideMenu;
 import com.springboot.burgerking.domain.Ingredient;
 import com.springboot.burgerking.domain.MenuDetailMst;
 import com.springboot.burgerking.domain.MenuDtlWithIngredient;
+import com.springboot.burgerking.web.controller.dto.AddressDto;
 import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
 import com.springboot.burgerking.web.controller.dto.MenuDtlResDto;
 import com.springboot.burgerking.web.controller.dto.MenuListDto;
@@ -71,5 +73,20 @@ public class DeliveryServiceImpl implements DeliveryService {
 			
 		}
 		return dtoList;
+	}
+	
+	@Override
+	public int insertOrderAddress(AddressDto addressDto) {
+		return deliveryRepository.insertOrderAddress(addressDto.toAddressEntity());
+	}
+	
+	@Override
+	public List<AddressDto> getAddressInfo(int user_id) {
+		return deliveryRepository.getAddressInfo(user_id);
+	}
+	
+	@Override
+	public AddressDto getLastAddressInfo(int user_id) {
+		return deliveryRepository.getLastAddressInfo(user_id);
 	}
 }

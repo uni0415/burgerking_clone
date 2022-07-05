@@ -49,9 +49,13 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 		return user.getId();
 	}
 	
-	public List<MenuListDto> getOrderMenuList() {
-		return user.getOrder_menu_list();
+	public String getEmail() {
+		return user.getEmail();
 	}
+	
+//	public List<MenuListDto> getOrderMenuList() {
+//		return user.getOrder_menu_list();
+//	}
 	
 	@Override
 	public boolean isAccountNonExpired() {

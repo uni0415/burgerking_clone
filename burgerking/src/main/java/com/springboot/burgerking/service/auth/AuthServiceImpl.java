@@ -79,6 +79,23 @@ public class AuthServiceImpl implements AuthService {
 		}
 		
 		return null;
+	public int updateBirth(User user) {
+		return authRepository.updateBirth(user);
+	}
+	
+	@Override
+	public String getBirth(String email) {
+		return authRepository.getBirth(email);
+	}
+	
+	@Override
+	public int updateGender(User user) {
+		return authRepository.updateGender(user);
+	}
+	
+	@Override
+	public String getGender(String email) {
+		return authRepository.getGender(email);
 	}
 
 }

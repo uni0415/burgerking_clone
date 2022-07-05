@@ -1,5 +1,6 @@
-/*const delivery_header_name = document.querySelector(".delivery-header-name");
+const delivery_header_name = document.querySelector(".delivery-header-name");
 const header_logout = document.querySelector(".header-logout");
+let user_info;
 $.ajax({
     type: "post",
     dataType: "text",
@@ -8,6 +9,8 @@ $.ajax({
         data = JSON.parse(data);
         console.log(data);
         setDeliveryHeader(data);
+        user_info = data;
+        console.log(user_info);
     }
 })
 
@@ -16,5 +19,5 @@ function setDeliveryHeader(data) {
 }
 
 header_logout.onclick = () => {
-	sessionStorage.clear();
-}*/
+    sessionStorage.clear();
+}
