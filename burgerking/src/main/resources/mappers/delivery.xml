@@ -128,5 +128,41 @@
   	order by
   		dtl.id asc;
   </select>
+  
+  <insert id="insertOrderAddress" parameterType="com.springboot.burgerking.domain.AddressEntity">
+  	insert into
+  		user_address
+  	values(
+  		0,
+  		#{user_id},
+		#{address_nickname},
+		#{address},
+		#{detail_address}
+  	)
+  	
+  </insert>
+  
+  <select id="getAddressInfo" parameterType="Integer" resultType="com.springboot.burgerking.web.controller.dto.AddressDto">
+  	select
+  		address_nickname,
+  		address,
+  		detail_address
+  	from
+  		user_address
+  	where
+  		user_id = #{user_id}
+  </select>
+  
+  <select id="getLastAddressInfo" parameterType="Integer" resultType="com.springboot.burgerking.web.controller.dto.AddressDto">
+  	select
+  		address_nickname,
+  		address,
+  		detail_address
+  	from
+  		user_address
+  	order by id desc limit 1
+  	where
+  		user_id = #{user_id}
+  </select>
   	
   </mapper>

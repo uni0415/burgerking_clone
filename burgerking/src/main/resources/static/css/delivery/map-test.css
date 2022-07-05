@@ -212,6 +212,7 @@
 }
 
 .nodata {
+    display: none;
     font-size: 1.5rem;
     line-height: 150%;
     padding: 370px 10px 210px;
@@ -222,24 +223,17 @@
     border-bottom: 2px solid #e4ded9;
 }
 
-
 .delivery-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     overflow: hidden;
 }
 
 .delivery-list li {
     position: relative;
-    width: 49%;
+    float: left;
+    width: 50%;
     min-height: 200px;
     margin-bottom: 21px;
     background: #fff;
-}
-
-.delivery-list li.on {
-    display: block;
 }
 
 .option-content {
@@ -502,16 +496,6 @@ input[type=radio]:checked+:before {
     padding-bottom: 84px;
     background: #fff;
     overflow: auto;
-}
-
-#my_modal.on {
-    position: fixed;
-    display: block;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    z-index: 9999;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 

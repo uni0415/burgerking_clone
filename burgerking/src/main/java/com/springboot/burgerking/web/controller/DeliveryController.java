@@ -16,6 +16,7 @@ import com.springboot.burgerking.domain.MenuDetailMst;
 import com.springboot.burgerking.domain.auth.User;
 import com.springboot.burgerking.service.DeliveryService;
 import com.springboot.burgerking.service.auth.PrincipalDetails;
+import com.springboot.burgerking.web.controller.dto.AddressDto;
 import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
 import com.springboot.burgerking.web.controller.dto.MenuListDto;
 
@@ -70,4 +71,22 @@ public class DeliveryController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
+	@PostMapping("/delivery/order-address")
+	public ResponseEntity<?> orderAddress(AddressDto addressDto) {
+		int result = deliveryService.insertOrderAddress(addressDto);
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+	
+	@PostMapping("/delivery/address-info")
+	public ResponseEntity<?> getAddressInfo(int user_id){
+		List<AddressDto> addressDto = deliveryService.getAddressInfo(user_id);
+		return new ResponseEntity<>(addressDto, HttpStatus.OK);
+	}
+	
+	@PostMapping("/delivery/last-address-info")
+	public ResponseEntity<?> getLastAddressInfo(int user_id){
+		AddressDto addressDto = deliveryService.getLastAddressInfo(user_id);
+		System.out.println(addressDto);
+		return new ResponseEntity<>(addressDto, HttpStatus.OK);
+	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.springboot.burgerking.web.controller.dto.AddressDto;
 import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
 import com.springboot.burgerking.web.controller.dto.MenuListDto;
 @Mapper
@@ -16,4 +17,7 @@ public interface DeliveryRepository {
 	public List<MenuDetailDto> getMenuInfo(MenuListDto menuListDto);
 	
 	public List<MenuDtlWithIngredient> getCartMenuDetails(MenuListDto menuListDto);
+	public int insertOrderAddress(AddressEntity addressEntity);
+	public List<AddressDto> getAddressInfo(int user_id);
+	public AddressDto getLastAddressInfo(int user_id);
 }

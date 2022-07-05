@@ -18,8 +18,9 @@ import lombok.NoArgsConstructor;
 
 public class User {
 	private int id;
-	private int agreement_id;
+	//private int agreement_id;
 	private String email;
+	private String oauth2_username;
 	private String name;
 	private String phone;
 	private String gender;
@@ -27,7 +28,8 @@ public class User {
 	private String birth_month;
 	private String birth_date;
 	private String password;
-	private List<MenuListDto> order_menu_list;
+	private String provider;
+	//private List<MenuListDto> order_menu_list;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
 	

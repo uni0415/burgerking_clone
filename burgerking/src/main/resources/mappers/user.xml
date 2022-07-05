@@ -173,6 +173,52 @@
   		where
   			email=#{email}
   	</select>
+  	
+  	<select id="findOAuth2UserByOAuth2Username" parameterType="String" resultType="com.springboot.burgerking.domain.auth.User">
+  		select
+  			*
+  		from
+  			user_mst
+  		where
+  			oauth2_username=#{oAuth2_username}
+  	</select>
+  	
+  	<insert id="insertUser" parameterType="com.springboot.burgerking.domain.auth.User" useGeneratedKeys="true" keyProperty="id">
+  		insert into
+  			user_mst
+  		values(
+  			0,
+			#{email},
+			#{oauth2_username},
+			#{name},
+			#{phone},
+			null,
+			null,
+			null,
+			null,
+			#{password},
+			#{provider},
+			now(),
+			now()
+  		)
+  	</insert>
+  	
+  	<select id="getEmail" parameterType="String" resultType="String">
+  		select
+  			email
+  		from
+  			user_mst
+  		where
+  			email = #{email}
+  	</select>
 
+	<update id="updateUserByOauth2" parameterType="String">
+		update user_mst
+		set
+			oauth2_username = #{oauth2_username},
+			provider = #{provider}
+		where
+			email = #{email}
+	</update>
   	
   </mapper>

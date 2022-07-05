@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문목록</title>
     <link rel="stylesheet" href="/static/css/include/container.css">
-    <link rel="stylesheet" href="/static/css/delivery/mydelivery.css">
+    <link rel="stylesheet" href="/static/css/delivery/map-test.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4a642b1061349b8bea4439542e4fecb4&libraries=services"></script>
@@ -64,7 +64,31 @@
                         <p>등록된 MY배달지가 없습니다.</p>
                     </div>
                     <ul class="delivery-list">
+                        <li>
+                            <div class="option-content">
+                                <label class="option-checked">
+                                    <input type="radio" name="check">
+                                    <span>
+                                        기본배달지
+                                    </span>
+                                </label>
+                                <div class="nickname">
+                                    <p class="title">
+                                        <strong>서면IT아카데미</strong>
+                                    </p>
 
+                                    <button type="button" id="popup_open_btn" class="btn-nickname">
+                                        <span>별칭변경</span>
+                                    </button>
+                                </div>
+                                <p class="delivery-address">
+                                    <span>서울특별시 강남구 논현로150길 13(논현동)</span>
+                                </p>
+                            </div>
+                            <button type="button" class="delivery-delete">
+                                <span>Delete</span>
+                            </button>
+                        </li>
                     </ul>
                     <div class="btn-contents">
                         <div class="pop-wrap">
@@ -204,7 +228,7 @@
         </div>
     </div>
     </div>
-    <script src="/static/js/delivery/mydelivery.js"></script>
+    <script src="/static/js/delivery/map-test.js"></script>
 </body>
 
 </html>

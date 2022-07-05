@@ -2,8 +2,10 @@ package com.springboot.burgerking.service;
 
 import java.util.List;
 
+import com.springboot.burgerking.domain.AddressEntity;
 import com.springboot.burgerking.domain.DeliverySideMenu;
 import com.springboot.burgerking.domain.MenuDetailMst;
+import com.springboot.burgerking.web.controller.dto.AddressDto;
 import com.springboot.burgerking.web.controller.dto.MenuDetailDto;
 import com.springboot.burgerking.web.controller.dto.MenuDtlResDto;
 import com.springboot.burgerking.web.controller.dto.MenuListDto;
@@ -16,4 +18,7 @@ public interface DeliveryService {
 	public List<MenuDetailDto> getMenuInfo(MenuListDto menuListDto);
 	
 	public List<MenuDtlResDto> getCartMenuDtl(MenuListDto menuListDto);
+	public int insertOrderAddress(AddressDto addressDto);
+	public List<AddressDto> getAddressInfo(int user_id);
+	public AddressDto getLastAddressInfo(int user_id);
 }

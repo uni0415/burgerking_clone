@@ -125,7 +125,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/auth/userInfo")
-	public ResponseEntity<?> getUserInfo(UserDto userDto, @AuthenticationPrincipal PrincipalDetails principalDetails){	
+	public ResponseEntity<?> getUserInfo(UserDto userDto, @AuthenticationPrincipal PrincipalDetails principalDetails){
 		int id = principalDetails.getId();
 		User user = authService.getUserById(id);
 		return new ResponseEntity<>(user, HttpStatus.OK);
@@ -138,4 +138,6 @@ public class AuthController {
 		authService.updateGender(userDto.toUpdateGenderEntity());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	
 }
