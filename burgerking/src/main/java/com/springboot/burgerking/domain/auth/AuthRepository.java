@@ -15,4 +15,6 @@ public interface AuthRepository {
 	public User getUserById(int id);
 	public int updatePhone(User user);
 	public String getPhone(String email);
+	public int findUserId(FindUserEntity findUserEntity);
+	public String getEmail(String phone);
 }

@@ -94,5 +94,9 @@ public class ViewController {
 		return "burgerking/auth/infochange";
 	}
 	
+	@GetMapping("/auth/findUserInfo")
+	public String findUserInfo() {
+		return "burgerking/auth/findUserInfo";
+	}
 
 }

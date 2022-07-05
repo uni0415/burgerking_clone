@@ -139,6 +139,24 @@
   			email=#{email}
   	</select>
 
-
+	<select id="findUserId" parameterType="com.springboot.burgerking.domain.auth.FindUserEntity" resultType="Integer">
+		select
+			count(`name`)
+		from
+			user_mst
+		where
+			`name`=#{user_name} and
+			phone=#{phone}
+	</select>
+	
+	<select id="getEmail" parameterType="String" resultType="String">
+		select
+			email
+		from
+			user_mst
+		where
+			phone=#{phone}
+			
+	</select>
   	
   </mapper>
