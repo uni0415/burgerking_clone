@@ -26,12 +26,20 @@ function loadProductDetail(product_menu_detail, menu_data) {
 				sessionStorage.setItem("size", 0);
 				sessionStorage.setItem("side_menu_id", 0);
 				sessionStorage.setItem("drink_menu_id", 165);
+				sessionStorage.setItem("menu_count", 1);
+				sessionStorage.setItem("menu_price", menu_data[i].price);
+				sessionStorage.setItem("side_price", 0);
+				sessionStorage.setItem("drink_price", 0);
 				const cart_list = sessionStorage.getItem("cart_list") != null ? JSON.parse(sessionStorage.getItem("cart_list")) : new Array();
 				const menu = {
 					"menu_id": sessionStorage.getItem("menu_id"),
 					"size": sessionStorage.getItem("size"),
 					"side_menu_id": sessionStorage.getItem("side_menu_id"),
-					"drink_menu_id": sessionStorage.getItem("drink_menu_id")
+					"drink_menu_id": sessionStorage.getItem("drink_menu_id"),
+					"menu_count": sessionStorage.getItem("menu_count"),
+					"menu_price": sessionStorage.getItem("menu_price"),
+					"side_price": sessionStorage.getItem("side_price"),
+					"drink_price": sessionStorage.getItem("drink_price")
 				};
 				cart_list.push(menu);
 				sessionStorage.setItem("cart_list", JSON.stringify(cart_list));
@@ -104,7 +112,6 @@ function popSideMenuModal(sub_menu_list, submenu_data) {
 	for (let i = 0; i < sub_menu_list.length; i++) {
 		sub_menu_list[i].onclick = () => {
 			menu_id = submenu_data[i].id;
-
 			menu_modal_box.classList.remove("on");
 			side_modal_box.classList.add("on");
 			let set_size = 0;
@@ -115,12 +122,20 @@ function popSideMenuModal(sub_menu_list, submenu_data) {
 				sessionStorage.setItem("size", 0);
 				sessionStorage.setItem("side_menu_id", 0);
 				sessionStorage.setItem("drink_menu_id", 0);
+				sessionStorage.setItem("menu_count", 1);
+				sessionStorage.setItem("menu_price", submenu_data[i].price);
+				sessionStorage.setItem("side_price", 0);
+				sessionStorage.setItem("drink_price", 0);
 				const cart_list = sessionStorage.getItem("cart_list") != null ? JSON.parse(sessionStorage.getItem("cart_list")) : new Array();
 				const menu = {
 					"menu_id": sessionStorage.getItem("menu_id"),
 					"size": sessionStorage.getItem("size"),
 					"side_menu_id": sessionStorage.getItem("side_menu_id"),
-					"drink_menu_id": sessionStorage.getItem("drink_menu_id")
+					"drink_menu_id": sessionStorage.getItem("drink_menu_id"),
+					"menu_count": sessionStorage.getItem("menu_count"),
+					"menu_price": sessionStorage.getItem("menu_price"),
+					"side_price": sessionStorage.getItem("side_price"),
+					"drink_price": sessionStorage.getItem("drink_price")
 				};
 				cart_list.push(menu);
 				sessionStorage.setItem("cart_list", JSON.stringify(cart_list));
@@ -133,7 +148,7 @@ function popSideMenuModal(sub_menu_list, submenu_data) {
 				url: `/api/v1/delivery/side/${set_size}`,
 				success: function(data) {
 					data = JSON.parse(data);
-					loadChangeSideMenu(data, set_size);
+					loadChangeSideMenu(data, set_size, submenu_data[i].price);
 				}
 			})
 		}
@@ -146,7 +161,7 @@ function popSideMenuModal(sub_menu_list, submenu_data) {
 	}
 }
 
-function loadChangeSideMenu(side_menu_data, set_size) {
+function loadChangeSideMenu(side_menu_data, set_size, menu_price) {
 
 	let str = ``;
 	let add_price = 0;
@@ -174,22 +189,21 @@ function loadChangeSideMenu(side_menu_data, set_size) {
 	}
 	const menu_change = document.querySelector(".menu-change");
 	menu_change.innerHTML = str;
-	console.log("set_size: " + size);
-
-	sideMenuChoice(side_menu_data, set_size);
+	sideMenuChoice(side_menu_data, set_size, menu_price);
 }
 
-function sideMenuChoice(side_menu_data, set_size) {
+function sideMenuChoice(side_menu_data, set_size, menu_price) {
 	const drink_modal_box = document.querySelector(".drink-modal-box");
 	const side_check = document.querySelectorAll("input[name=side-option]");
-
+	console.log(side_menu_data);
 	choice_button[0].onclick = () => {
 		let checkFlag = null;
+		let side_price;
 		for (let i = 0; i < side_check.length; i++) {
 			if (side_check[i].checked == true) {
 				checkFlag = side_check[i].value;
 				side_menu_id = side_menu_data[i].id;
-				console.log(side_menu_id);
+				set_size == 1 ? side_price = side_menu_data[i].set_add_price : side_price = side_menu_data[i].large_add_price;
 			}
 		}
 		if (checkFlag == null) {
@@ -208,7 +222,7 @@ function sideMenuChoice(side_menu_data, set_size) {
 				url: `/api/v1/delivery/drink/${set_size}`,
 				success: function(data) {
 					console.log(data);
-					loadChangeDrinkMenu(data, set_size);
+					loadChangeDrinkMenu(data, set_size, menu_price, side_price);
 				}
 			})
 		}
@@ -222,7 +236,7 @@ function sideMenuChoice(side_menu_data, set_size) {
 	}
 }
 
-function loadChangeDrinkMenu(drink_menu_data, set_size) {
+function loadChangeDrinkMenu(drink_menu_data, set_size, menu_price, side_price) {
 	let str = ``;
 	for (let i = 0; i < drink_menu_data.length; i++) {
 		set_size == 1 ? add_price = drink_menu_data[i].set_add_price : add_price = drink_menu_data[i].large_add_price;
@@ -248,18 +262,19 @@ function loadChangeDrinkMenu(drink_menu_data, set_size) {
 	}
 	const drink_change = document.querySelector(".drink-change");
 	drink_change.innerHTML = str;
-	drinkMenuChoice(drink_menu_data);
+	drinkMenuChoice(drink_menu_data, menu_price, set_size, side_price);
 }
 
-function drinkMenuChoice(drink_menu_data) {
+function drinkMenuChoice(drink_menu_data, menu_price, set_size, side_price) {
 	const check_drink = document.querySelectorAll("input[name=drink-option");
 	choice_button[1].onclick = () => {
 		let checkFlag = null;
+		let drink_price;
 		for (let i = 0; i < check_drink.length; i++) {
 			if (check_drink[i].checked == true) {
 				checkFlag = check_drink[i].value;
 				drink_menu_id = drink_menu_data[i].id;
-				console.log(drink_menu_id);
+				set_size == 1 ? drink_price = drink_menu_data[i].set_add_price : drink_price = drink_menu_data[i].large_add_price;
 			}
 		}
 		if (checkFlag == null) {
@@ -273,12 +288,20 @@ function drinkMenuChoice(drink_menu_data) {
 		sessionStorage.setItem("size", size);
 		sessionStorage.setItem("side_menu_id", side_menu_id);
 		sessionStorage.setItem("drink_menu_id", drink_menu_id);
+		sessionStorage.setItem("menu_count", 1);
+		sessionStorage.setItem("menu_price", menu_price);
+		sessionStorage.setItem("side_price", side_price);
+		sessionStorage.setItem("drink_price", drink_price);
 		const cart_list = sessionStorage.getItem("cart_list") != null ? JSON.parse(sessionStorage.getItem("cart_list")) : new Array();
 		const menu = {
 			"menu_id": sessionStorage.getItem("menu_id"),
 			"size": sessionStorage.getItem("size"),
 			"side_menu_id": sessionStorage.getItem("side_menu_id"),
-			"drink_menu_id": sessionStorage.getItem("drink_menu_id")
+			"drink_menu_id": sessionStorage.getItem("drink_menu_id"),
+			"menu_count": sessionStorage.getItem("menu_count"),
+			"menu_price": sessionStorage.getItem("menu_price"),
+			"side_price": sessionStorage.getItem("side_price"),
+			"drink_price": sessionStorage.getItem("drink_price")
 		};
 		cart_list.push(menu);
 		sessionStorage.setItem("cart_list", JSON.stringify(cart_list));

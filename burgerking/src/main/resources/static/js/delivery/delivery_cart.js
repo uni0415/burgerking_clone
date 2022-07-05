@@ -2,13 +2,10 @@ let menu_id = sessionStorage.getItem("menu_id");
 let side_menu_id = sessionStorage.getItem("side_menu_id");
 let drink_menu_id = sessionStorage.getItem("drink_menu_id");
 let size = sessionStorage.getItem("size");
-let calc_total_price = 0;
 const cart_list_box = document.querySelector(".cart-list-box");
 const calc_total_price_tag = document.querySelector(".calc-total-price");
 
 const add_menu_to_card_button = document.querySelector(".menu-add-button");
-
-
 
 let cart_list_json;
 
@@ -54,12 +51,10 @@ function getCartListFromSession() {
 			"menu_id_list": cart_list_json
 		},
 		dataType: "json",
-		success: function(menu_data_list) {
+		success: function (menu_data_list) {
 			menu_data_list = devideMenuData(cart_list, menu_data_list);
 			for (let i = 0; i < menu_data_list.length; i++) {
-				let total_price = 0;
-
-				const cart_menu_tag = makeCartMenuTag(menu_data_list[i], total_price);
+				const cart_menu_tag = makeCartMenuTag(menu_data_list[i], i);
 				cart_list_box.appendChild(cart_menu_tag);
 
 				const total_price_tag = cart_menu_tag.querySelector(".total-price");
@@ -70,24 +65,21 @@ function getCartListFromSession() {
 				additionalList(menu_data_list[i], cart_menu_tag);
 
 				const ingredient_add_price = cart_menu_tag.querySelector(".ingredient-add-price");
-				const side_add_price = cart_menu_tag.querySelector(".side-add-price");
-				const drink_add_price = cart_menu_tag.querySelector(".drink-add-price");
 
 				const ingredient_change_button = cart_menu_tag.querySelector("#ingredient-change-button");
 				const side_change_button = cart_menu_tag.querySelector("#side-change-button");
 				const drink_change_button = cart_menu_tag.querySelector("#drink-change-button");
+				let price_array = [];
+				price_array.length = cart_list.length;
+				popSideMenuModal(side_change_button, menu_data_list[i].menu, cart_menu_tag, i, total_price_tag);
+				popDrinkMenuModal(drink_change_button, menu_data_list[i].menu, cart_menu_tag, i, total_price_tag);
+				reduce_menu_count_button.onclick = () => reduceMenuCount(menu_count_tag, total_price_tag, i)
+				add_menu_count_button.onclick = () => addMenuCount(menu_count_tag, total_price_tag, i)
 
-				menu_price = Number(menu_data_list[i].menu.price);
-				side_price = Number(side_add_price.textContent);
-				drink_price = Number(drink_add_price.textContent);
-				total_price = menu_price + side_price + drink_price;
-				calcTotalPrice(total_price, total_price_tag, menu_count_tag.value);
-
-				popSideMenuModal(side_change_button, menu_data_list[i].menu, cart_menu_tag, i, side_price, total_price, total_price_tag, menu_count_tag.value);
-				popDrinkMenuModal(drink_change_button, menu_data_list[i].menu, cart_menu_tag, i);				reduce_menu_count_button.onclick = () => reduceMenuCount(total_price, menu_count_tag, total_price_tag)
-				add_menu_count_button.onclick = () => addMenuCount(total_price, menu_count_tag, total_price_tag)			}
+				calcTotalPrice(total_price_tag, i);
+			}
 		},
-		error: function(xhr, status) {
+		error: function (xhr, status) {
 			console.log(xhr);
 			console.log(status);
 		}
@@ -129,7 +121,7 @@ function devideMenuData(cart_list, menu_data_list) {
 		const data = {
 			menu: menu_data_list[menu_index],
 			side_menu: menu_data_list[side_index],
-			drink_menu: menu_data_list[drink_index]
+			drink_menu: menu_data_list[drink_index],
 		};
 		list.push(data);
 	}
@@ -223,8 +215,12 @@ function makeDrinkMenuTag(drink_menu, set_size) {
 	return li;
 }
 
-function makeCartMenuTag(menu_data) {
+function makeCartMenuTag(menu_data, index) {
 	console.log(menu_data);
+	cart_list = JSON.parse(sessionStorage.getItem("cart_list"));
+	for (let i = 0; i < cart_list.length; i++) {
+		menu_count = cart_list[index].menu_count;
+	}
 	const li = document.createElement("li");
 	li.classList.add("menu-list");
 	li.innerHTML = `
@@ -257,7 +253,7 @@ function makeCartMenuTag(menu_data) {
                 <strong>수량</strong>
                 <div class="num-set">
                     <button type="button" class="btn-minus"></button>
-                    <input type="number" readonly="readonly" value="1">
+                    <input type="number" readonly="readonly" value=${menu_count}>
                     <button type="button" class="btn-plus"></button>
                 </div>
             </div>
@@ -290,31 +286,59 @@ add_menu_to_card_button.onclick = () => {
 
 
 
-function addMenuCount(total_price, menu_count_tag, total_price_tag) {
+function addMenuCount(menu_count_tag, total_price_tag, index) {
 	menu_count_tag.value = ++menu_count_tag.value;
-	calcTotalPrice(total_price, total_price_tag, menu_count_tag.value);
+	cart_list = JSON.parse(sessionStorage.getItem("cart_list"));
+	sessionStorage.setItem("menu_count", menu_count_tag.value);
+	menu_count = sessionStorage.getItem("menu_count");
+	for (let i = 0; i < cart_list.length; i++) {
+		cart_list[index].menu_count = menu_count;
+		sessionStorage.setItem("cart_list", JSON.stringify(cart_list));
+	}
+	calcTotalPrice(total_price_tag, index);
 }
 
-function reduceMenuCount(total_price, menu_count_tag, total_price_tag) {
+function reduceMenuCount(menu_count_tag, total_price_tag, index) {
 	if (menu_count_tag.value == 1) return;
 	menu_count_tag.value = --menu_count_tag.value;
-	calcTotalPrice(total_price, total_price_tag, menu_count_tag.value);
+	cart_list = JSON.parse(sessionStorage.getItem("cart_list"));
+	sessionStorage.setItem("menu_count", menu_count_tag.value);
+	menu_count = sessionStorage.getItem("menu_count");
+	for (let i = 0; i < cart_list.length; i++) {
+		cart_list[index].menu_count = menu_count;
+		sessionStorage.setItem("cart_list", JSON.stringify(cart_list));
+	}
+	calcTotalPrice(total_price_tag, index);
 }
 
 
 
-function calcTotalPrice(total_price, total_price_tag, menu_count) {
-	total_price_tag.innerText = (total_price * menu_count).toLocaleString('ko-KR');
-	calc_total_price += (total_price * menu_count);
+function calcTotalPrice(total_price_tag, index) {
+	cart_list = JSON.parse(sessionStorage.getItem("cart_list"));
+	let price;
+	let menu_count;
+	for (let i = 0; i < cart_list.length; i++) {
+		let menu_price = Number(cart_list[index].menu_price);
+		let side_price = Number(cart_list[index].side_price);
+		let drink_price = Number(cart_list[index].drink_price);
+		menu_count = Number(cart_list[index].menu_count);
+		price = menu_price + side_price + drink_price;
+	}
+
+
+	total_price_tag.innerText = (price * menu_count).toLocaleString('ko-KR');
+
 	calcLastPrice();
 }
 
 function calcLastPrice() {
-	if (calc_total_price > 17000) {
-		calc_total_price = calc_total_price - 5000;
-		calc_total_price_tag.innerText = calc_total_price.toLocaleString('ko-KR');
-	} else {
-		calc_total_price_tag.innerText = calc_total_price.toLocaleString('ko-KR');
-	}
+	const prices = cart_list_box.querySelectorAll(".total-price");
+	let acc_price = 0;
+	prices.forEach(e => {
+		let price_text = e.innerText;
+		price_text = price_text.replaceAll(",", "");
+		acc_price += Number(price_text);
+	});
+	calc_total_price_tag.innerText = acc_price.toLocaleString('ko-KR');
 }
 
