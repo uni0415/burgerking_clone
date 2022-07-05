@@ -25,13 +25,7 @@ const checkbox = document.querySelectorAll(".checkbox");
 const btn02 = document.querySelector(".btn02");
 
 
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'center',
-    showConfirmButton: false,
-    timer: 1500,
-    timerProgressBar: true,
-})
+
 
 const Toast2 = Swal.mixin({
     toast: true,
@@ -175,7 +169,7 @@ btn_send.onclick = () => {
                                         "phone": phone_input_item.value
                                     },
                                     url: "/api/v1/auth/updatePhone",
-                                    sucess: function (data) {
+                                    success: function (data) {
                                         data = JSON.parse(data);
                                         reload();
                                     }

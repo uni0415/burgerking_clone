@@ -22,6 +22,7 @@ import com.springboot.burgerking.service.auth.AuthService;
 import com.springboot.burgerking.service.auth.PrincipalDetails;
 import com.springboot.burgerking.service.auth.PrincipalDetailsService;
 import com.springboot.burgerking.web.controller.dto.AgreementDto;
+import com.springboot.burgerking.web.controller.dto.FindUserInfoDto;
 import com.springboot.burgerking.web.controller.dto.NoneMemberDto;
 import com.springboot.burgerking.web.controller.dto.UserDto;
 
@@ -116,5 +117,14 @@ public class AuthController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@PostMapping("/auth/findUserId")
+	public ResponseEntity<?> findUserId(FindUserInfoDto findUserDto){
+		String email = authService.findUserId(findUserDto.toFindUserEntity());
+		System.out.println(email);
+		return new ResponseEntity<>(email, HttpStatus.OK);
+	}
+	
+	
 	
 }

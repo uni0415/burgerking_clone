@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.burgerking.domain.auth.AgreementEntity;
 import com.springboot.burgerking.domain.auth.AuthRepository;
+import com.springboot.burgerking.domain.auth.FindUserEntity;
 import com.springboot.burgerking.domain.auth.NoneMemberMst;
 import com.springboot.burgerking.domain.auth.User;
 import com.springboot.burgerking.web.controller.dto.NoneMemberDto;
@@ -69,6 +70,15 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public String getPhone(String email) {
 		return authRepository.getPhone(email);
+	}
+	
+	@Override
+	public String findUserId(FindUserEntity findUserEntity) {
+		if(authRepository.findUserId(findUserEntity) > 0) {
+			return authRepository.getEmail(findUserEntity.getPhone());
+		}
+		
+		return null;
 	}
 
 }
