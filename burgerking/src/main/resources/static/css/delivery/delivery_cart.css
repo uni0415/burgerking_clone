@@ -490,6 +490,7 @@ input[type=checkbox]:checked+:before {
     font-size: 28px;
     font-weight: 600;
     background-color: #512314;
+    cursor:pointer;
 }
 
 .menu-order-button {
@@ -503,6 +504,7 @@ input[type=checkbox]:checked+:before {
     font-size: 28px;
     font-weight: 600;
     background-color: #d72300;
+    cursor:pointer;
 }
 
 .menu-add-button:after {

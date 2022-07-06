@@ -2,18 +2,20 @@ let menu_id = sessionStorage.getItem("menu_id");
 let side_menu_id = sessionStorage.getItem("side_menu_id");
 let drink_menu_id = sessionStorage.getItem("drink_menu_id");
 let size = sessionStorage.getItem("size");
+
 const cart_list_box = document.querySelector(".cart-list-box");
 const calc_total_price_tag = document.querySelector(".calc-total-price");
-
+const menu_amount = document.querySelector(".menu-count");
 const add_menu_to_card_button = document.querySelector(".menu-add-button");
-
+const all_check = document.querySelector(".all-check>input");
+const checked_delete_button = document.querySelector(".delete-button-box>button");
 let cart_list_json;
 
 getCartListFromSession();
 
 function getCartListFromSession() {
 	const cart_list = JSON.parse(sessionStorage.getItem("cart_list"));
-	console.log(cart_list);
+
 	/*if(string_json == null) location.replace("/delivery/menu/1");*/
 
 	/*	cart_list_json = JSON.parse(string_json);
@@ -51,12 +53,19 @@ function getCartListFromSession() {
 			"menu_id_list": cart_list_json
 		},
 		dataType: "json",
-		success: function (menu_data_list) {
+		success: function(menu_data_list) {
 			menu_data_list = devideMenuData(cart_list, menu_data_list);
 			for (let i = 0; i < menu_data_list.length; i++) {
+				sessionStorage.setItem("cart_menu_name", menu_data_list[0].menu.name);
+
 				const cart_menu_tag = makeCartMenuTag(menu_data_list[i], i);
 				cart_list_box.appendChild(cart_menu_tag);
+				const menu_checkbox = cart_menu_tag.querySelector(".menu-checkbox");
+				menuCheckbox(menu_checkbox);
 
+				const menu_list = cart_list_box.querySelector(".menu-list");
+				const delete_button = cart_menu_tag.querySelector(".delete-button");
+				menuDelete(delete_button, i);
 				const total_price_tag = cart_menu_tag.querySelector(".total-price");
 
 				const menu_count_tag = cart_menu_tag.querySelector(".num-set > input");
@@ -69,8 +78,7 @@ function getCartListFromSession() {
 				const ingredient_change_button = cart_menu_tag.querySelector("#ingredient-change-button");
 				const side_change_button = cart_menu_tag.querySelector("#side-change-button");
 				const drink_change_button = cart_menu_tag.querySelector("#drink-change-button");
-				let price_array = [];
-				price_array.length = cart_list.length;
+
 				popSideMenuModal(side_change_button, menu_data_list[i].menu, cart_menu_tag, i, total_price_tag);
 				popDrinkMenuModal(drink_change_button, menu_data_list[i].menu, cart_menu_tag, i, total_price_tag);
 				reduce_menu_count_button.onclick = () => reduceMenuCount(menu_count_tag, total_price_tag, i)
@@ -78,13 +86,58 @@ function getCartListFromSession() {
 
 				calcTotalPrice(total_price_tag, i);
 			}
+			if (all_check.checked == false) {
+				all_check.click();
+			}
 		},
-		error: function (xhr, status) {
+		error: function(xhr, status) {
 			console.log(xhr);
 			console.log(status);
 		}
 	});
 }
+
+
+function menuDelete(delete_button, i) {
+	delete_button.onclick = () => {
+		const data = JSON.parse(sessionStorage.getItem("cart_list"));
+		data.splice(i, 1);
+		sessionStorage.setItem("cart_list", JSON.stringify(data));
+		location.reload();
+	}
+}
+
+function menuCheckbox(menu_checkbox) {
+	menu_checkbox.onclick = () => {
+		allCheck();
+	}
+}
+
+all_check.onclick = () => {
+	selectAll();
+}
+
+function allCheck() {
+	const menu_checkbox = cart_list_box.querySelectorAll(".menu-checkbox");
+	const checked = cart_list_box.querySelectorAll(".menu-checkbox:checked");
+	if (menu_checkbox.length === checked.length) {
+		all_check.checked = true;
+	} else {
+		all_check.checked = false;
+	}
+	menu_amount.innerText = checked.length;
+}
+
+
+function selectAll() {
+	const menu_checkbox = cart_list_box.querySelectorAll(".menu-checkbox");
+	menu_checkbox.forEach(e => {
+		e.checked = all_check.checked
+	});
+	allCheck();
+}
+
+
 
 function additionalList(menu_data, cart_menu_tag) {
 	const set_menu_detail = cart_menu_tag.querySelector(".set-menu-detail > ul");
