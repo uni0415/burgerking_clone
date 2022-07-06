@@ -34,4 +34,6 @@ public class AddressDto {
 				.address_nickname(address_nickname)
 				.build();
 	}
+	
+	
 }

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class AddressEntity {
+	private int id;
 	private int user_id;
 	private String address_nickname;
 	private String address;

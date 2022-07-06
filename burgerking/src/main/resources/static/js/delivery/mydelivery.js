@@ -16,8 +16,6 @@ const address_nickname = document.querySelector(".input-nickname");
 const address = document.querySelector(".address-text");
 const detail_address = document.querySelector(".input-detail");
 const delivery_list = document.querySelector(".delivery-list");
-const delivery_delete = document.querySelector(".delivery-delete");
-const delivery_address = document.querySelector(".delivery-list>ul>li");
 const nodata = document.querySelector(".nodata");
 let result = document.getElementById('result');
 const change_nickname_confirm_btn = document.querySelector(".change-nickname-confirm-btn");
@@ -117,6 +115,24 @@ modal_close_btn.onclick = () => {
     pop_wrap.classList.remove("on");
 }
 
+//onclick 안에 ajax
+function deleteAddrssList(delivery_list_id, delivery_delete) {
+    delivery_delete.onclick = () => {
+        $.ajax({
+            type: "delete",
+            dataType: "json",
+            data: {
+                "id": delivery_list_id,
+                "user_id": user_info.id
+            },
+            url: "/api/v1/delivery/deleteList",
+            success: function () {
+                loadOrderAddress();
+            }
+        })
+    }
+
+}
 
 input_detail.onkeydown = () => {
     if (input_detail.value.length > 0) {
@@ -131,7 +147,7 @@ function changeAddressNickname(id) {
     change_nickname_confirm_btn.onclick = () => {
         $.ajax({
             type: "post",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "id": id,
                 "user_id": user_info.id,
@@ -142,6 +158,7 @@ function changeAddressNickname(id) {
                 console.log(data);
                 my_modal.classList.remove("on");
                 pop_wrap.classList.remove("on");
+                loadOrderAddress();
             }
         })
     }
@@ -199,17 +216,24 @@ function loadOrderAddress() {
             if (data.length > 0) {
                 nodata.style = "display:none";
                 delivery_count.innerText = data.length;
+            } else if (data.length == 0 || data == '[]') {
+                nodata.style = "display:block";
+                delivery_count.innerText = data.length;
             }
             delivery_list.innerHTML = '';
             for (let i = 0; i < data.length; i++) {
                 const address_tag = makeAddressTag(data[i]);
                 delivery_list.appendChild(address_tag);
                 const changeNicknameBtn = address_tag.querySelector(".btn-nickname");
+                const delivery_delete = document.querySelector(".delivery-delete");
+                deleteAddrssList(data[i].id, delivery_delete);
+
                 changeNicknameBtn.onclick = () => {
                     my_modal.classList.add("on");
                     modal_registration_btn.classList.remove("on");
                     change_nickname_confirm_btn.classList.add("on");
                     changeAddressNickname(data[i].id);
+
                 }
             }
         }

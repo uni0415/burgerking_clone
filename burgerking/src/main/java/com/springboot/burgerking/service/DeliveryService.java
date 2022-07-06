@@ -22,4 +22,5 @@ public interface DeliveryService {
 	public AddressDto getLastAddressInfo(int user_id);
 	public int updateAddressNickname(AddressDto addressDto);
 	public String getAddressNickname(int user_id);
+	public int deleteOrderAddressList(int id, int user_id);
 }

@@ -203,5 +203,13 @@
 	where
 	  	user_id = #{user_id}
   </select>
+  
+  <delete id="deleteOrderAddressList" parameterType="Integer">
+  	delete
+  	from
+  		user_address
+  	where
+  		id = #{id} and user_id = #{user_id};
+  </delete>
   	
   </mapper>

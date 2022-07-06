@@ -100,4 +100,9 @@ public class DeliveryServiceImpl implements DeliveryService {
 	public String getAddressNickname(int user_id) {
 		return deliveryRepository.getAddressNickname(user_id);
 	}
+	
+@Override
+	public int deleteOrderAddressList(int id, int user_id) {
+		return deliveryRepository.deleteOrderAddressList(id, user_id);
+	}
 }

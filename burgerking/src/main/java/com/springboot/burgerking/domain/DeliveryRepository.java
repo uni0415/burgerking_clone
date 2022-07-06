@@ -22,4 +22,5 @@ public interface DeliveryRepository {
 	public AddressDto getLastAddressInfo(int user_id);
 	public int updateAddressNickname(AddressEntity addressEntity);
 	public String getAddressNickname(int user_id);
+	public int deleteOrderAddressList(int id, int user_id);
 }
