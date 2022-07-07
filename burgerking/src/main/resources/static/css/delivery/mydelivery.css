@@ -292,6 +292,39 @@ input[type=radio]:checked+:before {
     margin-right: 10px;
 }
 
+.btn-nickname {
+    display: inline-block;
+    min-width: 3.5em;
+    height: 36px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: #fff;
+    background: #2e2e2e;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delivery-delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    text-indent: -9999em;
+    background: url(/static/images/close.png) no-repeat 50%;
+    border: none;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.delivery-delete.on {
+    display: block;
+}
+
+
+
+
+
 .btn-contents {
     padding-left: 10px;
     text-align: right;
@@ -636,34 +669,7 @@ input[type=radio]:checked+:before {
     line-height: 44px;
 }
 
-.btn-nickname {
-    display: inline-block;
-    min-width: 3.5em;
-    height: 36px;
-    padding: 5px 10px;
-    font-size: 1rem;
-    color: #fff;
-    background: #2e2e2e;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-.delivery-delete {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 80px;
-    height: 80px;
-    text-indent: -9999em;
-    background: url(/static/images/close.png) no-repeat 50%;
-    border: none;
-    overflow: visible;
-    cursor: pointer;
-}
-
-.delivery-delete.on {
-    display: block;
-}
 
 
 .delivery-add ul li {
