@@ -39,9 +39,12 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public int signup(User user) {
 		if (authRepository.checkUsername(user.getEmail()) == 0) {
-			return authRepository.signup(user);
+			System.out.println(authRepository.checkUsername(user.getEmail()));
+			int result = authRepository.signup(user);
+			return result;
 		} else {
-			return 0;
+			int result = authRepository.checkUsername(user.getEmail());
+			return result;
 		}
 	}
 

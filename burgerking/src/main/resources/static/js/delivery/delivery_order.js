@@ -15,12 +15,14 @@ const view_close = document.querySelector(".view-close");
 const phone = document.querySelector(".phone-box input");
 const address = document.querySelector(".address");
 const detail_address = document.querySelector(".detail-address");
-let full_address = address.textContent + detail_address.textContent;
-console.log(full_address);
+const address_check = document.querySelector(".address-check-box>strong>span");
+const pop_wrap = document.querySelector(".pop-wrap");
+const background = document.querySelector(".background");
 const cancel_button = document.querySelector(".cancel-button");
 const payment_button = document.querySelector(".payment-button");
 
 let cart_list_json;
+let full_address = address.textContent + detail_address.textContent;
 
 getCartListFromSession();
 
@@ -74,7 +76,7 @@ function getCartListFromSession() {
 			"menu_id_list": cart_list_json
 		},
 		dataType: "json",
-		success: functionmenu_data_list) {
+		success: function (menu_data_list) {
 			menu_data_list = devideMenuData(cart_list, menu_data_list);
 			for (let i = 0; i < menu_data_list.length; i++) {
 				sessionStorage.setItem("cart_menu_name", menu_data_list[0].menu.name);
@@ -103,7 +105,7 @@ function getCartListFromSession() {
 				calcTotalPrice(total_price_tag, i);
 			}
 		},
-		error: functionxhr,  status) {
+		error: function (xhr, status) {
 			console.log(xhr);
 			console.log(status);
 		}
@@ -364,8 +366,22 @@ const IMP = window.IMP;
 IMP.init("imp31100156")
 
 payment_button.onclick = () => {
-	requestPay();
+	pop_wrap.classList.add("open");
+	address_check.innerText = full_address;
+
+	const button_no = document.querySelector(".button-no");
+	const button_yes = document.querySelector(".button-yes");
+
+	button_no.onclick = () => {
+		pop_wrap.classList.remove("open");
+	}
+
+	button_yes.onclick = () => {
+		requestPay();
+	}
 }
+
+
 let payment_price;
 function requestPay() {
 	IMP.request_pay({
@@ -379,11 +395,11 @@ function requestPay() {
 		buyer_tel: phone.value,
 		buyer_addr: full_address,
 		buyer_postcode: "01181"
-	}, function(rsp) {
+	}, function (rsp) {
 		if (rsp.success) {
 			console.log(rsp);
 		} else {
-			console.log("결제실패");
+			pop_wrap.classList.remove("open");
 		}
 	});
 }

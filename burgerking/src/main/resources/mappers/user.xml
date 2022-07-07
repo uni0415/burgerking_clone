@@ -116,6 +116,7 @@
 			#{birth_date},
 			#{password},
 			null,
+			"ROLE_USER",
 			now(),
 			now()
   		)

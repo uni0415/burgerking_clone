@@ -41,7 +41,7 @@ login_button.onclick = () => {
 				if (data.status == 0) {//로그인 실패
 					alert(data.msg);
 				} else {//로그인 성공
-					location.href = "./" //현재 사용하는 path
+					location.href = "/delivery/menu/1" //현재 사용하는 path
 				}
 			},
 			error: function(xhr) {

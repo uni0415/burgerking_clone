@@ -90,13 +90,17 @@ public class AuthController {
 		userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
 		System.out.println(userDto.getPassword());
 		int result = authService.signup(userDto.toUserEntity());
-		return new ResponseEntity<>(result, HttpStatus.OK);
+		if(result>0) {
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	@PostMapping("/auth/signin")
 	public ResponseEntity<?> signin(UserDto userDto) {
 		User user = authService.signin(userDto.toSigninEntity());
-		System.out.println(user);
+		System.out.println("user:" +user);
 		if(user == null) {
 			return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
 		}

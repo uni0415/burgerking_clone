@@ -1,11 +1,13 @@
 package com.springboot.burgerking.domain.auth;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.springboot.burgerking.web.controller.dto.MenuListDto;
 import com.springboot.burgerking.web.controller.dto.UserDto;
 
+import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,6 +31,7 @@ public class User {
 	private String birth_date;
 	private String password;
 	private String provider;
+	private String roles;
 	//private List<MenuListDto> order_menu_list;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
@@ -38,5 +41,12 @@ public class User {
 				.email(email)
 				.password(password)
 				.build();
+	}
+	
+	public List<String> getRoleList() {
+		if(this.roles.length() > 0) {
+			return Arrays.asList(this.roles.split(","));
+		}
+		return new ArrayList<String>();
 	}
 }
