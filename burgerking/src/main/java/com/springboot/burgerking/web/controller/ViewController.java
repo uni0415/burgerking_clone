@@ -57,6 +57,11 @@ public class ViewController {
 	public String mycoupon() {
 		return "burgerking/delivery/mycoupon";
 	}
+
+	@GetMapping("/delivery/order")
+	public String delivery_order() {
+		return "burgerking/delivery/delivery_order";
+	}
 	
 	@GetMapping("/auth/login")
 	public String signin() {

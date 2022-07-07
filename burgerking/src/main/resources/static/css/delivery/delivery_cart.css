@@ -320,7 +320,7 @@ input[type=checkbox]:checked+:before {
 }
 
 .side-menu-list {
-	padding-right: 100px;
+    padding-right: 100px;
     display: flex;
     justify-content: space-between;
 }
@@ -350,7 +350,7 @@ input[type=checkbox]:checked+:before {
 }
 
 .num-set>input {
-	padding-left: 13px;
+    padding-left: 13px;
     width: 100%;
     height: 100%;
     font-size: 18px;
@@ -365,7 +365,7 @@ input[type=checkbox]:checked+:before {
     border: none;
     background-color: #d9d9d9 !important;
     background: url(/static/images/btn-minus.png) no-repeat 50%;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .btn-plus {
@@ -374,7 +374,7 @@ input[type=checkbox]:checked+:before {
     border: none;
     background-color: #d9d9d9 !important;
     background: url(/static/images/bth_plus.png) no-repeat 50%;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .sum-wrap {
@@ -490,7 +490,7 @@ input[type=checkbox]:checked+:before {
     font-size: 28px;
     font-weight: 600;
     background-color: #512314;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .menu-order-button {
@@ -504,7 +504,7 @@ input[type=checkbox]:checked+:before {
     font-size: 28px;
     font-weight: 600;
     background-color: #d72300;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .menu-add-button:after {
