@@ -774,16 +774,13 @@ input[type=checkbox]+:before {
     width: 32px;
     height: 32px;
     margin-right: 13px;
-    vertical-align: middle;
 }
 
 .checkbox {
     margin: 0;
-    vertical-align: middle;
     font-size: 1em;
     border: none;
     border-radius: 0;
-    -webkit-appearance: none;
     opacity: 0;
 }
 

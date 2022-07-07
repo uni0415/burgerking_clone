@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY배달지</title>
+    <title>Document</title>
     <link rel="stylesheet" href="/static/css/include/container.css">
-    <link rel="stylesheet" href="/static/css/delivery/mydelivery.css">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_search.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4a642b1061349b8bea4439542e4fecb4&libraries=services"></script>
@@ -27,11 +27,8 @@
                             <a href="/delivery/menu/1" class="location-menu">
                                 <span>딜리버리</span>
                             </a>
-                            <a href="/delivery/myking" class="location-menu">
-                                <span>MY킹</span>
-                            </a>
                             <a href="" class="location-menu">
-                                <span>MY배달지</span>
+                                <span>배달지검색</span>
                             </a>
                         </div>
                     </div>
@@ -39,7 +36,7 @@
                         <p class="address">
                             <img src="/static/images/pin.png" alt="">
                         </p>
-                        <span>배달지를 선택하세요</span>
+                        <span class="pin-address">배달지를 선택하세요</span>
                         <span class="btn">
                             <a href="/delivery/delivery_search">
                                 <span>변경</span>
@@ -50,22 +47,26 @@
             </div>
 
             <div class="all-contentsBox">
-                <div class="contentsBox01">
-                    <div class="subtit-wrap">
-                        <h2 class="page-tit">MY배달지</h2>
-                        <p class="delivery-count">
-                            <strong>
-                                전체
-                                <em>0</em>
-                            </strong>
-                        </p>
+                <div class="contentsBox">
+                    <div class="delivery-search">
+                        <div class="search-subtit">
+                            <h2 class="page-tit">배달지 검색</h2>
+                        </div>
+                        <div class="search-wrap">
+                            <div class="search-input">
+                                <div class="inputbox">
+                                    <input type="text" maxlength="50" id="search-address" name="search-address"
+                                        placeholder="'주소찾기'를 선택해주세요." class="search-address">
+                                    <button type="button" class="btn-delete-address">
+                                        <span>입력 테스트 삭제</span>
+                                    </button>
+                                </div>
+                                <button type="button" class="btn-search" id="btn-search" name="btn-search">
+                                    <span>주소찾기</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="nodata">
-                        <p>등록된 MY배달지가 없습니다.</p>
-                    </div>
-                    <ul class="delivery-list">
-
-                    </ul>
                     <div class="btn-contents">
                         <div class="pop-wrap">
                             <div class="popbox01">
@@ -95,9 +96,17 @@
                                     <div class="inputbox">
                                         <input type="text" maxlength="50" name="address-detail"
                                             placeholder="상세주소를 입력해주세요." class="input-detail">
-                                        <button type="button" class="btn-delete-address">
+                                        <button type="button" class="btn-delete-detail">
                                             <span>입력 테스트 삭제</span>
                                         </button>
+                                    </div>
+                                    <div class="check-mydelivery">
+                                        <label>
+                                            <input type="checkbox" class="checkbox">
+                                            <span>
+                                                MY배달지 등록
+                                            </span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="pop-btn">
@@ -108,57 +117,76 @@
                             </div>
                         </div>
                     </div>
-                    <div id="my_modal">
-                        <div class="modal-contents">
-                            <p class="modal-text">
-                                <strong>별칭을 지정해보세요</strong>
-                            </p>
-                            <div class="modal-input">
-                                <input maxlength="10" id="input" class="input-nickname">
-                                <button type="button" class="btn-delete-nickname">
-                                    <span>입력 테스트 삭제</span>
-                                </button>
-                            </div>
-                            <div class="page-count">
-                                <input type="number" id="result" value="0" readonly
-                                    style="width: 28px; border: none; outline: none;">/10
-                            </div>
-                            <div class="modal-items">
-                                <a class="modal-close-btn">
-                                    <span>취소</span>
-                                </a>
-                                <a class="modal-registration-btn on">
-                                    <span>등록</span>
-                                </a>
-                                <a class="change-nickname-confirm-btn">
-                                    <span>
-                                        등록
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="delivery-add">
-                        <ul>
-                            <li>
-                                평소에 자주 배달받는 주소를 등록하시면 보다 쉽고 빠르게 주문하실 수 있어요.
-                            </li>
-                            <li>
-                                MY배달지는 5개까지 등록 가능합니다.
-                            </li>
-                        </ul>
-                        <div class="btn-mydelivery-add">
-                            <button type="button" class="btn-add" id="address" name="address">
-                                <span>
-                                    MY배달지 추가
-                                </span>
+                </div>
+                <div id="my_modal">
+                    <div class="modal-contents">
+                        <p class="modal-text">
+                            <strong>별칭을 지정해보세요</strong>
+                        </p>
+                        <div class="modal-input">
+                            <input maxlength="10" id="input" class="input-nickname">
+                            <button type="button" class="btn-delete-nickname">
+                                <span>입력 테스트 삭제</span>
                             </button>
+                        </div>
+                        <div class="page-count">
+                            <input type="number" id="result" value="0" readonly
+                                style="width: 28px; border: none; outline: none;">/10
+                        </div>
+                        <div class="modal-items">
+                            <a class="modal-close-btn">
+                                <span>취소</span>
+                            </a>
+                            <a class="modal-registration-btn on">
+                                <span>등록</span>
+                            </a>
                         </div>
                     </div>
                 </div>
-
+                <div class="contentsBox">
+                    <div class="mydelivery">
+                        <div class="delivery-table">
+                            <div class="table-title">
+                                <ul class="items">
+                                    <li class="on">
+                                        <button type="button">
+                                            <span>최근 배달지</span>
+                                        </button>
+                                    </li>
+                                    <li class="">
+                                        <button type="button">
+                                            <span>MY배달지</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="table-content on">
+                                <div class="nodata">
+                                    <p>
+                                        <span>최근에 주문한 주소가 없습니다.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="table-content">
+                                <div class="nodata">
+                                    <p>
+                                        <strong>
+                                            <span>김지훈</span>
+                                            님
+                                        </strong>
+                                        </br>
+                                        <span>
+                                            평소에 자주 배달받는 주소를 등록해 보세요.
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
 
         <div class="footer-contents">
             <div class="footer-under">
@@ -208,7 +236,7 @@
             </div>
         </div>
     </div>
-    <script src="/static/js/delivery/mydelivery.js"></script>
+    <script src="/static/js/delivery/delivery_search.js"></script>
 </body>
 
 </html>

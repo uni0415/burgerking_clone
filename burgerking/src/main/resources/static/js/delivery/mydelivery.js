@@ -17,13 +17,16 @@ const address = document.querySelector(".address-text");
 const detail_address = document.querySelector(".input-detail");
 const delivery_list = document.querySelector(".delivery-list");
 const nodata = document.querySelector(".nodata");
-let result = document.getElementById('result');
 const change_nickname_confirm_btn = document.querySelector(".change-nickname-confirm-btn");
 const delivery_count = document.querySelector(".delivery-count>strong>em");
+
+let result = document.getElementById('result');
 
 inputLength();
 inputWidth();
 loadOrderAddress();
+
+// let addr = '판교';
 
 window.onload = function () {
 
@@ -37,6 +40,7 @@ window.onload = function () {
                 document.querySelector(".address-text").innerText = data.address; // 주소 넣기
             }
         }).open({
+            q: addr,
             left: (window.screen.width / 2) - (500 / 2),
             top: (window.screen.height / 2) - (600 / 2)
         });
