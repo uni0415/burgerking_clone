@@ -10,85 +10,49 @@ const login_form = document.querySelector("form");
 
 const username1 = document.querySelector(".username");
 const password1 = document.querySelector(".password");
-
-/*//저장
-localStorage.setItem("userid", "rudd1242@naver.com");
-
-//조회
-document.getElementById("result").innerHTML = localStorage.getItem("userid");
-
-//삭제
-localStorage.removeItem("userid");
-
-//아이디 저장 체크박스 객체 체크 여부 확인
-let $idSaveChkObj = $loginFormObj.find('div.save-email>input[type=checkbox]');
+const saveUsername = document.querySelector("#save-email");
 
 
-//버튼 클릭시 아이디 저장 체크박스 객체 체크 여부 확인
-if($idSaveChkObj.prop('checked')){
-	let idValue = $(this).find('input[name=id]').val();
-	localStorage.setItem("sevedid", idvalue);
-}else{
-	localStorage.removeItem('savedid');
-}
 
-
-//localStorage 에서 id값 찾기
 let saveIdValue = localStorage.getItem("saveid");
-if(saveIdValue != null){
-	$(loginFormObj).find('input[name=id]').val(saveIdValue);
+if (saveIdValue != null) {
+	username1.value = saveIdValue;
+	saveUsername.checked = true;
 }
 
 
 //로그인버튼이 클릭되었을 때
-function loginClick (){
-	let $loginFormObj = $('div.login-button>a');
-	
-	//localStorage 에서 id값 찾기
-	let saveIdValue = localStorage.getItem("saveid");
-	if(saveIdValue != null){
-		$(loginFormObj).find('input[name=id]').val(saveIdValue);
+login_button.onclick = () => {
+
+	if (saveUsername.checked == true) {
+		localStorage.setItem("saveid", username1.value);
+	} else {
+		localStorage.removeItem('saveid');
 	}
-	
-	$loginFormObj.submit(function(){
-		let ajaxUrl = $(this).attr('action');
-		let ajaxMethod = $(this).attr('method');
-		let idValue = $(this).find('input[name=id]').val();
-		let pwdValue = $(this).find('input[name=pwd]').val();
-		
-		//아이디 저장 체크박스 객체 찾기
-		let $idSaveChkObj = $loginFormObj.find('div.save-email>input[type=checkbox]');
-		
-		//아이디 저장 체크박스 객체 체크 여부확인
-		if($idSaveChkObj.prop('checked')){
-			let idvalue = $(this).find('input[name=id]').val();
-			localStroage.setItem("sevedid", idvalue);
-		}else{
-			localStroage.removeItem('savedid');
-		}
-		
-		
-		$ajax({
-			url: ajaxUrl,
-			method: ajaxMethod,
-			data: {id:idValue, pwd:pwdvalue},
-			success: function(responseObj){
-				
-				if(responseObj.status == 0){//로그인 실패
-					alert(responseObj.msg);
-				}else{//로그인 성공
-					location.href="./" //현재 사용하는 path
+
+	login_form.submit(function() {
+
+		$.ajax({
+			url: "/api/v1/auth/signin",
+			method: "post",
+			data: { "email": username1.value, "password": password1.value },
+			success: function(data) {
+
+				if (data.status == 0) {//로그인 실패
+					alert(data.msg);
+				} else {//로그인 성공
+					location.href = "./" //현재 사용하는 path
 				}
 			},
-			error: function(xhr){
+			error: function(xhr) {
 				alert("응답실패 status:" + xhr.status);
 			}
 		});
-		
-		return false; 
+
+		return false;
 	});
 };
-*/
+
 const Toast = Swal.mixin({
 	toast: true,
 	position: 'center',
@@ -133,16 +97,17 @@ function passwordInvisibleEvent(index) {
 }
 
 
-login_button.onclick = () => {
+/*login_button.onclick = () => {
 	if (username1.value == "") {
 		alert("아이디를 입력해주세요!");
 	} else if (password1.value == "") {
 		alert("비밀번호를 입력해주세요!");
 	} else {
-		login_form.submit();
+		//login_form.submit();
+
 	}
 
-}
+}*/
 
 
 

@@ -5,18 +5,33 @@ let size = sessionStorage.getItem("size");
 
 const cart_list_box = document.querySelector(".cart-list-box");
 const calc_total_price_tag = document.querySelector(".calc-total-price");
+const total_menu_price_tag = document.querySelector(".total-menu-price");
 const menu_amount = document.querySelector(".menu-count");
-const add_menu_to_card_button = document.querySelector(".menu-add-button");
-const all_check = document.querySelector(".all-check>input");
-const checked_delete_button = document.querySelector(".delete-button-box>button");
-const menu_order_button = document.querySelector(".menu-order-button");
+const title = document.querySelector(".title span");
+const order_active_wrap = document.querySelector(".order-active-wrap");
+const order_view_button = document.querySelector(".order-view-button");
+const order_view = document.querySelector(".order-view");
+const view_close = document.querySelector(".view-close");
+const phone = document.querySelector(".phone-box input");
+const address = document.querySelector(".address");
+const detail_address = document.querySelector(".detail-address");
+let full_address = address.textContent + detail_address.textContent;
+console.log(full_address);
+const cancel_button = document.querySelector(".cancel-button");
+const payment_button = document.querySelector(".payment-button");
+
 let cart_list_json;
 
 getCartListFromSession();
 
-menu_order_button.onclick = () => {
-	location.href = "/delivery/order";
+order_view_button.onclick = () => {
+	order_active_wrap.classList.toggle("open");
+	order_view.classList.toggle("on");
+	view_close.classList.toggle("on");
 }
+
+phone.value = user_info.phone;
+title.innerText = menu_name;
 
 
 function getCartListFromSession() {
@@ -59,19 +74,14 @@ function getCartListFromSession() {
 			"menu_id_list": cart_list_json
 		},
 		dataType: "json",
-		success: function (menu_data_list) {
+		success: functionmenu_data_list) {
 			menu_data_list = devideMenuData(cart_list, menu_data_list);
 			for (let i = 0; i < menu_data_list.length; i++) {
 				sessionStorage.setItem("cart_menu_name", menu_data_list[0].menu.name);
 
 				const cart_menu_tag = makeCartMenuTag(menu_data_list[i], i);
 				cart_list_box.appendChild(cart_menu_tag);
-				const menu_checkbox = cart_menu_tag.querySelector(".menu-checkbox");
-				menuCheckbox(menu_checkbox);
 
-				const menu_list = cart_list_box.querySelector(".menu-list");
-				const delete_button = cart_menu_tag.querySelector(".delete-button");
-				menuDelete(delete_button, i);
 				const total_price_tag = cart_menu_tag.querySelector(".total-price");
 
 				const menu_count_tag = cart_menu_tag.querySelector(".num-set > input");
@@ -92,56 +102,14 @@ function getCartListFromSession() {
 
 				calcTotalPrice(total_price_tag, i);
 			}
-			if (all_check.checked == false) {
-				all_check.click();
-			}
 		},
-		error: function (xhr, status) {
+		error: functionxhr,  status) {
 			console.log(xhr);
 			console.log(status);
 		}
 	});
 }
 
-
-function menuDelete(delete_button, i) {
-	delete_button.onclick = () => {
-		const data = JSON.parse(sessionStorage.getItem("cart_list"));
-		data.splice(i, 1);
-		sessionStorage.setItem("cart_list", JSON.stringify(data));
-		location.reload();
-	}
-}
-
-function menuCheckbox(menu_checkbox) {
-	menu_checkbox.onclick = () => {
-		allCheck();
-	}
-}
-
-all_check.onclick = () => {
-	selectAll();
-}
-
-function allCheck() {
-	const menu_checkbox = cart_list_box.querySelectorAll(".menu-checkbox");
-	const checked = cart_list_box.querySelectorAll(".menu-checkbox:checked");
-	if (menu_checkbox.length === checked.length) {
-		all_check.checked = true;
-	} else {
-		all_check.checked = false;
-	}
-	menu_amount.innerText = checked.length;
-}
-
-
-function selectAll() {
-	const menu_checkbox = cart_list_box.querySelectorAll(".menu-checkbox");
-	menu_checkbox.forEach(e => {
-		e.checked = all_check.checked
-	});
-	allCheck();
-}
 
 
 
@@ -286,7 +254,6 @@ function makeCartMenuTag(menu_data, index) {
 		<div class="menu-content-box">
             <div id="menu-title" class="menu-title-wrap">
                 <label for="menu-title" class="menu-name">
-                    <input type="checkbox" name="menu" title="선택" class="menu-checkbox">
                     <span class="menu-title">
                         <strong>
                             <span>${menu_data.menu.name}</span>
@@ -299,14 +266,12 @@ function makeCartMenuTag(menu_data, index) {
                         </strong>
                     </span>
                 </label>
-                <div class="menu-img-box">
-                    <img src="${menu_data.menu.menu_images}" alt="">
-                </div>
             </div>
             <div class="set-menu-detail">
                 <ul>
                     
                 </ul>
+            </div>
             </div>
             <div class="quantity">
                 <strong>수량</strong>
@@ -316,13 +281,7 @@ function makeCartMenuTag(menu_data, index) {
                     <button type="button" class="btn-plus"></button>
                 </div>
             </div>
-
-            <div>
-
-            </div>
-            <button type="button" class="delete-button"></button>
-        </div>
-        <div class="sum-wrap">
+            <div class="sum-wrap">
             <div>
                 <span>합계금액</span>
                 <div>
@@ -335,12 +294,6 @@ function makeCartMenuTag(menu_data, index) {
         </div>
 	`;
 	return li;
-}
-
-
-
-add_menu_to_card_button.onclick = () => {
-	location.replace("/delivery/menu/1");
 }
 
 
@@ -399,5 +352,39 @@ function calcLastPrice() {
 		acc_price += Number(price_text);
 	});
 	calc_total_price_tag.innerText = acc_price.toLocaleString('ko-KR');
+	total_menu_price_tag.innerText = acc_price.toLocaleString('ko-KR') + "원";
+	payment_price = acc_price;
+}
+
+cancel_button.onclick = () => {
+	history.back();
+}
+
+const IMP = window.IMP;
+IMP.init("imp31100156")
+
+payment_button.onclick = () => {
+	requestPay();
+}
+let payment_price;
+function requestPay() {
+	IMP.request_pay({
+		pg: "html5_inicis",
+		pay_method: "card",
+		merchant_uid: `ORD${new Date().getTime()}`,
+		name: menu_name,
+		amount: payment_price,
+		buyer_email: user_info.email,
+		buyer_name: user_info.name,
+		buyer_tel: phone.value,
+		buyer_addr: full_address,
+		buyer_postcode: "01181"
+	}, function(rsp) {
+		if (rsp.success) {
+			console.log(rsp);
+		} else {
+			console.log("결제실패");
+		}
+	});
 }
 

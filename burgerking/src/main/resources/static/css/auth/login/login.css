@@ -223,6 +223,7 @@
 }
 
 .login-button {
+	poiter-events: none;
     background-color: #d72300;
 }
 
