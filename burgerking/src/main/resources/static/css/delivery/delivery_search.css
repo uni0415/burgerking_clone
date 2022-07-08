@@ -710,6 +710,7 @@ input[type=checkbox]:checked+:before {
     flex-wrap: wrap;
     justify-content: space-between;
     overflow: hidden;
+    margin-top: 30px;
 }
 
 .delivery-list li {

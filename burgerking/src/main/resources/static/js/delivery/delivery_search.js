@@ -5,11 +5,12 @@ const btn_search = document.querySelector("#btn-search");
 const pop_wrap = document.querySelector(".pop-wrap");
 const input_detail = document.querySelector(".input-detail");
 const address_text = document.querySelector(".address-text");
-const input_nickname = document.querySelector(".input-nickname")
+const input_nickname = document.querySelector(".input-nickname");
 const btn_set = document.querySelector(".btn-set");
 const btn_close = document.querySelector(".btn-close");
 const btn_delete_address = document.querySelector(".btn-delete-address");
 const btn_delete_detail = document.querySelector(".btn-delete-detail");
+const btn_delete_nickname = document.querySelector(".btn-delete-nickname");
 const checkbox = document.querySelector(".checkbox");
 const my_modal = document.querySelector("#my_modal");
 const pin_address = document.querySelector(".pin-address");
@@ -24,9 +25,10 @@ const delivery_list = document.querySelector(".delivery-list");
 
 let result = document.getElementById('result');
 let addr = '';
-
+let address_length;
 inputWidth();
 inputLength();
+inputLong();
 loadOrderAddress();
 
 window.onload = function () {
@@ -61,50 +63,33 @@ function popMyModal() {
         my_modal.classList.remove("on");
     }
     modal_registration_btn.onclick = () => {
-        // let order_address_amount = Number(6);
-        // if (order_address_amount > 4) {
-        //     alert("5개까지");
-        //     my_modal.classList.remove("on");
-        //     pop_wrap.classList.remove("on");
-        // } else {
-        $.ajax({
-            type: "post",
-            dataType: "text",
-            data: {
-                "user_id": user_info.id,
-                "address_nickname": input_nickname.value,
-                "address": address_text.textContent,
-                "detail_address": input_detail.value
-            },
-            url: "/api/v1/delivery/order-address",
-            success: function () {
-                my_modal.classList.remove("on");
-                pop_wrap.classList.remove("on");
-                pin_address.innerText = address_text.innerText;
-                // location.replace("/delivery/menu/1");
-            }
-        })
-    }
-}
-//}
 
-function inputWidth() {
-    search_address.onkeyup = (e) => {
-
-        if (e.keyCode == 8) {
-            if (search_address.value == 0) {
-                btn_delete_address.classList.remove("active");
-
-            }
-            result.value = search_address.value.length;
+        if (address_length > 4) {
+            alert("5개까지 가능");
+            my_modal.classList.remove("on");
+            pop_wrap.classList.remove("on");
         } else {
-            if (search_address.value.length > 0) {
-                btn_delete_address.classList.add("active");
-            }
-            result.value = search_address.value.length;
+            $.ajax({
+                type: "post",
+                dataType: "text",
+                data: {
+                    "user_id": user_info.id,
+                    "address_nickname": input_nickname.value,
+                    "address": address_text.textContent,
+                    "detail_address": input_detail.value
+                },
+                url: "/api/v1/delivery/order-address",
+                success: function () {
+                    my_modal.classList.remove("on");
+                    pop_wrap.classList.remove("on");
+                    pin_address.innerText = address_text.innerText;
+                    location.replace("/delivery/menu/1");
+                }
+            })
         }
     }
 }
+
 
 function loadOrderAddress() {
     $.ajax({
@@ -114,6 +99,8 @@ function loadOrderAddress() {
         url: "/api/v1/delivery/address-info",
         success: function (data) {
             console.log(data);
+            address_length = data.length;
+            console.log(address_length);
             if (data.length > 0) {
                 nodata.style = "display:none";
             } else if (data.length == 0 || data == '[]') {
@@ -123,7 +110,7 @@ function loadOrderAddress() {
             for (let i = 0; i < data.length; i++) {
                 const address_tag = makeAddressTag(data[i]);
                 delivery_list.appendChild(address_tag);
-                const delivery_delete = document.querySelector(".delivery-delete");
+                const delivery_delete = address_tag.querySelector(".delivery-delete");
                 deleteAddrssList(data[i].id, delivery_delete);
             }
         }
@@ -133,6 +120,7 @@ function loadOrderAddress() {
 
 function deleteAddrssList(delivery_list_id, delivery_delete) {
     delivery_delete.onclick = () => {
+        console.log("click");
         $.ajax({
             type: "delete",
             dataType: "json",
@@ -142,16 +130,32 @@ function deleteAddrssList(delivery_list_id, delivery_delete) {
             },
             url: "/api/v1/delivery/deleteList",
             success: function () {
+                console.log("test");
+
                 loadOrderAddress();
             }
         })
     }
+}
 
+function inputWidth() {
+    search_address.onkeyup = (e) => {
+
+        if (e.keyCode == 8) {
+            if (search_address.value == 0) {
+                btn_delete_address.classList.remove("active");
+
+            }
+        } else {
+            if (search_address.value.length > 0) {
+                btn_delete_address.classList.add("active");
+            }
+        }
+    }
 }
 
 btn_delete_address.onclick = () => {
     search_address.value = null;
-    result.value = 0;
     btn_delete_address.classList.remove("active");
 }
 
@@ -163,20 +167,42 @@ function inputLength() {
                 btn_delete_detail.classList.remove("active");
 
             }
-            result.value = input_detail.value.length;
         } else {
             if (input_detail.value.length > 0) {
                 btn_delete_detail.classList.add("active");
             }
-            result.value = input_detail.value.length;
         }
     }
 }
 
 btn_delete_detail.onclick = () => {
     input_detail.value = null;
-    result.value = 0;
     btn_delete_detail.classList.remove("active");
+}
+
+//글자전체삭제 및 실시간 글자체크
+function inputLong() {
+    input_nickname.onkeyup = (e) => {
+
+        if (e.keyCode == 8) {
+            if (input_nickname.value == 0) {
+                btn_delete_nickname.classList.remove("active");
+
+            }
+            result.value = input_nickname.value.length;
+        } else {
+            if (input_nickname.value.length > 0) {
+                btn_delete_nickname.classList.add("active");
+            }
+            result.value = input_nickname.value.length;
+        }
+    }
+}
+
+btn_delete_nickname.onclick = () => {
+    input_nickname.value = null;
+    result.value = 0;
+    btn_delete_nickname.classList.remove("active");
 }
 
 btn_close.onclick = () => {
@@ -220,7 +246,7 @@ for (let i = 0; i < table_title.length; i++) {
         }
     }
 }
-setdeliveryName()
+setdeliveryName();
 
 function setdeliveryName() {
     delivery_name.innerText = user_info.name;

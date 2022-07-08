@@ -38,6 +38,10 @@
     flex-direction: column;
 }
 
+.order-history-box {
+    color: #fff;
+}
+
 .order-history-box>span {
     margin-top: 10px;
     font-size: 1.125rem;
@@ -56,7 +60,7 @@
 .order-cart-box {
     display: flex;
     flex-direction: column;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .cart-count {
