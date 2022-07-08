@@ -14,6 +14,21 @@ const saveUsername = document.querySelector("#save-email");
 
 
 
+/*
+//아이디 저장 체크박스 객체 체크 여부 확인
+let $idSaveChkObj = $loginFormObj.find('div.save-email>input[type=checkbox]');
+
+
+//버튼 클릭시 아이디 저장 체크박스 객체 체크 여부 확인
+if($idSaveChkObj.prop('checked')){
+	let idValue = $(this).find('input[name=id]').val();
+	localStorage.setItem("sevedid", idvalue);
+}else{
+	localStorage.removeItem('savedid');
+}
+
+
+//localStorage 에서 id값 찾기
 let saveIdValue = localStorage.getItem("saveid");
 if (saveIdValue != null) {
 	username1.value = saveIdValue;
