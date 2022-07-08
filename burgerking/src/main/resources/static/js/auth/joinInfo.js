@@ -89,9 +89,7 @@ submit_button.onclick = () => {
 			icon: 'error',
 			title: '이메일을 다시 확인해주세요'
 		})
-	}
-
-	if (regPassword.test(password[0].value) === true) {
+	} else if (regPassword.test(password[0].value) === true) {
 		if (password[0].value != password[1].value) {
 			Toast.fire({
 				icon: 'error',
@@ -103,47 +101,46 @@ submit_button.onclick = () => {
 			icon: 'error',
 			title: '조건에 맞는 비밀번호를 입력해주세요'
 		})
-	}
 
-	$.ajax({
-		type: "post",
-		dataType: "json",
-		data: {
-			"email": email.value,
-			"name": sessionStorage.getItem("name"),
-			"phone": sessionStorage.getItem("phone"),
-			"gender": gender.value,
-			"birth_year": birth_year.value,
-			"birth_month": birth_month.value,
-			"birth_date": birth_date.value,
-			"password": password[0].value
-		},
-		url: "/api/v1/auth/signup",
-		success: function() {
-			$.ajax({
-				type: "post",
-				dataType: "text",
-				data: {
-					"terms": sessionStorage.getItem("terms"),
-					"privacy_policy": sessionStorage.getItem("privacy_policy"),
-					"email_agreement": sessionStorage.getItem("email_agreement"),
-					"sms_agreement": sessionStorage.getItem("sms_agreement"),
-				},
-				url: "/api/v1/auth/agreement",
-				success: function() {
-					location.replace("/index");
-				}
-			})
-		},
-		error: function(data) {
-			data = JSON.stringify(data);
-			console.log(data);
-			if (data == "0") {
-				Toast.fire({
-					icon: 'error',
-					title: '이미 존재하는 아이디입니다.'
+	}
+		$.ajax({
+			type: "post",
+			dataType: "json",
+			data: {
+				"email": email.value,
+				"name": sessionStorage.getItem("name"),
+				"phone": sessionStorage.getItem("phone"),
+				"gender": gender.value,
+				"birth_year": birth_year.value,
+				"birth_month": birth_month.value,
+				"birth_date": birth_date.value,
+				"password": password[0].value
+			},
+			url: "/api/v1/auth/signup",
+			success: function() {
+				$.ajax({
+					type: "post",
+					dataType: "text",
+					data: {
+						"terms": sessionStorage.getItem("terms"),
+						"privacy_policy": sessionStorage.getItem("privacy_policy"),
+						"email_agreement": sessionStorage.getItem("email_agreement"),
+						"sms_agreement": sessionStorage.getItem("sms_agreement"),
+					},
+					url: "/api/v1/auth/agreement",
+					success: function() {
+						location.replace("/index");
+					}
 				})
+			},
+			error: function(data) {
+				console.log(data.responseJSON);
+				if (data.responseJSON == false) {
+					Toast.fire({
+						icon: 'error',
+						title: '이미 존재하는 아이디입니다.'
+					})
+				}
 			}
-		}
-	})
+		})
 }

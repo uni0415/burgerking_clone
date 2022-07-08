@@ -13,7 +13,7 @@ const order_view_button = document.querySelector(".order-view-button");
 const order_view = document.querySelector(".order-view");
 const view_close = document.querySelector(".view-close");
 const phone = document.querySelector(".phone-box input");
-const address = document.querySelector(".address");
+const order_address = document.querySelector(".order-address");
 const detail_address = document.querySelector(".detail-address");
 const address_check = document.querySelector(".address-check-box>strong>span");
 const pop_wrap = document.querySelector(".pop-wrap");
@@ -22,7 +22,7 @@ const cancel_button = document.querySelector(".cancel-button");
 const payment_button = document.querySelector(".payment-button");
 
 let cart_list_json;
-let full_address = address.textContent + detail_address.textContent;
+let full_address = order_address.textContent + detail_address.textContent;
 
 getCartListFromSession();
 

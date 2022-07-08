@@ -17,35 +17,7 @@
         <div class="wrapper">
             <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
             <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
-
-            <div class="location">
-                <div class="main-location">
-                    <div class="page-nav">
-                        <div class="menu-list">
-                            <a href="/delivery/menu/1" class="location-menu">
-                                <span>딜리버리</span>
-                            </a>
-                            <a href="/delivery/myking" class="location-menu">
-                                <span>MY킹</span>
-                            </a>
-                            <a href="#" class="location-menu">
-                                <span>회원 정보변경</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="destination">
-                        <p class="address">
-                            <img src="/static/images/pin.png" alt="">
-                        </p>
-                        <span>배달지를 선택하세요</span>
-                        <span class="btn">
-                            <a href="/delivery/delivery_search">
-                                <span>변경</span>
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </div>
+			<th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
             <th:block th:replace="fragments/delivery/auth-membership :: auth-membership"></th:block>
             <div class="all-contentsBox">
                 <div class="contentsBox01">

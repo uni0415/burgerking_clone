@@ -229,7 +229,7 @@ function loadOrderAddress() {
                 const address_tag = makeAddressTag(data[i]);
                 delivery_list.appendChild(address_tag);
                 const changeNicknameBtn = address_tag.querySelector(".btn-nickname");
-                const delivery_delete = document.querySelector(".delivery-delete");
+                const delivery_delete = address_tag.querySelector(".delivery-delete");
                 deleteAddrssList(data[i].id, delivery_delete);
 
                 changeNicknameBtn.onclick = () => {

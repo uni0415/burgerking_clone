@@ -6,10 +6,8 @@ $.ajax({
     dataType: "text",
     url: "/api/v1/delivery/user-auth",
     success: function (data) {
-        data = JSON.parse(data);
-        console.log(data);
-        setDeliveryHeader(data);
-        user_info = data;
+        user_info = JSON.parse(data);
+        setDeliveryHeader(user_info);
         console.log(user_info);
     }
 })

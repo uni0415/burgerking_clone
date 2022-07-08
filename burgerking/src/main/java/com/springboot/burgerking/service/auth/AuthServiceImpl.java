@@ -35,16 +35,15 @@ public class AuthServiceImpl implements AuthService {
 		agreementEntity.setUser_id(authRepository.getUserId());
 		return authRepository.userAgreement(agreementEntity);
 	}
-
+	
 	@Override
-	public int signup(User user) {
-		if (authRepository.checkUsername(user.getEmail()) == 0) {
-			System.out.println(authRepository.checkUsername(user.getEmail()));
-			int result = authRepository.signup(user);
-			return result;
-		} else {
-			int result = authRepository.checkUsername(user.getEmail());
-			return result;
+	public boolean signup(User user) {
+		int result = authRepository.checkUsername(user.getEmail());
+		if(result > 0) {
+			return false;
+		}else {
+			authRepository.signup(user);
+			return true;
 		}
 	}
 

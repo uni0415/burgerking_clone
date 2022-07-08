@@ -11,12 +11,11 @@ const btn_delete_address = document.querySelector(".btn-delete-address");
 const btn_delete_detail = document.querySelector(".btn-delete-detail");
 const checkbox = document.querySelector(".checkbox");
 const my_modal = document.querySelector("#my_modal");
-const pin_address = document.querySelector(".pin-address");
 
 
 let result = document.getElementById('result');
 let addr = '';
-
+let pin_address_text;
 inputWidth();
 inputLength();
 
@@ -35,7 +34,8 @@ window.onload = function () {
             oncomplete: function (data) { //선택시 입력값 세팅
                 pop_wrap.classList.add("on"); //상세입력 포커싱
                 document.querySelector(".address-text").innerText = data.address; // 주소 넣기
-                pin_address.innerText = data.address;
+                sessionStorage.setItem("pin_address", data.address);
+                pin_address_text = data.address;
             }
         }).open({
             q: addr,
@@ -99,8 +99,7 @@ btn_close.onclick = () => {
 
 btn_set.onclick = () => {
     pop_wrap.classList.remove("on");
-    document.querySelector(".pin-address").innerText = data.address;
-    console.log("test");
+    pin_address.innerText = pin_address_text;
 }
 
 
@@ -110,7 +109,6 @@ input_detail.onkeydown = () => {
     if (input_detail.value.length > 0) {
         btn_set.classList.add("on");
         btn_set.disabled = "";
-        console.log("test");
     } else if (input_detail.value.length < 2) {
         btn_set.classList.remove("on");
     }
