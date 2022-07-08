@@ -10,16 +10,7 @@ const login_form = document.querySelector("form");
 
 const username1 = document.querySelector(".username");
 const password1 = document.querySelector(".password");
-
-/*//저장
-localStorage.setItem("userid", "rudd1242@naver.com");
-
-//조회
-document.getElementById("result").innerHTML = localStorage.getItem("userid");
-
-//삭제
-localStorage.removeItem("userid");
-
+/*
 //아이디 저장 체크박스 객체 체크 여부 확인
 let $idSaveChkObj = $loginFormObj.find('div.save-email>input[type=checkbox]');
 
