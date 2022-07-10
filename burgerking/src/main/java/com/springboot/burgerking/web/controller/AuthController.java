@@ -99,7 +99,7 @@ public class AuthController {
 	@PostMapping("/auth/signin")
 	public ResponseEntity<?> signin(UserDto userDto) {
 		User user = authService.signin(userDto.toSigninEntity());
-		System.out.println("user:" +user);
+		System.out.println(user);
 		if(user == null) {
 			return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
 		}

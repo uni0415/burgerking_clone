@@ -179,34 +179,28 @@
                     </div>
                 </div>
             </div>
-
-            <th:block th:replace="fragments/delivery/delivery_footer :: delivery-footer"></th:block>
-        </div>
-        <div class="pop-wrap">
-            <div class="pop-box">
-                <button class="close-button" style="z-index:100;"></button>
-                <div class="pop-content">
-                    <div class="address-check">
-                        <span>배달지 주소</span>
-                        <div class="address-check-box">
-                            <strong style="word-break: break-all;">
-                                <span></span>
-                            </strong>
+            <div class="pop-wrap">
+                <div class="pop-box">
+                    <button class="close-button" style="z-index:100;"></button>
+                    <div class="pop-content">
+                        <div class="address-check">
+                            <span>배달지 주소</span>
+                            <div class="address-check-box">
+                                <strong style="word-break: break-all;">
+                                    <span></span>
+                                </strong>
+                            </div>
+                            <div class="address-nickname">
+                                <strong class="nick"></strong>
+                                <span class="text"></span>
+                            </div>
                         </div>
                     </div>
-                    <p class="text">위 배달지로 주문하시겠습니까?</p>
-                </div>
-                <div class="pop-button">
-                    <button class="button-no">
-                        <span>아니오</span>
-                    </button>
-                    <button class="button-yes">
-                        <span>예</span>
-                    </button>
+                    <div class="pop-button"></div>
                 </div>
             </div>
+            <th:block th:replace="fragments/delivery/delivery_footer :: delivery-footer"></th:block>
         </div>
-        <div class="background"></div>
     </div>
     <script src="/static/js/delivery/menu-change-modal.js"></script>
     <script src="/static/js/delivery/delivery_order.js"></script>

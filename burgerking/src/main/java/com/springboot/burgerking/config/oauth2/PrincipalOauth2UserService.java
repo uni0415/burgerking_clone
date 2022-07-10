@@ -57,11 +57,13 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 						.email(provider.equals("kakao") ? (String) attributes_kakao.get("email") : (String) attributes.get("email"))
 						.oauth2_username(oAuth2_username)
 						.name(provider.equals("kakao") ? (String) ((Map<String, Object>) attributes_kakao.get("profile")).get("nickname") : (String) attributes.get("name"))
+						//.username(oAuth2_username)
 						.phone(phone)
 						.password(new BCryptPasswordEncoder().encode("1234"))
-						.roles("ROLE_USER")
+						//.roles("ROLE_USER")
 						.provider(provider)
 						.build();
+				System.out.println("user : " + user);
 				if (authRepository.insertUser(user) == 0) {
 					throw new OAuth2AuthenticationException(new OAuth2Error("400", "회원가입 실패", "/auth/login"), "회원가입 실패");
 				}
