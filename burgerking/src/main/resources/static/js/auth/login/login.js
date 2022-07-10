@@ -8,15 +8,15 @@ const passwordInvisible = document.querySelectorAll(".password-invisible");
 const login_button = document.querySelector(".login-button");
 const login_form = document.querySelector("form");
 
-const username1 = document.querySelector(".username");
-const password1 = document.querySelector(".password");
+const username = document.querySelector(".username");
+const password = document.querySelector(".password");
 const saveUsername = document.querySelector("#save-email");
 
 
 
 let saveIdValue = localStorage.getItem("saveid");
 if (saveIdValue != null) {
-	username1.value = saveIdValue;
+	username.value = saveIdValue;
 	saveUsername.checked = true;
 }
 
@@ -25,23 +25,24 @@ if (saveIdValue != null) {
 login_button.onclick = () => {
 
 	if (saveUsername.checked == true) {
-		localStorage.setItem("saveid", username1.value);
+		localStorage.setItem("saveid", username.value);
 	} else {
 		localStorage.removeItem('saveid');
 	}
 
-	login_form.submit(function() {
-
+	login_form.submit();
+		//function() {
+/*
 		$.ajax({
 			url: "/api/v1/auth/signin",
 			method: "post",
-			data: { "email": username1.value, "password": password1.value },
+			data: { "email": username.value, "password": password.value },
 			success: function(data) {
 
 				if (data.status == 0) {//로그인 실패
 					alert(data.msg);
 				} else {//로그인 성공
-					location.href = "/delivery/menu/1" //현재 사용하는 path
+					location.href = "./" //현재 사용하는 path
 				}
 			},
 			error: function(xhr) {
@@ -50,8 +51,8 @@ login_button.onclick = () => {
 		});
 
 		return false;
-	});
-};
+	});*/
+}
 
 const Toast = Swal.mixin({
 	toast: true,

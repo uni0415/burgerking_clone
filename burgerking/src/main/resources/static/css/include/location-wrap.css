@@ -1,11 +1,20 @@
-.location-wrap {
-    padding: 10px 0;
+.location {
     height: 58px;
-    color: #fff;
+    color: rgb(255, 255, 255);
     line-height: 38px;
-    background: #000;
+    padding: 10px 0px;
+    background: rgb(0, 0, 0);
 }
 
+.main-location {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1184px;
+    margin: 0px auto;
+    padding: 0px 20px;
+}
+
+<<<<<<< HEAD
 .main-location {
     display: flex;
     justify-content: space-between;
@@ -18,20 +27,33 @@
     
     display: flex;
     
+=======
+.page-nav {
+    font-size: 14px;
 }
 
-.page-nav>a>span {
-    color: #fff;
+.menu-list {
+    display: flex;
+>>>>>>> origin/gyeongun
 }
 
-.page-nav>:not(:first-child)::before {
-    margin: 0 12px;
-    float: left;
+.location-menu {
+    color: white;
+}
+
+.location-menu:not(:first-child)::before {
     content: "";
+    float: left;
     width: 4px;
     height: 38px;
+<<<<<<< HEAD
     color: #fff;
     background: url(/static/images/page_nav_arrow.gif) no-repeat 50%;
+=======
+    margin: 0px 12px;
+    background: url(/static/images/next.gif) 50% center no-repeat;
+    color: rgb(255, 255, 255);
+>>>>>>> origin/gyeongun
 }
 
 .destination {

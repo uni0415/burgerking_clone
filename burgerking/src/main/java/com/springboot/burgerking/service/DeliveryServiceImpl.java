@@ -48,22 +48,6 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return deliveryRepository.getMenuInfo(menuDetailDto);
 	}
 
-	/*
-	 * @Override public List<MenuDtlResDto> getCartMenuDtl(MenuListDto menuListDto)
-	 * { List<MenuDtlWithIngredient> test =
-	 * deliveryRepository.getCartMenuDetails(menuListDto); System.out.println(test);
-	 * List<MenuDtlResDto> dtoList = new ArrayList<MenuDtlResDto>();
-	 * 
-	 * for(MenuDtlWithIngredient dtl : test) { int index =
-	 * dtoList.indexOf(MenuDtlResDto.builder().id(dtl.getId()).build());
-	 * 
-	 * if(index != -1) { List<Ingredient> ingredient_list =
-	 * dtoList.get(index).getIngredient_list();
-	 * ingredient_list.add(Ingredient.builder() .id(dtl.getIngredient_id())
-	 * .name(dtl.getIngredient_name()) .price(dtl.getIngredient_price()) .build());
-	 * } else { dtoList.add(dtl.toResDto()); } } System.out.println(dtoList); return
-	 * dtoList; }
-	 */
 
 	@Override
 	public List<MenuDtlResDto> getCartMenuDtl(MenuListDto menuListDto) {
@@ -71,7 +55,6 @@ public class DeliveryServiceImpl implements DeliveryService {
 		List<MenuDtlResDto> dtoList = new ArrayList<MenuDtlResDto>();
 		for (MenuDtlWithIngredient dtl : menuDtl) {
 			dtoList.add(dtl.toResDto());
-
 		}
 		return dtoList;
 	}

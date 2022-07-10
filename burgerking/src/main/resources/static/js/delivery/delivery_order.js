@@ -15,9 +15,7 @@ const view_close = document.querySelector(".view-close");
 const phone = document.querySelector(".phone-box input");
 const text_address = document.querySelector(".text-address");
 const detail_address = document.querySelector(".detail-address");
-const address_check = document.querySelector(".address-check-box>strong>span");
-const pop_wrap = document.querySelector(".pop-wrap");
-const background = document.querySelector(".background");
+console.log(full_address);
 const cancel_button = document.querySelector(".cancel-button");
 const payment_button = document.querySelector(".payment-button");
 
@@ -366,22 +364,8 @@ const IMP = window.IMP;
 IMP.init("imp31100156")
 
 payment_button.onclick = () => {
-	pop_wrap.classList.add("open");
-	address_check.innerText = full_address;
-
-	const button_no = document.querySelector(".button-no");
-	const button_yes = document.querySelector(".button-yes");
-
-	button_no.onclick = () => {
-		pop_wrap.classList.remove("open");
-	}
-
-	button_yes.onclick = () => {
-		requestPay();
-	}
+	requestPay();
 }
-
-
 let payment_price;
 function requestPay() {
 	IMP.request_pay({
@@ -399,7 +383,7 @@ function requestPay() {
 		if (rsp.success) {
 			console.log(rsp);
 		} else {
-			pop_wrap.classList.remove("open");
+			console.log("결제실패");
 		}
 	});
 }

@@ -83,14 +83,13 @@ public class AuthController {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
 
 	@PostMapping("/auth/signup")
 	public ResponseEntity<?> signup(UserDto userDto) {
-		System.out.println(userDto);
 		userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-		System.out.println(userDto.getPassword());
-		int result = authService.signup(userDto.toUserEntity());
-		if(result>0) {
+		boolean result = authService.signup(userDto.toUserEntity());
+		if(result == true) {
 			return new ResponseEntity<>(result, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
@@ -100,7 +99,7 @@ public class AuthController {
 	@PostMapping("/auth/signin")
 	public ResponseEntity<?> signin(UserDto userDto) {
 		User user = authService.signin(userDto.toSigninEntity());
-		System.out.println("user:" +user);
+		System.out.println(user);
 		if(user == null) {
 			return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
 		}
@@ -125,7 +124,6 @@ public class AuthController {
 	@PostMapping("/auth/findUserId")
 	public ResponseEntity<?> findUserId(FindUserInfoDto findUserDto){
 		String email = authService.findUserId(findUserDto.toFindUserEntity());
-		System.out.println(email);
 		return new ResponseEntity<>(email, HttpStatus.OK);
 	}
 	

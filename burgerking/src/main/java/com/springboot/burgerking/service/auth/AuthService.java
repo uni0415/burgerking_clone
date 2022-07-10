@@ -11,7 +11,7 @@ import com.springboot.burgerking.web.controller.dto.NoneMemberDto;
 public interface AuthService {
 	public NoneMemberDto noneMemberSignup(NoneMemberMst noneMemberMst);
 	public int userAgreement(AgreementEntity agreementEntity);
-	public int signup(User user);
+	public boolean signup(User user);
 	public User signin(User user);
 	public User getUserById(int id);
 	public int updatePhone(User user);

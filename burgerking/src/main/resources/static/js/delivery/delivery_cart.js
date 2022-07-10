@@ -69,7 +69,6 @@ function getCartListFromSession() {
 				const menu_checkbox = cart_menu_tag.querySelector(".menu-checkbox");
 				menuCheckbox(menu_checkbox);
 
-				const menu_list = cart_list_box.querySelector(".menu-list");
 				const delete_button = cart_menu_tag.querySelector(".delete-button");
 				menuDelete(delete_button, i);
 				const total_price_tag = cart_menu_tag.querySelector(".total-price");

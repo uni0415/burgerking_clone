@@ -115,40 +115,6 @@
   		id asc;
   </select>
   
-  <!-- <select id="getCartMenuDetails" parameterType="com.springboot.burgerking.web.controller.dto.MenuListDto" resultType="com.springboot.burgerking.domain.MenuDtlWithIngredient">
-  	select
-  		dtl.id,
-  		dtl.name,
-  		dtl.menu_images,
-  		dtl.price,
-  		dtl.set_size,
-  		dtl.set_add_price,
-  		dtl.large_add_price
-  		
-  		<if test="ingredient_list != null">
-  		, im.id as ingredient_id,
-  		  im.name as ingredient_name,
-  		  im.price as ingredient_price
-  		</if>
-  	from
-  		menu_dtl dtl
-  		<if test="ingredient_list != null">
-  		left outer join ingredient_mst im on(im.id in(
-  			<foreach collection="ingredient_list" index="index" item="item" separator=",">
-  			#{item}
-  			</foreach>
-  		))
-  		</if>
-  	where
-  		dtl.id in(
-  		<foreach collection="menu_id_list" index="index" item="item" separator=",">
-  			#{item}
-  			</foreach>
-  		)
-  	order by
-  		dtl.id asc;
-  </select> -->
-  
   <insert id="insertOrderAddress" parameterType="com.springboot.burgerking.domain.AddressEntity">
   	insert into
   		user_address
