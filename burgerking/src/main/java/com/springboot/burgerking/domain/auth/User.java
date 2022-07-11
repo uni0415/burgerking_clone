@@ -29,7 +29,7 @@ public class User {
 	private String birth_date;
 	private String password;
 	private String provider;
-	private String roles;
+	private String roles = "ROLE_USER";
 	//private List<MenuListDto> order_menu_list;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;

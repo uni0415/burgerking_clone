@@ -26,7 +26,6 @@ inputLength();
 inputWidth();
 loadOrderAddress();
 
-// let addr = '판교';
 
 window.onload = function () {
 
@@ -40,7 +39,6 @@ window.onload = function () {
                 document.querySelector(".address-text").innerText = data.address; // 주소 넣기
             }
         }).open({
-            q: addr,
             left: (window.screen.width / 2) - (500 / 2),
             top: (window.screen.height / 2) - (600 / 2)
         });
@@ -168,6 +166,7 @@ function changeAddressNickname(id) {
     }
 }
 
+//
 modal_registration_btn.onclick = () => {
     let order_address_amount = Number(delivery_count.textContent);
     if (order_address_amount > 4) {
@@ -209,6 +208,7 @@ function lastOrderAddress() {
     })
 }
 
+//
 function loadOrderAddress() {
     $.ajax({
         type: "post",

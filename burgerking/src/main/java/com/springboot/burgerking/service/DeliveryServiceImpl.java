@@ -84,7 +84,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return deliveryRepository.getAddressNickname(user_id);
 	}
 	
-@Override
+	@Override
 	public int deleteOrderAddressList(int id, int user_id) {
 		return deliveryRepository.deleteOrderAddressList(id, user_id);
 	}

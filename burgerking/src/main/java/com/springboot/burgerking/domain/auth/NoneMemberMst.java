@@ -16,6 +16,7 @@ public class NoneMemberMst {
 	private String name;
 	private String phone;
 	private String order_password;
+	private String roles;
 	
 	public NoneMemberDto toNoneMemberDto() {
 		return NoneMemberDto.builder()
@@ -23,6 +24,7 @@ public class NoneMemberMst {
 				.name(name)
 				.phone(phone)
 				.order_password(order_password)
+				.roles(roles)
 				.build();
 	}
 }

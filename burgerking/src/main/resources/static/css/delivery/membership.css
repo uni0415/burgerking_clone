@@ -2,7 +2,10 @@
 
 
 .wrapper {
+    position: relative;
     background: #fff;
+    margin: 0 auto;
+    padding: 168px 0 272px;
 }
 
 .btn-top {

@@ -11,7 +11,8 @@
   			0,
   			#{name},
   			#{phone},
-  			#{order_password}
+  			#{order_password},
+  			#{roles}
   		)
   	</insert>
   	
@@ -20,7 +21,8 @@
   			id,
   			name,
   			phone,
-  			order_password
+  			order_password,
+  			roles
   		from
   			none_member_mst
   		where
