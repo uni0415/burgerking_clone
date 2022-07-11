@@ -6,6 +6,7 @@
     background: rgb(0, 0, 0);
 }
 
+<<<<<<< HEAD
 .main-location {
     display: flex;
     justify-content: space-between;
@@ -23,13 +24,21 @@
     padding: 0px 20px;
 }
 
+=======
+>>>>>>> parent of e486da4 (2022. 07. 10 오류수정)
 .page-nav {
-    
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
+<<<<<<< HEAD
     
 =======
 .page-nav {
     font-size: 14px;
+=======
+    justify-content: flex-start;
+    max-width: 1184px;
+>>>>>>> parent of e486da4 (2022. 07. 10 오류수정)
 }
 
 .menu-list {
@@ -49,6 +58,7 @@
 <<<<<<< HEAD
     color: #fff;
     background: url(/static/images/page_nav_arrow.gif) no-repeat 50%;
+<<<<<<< HEAD
 =======
     margin: 0px 12px;
     background: url(/static/images/next.gif) 50% center no-repeat;
@@ -100,4 +110,6 @@
 
 .btn a span {
     margin: 2px 0 0 13px;
+=======
+>>>>>>> parent of e486da4 (2022. 07. 10 오류수정)
 }

@@ -13,14 +13,14 @@ const order_view_button = document.querySelector(".order-view-button");
 const order_view = document.querySelector(".order-view");
 const view_close = document.querySelector(".view-close");
 const phone = document.querySelector(".phone-box input");
-const text_address = document.querySelector(".text-address");
+const address = document.querySelector(".address");
 const detail_address = document.querySelector(".detail-address");
 console.log(full_address);
 const cancel_button = document.querySelector(".cancel-button");
 const payment_button = document.querySelector(".payment-button");
 
 let cart_list_json;
-let full_address = text_address.textContent + detail_address.textContent;
+let full_address = address.textContent + detail_address.textContent;
 
 getCartListFromSession();
 

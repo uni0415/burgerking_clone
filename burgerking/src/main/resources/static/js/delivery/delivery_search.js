@@ -98,7 +98,8 @@ btn_close.onclick = () => {
 
 btn_set.onclick = () => {
     pop_wrap.classList.remove("on");
-    pin_address.innerText = pin_address_text;
+    document.querySelector(".pin-address").innerText = data.address;
+    console.log("test");
 }
 
 
