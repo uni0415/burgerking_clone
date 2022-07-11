@@ -1,12 +1,12 @@
-.location {
+.location-wrap {
+    padding: 10px 0;
     height: 58px;
-    color: rgb(255, 255, 255);
+    color: #fff;
     line-height: 38px;
-    padding: 10px 0px;
-    background: rgb(0, 0, 0);
+    background: #000;
 }
 
-<<<<<<< HEAD
+
 .main-location {
     display: flex;
     justify-content: space-between;
@@ -15,36 +15,27 @@
     padding: 0px 20px;
 }
 
-<<<<<<< HEAD
-.main-location {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1184px;
-    margin: 0px auto;
-    padding: 0px 20px;
-}
 
-=======
->>>>>>> parent of e486da4 (2022. 07. 10 오류수정)
 .page-nav {
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-<<<<<<< HEAD
-    
-=======
-.page-nav {
+	display: flex;
+	color: #fff;
     font-size: 14px;
-=======
-    justify-content: flex-start;
-    max-width: 1184px;
->>>>>>> parent of e486da4 (2022. 07. 10 오류수정)
 }
 
-.menu-list {
-    display: flex;
->>>>>>> origin/gyeongun
+.page-nav>a>span {
+    color: #fff;
 }
+
+.page-nav>:nth-child(2)::before {
+    margin: 0 12px;
+    float: left;
+    content: "";
+    width: 4px;
+    height: 38px;
+    color: #fff;
+    background: url(/static/images/page_nav_arrow.gif) no-repeat 50%;
+}
+
 
 .location-menu {
     color: white;
@@ -55,15 +46,9 @@
     float: left;
     width: 4px;
     height: 38px;
-<<<<<<< HEAD
     color: #fff;
     background: url(/static/images/page_nav_arrow.gif) no-repeat 50%;
-<<<<<<< HEAD
-=======
     margin: 0px 12px;
-    background: url(/static/images/next.gif) 50% center no-repeat;
-    color: rgb(255, 255, 255);
->>>>>>> origin/gyeongun
 }
 
 .destination {
@@ -90,13 +75,13 @@
     display: flex;
 }
 
-.btn {
+.change-btn {
     display: flex;
     margin-left: 20px;
     padding-left: 0;
 }
 
-.btn a {
+.change-btn a {
     width: 56px;
     height: 34px;
     padding: 0;
@@ -108,8 +93,6 @@
     border-radius: 5px;
 }
 
-.btn a span {
+.change-btn a span {
     margin: 2px 0 0 13px;
-=======
->>>>>>> parent of e486da4 (2022. 07. 10 오류수정)
 }

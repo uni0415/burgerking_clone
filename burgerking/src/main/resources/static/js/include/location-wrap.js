@@ -1,4 +1,4 @@
-const location_path = document.querySelector(".location-path");
+const page_nav = document.querySelector(".page-nav");
 const destination = document.querySelector(".destination");
 const pin_address = document.querySelector(".pin-address");
 let pageUrl = location.pathname;
@@ -17,7 +17,7 @@ if (location.pathname.match("detail")) {
     })
     destination.style = "display:none";
 }else if(location.pathname.match("myking")) {
-	location_path.innerHTML=`
+	page_nav.innerHTML=`
 		<a href="/delivery/menu/1" class="location-menu">
             <span>딜리버리</span>
         </a>
@@ -26,7 +26,7 @@ if (location.pathname.match("detail")) {
         </a>
 	`;
 } else if(location.pathname.match("membership")) {
-	location_path.innerHTML= `
+	page_nav.innerHTML= `
 	<a href="/delivery/menu/1" class="location-menu">
         <span>딜리버리</span>
     </a>
@@ -38,7 +38,7 @@ if (location.pathname.match("detail")) {
     </a>
 	`
 } else if(location.pathname.match("mycoupon")) {
-	location_path.innerHTML = `
+	page_nav.innerHTML = `
 	<a href="/delivery/menu/1" class="location-menu">
         <span>딜리버리</span>
     </a>
@@ -50,7 +50,7 @@ if (location.pathname.match("detail")) {
     </a>
 	`
 } else if(location.pathname.match("orderlist")) {
-	location_path.innerHTML = `
+	page_nav.innerHTML = `
 	<a href="/delivery/menu/1" class="location-menu">
         <span>딜리버리</span>
     </a>
@@ -62,7 +62,7 @@ if (location.pathname.match("detail")) {
     </a>
 	`
 } else if (location.pathname.match("info-change")) {
-	location_path.innerHTML = `
+	page_nav.innerHTML = `
 	<a href="/delivery/menu/1" class="location-menu">
         <span>딜리버리</span>
     </a>
@@ -74,7 +74,7 @@ if (location.pathname.match("detail")) {
     </a>
 	`
 } else if(location.pathname.match("delivery_search")) {
-	location_path.innerHTML =`
+	page_nav.innerHTML =`
 	<a href="/delivery/menu/1" class="location-menu">
         <span>딜리버리</span>
     </a>
@@ -83,7 +83,7 @@ if (location.pathname.match("detail")) {
     </a>
 	`
 } else if(location.pathname.match("mydelivery")) {
-	location_path.innerHTML = `
+	page_nav.innerHTML = `
 	<a href="/delivery/menu/1" class="location-menu">
 	    <span>딜리버리</span>
 	</a>
@@ -95,7 +95,7 @@ if (location.pathname.match("detail")) {
 	</a>
 	`
 } else if(location.pathname.match("cart")) {
-	location_path.innerHTML=`
+	page_nav.innerHTML=`
 	<a href="/delivery/menu/1" class="location-menu">
 	    <span>딜리버리</span>
 	</a>

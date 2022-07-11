@@ -20,6 +20,8 @@ public class UserDto {
 	private String birth_month;
 	private String birth_date;
 	private String password;
+	private String provider;
+	private String roles = "ROLE_USER";
 	
 	public User toUserEntity() {
 		return User.builder()
@@ -31,6 +33,7 @@ public class UserDto {
 				.birth_month(birth_month)
 				.birth_date(birth_date)
 				.password(password)
+				.roles(roles)
 				.build();
 	}
 	

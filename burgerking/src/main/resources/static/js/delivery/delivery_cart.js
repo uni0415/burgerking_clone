@@ -315,10 +315,6 @@ function makeCartMenuTag(menu_data, index) {
                     <button type="button" class="btn-plus"></button>
                 </div>
             </div>
-
-            <div>
-
-            </div>
             <button type="button" class="delete-button"></button>
         </div>
         <div class="sum-wrap">
