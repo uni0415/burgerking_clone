@@ -394,43 +394,68 @@
 	padding: 0 64px;
 	width: 100%;
 	height: 318px;
+	background:#fff;
 }
 
 .message-box{
 	padding: 68px 140px 68px 0;
-	width: 632px;
-	height: 201px;
+	background: url(/static/images/find_user_id.png) no-repeat 100%;
+	border-bottom: 1px solid #ededed;
 }
 
 .id-result-box{
 	padding: 35px 0 20px;
 	width: 632px;
 	height: 117px;
+	text-align: center;
 }
 
 .result-button-box{
+	display: flex;
+	justify-content: center;
 	margin-top: 40px;
 	width: 760px;
 	height: 68px;
 }
 
 .password-button{
+	display: inline-block;
 	padding: 12px 10px 10px;
 	width: 256px;
 	height: 68px;
-	font-size: 24px;
+	font-size: 27px;
 	border-radius:10px;
+	text-align: center;
+	line-height: 48px;
 	color: white;
 	background-color: #512314;
 }
 
 .login-button{
+	display: inline-block;
 	margin-left: 6px;
 	padding: 12px 10px 10px;
 	width: 256px;
 	height: 68px;
 	border-radius:10px;
-	font-size: 24px;
+	font-size: 27px;
+	text-align: center;
+	line-height: 48px;
 	color: white;
 	background-color: #D72300;
+}
+
+
+.message-box > p{
+	font-size: 20px;
+}
+
+
+.id-result-box > span{
+	font-size: 22px;
+	text-align: center;
+}
+
+.success-find-id{
+	font-size: 28px;
 }
