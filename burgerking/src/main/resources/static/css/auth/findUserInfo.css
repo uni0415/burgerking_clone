@@ -384,53 +384,53 @@
 }
 
 
-.tab-content{
-	width: 760px;
-	height: 426px;	
+.tab-content {
+    width: 760px;
+    height: 426px;
 }
 
-.find-id-result{
-	margin: 15px 0;
-	padding: 0 64px;
-	width: 100%;
-	height: 318px;
+.find-id-result {
+    margin: 15px 0;
+    padding: 0 64px;
+    width: 100%;
+    height: 318px;
 }
 
-.message-box{
-	padding: 68px 140px 68px 0;
-	width: 632px;
-	height: 201px;
+.message-box {
+    padding: 68px 140px 68px 0;
+    width: 632px;
+    height: 201px;
 }
 
-.id-result-box{
-	padding: 35px 0 20px;
-	width: 632px;
-	height: 117px;
+.id-result-box {
+    padding: 35px 0 20px;
+    width: 632px;
+    height: 117px;
 }
 
-.result-button-box{
-	margin-top: 40px;
-	width: 760px;
-	height: 68px;
+.result-button-box {
+    margin-top: 40px;
+    width: 760px;
+    height: 68px;
 }
 
-.password-button{
-	padding: 12px 10px 10px;
-	width: 256px;
-	height: 68px;
-	font-size: 24px;
-	border-radius:10px;
-	color: white;
-	background-color: #512314;
+.password-button {
+    padding: 12px 10px 10px;
+    width: 256px;
+    height: 68px;
+    font-size: 24px;
+    border-radius: 10px;
+    color: white;
+    background-color: #512314;
 }
 
-.login-button{
-	margin-left: 6px;
-	padding: 12px 10px 10px;
-	width: 256px;
-	height: 68px;
-	border-radius:10px;
-	font-size: 24px;
-	color: white;
-	background-color: #D72300;
+.login-button {
+    margin-left: 6px;
+    padding: 12px 10px 10px;
+    width: 256px;
+    height: 68px;
+    border-radius: 10px;
+    font-size: 24px;
+    color: white;
+    background-color: #D72300;
 }
