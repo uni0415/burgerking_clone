@@ -70,6 +70,8 @@
 			birth_month,
 			birth_date,
 			password,
+			provider,
+			roles,
 			create_date,
 			update_date
   		from
@@ -116,6 +118,7 @@
 			#{birth_date},
 			#{password},
 			null,
+			#{roles},
 			now(),
 			now()
   		)
@@ -200,6 +203,7 @@
 			null,
 			#{password},
 			#{provider},
+			#{roles},
 			now(),
 			now()
   		)

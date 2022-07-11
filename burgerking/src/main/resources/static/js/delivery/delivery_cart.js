@@ -69,7 +69,6 @@ function getCartListFromSession() {
 				const menu_checkbox = cart_menu_tag.querySelector(".menu-checkbox");
 				menuCheckbox(menu_checkbox);
 
-				const menu_list = cart_list_box.querySelector(".menu-list");
 				const delete_button = cart_menu_tag.querySelector(".delete-button");
 				menuDelete(delete_button, i);
 				const total_price_tag = cart_menu_tag.querySelector(".total-price");
@@ -315,10 +314,6 @@ function makeCartMenuTag(menu_data, index) {
                     <input type="number" readonly="readonly" value=${menu_count}>
                     <button type="button" class="btn-plus"></button>
                 </div>
-            </div>
-
-            <div>
-
             </div>
             <button type="button" class="delete-button"></button>
         </div>

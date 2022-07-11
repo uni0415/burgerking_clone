@@ -624,7 +624,8 @@ em {
     background: url(/static/images/delivery/before_list.png) no-repeat 0;
 }
 
-.pop-wrap {
+.pop-wrap.open {
+	display: block;
     position: fixed;
     left: 0;
     top: 0;
@@ -634,12 +635,16 @@ em {
     z-index: 100;
 }
 
+.pop-wrap {
+	display: none;
+}
+
 .pop-box {
     position: absolute;
     left: 50%;
     top: 50%;
     width: 568px;
-    max-height: 95px;
+    min-height: 95px;
     margin-left: -284px;
     padding-bottom: 84px;
     background: #fff;
@@ -655,6 +660,7 @@ em {
     height: 100px;
     background: url(/static/images/delivery/modal_close.png) no-repeat 50%;
     cursor: pointer;
+    border: none;
 }
 
 .pop-content {
@@ -683,3 +689,49 @@ em {
     color: #010101;
     line-height: 127%;
 }
+
+.text {
+	margin: 20px 0;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.pop-button {
+	display: flex;
+	position: absolute;
+	margin: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+}
+
+.button-no {
+	padding: 20px 10px;
+	display: inline-block;
+	width: 50%;
+	height: 84px;
+	font-size: 1.65rem;
+	color: #fff;
+	text-align: center;
+	line-height: 44px;
+	border: none;
+	background: #2e2e2e;
+	cursor: pointer;
+}
+
+
+.button-yes {
+	padding: 20px 10px;
+	display: inline-block;
+	width: 50%;
+	height: 84px;
+	font-size: 1.65rem;
+	color: #fff;
+	text-align: center;
+	line-height: 44px;
+	border: none;
+	background: #d72300;
+	cursor: pointer;
+}
+

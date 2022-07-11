@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/delivery/delivery_container.css">
-    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
     <link rel="stylesheet" href="/static/css/delivery/menu-modal-box.css">
     <link rel="stylesheet" href="/static/css/delivery/delivery_order.css">
     <link rel="stylesheet" href="/static/css/delivery/menu-modal-box.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <title>주문하기</title>
@@ -29,10 +29,7 @@
                     </h2>
                     <div class="content-box delivery-info">
                         <div class="address-wrap">
-                            <p class="text-address">
-                                <span class="address">서울특별시 강남구 삼성로63길 44</span>
-                                <span class="detail-address"></span>
-                            </p>
+                            <p class="text-address"><span class="address-text">서울특별시 강남구 삼성로63길 44</span></p>
                             <button type="button" class="address-change-button">
                                 <span>변경</span>
                             </button>
@@ -196,14 +193,22 @@
                                 <span class="text"></span>
                             </div>
                         </div>
+                        <p class="text">위 배달지로 주문하시겠습니까?</p>
                     </div>
-                    <div class="pop-button"></div>
+                    <div class="pop-button">
+                    	<button class="button-no">
+                    		<span>아니오</span>
+                    	</button>
+                    	<button class="button-yes">
+                    		<span>예</span>
+                    	</button>
+                    </div>
                 </div>
+                <div class="background"></div>
             </div>
             <th:block th:replace="fragments/delivery/delivery_footer :: delivery-footer"></th:block>
         </div>
     </div>
-    <script src="/static/js/include/location-wrap.js"></script>
     <script src="/static/js/delivery/menu-change-modal.js"></script>
     <script src="/static/js/delivery/delivery_order.js"></script>
 </body>

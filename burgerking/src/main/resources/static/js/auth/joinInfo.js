@@ -89,9 +89,7 @@ submit_button.onclick = () => {
             icon: 'error',
             title: '이메일을 다시 확인해주세요'
         })
-    }
-
-    if (regPassword.test(password[0].value) === true) {
+    } else if (regPassword.test(password[0].value) === true) {
         if (password[0].value != password[1].value) {
             Toast.fire({
                 icon: 'error',
@@ -103,11 +101,11 @@ submit_button.onclick = () => {
             icon: 'error',
             title: '조건에 맞는 비밀번호를 입력해주세요'
         })
-    }
 
+    }
     $.ajax({
         type: "post",
-        dataType: "text",
+        dataType: "json",
         data: {
             "email": email.value,
             "name": sessionStorage.getItem("name"),
@@ -134,6 +132,15 @@ submit_button.onclick = () => {
                     location.replace("/index");
                 }
             })
+        },
+        error: function (data) {
+            console.log(data.responseJSON);
+            if (data.responseJSON == false) {
+                Toast.fire({
+                    icon: 'error',
+                    title: '이미 존재하는 아이디입니다.'
+                })
+            }
         }
     })
 }

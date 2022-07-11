@@ -1,7 +1,6 @@
 const member_name = document.querySelector(".member-name");
 const membership_title = document.querySelector(".membership-tit");
 
-let pageUrl = location.pathname;
 
 if (location.pathname.match("myking")) {
     membership_title.innerText = "MY킹";

@@ -8,6 +8,7 @@
     <title>MY배달지</title>
     <link rel="stylesheet" href="/static/css/include/container.css">
     <link rel="stylesheet" href="/static/css/delivery/mydelivery.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4a642b1061349b8bea4439542e4fecb4&libraries=services"></script>
@@ -19,35 +20,7 @@
             <a href="#container" class="btn-top"></a>
             <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
             <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
-
-            <div class="location">
-                <div class="main-location">
-                    <div class="page-nav">
-                        <div class="menu-list">
-                            <a href="/delivery/menu/1" class="location-menu">
-                                <span>딜리버리</span>
-                            </a>
-                            <a href="/delivery/myking" class="location-menu">
-                                <span>MY킹</span>
-                            </a>
-                            <a href="" class="location-menu">
-                                <span>MY배달지</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="destination">
-                        <p class="address">
-                            <img src="/static/images/pin.png" alt="">
-                        </p>
-                        <span>배달지를 선택하세요</span>
-                        <span class="btn">
-                            <a href="/delivery/delivery_search">
-                                <span>변경</span>
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </div>
+			<th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
 
             <div class="all-contentsBox">
                 <div class="contentsBox01">
@@ -209,6 +182,7 @@
         </div>
     </div>
     <script src="/static/js/delivery/mydelivery.js"></script>
+    <script src="/static/js/include/location-wrap.js"></script>
 </body>
 
 </html>
