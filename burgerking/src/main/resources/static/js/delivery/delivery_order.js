@@ -18,12 +18,14 @@ const address_check = document.querySelector(".address-check-box>strong>span");
 const pop_wrap = document.querySelector(".pop-wrap");
 const background = document.querySelector(".background");
 const close_button = document.querySelector(".close-button");
+address_text.innerText = sessionStorage.getItem("pin_address");
 let full_address = address_text.textContent;
 console.log(full_address);
 const cancel_button = document.querySelector(".cancel-button");
 const payment_button = document.querySelector(".payment-button");
 
 let cart_list_json;
+
 
 getCartListFromSession();
 
