@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY킹</title>
+    <link rel="stylesheet" href="/static/css/include/container.css">
+    <link rel="stylesheet" href="/static/css/delivery/myking.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="wrapper">
+            <a href="#container" class="btn-top"></a>
+
+            <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
+            <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
+			<th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
+            <th:block th:replace="fragments/delivery/auth-membership :: auth-membership"></th:block>
+            <div class="all-contentsBox">
+                <div class="contentsBox01">
+                    <div class="nodata">
+                        <p>주문 목록이 없습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-contents">
+                <div class="footer-under">
+                    <div class="footer-detail">
+                        <div class="footer-service">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <span>이용약관</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>개인정보취급방침</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>법적고지</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="footer-btn">
+                                <a href="">
+                                    <span>인재채용</span>
+                                </a>
+                                <a href="">
+                                    <span>가맹점모집</span>
+                                </a>
+                            </div>
+                        </div>
+                        <img src="/static/images/logo.png" class="footer-logo" alt="">
+                        <p>
+                            서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
+                            <span class="footer-line"></span>
+                            전화주문 1599-0505
+                        </p>
+                        <p>
+                            사업자 등록번호 101-86-76277
+                            <span class="footer-line"></span>
+                            (주)BKR 대표이사 문영주
+                        </p>
+                        <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
+                        <img src="/static/images/footer-facebook.png" alt="">
+                        <img src="/static/images/footer-insta.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/static/js/include/location-wrap.js"></script>
+</body>
+
+</html>

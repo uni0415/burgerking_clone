@@ -10,11 +10,11 @@ const certificate_success_input_item = document.querySelector(".certificate-succ
 
 const send_button_box = document.querySelector(".send-button-box");
 const check_button_box = document.querySelector(".check-button-box");
-const resend_button_box = document.querySelector(".resend-button-box");
+const signup_button_box = document.querySelector(".signup-button-box");
 
 const send_code_button = document.querySelector(".send-code-button");
 const code_check_button = document.querySelector(".code-check-button");
-const resend_button = document.querySelector(".resend-button");
+const signup_button = document.querySelector(".signup-button");
 const checkbox = document.querySelector(".checkbox");
 
 let stop_flag = false;
@@ -200,7 +200,7 @@ function startTimer(duration, display) {
             clearInterval(interval);
 
             certificate_success_content_box.classList.add("on");
-            resend_button_box.classList.add("on");
+            signup_button_box.classList.add("on");
             certificate_content_box.classList.remove("on");
             check_button_box.classList.remove("on");
         }

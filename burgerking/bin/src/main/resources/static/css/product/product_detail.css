@@ -3,7 +3,7 @@
     min-height: 450px;
 }
 
-.location-wrap {
+/* .location-wrap {
     padding: 10px 0;
     height: 58px;
     color: #fff;
@@ -22,7 +22,7 @@
 .page-nav>a>span {
     color: #fff;
 }
-
+*/
 .page-nav>:not(:first-child)::before {
     margin: 0 12px;
     float: left;
@@ -31,7 +31,7 @@
     height: 38px;
     color: #fff;
     background: url(/static/images/page_nav_arrow.gif) no-repeat 50%;
-}
+} 
 
 .main-product-box {
     display: flex;

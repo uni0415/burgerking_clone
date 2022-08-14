@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보변경</title>
+    <link rel="stylesheet" href="/static/css/include/container.css">
+    <link rel="stylesheet" href="/static/css/delivery/infoChange.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="wrapper">
+            <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
+            <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
+			<th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
+            <th:block th:replace="fragments/delivery/auth-membership :: auth-membership"></th:block>
+            <div class="all-contentsBox">
+                <div class="contentsBox01">
+                    <div class="subtit-wrap">
+                        <h2 class="page-tit">회원 정보 변경</h2>
+                    </div>
+                    <div class="contents01">
+                        <h3 class="common-info">
+                            <span>기본정보</span>
+                        </h3>
+                        <div class="container01">
+                            <div class="info-list">
+                                <dl>
+                                    <dt>이메일</dt>
+                                    <dd>
+                                        <span class="email"></span>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>이름</dt>
+                                    <dd>
+                                        <span class="member-info-name"></span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div>
+                                <dl class="info-list">
+                                    <dt class="cellphone">핸드폰</dt>
+                                    <dd>
+                                        <div class="cell-num">
+                                            <span class="phone"></span>
+                                            <button type="button" class="btn-change">
+                                                <span>변경</span>
+                                            </button>
+                                            <button type="button" class="btn-cancel">
+                                                <span>취소</span>
+                                            </button>
+                                        </div>
+                                        <div class="auth-num">
+                                            <div class="send-num">
+                                                <input type="text" placeholder="휴대폰 번호를 입력해 주세요"
+                                                    class="phone-input-item">
+                                                <button type="button" class="btn-send" disabled="disabled">
+                                                    <span>인증번호 발송</span>
+                                                </button>
+                                            </div>
+                                            <div class="input-num">
+                                                <input type="text" placeholder="인증번호 입력" class="certificate-input-item">
+                                                <span class="set-timer">03:00</span>
+                                                <button type="button" class="btn-auth" disabled="disabled">
+                                                    <span>인증</span>
+                                                </button>
+                                                <button type="button" class="btn-resetting">
+                                                    <span>재설정</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <h3 class="select-info">
+                            <span>선택정보</span>
+                        </h3>
+                        <div class="main-info-box-middle">
+                            <div class="selection-detail-box">
+                                <div class="selection-gender-box">
+                                    <span>성별</span>
+                                    <div id="choose-gender" class="choose-gender-box">
+                                        <label for="choose-gender" class="choose-gender">
+                                            <input type="radio" value="선택안함" name="gender" checked>
+                                            <span>선택안함</span>
+                                        </label>
+                                        <label for="choose-gender" class="choose-gender">
+                                            <input type="radio" value="남" name="gender">
+                                            <span>남</span>
+                                        </label>
+                                        <label for="choose-gender" class="choose-gender">
+                                            <input type="radio" value="여" name="gender">
+                                            <span>여</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="selection-birth-box">
+                                    <span>생년월일</span>
+                                    <div class="choose-birth-box">
+                                        <label for="choose-birth" class="select-birth">
+                                            <input type="radio" name="choose-birth">
+                                            <span class="no-choose">선택안함</span>
+                                        </label>
+                                        <div class="birth-list-box">
+                                            <select id="select-yyyy" name="birth_year">
+                                                <option value selected="selected">선택</option>
+                                            </select>
+                                            <select id="select-mm" name="birth_month">
+                                                <option value selected="selected">선택</option>
+                                            </select>
+                                            <select id="select-dd" name="birth_date">
+                                                <option value selected="selected">선택</option>
+                                            </select>
+                                        </div>
+                                        <p class="select-text">선택항목 추가 후, 생일쿠폰등 다양한 혜택 받으세요.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="marketing-info">
+                            <span>마케팅 정보 수신동의</span>
+                        </h3>
+                        <div class="container01 marketing-list">
+                            <div>
+                                <label>
+                                    <input type="checkbox" class="checkbox">
+                                    <span>
+                                        이메일을 통한 이벤트/ 주문 정보의 수신에 동의합니다.
+                                    </span>
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="checkbox" class="checkbox">
+                                    <span>
+                                        SMS를 통한 이벤트/ 주문 정보의 수신에 동의합니다.
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="btn-area">
+                            <div class="btn-item">
+                                <a href="/delivery/myking" class="btn01">
+                                    <span>취소</span>
+                                </a>
+                                <div class="btn02">
+                                    <span>변경</span>
+                                </div>
+                            </div>
+                            <div class="secession">
+                                <button class="btn-secession">
+                                    <span>
+                                        회원탈퇴
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="footer-contents">
+                        <div class="footer-under">
+                            <div class="footer-detail">
+                                <div class="footer-service">
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <span>이용약관</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>개인정보취급방침</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span>법적고지</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="footer-btn">
+                                        <a href="">
+                                            <span>인재채용</span>
+                                        </a>
+                                        <a href="">
+                                            <span>가맹점모집</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <img src="/static/images/logo.png" class="footer-logo" alt="">
+                                <p>
+                                    서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알
+                                    <span class="footer-line"></span>
+                                    전화주문 1599-0505
+                                </p>
+                                <p>
+                                    사업자 등록번호 101-86-76277
+                                    <span class="footer-line"></span>
+                                    (주)BKR 대표이사 문영주
+                                </p>
+                                <p>Copyright 2019 BKR Co., Ltd. All right Reserved</p>
+                                <img src="/static/images/footer-facebook.png" alt="">
+                                <img src="/static/images/footer-insta.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="/static/js/auth/infoChange.js"></script>
+            <script src="/static/js/include/location-wrap.js"></script>
+</body>
+
+</html>

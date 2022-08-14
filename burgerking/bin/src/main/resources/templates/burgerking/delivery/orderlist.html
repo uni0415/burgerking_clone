@@ -8,143 +8,18 @@
     <title>주문목록</title>
     <link rel="stylesheet" href="/static/css/include/container.css">
     <link rel="stylesheet" href="/static/css/delivery/orderlist.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
     <div id="container">
         <div class="wrapper">
             <a href="#container" class="btn-top"></a>
-            <div class="header-wrap">
-                <div class="container-one">
-                    <div class="header">
-                        <ul class="header-menu">
-                            <a href="" class="top-menu">
-                                <span>브랜드홈</span>
-                            </a>
-                            <a href="" class="top-menu">
-                                <span>로그아웃</span>
-                            </a>
-                            <a href="" class="top-menu">
-                                <span>MY킹</span>
-                            </a>
-                            <a href="" class="top-menu">
-                                <span>고객센터</span>
-                            </a>
-                        </ul>
-                        <h1 class="logo">
-                            <span>딜리버리</span>
-                        </h1>
-                        <div class="user">
-                            <p>
-                                <span>김지훈</span>
-                                님 안녕하세요
-                            </p>
-                            <a href="#">
-                                <strong>MY킹 바로가기</strong>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="head-list">
-                <div class="blackboard-list">
-                    <div class="delivery-order">
-                        <a href="#">
-                            <p>
-                                <strong>딜리버리 주문내역</strong><br>
-                                <a>주문내역이 없습니다.</a>
-                            </p>
-                        </a>
-                    </div>
-                    <div class="cart">
-                        <a href="#">
-                            <p>
-                                <strong>카트</strong><br>
-                                <a>카트에 담은 상품이 없습니다</a>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="location">
-                <div class="main-location">
-                    <div class="page-nav">
-                        <div class="menu-list">
-                            <a href="" class="location-menu">
-                                <span>딜리버리</span>
-                            </a>
-                            <a href="" class="location-menu">
-                                <span>MY킹</span>
-                            </a>
-                            <a href="" class="location-menu">
-                                <span>주문내역</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="destination">
-                        <p class="address">
-                            <img src="/static/images/pin.png" alt="">
-                        </p>
-                        <span>배달지를 선택하세요</span>
-                        <span class="btn">
-                            <a href="#">
-                                <span>변경</span>
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="membership">
-                <div class="membership-title">
-                    <h2 class="membership-tit">
-                        MY킹
-                        <span>>주문내역</span>
-                    </h2>
-                </div>
-                <div class="myhistory">
-                    <div class="membership-info">
-                        <p class="user-info">
-                            <strong>김지훈 님!</strong>
-                            <span>반갑습니다</span>
-                        </p>
-                        <div class="links">
-                            <a href="#">
-                                <span>정보변경</span>
-                            </a>
-                            <a href="#">
-                                <span>MY배달지</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="coupon-info">
-                        <div class="info-membership-welcome">
-                            <a href="#">
-                                <span>멤버십</span>
-                                <div class="welcome">
-                                    <strong>WELCOME</strong>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="info-membership-coupon">
-                            <a href="#">
-                                <span>나의 쿠폰</span>
-                                <div class="coupon">
-                                    <strong>멤버십0 딜리버리0</strong>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="info-membership-order">
-                            <a href="#">
-                                <div class="order">
-                                    <strong>주문이력</strong>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
+            <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
+            <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
+            <th:block th:replace="fragments/delivery/auth-membership :: auth-membership"></th:block>
             <div class="all-contentsBox">
                 <div class="contentsBox01">
                     <div class="subtit-wrap">
@@ -176,7 +51,7 @@
                         </div>
                     </div>
                     <div class="nodata">
-                        <p>쿠폰 목록이 없습니다.</p>
+                        <p>주문내역이 없습니다.</p>
                     </div>
                 </div>
             </div>
@@ -231,6 +106,7 @@
         </div>
     </div>
     <script src="/static/js/delivery/orderlist.js"></script>
+    <script src="/static/js/include/location-wrap.js"></script>
 </body>
 
 </html>

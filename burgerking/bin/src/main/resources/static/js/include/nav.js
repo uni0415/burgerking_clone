@@ -4,6 +4,7 @@ const submenu = document.querySelectorAll(".submenu");
 const menulist = submenu[0].querySelectorAll("li");
 const delivery_button = document.querySelector(".delivery");
 
+
 nav_menu.onmouseenter = () => {
     nav_open.classList.add("active");
     for (let i = 0; i < submenu.length; i++) {

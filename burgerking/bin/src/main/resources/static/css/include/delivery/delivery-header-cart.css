@@ -1,0 +1,91 @@
+.delivery-personal-wrap {
+    height: 124px;
+    font-size: 25px;
+    color: #fff;
+    background: url(/static/images/delivery_background.gif);
+}
+
+.delivery-container {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 1184px;
+    height: 100%;
+}
+
+.delivery-container:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    margin-left: -1.5px;
+    background: url(/static/images/delivery-container-line.png) no-repeat 0;
+}
+
+.order-history {
+    position: absolute;
+    left: 20px;
+    top: 20%;
+    min-height: 56px;
+    padding-left: 110px;
+    background: url(/static/images/order_bike.png) no-repeat 0;
+}
+
+.order-history-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-history-box {
+    color: #fff;
+}
+
+.order-history-box>span {
+    margin-top: 10px;
+    font-size: 1.125rem;
+    line-height: 167%;
+}
+
+.order-cart {
+    position: absolute;
+    right: 0;
+    top: 25%;
+    width: 41%;
+    padding-left: 95px;
+    background: url(/static/images/delivery_cart.png) no-repeat 0;
+}
+
+.order-cart-box {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.cart-count {
+    display: flex;
+}
+
+
+.count {
+    display: none;
+    height: 30px;
+    margin-left: 14px;
+    padding: 0 20px;
+    font-size: 20px;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    background: #e22219;
+    border-radius: 15px;
+}
+
+.count.on {
+    display: block;
+}
+
+.order-cart-box>span {
+    font-size: 1.125rem;
+    line-height: 167%;
+}

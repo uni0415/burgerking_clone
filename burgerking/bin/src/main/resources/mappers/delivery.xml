@@ -78,5 +78,104 @@
 	WHERE
 		md.side_menu_change = 1 AND md.set_size = #{set_size} AND mm.category_id = 7
   </select>
+  
+  <select id="getMenuInfo" parameterType="String" resultType="com.springboot.burgerking.web.controller.dto.MenuDetailDto">
+  	select
+  		id,
+  		menu_id,
+  		`name`,
+  		menu_images,
+  		price,
+  		set_add_price,
+  		large_add_price
+  	from
+  		menu_dtl
+  	where
+  		id = #{menu_id}
+  		
+  </select>
+  
+  <select id="getCartMenuDetails" parameterType="com.springboot.burgerking.web.controller.dto.MenuListDto" resultType="com.springboot.burgerking.domain.MenuDtlWithIngredient">
+  	select
+  		id,
+  		`name`,
+  		menu_images,
+  		price,
+  		set_size,
+  		set_add_price,
+  		large_add_price
+  	from
+  		menu_dtl
+  	where
+  		id in
+  		<foreach collection="menu_id_list" index="index" item="item" open="(" close=")" separator=",">
+  			#{item}
+  			</foreach>
+  	order by
+  		id asc;
+  </select>
+  
+  <insert id="insertOrderAddress" parameterType="com.springboot.burgerking.domain.AddressEntity">
+  	insert into
+  		user_address
+  	values(
+  		0,
+  		#{user_id},
+		#{address_nickname},
+		#{address},
+		#{detail_address}
+  	)
+  	
+  </insert>
+  
+  <select id="getAddressInfo" parameterType="Integer" resultType="com.springboot.burgerking.web.controller.dto.AddressDto">
+  	select
+  		id,
+  		address_nickname,
+  		address,
+  		detail_address
+  	from
+  		user_address
+  	where
+  		user_id = #{user_id}
+  </select>
+  
+  <select id="getLastAddressInfo" parameterType="Integer" resultType="com.springboot.burgerking.web.controller.dto.AddressDto">
+  	select
+  		address_nickname,
+  		address,
+  		detail_address
+  	from
+  		user_address
+  	order by id desc limit 1
+  	where
+  		user_id = #{user_id}
+  </select>
+  
+  <update id="updateAddressNickname" parameterType="com.springboot.burgerking.domain.AddressEntity">
+  	update 
+  		user_address
+  	set
+  		address_nickname = #{address_nickname}
+  	where
+  		user_id = #{user_id} and id = #{id}
+  </update>
+  
+  <select id="getAddressNickname" parameterType="String" resultType="String">
+  	select
+  		address_nickname
+  	from
+  		user_address
+	where
+	  	user_id = #{user_id}
+  </select>
+  
+  <delete id="deleteOrderAddressList" parameterType="Integer">
+  	delete
+  	from
+  		user_address
+  	where
+  		id = #{id} and user_id = #{user_id};
+  </delete>
   	
   </mapper>

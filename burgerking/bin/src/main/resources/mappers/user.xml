@@ -11,7 +11,8 @@
   			0,
   			#{name},
   			#{phone},
-  			#{order_password}
+  			#{order_password},
+  			#{roles}
   		)
   	</insert>
   	
@@ -20,11 +21,223 @@
   			id,
   			name,
   			phone,
-  			order_password
+  			order_password,
+  			roles
   		from
   			none_member_mst
   		where
   			phone = #{phone}
   		
   	</select>
+  	
+  	<insert id="userAgreement" parameterType="com.springboot.burgerking.domain.auth.AgreementEntity">
+  		insert into
+  			agreement_check
+  		values(
+  			0,
+  			#{user_id},
+  			#{terms},
+  			#{privacy_policy},
+  			#{email_agreement},
+  			#{sms_agreement}
+  		)
+  	</insert>
+  	
+  	<select id="checkUsername" parameterType="String" resultType="Integer">
+  		select
+  			count(email)
+  		from
+  			user_mst
+  		where
+  			email = #{email}
+  	</select>
+  	
+  	<select id="selectPassword" parameterType="String" resultType="String">
+  		select
+  			password
+  		from
+  			user_mst
+  		where
+  			email = #{email}
+  	</select>
+  	
+  	<select id="loadUserByEmail" parameterType="String" resultType="com.springboot.burgerking.domain.auth.User">
+  		select
+  			id,
+			email,
+			name,
+			phone,
+			gender,
+			birth_year,
+			birth_month,
+			birth_date,
+			password,
+			provider,
+			roles,
+			create_date,
+			update_date
+  		from
+  			user_mst
+  		where
+  			email = #{email}
+  	</select>
+  	
+  	<select id="getUserById" parameterType="Integer" resultType="com.springboot.burgerking.domain.auth.User">
+  		select
+  			id,
+			email,
+			name,
+			phone,
+			gender,
+			birth_year,
+			birth_month,
+			birth_date,
+			password,
+			create_date,
+			update_date
+  		from
+  			user_mst
+  		where
+  			id = #{id}
+  	</select>
+  	
+  	<select id="getUserId" resultType="Integer">
+  		select id from user_mst order by id desc limit 1
+  	</select>
+  	
+  	<insert id="signup" parameterType="com.springboot.burgerking.domain.auth.User">
+  		insert into
+  			user_mst
+  		values(
+  			0,
+			#{email},
+			null,
+			#{name},
+			#{phone},
+			#{gender},
+			#{birth_year},
+			#{birth_month},
+			#{birth_date},
+			#{password},
+			null,
+			#{roles},
+			now(),
+			now()
+  		)
+  	</insert>
+  	
+  	<update id="updatePhone" parameterType="com.springboot.burgerking.domain.auth.User">
+  		update
+  			user_mst
+  		set
+  			phone = #{phone}
+  		where
+  			email = #{email}
+  	</update>
+  	
+  	<select id="getPhone" parameterType="String" resultType="String">
+  		select
+  			phone
+  		from
+  			user_mst
+  		where
+  			email=#{email}
+  	</select>
+  	
+  	<update id="updateBirth" parameterType="com.springboot.burgerking.domain.auth.User">
+  		update
+  			user_mst
+  		set
+  			birth_year = #{birth_year},
+			birth_month = #{birth_month},
+			birth_date = #{birth_date}
+  		where
+  			email = #{email}
+  	</update>
+  	
+  	<select id="getBirth" parameterType="String" resultType="String">
+  		select
+  			phone
+  		from
+  			user_mst
+  		where
+  			email=#{email}
+  	</select>
+  	  	<update id="updateGender" parameterType="com.springboot.burgerking.domain.auth.User">
+  		update
+  			user_mst
+  		set
+  			gender = #{gender}
+  		where
+  			email = #{email}
+  	</update>
+  	
+  	<select id="getGender" parameterType="String" resultType="String">
+  		select
+  			phone
+  		from
+  			user_mst
+  		where
+  			email=#{email}
+  	</select>
+  	
+  	<select id="findOAuth2UserByOAuth2Username" parameterType="String" resultType="com.springboot.burgerking.domain.auth.User">
+  		select
+  			*
+  		from
+  			user_mst
+  		where
+  			oauth2_username=#{oAuth2_username}
+  	</select>
+  	
+  	<insert id="insertUser" parameterType="com.springboot.burgerking.domain.auth.User" useGeneratedKeys="true" keyProperty="id">
+  		insert into
+  			user_mst
+  		values(
+  			0,
+			#{email},
+			#{oauth2_username},
+			#{name},
+			#{phone},
+			null,
+			null,
+			null,
+			null,
+			#{password},
+			#{provider},
+			#{roles},
+			now(),
+			now()
+  		)
+  	</insert>
+  	
+
+	<select id="findUserId" parameterType="com.springboot.burgerking.domain.auth.FindUserEntity" resultType="Integer">
+		select
+			count(`name`)
+		from
+			user_mst
+		where
+			`name`=#{user_name} and
+			phone=#{phone}
+	</select>
+	
+	<select id="getEmail" parameterType="String" resultType="String">
+		select
+			email
+		from
+			user_mst
+		where
+			phone=#{phone}
+			
+	</select>
+	<update id="updateUserByOauth2" parameterType="String">
+		update user_mst
+		set
+			oauth2_username = #{oauth2_username},
+			provider = #{provider}
+		where
+			email = #{email}
+	</update>
+  	
   </mapper>

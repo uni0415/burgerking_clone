@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_container.css">
+    <link rel="stylesheet" href="/static/css/delivery/menu-modal-box.css">
+    <link rel="stylesheet" href="/static/css/delivery/delivery_order.css">
+    <link rel="stylesheet" href="/static/css/delivery/menu-modal-box.css">
+    <link rel="stylesheet" href="/static/css/include/location-wrap.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <title>주문하기</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="wrap">
+            <th:block th:replace="fragments/delivery/delivery-header :: delivery-header"></th:block>
+            <th:block th:replace="fragments/delivery/delivery-header-cart :: delivery-header-cart"></th:block>
+            <th:block th:replace="fragments/location-wrap :: location-wrap"></th:block>
+            <div class="content-wrap">
+                <h2 class="page-title">주문하기</h2>
+                <div class="container-box order-wrap">
+                    <h2 class="subtitle title-icon delivery">
+                        <span>배달정보</span>
+                    </h2>
+                    <div class="content-box delivery-info">
+                        <div class="address-wrap">
+                            <p class="text-address"><span class="address-text">서울특별시 강남구 삼성로63길 44</span></p>
+                            <button type="button" class="address-change-button">
+                                <span>변경</span>
+                            </button>
+                        </div>
+                        <div class="info-list">
+                            <div class="phone-box">
+                                <span>연락처</span>
+                                <div>
+                                    <input type="text" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="store-box">
+                                <span>매장</span>
+                                <div>
+                                    <input type="text" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="order-memo">
+                                <span>요청사항</span>
+                                <div>
+                                    <input type="text" placeholder="요청사항을 입력하세요" maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="subtitle title-icon burger title-ordermenu">
+                        <span>주문정보</span>
+                    </h2>
+                    <div class="content-box order-active-wrap">
+                        <div class="active-title">
+                            <p class="title">
+                                <strong>
+                                    <span>텍사스 칠리치킨버거</span>
+                                </strong>
+                            </p>
+                        </div>
+                        <ul class="cart-list-box">
+
+                        </ul>
+                        <div class="order-view-button-box">
+                            <button type="button" class="order-view-button">
+                                <span class="order-view on">주문 전체보기</span>
+                                <span class="view-close">닫기</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h2 class="subtitle title-icon coupon">
+                        <span>쿠폰정보</span>
+                    </h2>
+                    <div class="content-box">
+                        <div style="display:none;">사용 가능한 쿠폰이 없습니다.</div>
+                        <div class="coupon-list">
+                            사용 가능한 쿠폰이 있습니다. <em>(0개)</em>
+                        </div>
+                    </div>
+
+                    <h2 class="subtitle title-icon money">
+                        <span>최종 결제금액</span>
+                    </h2>
+                    <div class="content-box">
+                        <div class="order-payment-list">
+                            <div class="total">
+                                <span>최종 결제금액</span>
+                                <em>
+                                    <span class="calc-total-price"></span>
+                                    <span>원</span>
+                                </em>
+                            </div>
+                            <div class="menu-price">
+                                <span>제품금액</span>
+                                <span class="total-menu-price"></span>
+                            </div>
+                            <div class="discount-price">
+                                <span>할인금액</span>
+                                <span>0원</span>
+                            </div>
+                            <div class="order-tip">
+                                <span>배달팁</span>
+                                <span>0원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-button-wrap">
+                        <button type="button" class="cancel-button">
+                            <span>취소</span>
+                        </button>
+                        <button type="button" class="payment-button">
+                            <span>결제하기</span>
+                        </button>
+                    </div>
+                    <div class="order-caution">
+                        <div class="caution-title">
+                            <h4>유의사항</h4>
+                        </div>
+                        <ul class="text-list">
+                            <li>매장별 주문금액이 상이하니, 반드시 최소금액을 확인하기 바랍니다.</li>
+                            <li>배달 소요시간은 기상조건이나 매장 사정상 지연 또는 제한될 수 있습니다.</li>
+                            <li>고객님과 수 차례 연락을 시도한 후 연락이 되지 않는 경우 배달음식이 변질되거나 부패될 우려로 식품위생법상 위반될 여지가 있어 별도로 보관 하지 않으며,
+                                <strong>재배달 또는 환불처리가 어려울 수 있습니다.</strong>
+                            </li>
+                            <li>딜리버리 서비스 메뉴의 가격은 매장 가격과 상이하며, 딜리버리 시 타쿠폰을 사용하실 수 없습니다. (일부품목 배달 제외)</li>
+                            <li>프로모션 할인과 쿠폰할인은 중복적용이 불가합니다.</li>
+                            <li>배달 제품은 매장 행사(할인가격)에서 제외됩니다.</li>
+                            <li>제품 가격 및 메뉴 구성은 본사 사정상 변경될 수 있습니다.</li>
+                            <li>대량 주문의 경우 콜센터(1599-0505)주문으로만 가능합니다.</li>
+                            <li>주문 완료 후 변경 및 취소는 콜센터(1599-0505)에서만 가능합니다.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-full-pop-wrap">
+                        <div class="side-modal-box">
+                            <div class="modal-header-wrap">
+                                <h2 class="modal-header-title">
+                                    사이드 변경
+                                </h2>
+                                <button class="modal-close-button"></button>
+                            </div>
+                            <div class="modal-sidemenu-content-box">
+                                <ul class="menu-change">
+
+                                </ul>
+                            </div>
+                            <button type="button" class="choice">
+                                <span>선 택</span>
+                            </button>
+                        </div>
+
+                        <div class="drink-modal-box">
+                            <div class="modal-header-wrap">
+                                <h2 class="modal-header-title">
+                                    음료 변경
+                                </h2>
+                                <button class="modal-close-button"></button>
+                            </div>
+                            <div class="modal-drink-content-box">
+                                <ul class="drink-change">
+
+                                </ul>
+                            </div>
+                            <button type="button" class="choice">
+                                <span>선 택</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-wrap">
+                <div class="pop-box">
+                    <button class="close-button" style="z-index:100;"></button>
+                    <div class="pop-content">
+                        <div class="address-check">
+                            <span>배달지 주소</span>
+                            <div class="address-check-box">
+                                <strong style="word-break: break-all;">
+                                    <span></span>
+                                </strong>
+                            </div>
+                            <div class="address-nickname">
+                                <strong class="nick"></strong>
+                                <span class="text"></span>
+                            </div>
+                        </div>
+                        <p class="text">위 배달지로 주문하시겠습니까?</p>
+                    </div>
+                    <div class="pop-button">
+                    	<button class="button-no">
+                    		<span>아니오</span>
+                    	</button>
+                    	<button class="button-yes">
+                    		<span>예</span>
+                    	</button>
+                    </div>
+                </div>
+                <div class="background"></div>
+            </div>
+            <th:block th:replace="fragments/delivery/delivery_footer :: delivery-footer"></th:block>
+        </div>
+    </div>
+    <script src="/static/js/delivery/menu-change-modal.js"></script>
+    <script src="/static/js/delivery/delivery_order.js"></script>
+</body>
+
+</html>

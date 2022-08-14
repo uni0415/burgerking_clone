@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/static/css/auth/login/header.css">
     <link rel="stylesheet" href="/static/css/auth/login/footer.css">
     <link rel="stylesheet" href="/static/css/auth/joinInfo.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -56,7 +58,7 @@
             <div class="main-wrap-title">
                 <h2>회원가입</h2>
             </div>
-            <div class="main-info-box">
+            <div class="main-info-box" method="post" action="/api/v1/auth/signup">
                 <h3 class="basic-information">기본정보</h3>
                 <div class="userinfo-wrap-container">
                     <div class="userinfo-title-box">
@@ -66,7 +68,7 @@
                         <div class="username-detail-box">
                             <span>이메일 아이디</span>
                             <div class="username-input-box">
-                                <input type="text" placeholder="이메일 아이디" class="username-input">
+                                <input type="text" placeholder="이메일 아이디" class="username-input" name="email">
                                 <button type="button" class="cancellation-button"><img
                                         src="/static/images/findUserInfo_cancellation.png" alt=""></button>
                                 <p>사용 가능한 이메일 주소를 입력해 주세요. (예: name@mail.com)</p>
@@ -75,13 +77,13 @@
                         <div class="name-detail-box">
                             <span>이름</span>
                             <div class="userinfo-name-box">
-                                <input type="text" class="name-input-box" readonly="readonly" placeholder="이름">
+                                <input type="text" class="name-input-box" readonly name="name">
                             </div>
                         </div>
                         <div class="tel-detail-box">
                             <span>휴대폰 번호</span>
                             <div class="userinfo-tel-box">
-                                <input type="text" class="tel-input-box" readonly="readonly" placeholder="휴대폰 번호">
+                                <input type="text" class="tel-input-box" readonly name="phone">
                             </div>
                         </div>
                     </div>
@@ -96,15 +98,15 @@
                             <span>성별</span>
                             <div id="choose-gender" class="choose-gender-box">
                                 <label for="choose-gender" class="choose-gender">
-                                    <input type="radio" name="choose-gender">
+                                    <input type="radio" value="선택안함" name="gender">
                                     <span>선택안함</span>
                                 </label>
                                 <label for="choose-gender" class="choose-gender">
-                                    <input type="radio" name="choose-gender">
+                                    <input type="radio" value="남" name="gender">
                                     <span>남</span>
                                 </label>
                                 <label for="choose-gender" class="choose-gender">
-                                    <input type="radio" name="choose-gender">
+                                    <input type="radio" value="여" name="gender">
                                     <span>여</span>
                                 </label>
                             </div>
@@ -117,13 +119,13 @@
                                     <span class="no-choose">선택안함</span>
                                 </label>
                                 <div class="birth-list-box">
-                                    <select id="select-yyyy">
+                                    <select id="select-yyyy" name="birth_year">
                                         <option value selected="selected">선택</option>
                                     </select>
-                                    <select id="select-mm">
+                                    <select id="select-mm" name="birth_month">
                                         <option value selected="selected">선택</option>
                                     </select>
-                                    <select id="select-dd">
+                                    <select id="select-dd" name="birth_date">
                                         <option value selected="selected">선택</option>
                                     </select>
                                 </div>
@@ -142,10 +144,10 @@
                             <div>
                                 <div class="username-input-box">
                                     <input type="password" placeholder="비밀번호, 영문, 숫자, 특수문자 조합(10~20자 사이)"
-                                        class="username-input">
+                                        class="password-input">
                                     <img src="/static/images/login_password_hidden.png" alt=""
-                                        class="passowrd-unshown on">
-                                    <img src="/static/images/login_password_show.png" alt="" class="passowrd-shown">
+                                        class="password-unshown on">
+                                    <img src="/static/images/login_password_show.png" alt="" class="password-shown">
                                     <p>사용할 비밀번호를 입력해 주세요</p>
                                 </div>
                             </div>
@@ -153,10 +155,10 @@
                         <div class="password-input-box">
                             <div>
                                 <div class="username-input-box">
-                                    <input type="password" placeholder="비밀번호 확인" class="username-input">
+                                    <input type="password" placeholder="비밀번호 확인" class="password-input">
                                     <img src="/static/images/login_password_hidden.png" alt=""
-                                        class="passowrd-unshown on">
-                                    <img src="/static/images/login_password_show.png" alt="" class="passowrd-shown">
+                                        class="password-unshown on">
+                                    <img src="/static/images/login_password_show.png" alt="" class="password-shown">
                                     <p>비밀번호를 다시한번 입력해 주세요.</p>
                                 </div>
                             </div>
@@ -164,12 +166,11 @@
                     </div>
                 </div>
                 <div class="join-click-box">
-                    <button type="button">회원가입</button>
+                    <button type="button" class="submit-button">회원가입</button>
                 </div>
             </div>
         </div>
     </div>
-    <script src="/static/js/auth/joinInfo.js"></script>
 
     <footer>
         <div class="footer-under">
